@@ -35,6 +35,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'vim-airline/vim-airline'                          " airline status bar
   Plug 'ryanoasis/vim-devicons'                           " pretty icons everywhere
   Plug 'hzchirs/vim-material'                             " material color themes
+  Plug 'sonph/onehalf', {'rtp': 'vim/'}                   " OneHalf Colorscheme
   Plug 'mhinz/vim-startify'                               " Fancy startpage 
 
   " Status Line

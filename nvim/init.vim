@@ -5,6 +5,8 @@ source $HOME/.config/nvim/keys/mappings.vim
 source $HOME/.config/nvim/general/functions.vim
 
 source $HOME/.config/nvim/themes/material.vim
+" source $HOME/.config/nvim/themes/onehalf.vim
+" source $HOME/.config/nvim/themes/onehalflight.vim
 source $HOME/.config/nvim/themes/airline.vim
 
 source $HOME/.config/nvim/plug-config/nerdtree.vim

@@ -2,4 +2,4 @@
 
 ### Dotfiles
 
-- [NeoVim Config](Vanluren/vanluren/nvim/)
+- [NeoVim Config](vanluren/nvim/)

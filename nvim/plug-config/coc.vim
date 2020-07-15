@@ -70,3 +70,10 @@ map <silent> gr <Plug>(coc-references)
 map <silent> gh :call <SID>show_documentation()<CR>
 map <silent> lp <Plug>(coc-diagnostic-prev)
 map <silent> ln <Plug>(coc-diagnostic-next)
+
+" Remap for do codeAction of selected region
+function! s:cocActionsOpenFromSelected(type) abort
+  execute 'CocCommand actions.open ' . a:type
+endfunction
+xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
+nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@

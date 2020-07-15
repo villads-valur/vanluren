@@ -17,6 +17,7 @@ let g:coc_snippet_prev = '<S-Tab>'
 " list of the extensions required
 let g:coc_global_extensions = [
             \'coc-yank',
+            \'coc-actions',
             \'coc-pairs',
             \'coc-json',
             \'coc-css',
@@ -29,7 +30,9 @@ let g:coc_global_extensions = [
             \'coc-prettier',
             \'coc-eslint',
             \'coc-syntax',
-            \'coc-git'
+            \'coc-git',
+            \'coc-emmet',
+            \'coc-vimlsp'
             \]
 
 

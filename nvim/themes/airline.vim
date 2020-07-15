@@ -35,6 +35,7 @@ set noshowmode
 
 " Sections
 " let g:airline_section_c = ''
-let g:airline_section_a = ""
+let g:airline_section_a = ''
 let g:airline_section_y = ''
+let g:airline#extensions#branch#enabled=1
 let g:webdevicons_enable_airline_tabline = 1

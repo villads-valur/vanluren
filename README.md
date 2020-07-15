@@ -1,5 +1,5 @@
 ## My own, my precious
 
-### Dotfiles🅰
+### Dotfiles
 
-- [NeoVim Config](nvim/)
+- [NeoVim Config](/Vanluren/nvim/)

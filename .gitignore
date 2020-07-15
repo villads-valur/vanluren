@@ -1,1 +1,14 @@
+.DS_STORE
+dein
+tags*
+nvim/.netrwhist
+nvim/pythonpath.vim
+nvim/nodepath.vim
+nvim/autoload/plug.vim
+nvim/autoload/plugged/*
+nvim/autoload/
+nvim/session
+wiki/
+nvim/.nvim
 nvim/undodir/
+

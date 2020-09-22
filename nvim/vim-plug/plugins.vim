@@ -21,9 +21,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Text Navigation
     Plug 'easymotion/vim-easymotion'
     " Add some color
-       Plug 'junegunn/rainbow_parentheses.vim'
-    " Better Syntax Support
-    Plug 'sheerun/vim-polyglot'
+    Plug 'junegunn/rainbow_parentheses.vim'
     " Cool Icons
     Plug 'ryanoasis/vim-devicons'
     " Auto pairs for '(' '[' '{' 
@@ -36,12 +34,16 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'ryanoasis/vim-devicons'                           " pretty icons everywhere
   Plug 'hzchirs/vim-material'                             " material color themes
   Plug 'sonph/onehalf', {'rtp': 'vim/'}                   " OneHalf Colorscheme
+  Plug 'srcery-colors/srcery-vim'
+  Plug 'bluz71/vim-nightfly-guicolors'
+  Plug 'connorholyday/vim-snazzy'
+  Plug 'meister/vim-snazzyfied'
   Plug 'mhinz/vim-startify'                               " Fancy startpage 
+  Plug 'ayu-theme/ayu-vim'
 
   " Status Line
-  Plug 'vim-airline/vim-airline'
-  " Plug 'vim-airline/vim-airline-themes'
-   
+  Plug 'vim-airline/vim-airline'   
+
   " Intellisense
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
   
@@ -71,7 +73,24 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'tpope/vim-repeat'                                 " endings for html, xml, etc 
   Plug 'tpope/vim-endwise'                                " endings for html, xml, etc 
   Plug 'qpkorr/vim-bufkill'
+  
+  " Languages
+      " Better Syntax Support
+    Plug 'sheerun/vim-polyglot'
+     " Typescript
+    Plug 'HerringtonDarkholme/yats.vim'  
+    Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
+    
+     " Rails
+    Plug 'tpope/vim-rails'
+     " JSX
+    Plug 'neoclide/vim-jsx-improve'
+    "JSDocs
+    Plug 'heavenshell/vim-jsdoc', { 
+      \ 'for': ['javascript', 'javascriptreact','typescript', 'typescriptreact'], 
+      \ 'do': 'make install'
+    \}
   endif
 
 

@@ -23,6 +23,7 @@ let g:coc_global_extensions = [
             \'coc-css',
             \'coc-html',
             \'coc-tsserver',
+            \'coc-tslint-plugin',
             \'coc-lists',
             \'coc-snippets',
             \'coc-ultisnips',
@@ -32,7 +33,9 @@ let g:coc_global_extensions = [
             \'coc-syntax',
             \'coc-git',
             \'coc-emmet',
-            \'coc-vimlsp'
+            \'coc-vimlsp',
+            \'coc-solargraph',
+            \'coc-styled-components'
             \]
 
 

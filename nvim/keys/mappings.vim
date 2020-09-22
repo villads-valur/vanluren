@@ -40,3 +40,8 @@ noremap <leader>0 :tablast<cr>
 
 " <TAB>: completion.
 inoremap <silent> <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" Remap P to paste without yank
+xnoremap P Pgvy
+" Remap p to paste without yank
+xnoremap p Pgvy

@@ -17,6 +17,7 @@
     "eruby",
     "vim"
   ],
+  "diagnostic.refreshOnInsertMode": true,
   "diagnostic.warningSign": "⚠️",
   "diagnostic.errorSign": "❌",
   "diagnostic.hintSign": "⚠️",
@@ -48,7 +49,7 @@
   "explorer.icon.enableNerdfont": true,
   "explorer.previewAction.onHover": true,
   "explorer.icon.enableVimDevicons": true,
-  "emmet.includeLanguages": { "vue-html": "html", "javascript": "javascriptreact" },
+  "emmet.includeLanguages": { "vue-html": "html", "javascript": "javascriptreact", "typescript": "typescriptreact" },
   "prettier.printWidth": 160,
   "codeLens.enable": true,
   "tsserver.formatOnType": true,

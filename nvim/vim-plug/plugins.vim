@@ -45,6 +45,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'vim-airline/vim-airline'   
 
   " Intellisense
+    " Plug 'dense-analysis/ale'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
   
   " FZF
@@ -88,7 +89,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'neoclide/vim-jsx-improve'
     "JSDocs
     Plug 'heavenshell/vim-jsdoc', { 
-      \ 'for': ['javascript', 'javascriptreact','typescript', 'typescriptreact'], 
+      \ 'for': ['javascript', 'javascriptreact', 'typescript', 'typescriptreact'], 
       \ 'do': 'make install'
     \}
   endif

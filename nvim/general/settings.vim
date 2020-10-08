@@ -1,4 +1,4 @@
-se iskeyword+=-                      	" treat dash separated words as a word text object"
+set iskeyword+=-                      	" treat dash separated words as a word text object"
 syntax enable                           " Enables syntax highlighing
 set hidden                              " Required to keep multiple buffers open multiple buffers
 set noswapfile                          " Don't use that stupid .swp file
@@ -41,4 +41,6 @@ set emoji
 
 " au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
- 
+
+"Ale specific!!
+let g:ale_disable_lsp = 1

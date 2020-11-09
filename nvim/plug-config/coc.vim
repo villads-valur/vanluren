@@ -23,7 +23,6 @@ let g:coc_global_extensions = [
             \'coc-css',
             \'coc-html',
             \'coc-tsserver',
-            \'coc-tslint-plugin',
             \'coc-lists',
             \'coc-snippets',
             \'coc-ultisnips',
@@ -73,6 +72,13 @@ map <silent> gr <Plug>(coc-references)
 map <silent> gh :call <SID>show_documentation()<CR>
 map <silent> lp <Plug>(coc-diagnostic-prev)
 map <silent> ln <Plug>(coc-diagnostic-next)
+" Remap keys for applying codeAction to the current line.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>a  <Plug>(coc-fix-current)
+
+" Show autocomplete when Tab is pressed
+inoremap <silent><expr> <Tab> coc#refresh()"
 
 " Remap for do codeAction of selected region
 function! s:cocActionsOpenFromSelected(type) abort

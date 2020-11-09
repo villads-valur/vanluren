@@ -51,6 +51,7 @@
   "explorer.icon.enableVimDevicons": true,
   "emmet.includeLanguages": { "vue-html": "html", "javascript": "javascriptreact", "typescript": "typescriptreact" },
   "prettier.printWidth": 160,
+  "prettier.disableSuccessMessage": true,
   "codeLens.enable": true,
   "tsserver.formatOnType": true,
   "git.enableGlobalStatus": false,

@@ -39,7 +39,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'connorholyday/vim-snazzy'
   Plug 'meister/vim-snazzyfied'
   Plug 'mhinz/vim-startify'                               " Fancy startpage 
-  Plug 'ayu-theme/ayu-vim'
+  " Plug 'ayu-theme/ayu-vim'
+  Plug 'jsit/toast.vim'
 
   " Status Line
   Plug 'vim-airline/vim-airline'   
@@ -92,6 +93,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
       \ 'for': ['javascript', 'javascriptreact', 'typescript', 'typescriptreact'], 
       \ 'do': 'make install'
     \}
+    "HTML
+    Plug 'gregsexton/matchtag'
+
   endif
 
 

@@ -1,5 +1,4 @@
-nnoremap <leader>n :NERDTreeFocus<CR>
-
+nnoremap <leader>n :NERDTreeToggle<CR>
 
 " Set arrows
 let g:NERDTreeDirArrowExpandable = '▸'

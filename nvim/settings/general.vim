@@ -1,9 +1,9 @@
 " General:
-syntax enable 				" Enable syntax higlighting
-set number				" Show linenumbers
-set encoding=utf-8
-set nowrap                              " Display long lines as just one line
-
+syntax enable 			" Enable syntax higlighting
+set number					" Show linenumbers
+set encoding=UTF-8 	" Use UTF-8
+set nowrap          " Display long lines as just one line
+set noswapfile			" Don't set SWP files 
 
 " Splitting:
 set splitbelow                         	" Horizontal splits will automatically be below
@@ -27,7 +27,6 @@ set shiftwidth=2                        " Change the number of space characters 
 
 
 " Mappings:
-
 let mapleader=" "
 nnoremap <Space> <Nop>
 

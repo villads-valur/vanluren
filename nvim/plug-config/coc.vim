@@ -33,7 +33,6 @@ let g:coc_global_extensions = [
             \'coc-git',
             \'coc-emmet',
             \'coc-vimlsp',
-            \'coc-solargraph',
             \'coc-styled-components'
             \]
 

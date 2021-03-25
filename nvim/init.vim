@@ -10,8 +10,8 @@ source $HOME/.config/nvim/general/functions.vim
 " source $HOME/.config/nvim/themes/srcery.vim
 " source $HOME/.config/nvim/themes/nightfly.vim
 " source $HOME/.config/nvim/themes/snazzy.vim
-" source $HOME/.config/nvim/themes/ayu.vim
-source $HOME/.config/nvim/themes/toast.vim
+source $HOME/.config/nvim/themes/ayu.vim
+" source $HOME/.config/nvim/themes/toast.vim
 source $HOME/.config/nvim/themes/airline.vim
 
 source $HOME/.config/nvim/plug-config/nerdtree.vim

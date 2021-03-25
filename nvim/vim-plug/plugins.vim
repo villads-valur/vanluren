@@ -31,23 +31,19 @@ call plug#begin('~/.config/nvim/autoload/plugged')
  
   " Colorscheme
   Plug 'vim-airline/vim-airline'                          " airline status bar
+  Plug 'vim-airline/vim-airline-themes'                   " Airline themes
   Plug 'ryanoasis/vim-devicons'                           " pretty icons everywhere
-  Plug 'hzchirs/vim-material'                             " material color themes
-  Plug 'sonph/onehalf', {'rtp': 'vim/'}                   " OneHalf Colorscheme
   Plug 'srcery-colors/srcery-vim'
   Plug 'bluz71/vim-nightfly-guicolors'
-  Plug 'connorholyday/vim-snazzy'
-  Plug 'meister/vim-snazzyfied'
   Plug 'mhinz/vim-startify'                               " Fancy startpage 
-  " Plug 'ayu-theme/ayu-vim'
-  Plug 'jsit/toast.vim'
+  "
+   Plug 'ayu-theme/ayu-vim'
 
   " Status Line
   Plug 'vim-airline/vim-airline'   
 
   " Intellisense
-    " Plug 'dense-analysis/ale'
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   
   " FZF
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -57,9 +53,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'scrooloose/nerdtree', {'on':['NERDTreeToggle', 'NERDTreeFind']} 
   Plug 'Xuyuanp/nerdtree-git-plugin'
 
-  " Git
-  Plug 'airblade/vim-gitgutter'
-
+  
  " Snippets
   Plug 'SirVer/ultisnips'
   Plug 'epilande/vim-es2015-snippets'

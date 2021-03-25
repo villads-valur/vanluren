@@ -40,11 +40,6 @@
   },
   "eslint.packageManager": "yarn",
   "eslint.trace.server": "verbose",
-  "solargraph.hover": true,
-  "solargraph.autoformat": true,
-  "solargraph.formatting": true,
-  "solargraph.definitions": true,
-  "solargraph.diagnostics": true,
   "explorer.width": 30,
   "explorer.icon.enableNerdfont": true,
   "explorer.previewAction.onHover": true,
@@ -55,5 +50,7 @@
   "codeLens.enable": true,
   "tsserver.formatOnType": true,
   "git.enableGlobalStatus": false,
-  "snippets.ultisnips.directories": ["UltiSnips", "~/.config/nvim/snips"]
+  "snippets.ultisnips.directories": ["UltiSnips", "~/.config/nvim/snips"],
+  "solargraph.autoformat": true,
+  "solargraph.formatting": true
 }

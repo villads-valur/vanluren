@@ -1,56 +1,13 @@
 {
-  "coc.preferences.enableFloatHighlight": true,
-  "coc.preferences.formatOnType": true,
-  "coc.source.file.ignoreHidden": false,
-  "coc.preferences.hoverTarget": "float",
-  "coc.preferences.formatOnSaveFiletypes": [
+	"coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "javascriptreact",
     "typescript",
-    "typescriptreact",
-    "json",
-    "scss",
-    "css",
-    "html",
-    "sass",
-    "ruby",
-    "eruby",
-    "vim"
+    "typescriptreact"
   ],
-  "diagnostic.refreshOnInsertMode": true,
-  "diagnostic.warningSign": "⚠️",
-  "diagnostic.errorSign": "❌",
-  "diagnostic.hintSign": "⚠️",
-  "diagnostic.infoSign": "⚠️",
-  "diagnostic.enable": true,
-  "diagnostic.checkCurrentLine": true,
-  "diagnostic.separateRelatedInformationAsDiagnostics": true,
-  "suggest.autoTrigger": "always",
-  "suggest.noselect": false,
-  "suggest.echodocSupport": true,
-  "suggest.floatEnable": true,
-  "suggest.removeDuplicateItems": true,
+	"coc.preferences.formatOnType": true,
+  "eslint.autoFixOnSave": true,
   "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
-  "eslint.run": "onType",
-  "eslint.options": {
-    "env": {
-      "browser": true,
-      "node": true
-    }
-  },
-  "eslint.packageManager": "yarn",
-  "eslint.trace.server": "verbose",
-  "explorer.width": 30,
-  "explorer.icon.enableNerdfont": true,
-  "explorer.previewAction.onHover": true,
-  "explorer.icon.enableVimDevicons": true,
-  "emmet.includeLanguages": { "vue-html": "html", "javascript": "javascriptreact", "typescript": "typescriptreact" },
-  "prettier.printWidth": 160,
   "prettier.disableSuccessMessage": true,
-  "codeLens.enable": true,
-  "tsserver.formatOnType": true,
-  "git.enableGlobalStatus": false,
-  "snippets.ultisnips.directories": ["UltiSnips", "~/.config/nvim/snips"],
-  "solargraph.autoformat": true,
-  "solargraph.formatting": true
+	"tsserver.formatOnType": true
 }

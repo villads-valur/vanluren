@@ -24,7 +24,7 @@ set cursorline                          " Enable highlighting of the current lin
 set smarttab                            " Makes tabbing smarter will realize you have 2 vs 4
 set tabstop=2                           " Insert 2 spaces for a tab
 set shiftwidth=2                        " Change the number of space characters inserted for indentation
-
+set updatetime=750											" Wait 750 ms after typing to update
 
 " Mappings:
 let mapleader=" "

@@ -1,14 +1,24 @@
 {
-	"coc.preferences.formatOnSaveFiletypes": [
+  "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "javascriptreact",
     "typescript",
-    "typescriptreact"
+    "typescriptreact",
+    "css",
+    "scss",
+    "less",
+    "json"
   ],
-	"coc.preferences.formatOnType": true,
-		"suggest.noselect": false,
+  "coc.preferences.formatOnType": true,
+  "suggest.noselect": false,
   "eslint.autoFixOnSave": true,
-  "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
   "prettier.disableSuccessMessage": true,
-	"tsserver.formatOnType": true
+  "tsserver.formatOnType": true,
+  "html.filetypes": ["html", "handlebars", "htmldjango", "blade", "hbs"],
+  "snippets.ultisnips.enable": true,
+  "snippets.extends": {
+    "javascriptreact": ["javascript"],
+    "typescript": ["javascript"],
+    "typescriptreact": ["javascriptreact", "javascript"]
+  }
 }

@@ -3,6 +3,7 @@ call plug#begin('$HOME/.config/nvim/autoload/plugged')
 	" Coc Stuff
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+
 	let g:coc_global_extensions = [
 		\ 'coc-tsserver',
 		\ 'coc-prettier',
@@ -17,6 +18,10 @@ call plug#begin('$HOME/.config/nvim/autoload/plugged')
 	Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 	Plug 'jparise/vim-graphql'
 	Plug 'jiangmiao/auto-pairs'
+  Plug 'epilande/vim-es2015-snippets'
+  Plug 'epilande/vim-react-snippets'
+	Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
+
 	
 	" tpope stuff 
 	Plug 'tpope/vim-commentary'
@@ -41,6 +46,10 @@ call plug#begin('$HOME/.config/nvim/autoload/plugged')
 
 
 	" Searching: 
-	Plug 'ctrlpvim/ctrlp.vim'
+	" Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'junegunn/fzf', {'dir': '~/.fzf','do': './install --all'}
+  Plug 'junegunn/fzf.vim' " needed for previews
+  Plug 'antoinemadec/coc-fzf'
+
 
 call plug#end()

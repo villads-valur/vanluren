@@ -4,6 +4,7 @@ set number					" Show linenumbers
 set encoding=UTF-8 	" Use UTF-8
 set nowrap          " Display long lines as just one line
 set noswapfile			" Don't set SWP files 
+set mouse=a
 
 " Splitting:
 set splitbelow                         	" Horizontal splits will automatically be below
@@ -18,13 +19,14 @@ set t_Co=256                            " Support 256 colors
 
 " Writing:
 set conceallevel=0                      " So that I can see `` in markdown files
-set showtabline=2
-set clipboard=unnamedplus  		" Use the same clipboard for anything
+set clipboard=unnamedplus  							" Use the same clipboard for anything
 set cursorline                          " Enable highlighting of the current line
 set smarttab                            " Makes tabbing smarter will realize you have 2 vs 4
 set tabstop=2                           " Insert 2 spaces for a tab
-set shiftwidth=2                        " Change the number of space characters inserted for indentation
+set showtabline=2												"
 set updatetime=750											" Wait 750 ms after typing to update
+set smartindent
+
 
 " Mappings:
 let mapleader=" "

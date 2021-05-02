@@ -3,13 +3,17 @@ call plug#begin('$HOME/.config/nvim/autoload/plugged')
 	" Coc Stuff
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-
-	let g:coc_global_extensions = [
+  let g:coc_global_extensions = [
 		\ 'coc-tsserver',
 		\ 'coc-prettier',
 		\ 'coc-eslint',
-		\ 'coc-json'
+		\ 'coc-json',
+		\ 'coc-css',
+	  \ 'coc-html',
+		\ 'coc-snippets',
+    \ 'coc-emmet'
 		\ ]
+
 
 	" Language stuff
 	Plug 'pangloss/vim-javascript'
@@ -18,15 +22,11 @@ call plug#begin('$HOME/.config/nvim/autoload/plugged')
 	Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 	Plug 'jparise/vim-graphql'
 	Plug 'jiangmiao/auto-pairs'
-  Plug 'epilande/vim-es2015-snippets'
-  Plug 'epilande/vim-react-snippets'
-	Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
-
+  Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }	
 	
 	" tpope stuff 
 	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-surround'
-
 
 	" Closetags
   Plug 'alvan/vim-closetag'
@@ -34,8 +34,7 @@ call plug#begin('$HOME/.config/nvim/autoload/plugged')
 	" Nerd tree
   Plug 'preservim/nerdtree'
 	Plug 'ryanoasis/vim-devicons'
-
-
+  
 	"Easymotion
 	Plug 'easymotion/vim-easymotion'
 

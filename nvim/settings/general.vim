@@ -14,10 +14,11 @@ set splitbelow                         	" Horizontal splits will automatically b
 set splitright                          " Vertical splits will automatically be to the right
 
 " Status:
-set noshowmode				" Dont show --INSERT-- in the small status line
+set noshowmode				                  " Dont show --INSERT-- in the small status line
 
 " Colors:
 set t_Co=256                            " Support 256 colors
+set termguicolors                       " enable true colors support
 
 " Writing:
 set conceallevel=0                      " So that I can see `` in markdown files

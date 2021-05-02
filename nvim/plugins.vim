@@ -39,16 +39,13 @@ call plug#begin('$HOME/.config/nvim/autoload/plugged')
 	Plug 'easymotion/vim-easymotion'
 
 	" Theming:
-	Plug 'nightsense/night-and-day'
 	Plug 'ayu-theme/ayu-vim' 
 	Plug 'ap/vim-buftabline'
-
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'bling/vim-bufferline'
 
 	" Searching: 
-	" Plug 'ctrlpvim/ctrlp.vim'
   Plug 'junegunn/fzf', {'dir': '~/.fzf','do': './install --all'}
   Plug 'junegunn/fzf.vim' " needed for previews
   Plug 'antoinemadec/coc-fzf'
-
-
-call plug#end()

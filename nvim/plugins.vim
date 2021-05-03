@@ -40,10 +40,9 @@ call plug#begin('$HOME/.config/nvim/autoload/plugged')
 
 	" Theming:
 	Plug 'ayu-theme/ayu-vim' 
-	Plug 'ap/vim-buftabline'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
-  Plug 'bling/vim-bufferline'
+  Plug 'edkolev/tmuxline.vim'
 
 	" Searching: 
   Plug 'junegunn/fzf', {'dir': '~/.fzf','do': './install --all'}

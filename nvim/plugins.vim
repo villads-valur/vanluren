@@ -49,3 +49,5 @@ call plug#begin('$HOME/.config/nvim/autoload/plugged')
   Plug 'junegunn/fzf', {'dir': '~/.fzf','do': './install --all'}
   Plug 'junegunn/fzf.vim' " needed for previews
   Plug 'antoinemadec/coc-fzf'
+
+  call plug#end()

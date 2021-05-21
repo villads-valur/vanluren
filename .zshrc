@@ -108,6 +108,28 @@ alias c="clear"
 alias take-me-home="ssh root@vanluren.xyz"
 alias clean-slate="sudo rm -rf node_modules && yarn cache clean" 
 
+# Git
+alias g="git"
+
+# Docker
+alias dc="docker-compose"
+alias k="kubectl"
+
+# JS
+alias cy="yarn cy:open"
+
+# Utility
+alias hg='history | grep'
+
+kill_port() {
+  if [ -n "$1" ]
+  then
+    lsof -ti :"$1" | xargs kill -9
+  else
+    echo "Pass in port number."
+  fi
+}
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 

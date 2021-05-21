@@ -3,17 +3,6 @@ call plug#begin('$HOME/.config/nvim/autoload/plugged')
 	" Coc Stuff
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-  let g:coc_global_extensions = [
-		\ 'coc-tsserver',
-		\ 'coc-prettier',
-		\ 'coc-eslint',
-		\ 'coc-json',
-		\ 'coc-css',
-	  \ 'coc-html',
-		\ 'coc-snippets',
-    \ 'coc-emmet'
-		\ ]
-
 	" Language stuff
 	Plug 'pangloss/vim-javascript'
 	Plug 'leafgarland/typescript-vim'

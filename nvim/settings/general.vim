@@ -5,7 +5,6 @@ set encoding=UTF-8 	" Use UTF-8
 set nowrap          " Display long lines as just one line
 set noswapfile			" Don't set SWP files 
 set nowb
-set noswapfile
 set mouse=a 				" Set mouse usage to all
 set lazyredraw 			" Performance 
 
@@ -94,3 +93,8 @@ autocmd BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
      \   exe "normal! g`\"" |
      \ endif
+
+" Source Vim configuration file and install plugins
+nnoremap <silent><leader>1 :source ~/.config/nvim/init.vim \| :PlugInstall<CR>
+" Open Vim configuration file for editing
+nnoremap <silent><leader>2 :e ~/.config/nvim/init.vim<CR>

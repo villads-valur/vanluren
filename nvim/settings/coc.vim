@@ -4,11 +4,21 @@ nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gh :call <SID>show_documentation()<CR>
 map <silent> lp <Plug>(coc-diagnostic-prev)
 map <silent> ln <Plug>(coc-diagnostic-next)
-nmap <leader>ac  <Plug>(coc-codeaction)
 nmap <leader>a  <Plug>(coc-fix-current)
 nnoremap <silent> <space>d :<C-u>CocList diagnostics<cr>
 nmap <leader>do <Plug>(coc-codeaction)
+nmap <leader>l   :CocCommand prettier.formatFile<CR>
 
+
+
+let g:coc_global_extensions = [
+  \ 'coc-tsserver',
+  \ 'coc-json',
+  \ 'coc-css',
+  \ 'coc-html',
+  \ 'coc-snippets',
+  \ 'coc-emmet'
+  \ ]
 
 let g:node_client_debug = 1
 
@@ -32,3 +42,7 @@ endif
 if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
   let g:coc_global_extensions += ['coc-eslint']
 endif
+
+" Fix syntax highlight for Coc plugin floating errors
+hi CocErrorFloat guifg=Magenta guibg=Magenta
+

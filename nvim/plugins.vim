@@ -14,7 +14,6 @@ call plug#begin('$HOME/.config/nvim/autoload/plugged')
     \ 'coc-emmet'
 		\ ]
 
-
 	" Language stuff
 	Plug 'pangloss/vim-javascript'
 	Plug 'leafgarland/typescript-vim'
@@ -48,5 +47,8 @@ call plug#begin('$HOME/.config/nvim/autoload/plugged')
   Plug 'junegunn/fzf', {'dir': '~/.fzf','do': './install --all'}
   Plug 'junegunn/fzf.vim' " needed for previews
   Plug 'antoinemadec/coc-fzf'
+
+  " Othe stuff
+  Plug 'qpkorr/vim-bufkill'
 
   call plug#end()

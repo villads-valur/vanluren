@@ -51,9 +51,9 @@ imap <C-l> <C-w>l
 nmap <leader>q :q<CR>
 nmap <leader>v :vnew<CR>
 nmap <leader>w :w<CR>
-nmap <leader>e :bn<CR>
-nmap <leader>r :bp<CR>
-nmap <leader>b :bdel<CR>
+nmap <leader>e :BF<CR>
+nmap <leader>r :BB<CR>
+nmap <leader>b :BD<CR>
 noremap <C-q> :q<CR>
 inoremap jj <ESC>
 

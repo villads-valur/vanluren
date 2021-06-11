@@ -42,7 +42,3 @@ endif
 if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
   let g:coc_global_extensions += ['coc-eslint']
 endif
-
-" Fix syntax highlight for Coc plugin floating errors
-hi CocErrorFloat guifg=Magenta guibg=Magenta
-

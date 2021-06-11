@@ -7,7 +7,12 @@ call plug#begin('$HOME/.config/nvim/autoload/plugged')
 	Plug 'pangloss/vim-javascript'
 	Plug 'leafgarland/typescript-vim'
 	Plug 'peitalin/vim-jsx-typescript'
-	Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+  Plug 'heavenshell/vim-jsdoc', { 
+    \ 'for': ['javascript', 'javascript.jsx','typescript'], 
+    \ 'do': 'make install'
+  \}	
+
+  Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 	Plug 'jparise/vim-graphql'
 	Plug 'jiangmiao/auto-pairs'
   Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }	

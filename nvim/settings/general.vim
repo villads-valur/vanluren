@@ -46,6 +46,12 @@ imap <C-j> <C-w>j
 imap <C-k> <C-w>k
 imap <C-l> <C-w>l
 
+" Close all other buffers than the current with :BufOnly
+command! BufOnly execute '%bdelete|edit #|normal `"'
+
+" Replace currently selected text with default register
+" without yanking it
+vnoremap p "_dP
 
 nmap <leader>q :q<CR>
 nmap <leader>v :vnew<CR>
@@ -53,6 +59,7 @@ nmap <leader>w :w<CR>
 nmap <leader>e :BF<CR>
 nmap <leader>r :BB<CR>
 nmap <leader>b :BD<CR>
+nmap <leader>j :BufOnly<CR>
 noremap <C-q> :q<CR>
 inoremap jj <ESC>
 
@@ -79,9 +86,6 @@ noremap <leader>0 :tablast<cr>
 
 " <TAB>: completion.
 inoremap <silent> <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-
-" Remap P to paste without yank
-xnoremap P Pgvy
 
 " Syntax on when entering a file
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart

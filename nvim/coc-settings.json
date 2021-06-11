@@ -44,27 +44,12 @@
   "eslint.autoFixOnSave": true,
   "eslint.packageManager": "yarn",
   "prettier.disableSuccessMessage": true,
-  "prettier.tslintIntegration": true,
-  "prettier.stylelintIntegration": true,
   "tsserver.formatOnType": true,
-  "html.filetypes": [
-    "html",
-    "handlebars",
-    "htmldjango",
-    "blade",
-    "hbs"
-  ],
+  "html.filetypes": ["html", "handlebars", "htmldjango", "blade", "hbs"],
   "snippets.ultisnips.enable": true,
   "snippets.extends": {
-    "javascriptreact": [
-      "javascript"
-    ],
-    "typescript": [
-      "javascript"
-    ],
-    "typescriptreact": [
-      "javascriptreact",
-      "javascript"
-    ]
+    "javascriptreact": ["javascript"],
+    "typescript": ["javascript"],
+    "typescriptreact": ["javascriptreact", "javascript"]
   }
 }

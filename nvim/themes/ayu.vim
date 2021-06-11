@@ -1,12 +1,5 @@
-let hour = strftime("%H")
-
-if 6 <= hour && hour < 18
-  let ayucolor="light"  " for light version of theme
-  set background=light
-else
-  let ayucolor="mirage"  " for light version of theme
-  set background=dark 
-endif
+let ayucolor="mirage"  " for light version of theme
+set background=dark 
 
 let g:indentLine_char = ' '
 let g:indentLine_first_char = ' '

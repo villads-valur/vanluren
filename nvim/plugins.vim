@@ -13,7 +13,6 @@ call plug#begin('$HOME/.config/nvim/autoload/plugged')
   \}	
 
   Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-	Plug 'jparise/vim-graphql'
 	Plug 'jiangmiao/auto-pairs'
   Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }	
 	

@@ -2,6 +2,7 @@ local u = require("utils")
 local sumneko = require("lsp.sumneko")
 local null_ls = require("lsp.null-ls")
 local tsserver = require("lsp.tsserver")
+local css_ls = require("lsp.css")
 
 local api = vim.api
 local lsp = vim.lsp
@@ -100,3 +101,4 @@ end
 tsserver.setup(on_attach)
 sumneko.setup(on_attach)
 null_ls.setup(on_attach)
+css_ls.setup(on_attach)

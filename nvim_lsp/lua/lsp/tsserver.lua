@@ -9,10 +9,10 @@ local ts_utils_settings = {
     enable_import_on_completion = true,
     complete_parens = true,
     signature_help_in_parens = true,
-    eslint_bin = "eslint_d",
+    eslint_bin = "eslint",
     eslint_enable_diagnostics = true,
     enable_formatting = true,
-    formatter = "eslint_d",
+    formatter = "prettier",
     update_imports_on_move = true,
 }
 

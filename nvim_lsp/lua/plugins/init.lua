@@ -29,8 +29,6 @@ require 'paq-nvim' {
 
     -- Theming:
     'glepnir/zephyr-nvim';
-    { 'edkolev/tmuxline.vim', as="tmuxline"};
-
 
     -- Telescope
    'nvim-telescope/telescope.nvim';

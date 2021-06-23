@@ -1,1 +1,1 @@
-require "tmuxline".setup()
+require("tmuxline.vim").setup()

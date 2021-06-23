@@ -27,7 +27,6 @@ vim.opt.swapfile = false
 vim.opt.directory = "/tmp"
 vim.opt.scrolloff = 4
 vim.opt.sidescrolloff = 2
-vim.opt.noshowmode = true
 
 vim.opt.cursorline = true
 vim.opt.number = true

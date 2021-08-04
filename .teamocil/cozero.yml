@@ -1,0 +1,54 @@
+window:
+  - name: Editor 
+    root: ~/Developer/Cozero/core
+    layout: even-horizontal
+    panes: 
+      - git pull
+windows:
+  - name: Servers 
+    root: ~/Developer/Cozero/core/apps
+    layout: even-horizontal
+    panes:
+      - commands:
+        - cd server
+        - yarn dev 
+      - commands:
+          - cd dashboard
+          - yarn dev
+      - commands:
+        - cd central-service
+        - yarn dev 
+      - commands:
+        - cd auth-service
+        - yarn dev
+windows:
+  - name: Services
+    root: ~/Developer/Cozero/core/apps
+    layout: even-horizontal
+    panes:
+      - commands:
+        - cd share-service
+        - yarn dev
+      - commands:
+        - cd act-service
+        - yarn start:dev
+      - commands:
+        - cd calculations-service
+        - yarn dev
+      - commands:
+        - cd cubejs 
+        - yarn dev
+windows:
+  - name: Extras
+    root: ~/Developer/Cozero/core/apps
+    layout: even-horizontal
+    panes:
+      - commands:
+        - cd dashboard 
+        - yarn storybook
+      - commands:
+        - cd strapi 
+        - yarn dev
+
+
+

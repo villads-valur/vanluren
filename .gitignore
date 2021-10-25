@@ -11,4 +11,5 @@ nvim/session
 wiki/
 nvim/.nvim
 nvim/undodir/
-
+tmux/cozero.yml
+tmux/cozero_website.yml

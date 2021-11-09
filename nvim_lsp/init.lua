@@ -1,17 +1,20 @@
-require("colors/theme")
 
-require("plugins")
+-- Main Load File
+local g, opt = vim.g, vim.opt
 
-require("general")
-require("utils")
-require("mappings")
+-- disable plugins
+local disabled_built_ins = {
+  "gzip",
+  "zip",
+  "zipPlugin",
+  "tar",
+  "tarPlugin",
+  "getscript",
+  "getscriptPlugin",
+  "vimball",
+  "vimballPlugin",
+  "2html_plugin",
+  "logipat",
+  "rrhelper",
+}
 
-require("lsp") 
-
-require("plugins/telescope")
-require("plugins/bufferline")
-require("plugins/treesitter")
-require("plugins/gitsigns")
-require("plugins/tree")
-require("plugins/completion")
-require("plugins/autopairs")

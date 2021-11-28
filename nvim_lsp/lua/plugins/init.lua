@@ -33,19 +33,51 @@ return require("packer").startup(function()
     use_with_config('ayu-theme/ayu-vim', "ayu")
     use_with_config("jose-elias-alvarez/buftabline.nvim", "buftabline") -- show buffers in tabline
     use {
-    'kyazdani42/nvim-tree.lua',
-        requires = {
-          'kyazdani42/nvim-web-devicons', -- optional, for file icon
-        },
-        config = config("nvim-tree") 
+	'kyazdani42/nvim-tree.lua',
+	requires = {
+	'kyazdani42/nvim-web-devicons', -- optional, for file icon
+	},
+	config = config("nvim-tree") 
     }
 
     -- Popup search
-    use {
-        'nvim-telescope/telescope.nvim',
-        requires = { {'nvim-lua/plenary.nvim'} },
-        config = config("telescope")
-    }
+    use({
+        "nvim-telescope/telescope.nvim", -- fuzzy finder
+        config = config("telescope"),
+        requires = {
+            {
+                "nvim-telescope/telescope-fzf-native.nvim", -- better algorithm
+                run = "make",
+            },
+            {'nvim-lua/plenary.nvim'}
+        },
+    })
+
+    -- LSP stuff:
+    use "neovim/nvim-lspconfig"
+    use "williamboman/nvim-lsp-installer"
+    use "jose-elias-alvarez/null-ls.nvim"
+    use "jose-elias-alvarez/nvim-lsp-ts-utils"
+    use("b0o/schemastore.nvim") -- simple access to json-language-server schemae
+    use_with_config("RRethy/vim-illuminate", "illuminate") -- highlights and allows moving between variable references
+    use {'mattn/emmet-vim'}
+    use {'SirVer/ultisnips', requires = {"honza/vim-snippets", "quangnguyen30192/cmp-nvim-ultisnips"}, config = "require('plugins.ultisnips')", after = 'nvim-cmp'}
+
+    -- Prettier
+    use_with_config('mhartington/formatter.nvim', "formatter")
+
+    -- treesitter
+    use({
+        "nvim-treesitter/nvim-treesitter",
+        run = ":TSUpdate",
+        config = config("treesitter"),
+    })
+    use({
+        "RRethy/nvim-treesitter-textsubjects", -- adds smart text objects
+        ft = { "lua", "typescript", "typescriptreact" },
+    })
+    use({ "windwp/nvim-ts-autotag", ft = { "typescript", "typescriptreact" } }) -- automatically close jsx tags
+    use({ "JoosepAlviste/nvim-ts-context-commentstring", ft = { "typescript", "typescriptreact" } }) -- makes jsx comments actually work
 
     -- Misc
     use("nvim-lua/plenary.nvim")

@@ -31,13 +31,20 @@ return require("packer").startup(function()
 
     -- UI
     use_with_config('ayu-theme/ayu-vim', "ayu")
-    use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
+    use_with_config("jose-elias-alvarez/buftabline.nvim", "buftabline") -- show buffers in tabline
     use {
-        'kyazdani42/nvim-tree.lua',
+    'kyazdani42/nvim-tree.lua',
         requires = {
           'kyazdani42/nvim-web-devicons', -- optional, for file icon
         },
         config = config("nvim-tree") 
+    }
+
+    -- Popup search
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = { {'nvim-lua/plenary.nvim'} },
+        config = config("telescope")
     }
 
     -- Misc

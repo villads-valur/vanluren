@@ -81,10 +81,11 @@ _G.packer_plugins = {
     path = "/Users/villadsvalur/.local/share/nvim/site/pack/packer/start/ayu-vim",
     url = "https://github.com/ayu-theme/ayu-vim"
   },
-  ["bufferline.nvim"] = {
+  ["buftabline.nvim"] = {
+    config = { "require('plugins.buftabline')" },
     loaded = true,
-    path = "/Users/villadsvalur/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
-    url = "https://github.com/akinsho/bufferline.nvim"
+    path = "/Users/villadsvalur/.local/share/nvim/site/pack/packer/start/buftabline.nvim",
+    url = "https://github.com/jose-elias-alvarez/buftabline.nvim"
   },
   ["filetype.nvim"] = {
     config = { "require('plugins.filetype')" },
@@ -137,6 +138,12 @@ _G.packer_plugins = {
     path = "/Users/villadsvalur/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["telescope.nvim"] = {
+    config = { "require('plugins.telescope')" },
+    loaded = true,
+    path = "/Users/villadsvalur/.local/share/nvim/site/pack/packer/start/telescope.nvim",
+    url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/Users/villadsvalur/.local/share/nvim/site/pack/packer/start/vim-fugitive",
@@ -170,34 +177,42 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: gitsigns.nvim
-time([[Config for gitsigns.nvim]], true)
-require('plugins.git')
-time([[Config for gitsigns.nvim]], false)
--- Config for: nvim-bufdel
-time([[Config for nvim-bufdel]], true)
-require('plugins.bufdel')
-time([[Config for nvim-bufdel]], false)
 -- Config for: nvim-tree.lua
 time([[Config for nvim-tree.lua]], true)
 require('plugins.nvim-tree')
 time([[Config for nvim-tree.lua]], false)
--- Config for: Comment.nvim
-time([[Config for Comment.nvim]], true)
-require('plugins.comment')
-time([[Config for Comment.nvim]], false)
 -- Config for: filetype.nvim
 time([[Config for filetype.nvim]], true)
 require('plugins.filetype')
 time([[Config for filetype.nvim]], false)
--- Config for: nvim-autopairs
-time([[Config for nvim-autopairs]], true)
-require('plugins.autopairs')
-time([[Config for nvim-autopairs]], false)
+-- Config for: gitsigns.nvim
+time([[Config for gitsigns.nvim]], true)
+require('plugins.git')
+time([[Config for gitsigns.nvim]], false)
+-- Config for: Comment.nvim
+time([[Config for Comment.nvim]], true)
+require('plugins.comment')
+time([[Config for Comment.nvim]], false)
 -- Config for: ayu-vim
 time([[Config for ayu-vim]], true)
 require('plugins.ayu')
 time([[Config for ayu-vim]], false)
+-- Config for: nvim-autopairs
+time([[Config for nvim-autopairs]], true)
+require('plugins.autopairs')
+time([[Config for nvim-autopairs]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+require('plugins.telescope')
+time([[Config for telescope.nvim]], false)
+-- Config for: nvim-bufdel
+time([[Config for nvim-bufdel]], true)
+require('plugins.bufdel')
+time([[Config for nvim-bufdel]], false)
+-- Config for: buftabline.nvim
+time([[Config for buftabline.nvim]], true)
+require('plugins.buftabline')
+time([[Config for buftabline.nvim]], false)
 if should_profile then save_profiles() end
 
 end)

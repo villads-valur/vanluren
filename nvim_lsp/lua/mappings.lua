@@ -3,7 +3,7 @@
 local map = vim.api.nvim_set_keymap
 
 -- map the leader key
--- Leader is Space
+-- Leader is Space as always
 map('n', '<Space>', '', {})
 vim.g.mapleader = ' '  -- 'vim.g' sets global variables
 
@@ -23,7 +23,7 @@ map('n', '<S-Tab>', ':bprev<CR>', options)
 -- Splits
 map('n', '<leader>v', ':vnew<CR>', options)
 
--- Fast Reload
+-- Fast Reload of the settings
 map('n', '<leader>r', ':source ~/.config/nvim/init.lua<CR>', options)
 
 

@@ -1,13 +1,12 @@
 -- General Nvim Settings
 
-
 local o = vim.o
 local wo = vim.wo
 local bo = vim.bo
 
 -- global options
 o.swapfile = false
-o.dir = '/tmp'
+o.dir = "/tmp"
 o.smartcase = true
 o.laststatus = 2
 o.hlsearch = true
@@ -16,6 +15,7 @@ o.ignorecase = true
 o.scrolloff = 12
 o.clipboard = "unnamedplus"
 o.syntax = "enable"
+o.completeopt = "menu,menuone,noselect"
 o.number = true
 o.mouse = "a"
 o.splitbelow = true

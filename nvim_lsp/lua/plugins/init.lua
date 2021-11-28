@@ -53,6 +53,13 @@ return require("packer").startup(function()
         },
     })
 
+    -- CMP
+    use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-nvim-lsp' 
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
+    use 'quangnguyen30192/cmp-nvim-ultisnips' 
+
     -- LSP stuff:
     use "neovim/nvim-lspconfig"
     use "williamboman/nvim-lsp-installer"

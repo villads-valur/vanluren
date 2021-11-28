@@ -87,10 +87,25 @@ _G.packer_plugins = {
     path = "/Users/villadsvalur/.local/share/nvim/site/pack/packer/start/buftabline.nvim",
     url = "https://github.com/jose-elias-alvarez/buftabline.nvim"
   },
+  ["cmp-buffer"] = {
+    loaded = true,
+    path = "/Users/villadsvalur/.local/share/nvim/site/pack/packer/start/cmp-buffer",
+    url = "https://github.com/hrsh7th/cmp-buffer"
+  },
+  ["cmp-nvim-lsp"] = {
+    loaded = true,
+    path = "/Users/villadsvalur/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
+    url = "https://github.com/hrsh7th/cmp-nvim-lsp"
+  },
   ["cmp-nvim-ultisnips"] = {
     loaded = true,
     path = "/Users/villadsvalur/.local/share/nvim/site/pack/packer/start/cmp-nvim-ultisnips",
     url = "https://github.com/quangnguyen30192/cmp-nvim-ultisnips"
+  },
+  ["cmp-path"] = {
+    loaded = true,
+    path = "/Users/villadsvalur/.local/share/nvim/site/pack/packer/start/cmp-path",
+    url = "https://github.com/hrsh7th/cmp-path"
   },
   ["emmet-vim"] = {
     loaded = true,
@@ -138,12 +153,8 @@ _G.packer_plugins = {
     url = "https://github.com/ojroques/nvim-bufdel"
   },
   ["nvim-cmp"] = {
-    after = { "ultisnips" },
-    config = { "require('plugins.cmp')" },
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/Users/villadsvalur/.local/share/nvim/site/pack/packer/opt/nvim-cmp",
+    loaded = true,
+    path = "/Users/villadsvalur/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-lsp-installer"] = {
@@ -229,10 +240,7 @@ _G.packer_plugins = {
   ultisnips = {
     after_files = { "/Users/villadsvalur/.local/share/nvim/site/pack/packer/opt/ultisnips/after/plugin/UltiSnips_after.vim" },
     config = { "require('plugins.ultisnips')" },
-    load_after = {
-      ["nvim-cmp"] = true
-    },
-    loaded = false,
+    loaded = true,
     needs_bufread = true,
     path = "/Users/villadsvalur/.local/share/nvim/site/pack/packer/opt/ultisnips",
     url = "https://github.com/SirVer/ultisnips"
@@ -281,42 +289,6 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
-require('plugins.telescope')
-time([[Config for telescope.nvim]], false)
--- Config for: nvim-bufdel
-time([[Config for nvim-bufdel]], true)
-require('plugins.bufdel')
-time([[Config for nvim-bufdel]], false)
--- Config for: nvim-tree.lua
-time([[Config for nvim-tree.lua]], true)
-require('plugins.nvim-tree')
-time([[Config for nvim-tree.lua]], false)
--- Config for: filetype.nvim
-time([[Config for filetype.nvim]], true)
-require('plugins.filetype')
-time([[Config for filetype.nvim]], false)
--- Config for: Comment.nvim
-time([[Config for Comment.nvim]], true)
-require('plugins.comment')
-time([[Config for Comment.nvim]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-require('plugins.treesitter')
-time([[Config for nvim-treesitter]], false)
--- Config for: formatter.nvim
-time([[Config for formatter.nvim]], true)
-require('plugins.formatter')
-time([[Config for formatter.nvim]], false)
--- Config for: ayu-vim
-time([[Config for ayu-vim]], true)
-require('plugins.ayu')
-time([[Config for ayu-vim]], false)
--- Config for: nvim-autopairs
-time([[Config for nvim-autopairs]], true)
-require('plugins.autopairs')
-time([[Config for nvim-autopairs]], false)
 -- Config for: gitsigns.nvim
 time([[Config for gitsigns.nvim]], true)
 require('plugins.git')
@@ -325,22 +297,54 @@ time([[Config for gitsigns.nvim]], false)
 time([[Config for buftabline.nvim]], true)
 require('plugins.buftabline')
 time([[Config for buftabline.nvim]], false)
+-- Config for: nvim-tree.lua
+time([[Config for nvim-tree.lua]], true)
+require('plugins.nvim-tree')
+time([[Config for nvim-tree.lua]], false)
+-- Config for: nvim-bufdel
+time([[Config for nvim-bufdel]], true)
+require('plugins.bufdel')
+time([[Config for nvim-bufdel]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+require('plugins.treesitter')
+time([[Config for nvim-treesitter]], false)
 -- Config for: vim-illuminate
 time([[Config for vim-illuminate]], true)
 require('plugins.illuminate')
 time([[Config for vim-illuminate]], false)
+-- Config for: nvim-autopairs
+time([[Config for nvim-autopairs]], true)
+require('plugins.autopairs')
+time([[Config for nvim-autopairs]], false)
+-- Config for: filetype.nvim
+time([[Config for filetype.nvim]], true)
+require('plugins.filetype')
+time([[Config for filetype.nvim]], false)
+-- Config for: Comment.nvim
+time([[Config for Comment.nvim]], true)
+require('plugins.comment')
+time([[Config for Comment.nvim]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+require('plugins.telescope')
+time([[Config for telescope.nvim]], false)
+-- Config for: formatter.nvim
+time([[Config for formatter.nvim]], true)
+require('plugins.formatter')
+time([[Config for formatter.nvim]], false)
+-- Config for: ayu-vim
+time([[Config for ayu-vim]], true)
+require('plugins.ayu')
+time([[Config for ayu-vim]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
+vim.cmd [[au FileType lua ++once lua require("packer.load")({'nvim-treesitter-textsubjects'}, { ft = "lua" }, _G.packer_plugins)]]
 vim.cmd [[au FileType typescript ++once lua require("packer.load")({'nvim-treesitter-textsubjects', 'nvim-ts-autotag', 'nvim-ts-context-commentstring'}, { ft = "typescript" }, _G.packer_plugins)]]
 vim.cmd [[au FileType typescriptreact ++once lua require("packer.load")({'nvim-treesitter-textsubjects', 'nvim-ts-autotag', 'nvim-ts-context-commentstring'}, { ft = "typescriptreact" }, _G.packer_plugins)]]
-vim.cmd [[au FileType lua ++once lua require("packer.load")({'nvim-treesitter-textsubjects'}, { ft = "lua" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
-  -- Event lazy-loads
-time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-cmp'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
-time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end
 

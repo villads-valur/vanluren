@@ -4,7 +4,6 @@ local lsp = vim.lsp
 
 local border_opts = { border = "single", focusable = false, scope = "line" }
 
-
 lsp.handlers["textDocument/signatureHelp"] = lsp.with(lsp.handlers.signature_help, border_opts)
 lsp.handlers["textDocument/hover"] = lsp.with(lsp.handlers.hover, border_opts)
 
@@ -52,5 +51,5 @@ end
 require("lsp.tsserver").setup(on_attach)
 require("lsp.jsonls").setup(on_attach)
 require("lsp.bashls").setup(on_attach)
-require("lsp.sumneko").setup(on_attach)
+require("lsp.sumneko")
 require("lsp.null-ls").setup(on_attach)

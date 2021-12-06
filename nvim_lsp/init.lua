@@ -9,4 +9,4 @@ global = {}
 require("mappings") -- lua/mappings.lua
 require("utils") -- lua/utils.lua
 require("plugins") -- lua/plugins/init.lua
-require("lsp") -- lua/init.lua
+require("lsp.config") -- lua/lsp/init.lua

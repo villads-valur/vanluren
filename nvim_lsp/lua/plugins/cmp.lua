@@ -39,12 +39,6 @@ cmp.setup {
       local menu = source_mapping[entry.source.name]
       local maxwidth = 50
 
-      -- if entry.source.name == "cmp_tabnine" then
-      --   if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
-      --     menu = menu .. "[" .. entry.completion_item.data.detail .. "]"
-      --   end
-      -- end
-
       vim_item.menu = menu
       vim_item.abbr = string.sub(vim_item.abbr, 1, maxwidth)
 
@@ -56,7 +50,7 @@ cmp.setup {
     {name = "nvim_lsp"},
     {name = "npm"},
     {name = "ultisnips"},
-    {name = "buffer", keyword_length = 5},
+    {name = "buffer", keyword_length = 5, max_lines = 30},
     {name = "path"},
     {name = "calc"},
     {name = "nvim_lua"}
@@ -66,12 +60,3 @@ cmp.setup {
     ghost_text = true
   }
 }
-
--- tabnine:setup(
---   {
---     max_lines = 1000,
---     max_num_results = 3,
---     sort = true,
---     show_prediction_strength = true
---   }
--- )

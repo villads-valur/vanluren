@@ -19,8 +19,8 @@ require "lspconfig".tsserver.setup(
   {
     capabilities = capabilities,
     on_attach = function(client, bufnr)
-      client.resolved_capabilities.document_formatting = false
-      client.resolved_capabilities.document_range_formatting = false
+      client.resolved_capabilities.document_formatting = true
+      client.resolved_capabilities.document_range_formatting = true
 
       local function buf_set_option(...)
         vim.api.nvim_buf_set_option(bufnr, ...)
@@ -66,6 +66,11 @@ require "lspconfig".tsserver.setup(
       }
 
       require("nvim-lsp-ts-utils").setup_client(client)
+
+        local opts = { silent = true }
+        vim.api.nvim_buf_set_keymap(bufnr, "n", "oi", ":TSLspOrganize<CR>", opts)
+        vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", ":TSLspRenameFile<CR>", opts)
+        vim.api.nvim_buf_set_keymap(bufnr, "n", "ia", ":TSLspImportAll<CR>", opts)
     end
   }
 )

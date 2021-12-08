@@ -47,6 +47,7 @@ nnoremap <leader>t :Find<CR>
 nnoremap <Tab> :Tabnext<CR>
 nnoremap <S-Tab> :Tabprevious<CR> 
 nnoremap <leader>do <Cmd>call VSCodeNotify('keyboard-quickfix.openQuickFix')<CR>
+nnoremap <leader>ca <Cmd>call VSCodeNotify('keyboard-quickfix.openQuickFix')<CR>
 nnoremap <leader>n <Cmd>call VSCodeNotify('workbench.action.toggleSidebarVisibility')<CR>
 nnoremap <leader>g <Cmd>call VSCodeNotify('workbench.view.scm')<CR>
 nnoremap <leader>e <Cmd>call VSCodeNotify('workbench.view.explorer')<CR>

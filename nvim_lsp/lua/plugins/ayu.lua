@@ -1,3 +1,3 @@
-vim.o.background = "light"
-vim.g.ayucolor = "light"
+vim.o.background = "dark"
+vim.g.ayucolor = "mirage"
 vim.cmd([[colorscheme ayu]])

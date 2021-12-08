@@ -10,8 +10,9 @@ vim.g.mapleader = " " -- 'vim.g' sets global variables
 local options = {noremap = true}
 
 -- Writing
-map("n", "<leader>w", ":w:Format<CR>", options)
+map("n", "<leader>w", ":w<CR>", options)
 map("n", "<leader>q", ":q<CR>", options)
+
 -- Don't yank on delete char
 map("n", "x", '"_x', {noremap = true, silent = true})
 map("n", "X", '"_X', {noremap = true, silent = true})

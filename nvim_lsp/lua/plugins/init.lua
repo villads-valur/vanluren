@@ -35,7 +35,11 @@ return require("packer").startup(
     use_with_config("ayu-theme/ayu-vim", "ayu")
     use_with_config("jose-elias-alvarez/buftabline.nvim", "buftabline") -- show buffers in tabline
     use_with_config("nvim-lualine/lualine.nvim", "lualine")
-
+    use {
+      "goolord/alpha-nvim",
+      requires = {"kyazdani42/nvim-web-devicons"},
+      config = "require('plugins.dashboard')"
+    }
     use {
       "kyazdani42/nvim-tree.lua",
       requires = {

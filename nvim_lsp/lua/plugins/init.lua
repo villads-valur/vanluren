@@ -72,7 +72,7 @@ return require("packer").startup(
     -- LSP stuf:
     use "neovim/nvim-lspconfig"
     use {"williamboman/nvim-lsp-installer", after = "cmp-nvim-lsp", config = "require('lsp.installer')"}
-    use "jose-elias-alvarez/null-ls.nvim"
+    use_with_config("jose-elias-alvarez/null-ls.nvim", "null-ls")
 
     -- LSP Addons
     use {"tami5/lspsaga.nvim", config = "require('plugins.saga')"}
@@ -80,6 +80,7 @@ return require("packer").startup(
     use {"folke/lsp-trouble.nvim", config = "require('plugins.lsp-trouble')"}
     use {"nvim-lua/popup.nvim"}
     use {"jose-elias-alvarez/nvim-lsp-ts-utils", after = {"nvim-treesitter"}}
+    use_with_config("mhartington/formatter.nvim", "formatter")
 
     -- Snippets & Language & Syntax
     use {"windwp/nvim-autopairs", after = {"nvim-treesitter", "nvim-cmp"}, config = "require('plugins.autopairs')"}
@@ -91,7 +92,6 @@ return require("packer").startup(
       after = "cmp-nvim-ultisnips"
     }
     use {"lpinilla/vim-codepainter"}
-    use_with_config("mhartington/formatter.nvim", "formatter")
 
     -- treesitter
     use(

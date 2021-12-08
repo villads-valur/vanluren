@@ -1,4 +1,6 @@
+local lspconfig = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.completion.completionItem.preselectSupport = true
 capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
@@ -15,62 +17,31 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 }
 
 -- npm install -g typescript typescript-language-server
-require "lspconfig".tsserver.setup(
+lspconfig.tsserver.setup(
   {
     capabilities = capabilities,
     on_attach = function(client, bufnr)
-      client.resolved_capabilities.document_formatting = true
-      client.resolved_capabilities.document_range_formatting = true
+      client.resolved_capabilities.document_formatting = false
+      client.resolved_capabilities.document_range_formatting = false
 
-      local function buf_set_option(...)
-        vim.api.nvim_buf_set_option(bufnr, ...)
-      end
+      local ts_utils = require("nvim-lsp-ts-utils")
 
-      if client.resolved_capabilities.document_formatting then
-        vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
-      end
+      ts_utils.setup(
+        {
+          eslint_bin = "eslint_d",
+          eslint_enable_diagnostics = true,
+          eslint_enable_code_actions = true,
+          enable_formatting = true,
+          formatter = "prettier"
+        }
+      )
 
-      buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+      ts_utils.setup_client(client)
 
-      require("nvim-lsp-ts-utils").setup {
-        debug = false,
-        disable_commands = false,
-        enable_import_on_completion = true,
-        import_all_timeout = 5000, -- ms
-        -- eslint
-        eslint_enable_code_actions = false,
-        eslint_enable_disable_comments = false,
-        eslint_bin = "eslint_d",
-        eslint_config_fallback = nil,
-        eslint_enable_diagnostics = false,
-        eslint_opts = {
-          -- diagnostics_format = "#{m} [#{c}]",
-          condition = function(utils)
-            return utils.root_has_file(".eslintrc.js")
-          end
-        },
-        -- formatting
-        enable_formatting = true,
-        formatter = "prettier",
-        formatter_config_fallback = nil,
-        -- parentheses completion
-        complete_parens = false,
-        signature_help_in_parens = false,
-        -- update imports on file move
-        update_imports_on_move = true,
-        require_confirmation_on_move = true,
-        watch_dir = nil,
-        -- filter diagnostics
-        filter_out_diagnostics_by_severity = {"hint"},
-        filter_out_diagnostics_by_code = {}
-      }
-
-      require("nvim-lsp-ts-utils").setup_client(client)
-
-        local opts = { silent = true }
-        vim.api.nvim_buf_set_keymap(bufnr, "n", "oi", ":TSLspOrganize<CR>", opts)
-        vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", ":TSLspRenameFile<CR>", opts)
-        vim.api.nvim_buf_set_keymap(bufnr, "n", "ia", ":TSLspImportAll<CR>", opts)
+      buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
+      buf_map(bufnr, "n", "gi", ":TSLspRenameFile<CR>")
+      buf_map(bufnr, "n", "go", ":TSLspImportAll<CR>")
+      on_attach(client, bufnr)
     end
   }
 )

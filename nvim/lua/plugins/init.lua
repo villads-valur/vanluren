@@ -64,14 +64,26 @@ return require("packer").startup(
     )
 
     -- LSP Cmp
-    use {"hrsh7th/nvim-cmp", event = "InsertEnter", config = "require('plugins.cmp')"}
+    use {
+      "hrsh7th/nvim-cmp",
+      event = "InsertEnter",
+      config = "require('plugins.cmp')",
+      requires = {
+        {
+          "L3MON4D3/LuaSnip",
+          event = "CursorHold",
+          config = function()
+            require("luasnip.loaders.from_vscode").lazy_load()
+          end,
+          requires = {"rafamadriz/friendly-snippets"}
+        }
+      }
+    }
     use {"hrsh7th/cmp-nvim-lua", after = "nvim-cmp"}
     use {"hrsh7th/cmp-nvim-lsp", after = "cmp-nvim-lua"}
     use {"hrsh7th/cmp-buffer", after = "cmp-nvim-lsp"}
     use {"hrsh7th/cmp-path", after = "cmp-buffer"}
     use {"hrsh7th/cmp-calc", after = "cmp-path"}
-    --[[     use {"tzachar/cmp-tabnine", run = "powershell ./install.sh", requires = "hrsh7th/nvim-cmp", after = "cmp-calc"} ]]
-    use {"quangnguyen30192/cmp-nvim-ultisnips", after = "nvim-cmp"}
 
     -- LSP stuf:
     use "neovim/nvim-lspconfig"
@@ -90,11 +102,6 @@ return require("packer").startup(
     use {"windwp/nvim-autopairs", after = {"nvim-treesitter", "nvim-cmp"}, config = "require('plugins.autopairs')"}
     use {"mattn/emmet-vim"}
     use {"potatoesmaster/i3-vim-syntax"}
-    use {
-      "SirVer/ultisnips",
-      requires = {"honza/vim-snippets"},
-      after = "cmp-nvim-ultisnips"
-    }
     use {"lpinilla/vim-codepainter"}
 
     -- treesitter

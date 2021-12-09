@@ -18,7 +18,7 @@ local source_mapping = {
 cmp.setup {
   snippet = {
     expand = function(args)
-      vim.fn["UltiSnips#Anon"](args.body)
+      require("luasnip").lsp_expand(args.body)
     end
   },
   -- You must set mapping if you want.
@@ -49,7 +49,7 @@ cmp.setup {
   sources = {
     {name = "nvim_lsp"},
     {name = "npm"},
-    {name = "ultisnips"},
+    {name = "luasnip", keyword_length = 2, priority = 50}, -- workaround '.' trigger
     {name = "buffer", keyword_length = 5, max_lines = 30},
     {name = "path"},
     {name = "calc"},

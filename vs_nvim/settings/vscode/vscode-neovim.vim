@@ -16,7 +16,6 @@ let s:vscodeRangeCommandEventName = 'vscode-range-command'
 let s:vscodePluginEventName = 'vscode-neovim'
 
 " RPC and global functions
-
 function! VSCodeCall(cmd, ...) abort
     call rpcrequest(g:vscode_channel, s:vscodeCommandEventName, a:cmd, a:000)
 endfunction
@@ -88,27 +87,6 @@ function! VSCodeClearUndo(bufId)
     unlet oldlevels
 endfunction
 
-" Called from extension to align screen row in neovim after scrolling
-" function! VSCodeAlignScreenRow(row)
-"     let currentRow = winline()
-"     let diff = abs(currentRow - a:row)
-"     if diff > 0
-"         if (a:row - currentRow) < 0
-"             if diff > 1
-"                 silent! exe "normal! " . diff . "\<C-e>"
-"             else
-"                 silent! exe "normal! \<C-e>"
-"             endif
-"         else
-"             if diff > 1
-"                 silent! exe "normal! " . diff . "\<C-y>"
-"             else
-"                 silent! exe "normal! \<C-y>"
-"             endif
-"         endif
-"     endif
-" endfunction
-
 " Set text decorations for given ranges. Used in easymotion
 function! VSCodeSetTextDecorations(hlName, rowsCols)
     call VSCodeExtensionNotify('text-decorations', a:hlName, a:rowsCols)
@@ -160,7 +138,6 @@ function! s:onInsertEnter()
         call VSCodeExtensionCall('notify-recording', reg)
     endif
 endfunction
-
 
 " Load altercmd first
 execute 'source ' . s:currDir . '/vim-altercmd/plugin/altercmd.vim'

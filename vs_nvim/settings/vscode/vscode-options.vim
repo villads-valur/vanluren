@@ -1,5 +1,4 @@
 " This file used to force set neovim options which may break the extension. Loaded after user config
-
 scriptencoding utf-8
 
 set shortmess=filnxtToOFI

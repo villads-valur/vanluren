@@ -32,7 +32,8 @@ require("formatter").setup(
       typescriptreact = {format_prettier},
       less = {format_prettier},
       css = {format_prettier},
-      scss = {format_prettier}
+      scss = {format_prettier},
+      json = {format_prettier}
     }
   }
 )

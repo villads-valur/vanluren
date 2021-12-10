@@ -67,18 +67,18 @@ return require("packer").startup(
     use {
       "hrsh7th/nvim-cmp",
       event = "InsertEnter",
-      config = "require('plugins.cmp')",
-      requires = {
-        {
-          "L3MON4D3/LuaSnip",
-          event = "CursorHold",
-          config = function()
-            require("luasnip.loaders.from_vscode").lazy_load()
-          end,
-          requires = {"rafamadriz/friendly-snippets"}
+      config = [[require('plugins.cmp')]]
+    }
+    -- Snippets
+    use(
+      {
+        "L3MON4D3/luasnip",
+        requires = {
+          "rafamadriz/friendly-snippets"
         }
       }
-    }
+    )
+    use {"saadparwaiz1/cmp_luasnip", after = "nvim-cmp"}
     use {"hrsh7th/cmp-nvim-lua", after = "nvim-cmp"}
     use {"hrsh7th/cmp-nvim-lsp", after = "cmp-nvim-lua"}
     use {"hrsh7th/cmp-buffer", after = "cmp-nvim-lsp"}

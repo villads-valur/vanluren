@@ -30,3 +30,4 @@ o.number = true
 o.signcolumn = "yes"
 o.timeoutlen = 500
 o.statusline = [[%f %y %m %= %p%% %l:%c]]
+o.backupcopy = "yes"

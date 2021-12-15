@@ -1,6 +1,7 @@
 -- maps.lua
 
 local map = vim.api.nvim_set_keymap
+local g = vim.g
 
 -- map the leader key
 -- Leader is Space as always
@@ -12,12 +13,7 @@ local options = {noremap = true}
 -- Writing
 map("n", "<leader>w", ":w<CR>", options)
 map("n", "<leader>q", ":q<CR>", options)
-
--- Don't yank on delete char
-map("n", "x", '"_x', {noremap = true, silent = true})
-map("n", "X", '"_X', {noremap = true, silent = true})
-map("v", "x", '"_x', {noremap = true, silent = true})
-map("v", "X", '"_X', {noremap = true, silent = true})
+map("i", "jj", "<ESC>", options)
 
 -- Search
 map("n", "<leader><esc>", ":nohlsearch<CR>", options)

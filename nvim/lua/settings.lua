@@ -1,33 +1,94 @@
 -- General Nvim Settings
 
-local o = vim.o
-local wo = vim.wo
-local bo = vim.bo
+local opt = vim.opt
+local g = vim.g
 
--- global options
-o.swapfile = false
-o.dir = "/tmp"
-o.smartcase = true
-o.laststatus = 2
-o.hlsearch = true
-o.incsearch = true
-o.ignorecase = true
-o.scrolloff = 12
-o.clipboard = "unnamedplus"
-o.syntax = "enable"
-o.completeopt = "menu,menuone,noselect"
-o.number = true
-o.mouse = "a"
-o.splitbelow = true
-o.splitright = true
-o.termguicolors = true
-o.undofile = true
-o.updatetime = 300
-o.scrolloff = 4
-o.sidescrolloff = 2
-o.cursorline = true
-o.number = true
-o.signcolumn = "yes"
-o.timeoutlen = 500
-o.statusline = [[%f %y %m %= %p%% %l:%c]]
-o.backupcopy = "yes"
+local options = {
+  clipboard = "unnamedplus",
+  cmdheight = 1,
+  ruler = false,
+  hidden = true,
+  ignorecase = true,
+  smartcase = true,
+  mapleader = " ",
+  mouse = "a",
+  number = true,
+  numberwidth = 2,
+  relativenumber = false,
+  expandtab = true,
+  shiftwidth = 2,
+  smartindent = true,
+  tabstop = 8,
+  timeoutlen = 400,
+  updatetime = 250,
+  undofile = true,
+  fillchars = {eob = " "}
+}
+
+opt.title = true
+opt.clipboard = options.clipboard
+opt.cmdheight = options.cmdheight
+opt.cul = true -- cursor line
+
+-- Indentline
+opt.expandtab = options.expandtab
+opt.shiftwidth = options.shiftwidth
+opt.smartindent = options.smartindent
+
+-- disable tilde on end of buffer: https://github.com/neovim/neovim/pull/8546#issuecomment-643643758
+opt.fillchars = options.fillchars
+
+opt.hidden = options.hidden
+opt.ignorecase = options.ignorecase
+opt.smartcase = options.smartcase
+opt.mouse = options.mouse
+
+-- Numbers
+opt.number = options.number
+opt.numberwidth = options.numberwidth
+opt.relativenumber = options.relativenumber
+opt.ruler = options.ruler
+
+-- disable nvim intro
+opt.shortmess:append "sI"
+
+opt.signcolumn = "yes"
+opt.splitbelow = true
+opt.splitright = true
+opt.tabstop = options.tabstop
+opt.termguicolors = true
+opt.timeoutlen = options.timeoutlen
+opt.undofile = options.undofile
+
+-- interval for writing swap file to disk, also used by gitsigns
+opt.updatetime = options.updatetime
+
+-- go to previous/next line with h,l,left arrow and right arrow
+-- when cursor reaches end/beginning of line
+opt.whichwrap:append "<>[]hl"
+
+-- disable some builtin vim plugins
+local disabled_built_ins = {
+  "2html_plugin",
+  "getscript",
+  "getscriptPlugin",
+  "gzip",
+  "logipat",
+  "netrw",
+  "netrwPlugin",
+  "netrwSettings",
+  "netrwFileHandlers",
+  "matchit",
+  "tar",
+  "tarPlugin",
+  "rrhelper",
+  "spellfile_plugin",
+  "vimball",
+  "vimballPlugin",
+  "zip",
+  "zipPlugin"
+}
+
+for _, plugin in pairs(disabled_built_ins) do
+  g["loaded_" .. plugin] = 1
+end

@@ -1,0 +1,48 @@
+{
+  "typeScriptReactArrowFunctionExportComponent": {
+    "prefix": "tsrafce",
+    "body": [
+      "import React, { ReactElement } from 'react'",
+      "",
+      "interface Props {",
+      "\t",
+      "}",
+      "",
+      "const ${1:${TM_FILENAME_BASE}} = ({}: Props): ReactElement => {",
+      "\treturn (",
+      "\t\t<div>",
+      "\t\t\t$0",
+      "\t\t</div>",
+      "\t)",
+      "}",
+      "",
+      "export default ${1:${TM_FILENAME_BASE}}",
+      ""
+    ],
+    "description": "Creates a React Arrow Function Component with ES7 module system and TypeScript interface"
+  },
+  "cozeroTypeScriptReactArrowFunctionExportComponent": {
+    "prefix": "ctsrafce",
+    "body": [
+      "import React, { ReactElement } from 'react'",
+      "import classes from './${1:${TM_FILENAME_BASE}}.module.less'",
+      "",
+      "interface Props {",
+      "\t",
+      "}",
+      "",
+      "const ${1:${TM_FILENAME_BASE}} = ({}: Props): ReactElement => {",
+      "\treturn (",
+      "\t\t<div>",
+      "\t\t\t$0",
+      "\t\t</div>",
+      "\t)",
+      "}",
+      "",
+      "export default ${1:${TM_FILENAME_BASE}}",
+      ""
+    ],
+    "description": "Creates a React Arrow Function Component with ES7 module system and TypeScript interface"
+  }
+
+}

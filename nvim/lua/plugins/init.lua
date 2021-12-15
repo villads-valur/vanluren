@@ -34,17 +34,21 @@ return require("packer").startup(
     -- UI
     use_with_config("ayu-theme/ayu-vim", "ayu")
     use_with_config("jose-elias-alvarez/buftabline.nvim", "buftabline") -- show buffers in tabline
-    use_with_config("nvim-lualine/lualine.nvim", "lualine")
+
+    use {
+      "famiu/feline.nvim",
+      after = "nvim-web-devicons",
+      config = config("statusline")
+    }
+
     use {
       "goolord/alpha-nvim",
-      requires = {"kyazdani42/nvim-web-devicons"},
-      config = "require('plugins.dashboard')"
+      requires = "kyazdani42/nvim-web-devicons",
+      config = config("dashboard")
     }
     use {
       "kyazdani42/nvim-tree.lua",
-      requires = {
-        "kyazdani42/nvim-web-devicons" -- optional, for file icon
-      },
+      requires = "kyazdani42/nvim-web-devicons", -- optional, for file icon
       config = config("nvim-tree")
     }
 
@@ -67,7 +71,7 @@ return require("packer").startup(
     use {
       "hrsh7th/nvim-cmp",
       event = "InsertEnter",
-      config = [[require('plugins.cmp')]]
+      config = config("completion")
     }
     -- Snippets
     use(
@@ -75,7 +79,8 @@ return require("packer").startup(
         "L3MON4D3/luasnip",
         requires = {
           "rafamadriz/friendly-snippets"
-        }
+        },
+        config = config("luasnip")
       }
     )
     use {"saadparwaiz1/cmp_luasnip", after = "nvim-cmp"}
@@ -91,15 +96,15 @@ return require("packer").startup(
     use_with_config("jose-elias-alvarez/null-ls.nvim", "null-ls")
 
     -- LSP Addons
-    use {"tami5/lspsaga.nvim", config = "require('plugins.saga')"}
+    use {"tami5/lspsaga.nvim", config = config("saga")}
     use {"onsails/lspkind-nvim"}
-    use {"folke/lsp-trouble.nvim", config = "require('plugins.lsp-trouble')"}
+    use {"folke/lsp-trouble.nvim", config = config("lsp-trouble")}
     use {"nvim-lua/popup.nvim"}
     use {"jose-elias-alvarez/nvim-lsp-ts-utils", after = {"nvim-treesitter"}}
     use_with_config("mhartington/formatter.nvim", "formatter")
 
     -- Snippets & Language & Syntax
-    use {"windwp/nvim-autopairs", after = {"nvim-treesitter", "nvim-cmp"}, config = "require('plugins.autopairs')"}
+    use {"windwp/nvim-autopairs", after = {"nvim-treesitter", "nvim-cmp"}, config = config("autopairs")}
     use {"mattn/emmet-vim"}
     use {"potatoesmaster/i3-vim-syntax"}
     use {"lpinilla/vim-codepainter"}
@@ -121,8 +126,41 @@ return require("packer").startup(
     use({"windwp/nvim-ts-autotag", ft = {"typescript", "typescriptreact"}}) -- automatically close jsx tags
     use({"JoosepAlviste/nvim-ts-context-commentstring", ft = {"typescript", "typescriptreact"}}) -- makes jsx comments actually work
 
+    -- Tmux
+    use(
+      {
+        "aserowy/tmux.nvim",
+        config = function()
+          require("tmux").setup(
+            {
+              -- overwrite default configuration
+              -- here, e.g. to enable default bindings
+              copy_sync = {
+                -- enables copy sync and overwrites all register actions to
+                -- sync registers *, +, unnamed, and 0 till 9 from tmux in advance
+                enable = true
+              },
+              navigation = {
+                -- enables default keybindings (C-hjkl) for normal mode
+                enable_default_keybindings = true
+              },
+              resize = {
+                -- enables default keybindings (A-hjkl) for normal mode
+                enable_default_keybindings = true
+              }
+            }
+          )
+        end
+      }
+    )
     -- Misc
     use("nvim-lua/plenary.nvim")
     use_with_config("nathom/filetype.nvim", "filetype") -- greatly reduces startup time
+    use {
+      "luukvbaal/stabilize.nvim",
+      config = function()
+        require("stabilize").setup()
+      end
+    }
   end
 )

@@ -68,7 +68,9 @@ local icons = {
   warningCircle = "  ",
   warningTriangle = "  ",
   warningTriangleNoBg = "  ",
-  wrench = "  "
+  wrench = "  ",
+  arrow_right_circle = "  ",
+  arrow_left_circle = "  "
 }
 
 return icons

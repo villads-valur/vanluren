@@ -38,8 +38,9 @@ local on_attach = function(client, bufnr)
   buf_map(bufnr, "i", "<C-x><C-x>", "<cmd> LspSignatureHelp<CR>")
 end
 
-null_ls.config(
+null_ls.setup(
   {
+    on_attach = on_attach,
     sources = {
       null_ls.builtins.diagnostics.eslint_d,
       null_ls.builtins.code_actions.eslint_d,
@@ -47,5 +48,3 @@ null_ls.config(
     }
   }
 )
-
-lspconfig["null-ls"].setup({on_attach = on_attach})

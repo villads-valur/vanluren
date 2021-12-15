@@ -1,27 +1,29 @@
-local buftabline = require("buftabline")
+local present, bufferline = pcall(require, "buffertabline")
 local icons = require("icons")
 
-local u = require("utils")
+if not present then
+  return
+end
 
-buftabline.setup(
-  {
-    tab_format = "#{i} #{b} #{f}",
-    auto_hide = true,
-    hlgroups = {
-      current = "TabLineSel",
-      normal = "TabLine",
-      active = nil,
-      spacing = nil,
-      modified_current = nil,
-      modified_normal = nil,
-      modified_active = nil,
-      tabpage_current = nil,
-      tabpage_normal = nil
-    },
-    flags = {
-      modified = icons.gitChange,
-      not_modifiable = icons.error,
-      readonly = icons.threeDots
-    }
+bufferline.setup {
+  options = {
+    offsets = {{filetype = "NvimTree", text = "", padding = 1}},
+    buffer_close_icon = icons.close_icon,
+    modified_icon = icons.modified_icon,
+    close_icon = icons.close_icon,
+    show_close_icon = true,
+    left_trunc_marker = icons.arrow_left_circle,
+    right_trunc_marker = icons.arrow_right_circle,
+    max_name_length = 14,
+    max_prefix_length = 13,
+    tab_size = 20,
+    show_tab_indicators = true,
+    enforce_regular_tabs = false,
+    view = "multiwindow",
+    show_buffer_close_icons = true,
+    separator_style = "thin",
+    always_show_bufferline = true,
+    diagnostics = false,
+    tab_format = "#{i} #{b} #{f}"
   }
-)
+}

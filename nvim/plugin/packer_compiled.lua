@@ -162,6 +162,14 @@ _G.packer_plugins = {
     path = "/Users/villadsvalur/.local/share/nvim/site/pack/packer/start/emmet-vim",
     url = "https://github.com/mattn/emmet-vim"
   },
+  ["feline.nvim"] = {
+    config = { "require('plugins.statusline')" },
+    load_after = {},
+    loaded = true,
+    needs_bufread = false,
+    path = "/Users/villadsvalur/.local/share/nvim/site/pack/packer/opt/feline.nvim",
+    url = "https://github.com/famiu/feline.nvim"
+  },
   ["filetype.nvim"] = {
     config = { "require('plugins.filetype')" },
     loaded = true,
@@ -212,13 +220,8 @@ _G.packer_plugins = {
     path = "/Users/villadsvalur/.local/share/nvim/site/pack/packer/start/lspsaga.nvim",
     url = "https://github.com/tami5/lspsaga.nvim"
   },
-  ["lualine.nvim"] = {
-    config = { "require('plugins.lualine')" },
-    loaded = true,
-    path = "/Users/villadsvalur/.local/share/nvim/site/pack/packer/start/lualine.nvim",
-    url = "https://github.com/nvim-lualine/lualine.nvim"
-  },
   luasnip = {
+    config = { "require('plugins.luasnip')" },
     loaded = true,
     path = "/Users/villadsvalur/.local/share/nvim/site/pack/packer/start/luasnip",
     url = "https://github.com/L3MON4D3/luasnip"
@@ -246,8 +249,8 @@ _G.packer_plugins = {
     url = "https://github.com/ojroques/nvim-bufdel"
   },
   ["nvim-cmp"] = {
-    after = { "cmp_luasnip", "cmp-nvim-lua", "nvim-autopairs" },
-    config = { "require('plugins.cmp')" },
+    after = { "cmp_luasnip", "nvim-autopairs", "cmp-nvim-lua" },
+    config = { "require('plugins.completion')" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
@@ -283,7 +286,7 @@ _G.packer_plugins = {
     url = "https://github.com/kyazdani42/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
-    after = { "nvim-autopairs", "nvim-lsp-ts-utils" },
+    after = { "nvim-lsp-ts-utils", "nvim-autopairs" },
     loaded = true,
     only_config = true
   },
@@ -329,6 +332,12 @@ _G.packer_plugins = {
     path = "/Users/villadsvalur/.local/share/nvim/site/pack/packer/start/popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
   },
+  ["stabilize.nvim"] = {
+    config = { "\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14stabilize\frequire\0" },
+    loaded = true,
+    path = "/Users/villadsvalur/.local/share/nvim/site/pack/packer/start/stabilize.nvim",
+    url = "https://github.com/luukvbaal/stabilize.nvim"
+  },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,
     path = "/Users/villadsvalur/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
@@ -339,6 +348,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/villadsvalur/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["tmux.nvim"] = {
+    config = { "\27LJ\2\n¶\1\0\0\4\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\2B\0\2\1K\0\1\0\vresize\1\0\1\31enable_default_keybindings\2\15navigation\1\0\1\31enable_default_keybindings\2\14copy_sync\1\0\0\1\0\1\venable\2\nsetup\ttmux\frequire\0" },
+    loaded = true,
+    path = "/Users/villadsvalur/.local/share/nvim/site/pack/packer/start/tmux.nvim",
+    url = "https://github.com/aserowy/tmux.nvim"
   },
   ["vim-codepainter"] = {
     loaded = true,
@@ -378,14 +393,18 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: nvim-tree.lua
-time([[Config for nvim-tree.lua]], true)
-require('plugins.nvim-tree')
-time([[Config for nvim-tree.lua]], false)
--- Config for: Comment.nvim
-time([[Config for Comment.nvim]], true)
-require('plugins.comment')
-time([[Config for Comment.nvim]], false)
+-- Config for: gitsigns.nvim
+time([[Config for gitsigns.nvim]], true)
+require('plugins.git')
+time([[Config for gitsigns.nvim]], false)
+-- Config for: lsp-trouble.nvim
+time([[Config for lsp-trouble.nvim]], true)
+require('plugins.lsp-trouble')
+time([[Config for lsp-trouble.nvim]], false)
+-- Config for: stabilize.nvim
+time([[Config for stabilize.nvim]], true)
+try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14stabilize\frequire\0", "config", "stabilize.nvim")
+time([[Config for stabilize.nvim]], false)
 -- Config for: nvim-treesitter
 time([[Config for nvim-treesitter]], true)
 require('plugins.treesitter')
@@ -394,46 +413,50 @@ time([[Config for nvim-treesitter]], false)
 time([[Config for lspsaga.nvim]], true)
 require('plugins.saga')
 time([[Config for lspsaga.nvim]], false)
--- Config for: gitsigns.nvim
-time([[Config for gitsigns.nvim]], true)
-require('plugins.git')
-time([[Config for gitsigns.nvim]], false)
--- Config for: buftabline.nvim
-time([[Config for buftabline.nvim]], true)
-require('plugins.buftabline')
-time([[Config for buftabline.nvim]], false)
--- Config for: lualine.nvim
-time([[Config for lualine.nvim]], true)
-require('plugins.lualine')
-time([[Config for lualine.nvim]], false)
--- Config for: alpha-nvim
-time([[Config for alpha-nvim]], true)
-require('plugins.dashboard')
-time([[Config for alpha-nvim]], false)
--- Config for: nvim-bufdel
-time([[Config for nvim-bufdel]], true)
-require('plugins.bufdel')
-time([[Config for nvim-bufdel]], false)
--- Config for: filetype.nvim
-time([[Config for filetype.nvim]], true)
-require('plugins.filetype')
-time([[Config for filetype.nvim]], false)
--- Config for: ayu-vim
-time([[Config for ayu-vim]], true)
-require('plugins.ayu')
-time([[Config for ayu-vim]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 require('plugins.telescope')
 time([[Config for telescope.nvim]], false)
+-- Config for: nvim-tree.lua
+time([[Config for nvim-tree.lua]], true)
+require('plugins.nvim-tree')
+time([[Config for nvim-tree.lua]], false)
+-- Config for: luasnip
+time([[Config for luasnip]], true)
+require('plugins.luasnip')
+time([[Config for luasnip]], false)
+-- Config for: buftabline.nvim
+time([[Config for buftabline.nvim]], true)
+require('plugins.buftabline')
+time([[Config for buftabline.nvim]], false)
+-- Config for: filetype.nvim
+time([[Config for filetype.nvim]], true)
+require('plugins.filetype')
+time([[Config for filetype.nvim]], false)
+-- Config for: tmux.nvim
+time([[Config for tmux.nvim]], true)
+try_loadstring("\27LJ\2\n¶\1\0\0\4\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\2B\0\2\1K\0\1\0\vresize\1\0\1\31enable_default_keybindings\2\15navigation\1\0\1\31enable_default_keybindings\2\14copy_sync\1\0\0\1\0\1\venable\2\nsetup\ttmux\frequire\0", "config", "tmux.nvim")
+time([[Config for tmux.nvim]], false)
+-- Config for: Comment.nvim
+time([[Config for Comment.nvim]], true)
+require('plugins.comment')
+time([[Config for Comment.nvim]], false)
+-- Config for: nvim-bufdel
+time([[Config for nvim-bufdel]], true)
+require('plugins.bufdel')
+time([[Config for nvim-bufdel]], false)
+-- Config for: alpha-nvim
+time([[Config for alpha-nvim]], true)
+require('plugins.dashboard')
+time([[Config for alpha-nvim]], false)
 -- Config for: null-ls.nvim
 time([[Config for null-ls.nvim]], true)
 require('plugins.null-ls')
 time([[Config for null-ls.nvim]], false)
--- Config for: lsp-trouble.nvim
-time([[Config for lsp-trouble.nvim]], true)
-require('plugins.lsp-trouble')
-time([[Config for lsp-trouble.nvim]], false)
+-- Config for: ayu-vim
+time([[Config for ayu-vim]], true)
+require('plugins.ayu')
+time([[Config for ayu-vim]], false)
 -- Config for: formatter.nvim
 time([[Config for formatter.nvim]], true)
 require('plugins.formatter')
@@ -441,14 +464,20 @@ time([[Config for formatter.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-lsp-ts-utils ]]
+vim.cmd [[ packadd nvim-web-devicons ]]
+vim.cmd [[ packadd feline.nvim ]]
+
+-- Config for: feline.nvim
+require('plugins.statusline')
+
 time([[Sequenced loading]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
+vim.cmd [[au FileType typescript ++once lua require("packer.load")({'nvim-treesitter-textsubjects', 'nvim-ts-autotag', 'nvim-ts-context-commentstring'}, { ft = "typescript" }, _G.packer_plugins)]]
+vim.cmd [[au FileType typescriptreact ++once lua require("packer.load")({'nvim-treesitter-textsubjects', 'nvim-ts-autotag', 'nvim-ts-context-commentstring'}, { ft = "typescriptreact" }, _G.packer_plugins)]]
 vim.cmd [[au FileType lua ++once lua require("packer.load")({'nvim-treesitter-textsubjects'}, { ft = "lua" }, _G.packer_plugins)]]
-vim.cmd [[au FileType typescript ++once lua require("packer.load")({'nvim-ts-autotag', 'nvim-ts-context-commentstring', 'nvim-treesitter-textsubjects'}, { ft = "typescript" }, _G.packer_plugins)]]
-vim.cmd [[au FileType typescriptreact ++once lua require("packer.load")({'nvim-ts-autotag', 'nvim-ts-context-commentstring', 'nvim-treesitter-textsubjects'}, { ft = "typescriptreact" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)

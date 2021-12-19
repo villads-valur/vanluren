@@ -1,34 +1,36 @@
--- maps.lua
-
-local map = vim.api.nvim_set_keymap
+local map = require("utils").map 
 local g = vim.g
 
 -- map the leader key
 -- Leader is Space as always
-map("n", "<Space>", "", {})
 vim.g.mapleader = " " -- 'vim.g' sets global variables
 
-local options = {noremap = true}
-
 -- Writing
-map("n", "<leader>w", ":w<CR>", options)
-map("n", "<leader>q", ":q<CR>", options)
-map("i", "jj", "<ESC>", options)
+map("n", "<Leader>w", ":w<CR>")
+map("n", "<Leader>q", ":q<CR>")
+map("i", "jj", "<ESC>")
+map({ "n", "v" }, "x", '"_x') -- don't yank text on cut ( x )
 
 -- Search
-map("n", "<leader><esc>", ":nohlsearch<CR>", options)
+map("n", "<ESC><ESC>", ":nohlsearch<CR>")
+map("n", "<Leader>n", ":NvimTreeToggle<CR>")
 
 -- Buffers
-map("n", "<Tab>", ":bnext<CR>", options)
-map("n", "<S-Tab>", ":bprev<CR>", options)
-map("n", "<Leader>b", ":BufDel<CR>", options)
+map("n", "<Tab>", ":bnext<CR>")
+map("n", "<S-Tab>", ":bprev<CR>")
+map("n", "<Leader>x", ":bd<CR>")
 
 -- Splits
-map("n", "<Leader>v", ":vnew<CR>", options)
-map("n", "<Leader><Down>", "<C-W><C-J>", {silent = true})
-map("n", "<Leader><Up>", "<C-W><C-K>", {silent = true})
-map("n", "<Leader><Right>", ":vnew<CR>", {silent = true})
-map("n", "<Leader><Left>", "<C-W><C-H>", {silent = true})
+map("n", "<Leader>v", ":vnew<CR>")
+map("n", "<Leader><Down>", "<C-W><C-J>")
+map("n", "<Leader><Up>", "<C-W><C-K>")
+map("n", "<Leader><Right>", ":vnew<CR>")
+map("n", "<Leader><Left>", "<C-W><C-H>")
 
--- Fast Reload of the settings
-map("n", "<leader>r", ":source ~/.config/nvim/init.lua<CR>", options)
+-- Nvim Tree
+map("n", "<Leader>n", ":NvimTreeToggle<CR>")
+
+-- Keybindings
+map("n", "<Leader>t", ":Telescope find_files<CR>")
+map("n", "<Leader>b", ":Telescope live_grep<CR>")
+map("n", "<Leader>sf", ":Telescope live_grep<CR>")

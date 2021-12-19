@@ -1,4 +1,4 @@
-local map = require("utils").map 
+local map = require("utils").map
 local g = vim.g
 
 -- map the leader key
@@ -34,3 +34,4 @@ map("n", "<Leader>n", ":NvimTreeToggle<CR>")
 map("n", "<Leader>t", ":Telescope find_files<CR>")
 map("n", "<Leader>b", ":Telescope live_grep<CR>")
 map("n", "<Leader>sf", ":Telescope live_grep<CR>")
+map("n", "<Leader>ca", "lua require'telescope.builtin.lsp_code_action'.planets{}")

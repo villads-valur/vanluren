@@ -9,7 +9,11 @@ lspSymbol("Hint", "")
 lspSymbol("Warn", "")
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-	virtual_text = false,
+	virtual_text = {
+		true,
+		spacing = 6,
+		severity_limit = "Error", -- Only show virtual text on error
+	},
 	signs = true,
 	underline = true,
 	update_in_insert = false, -- update diagnostics insert mode

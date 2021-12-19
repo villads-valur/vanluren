@@ -18,7 +18,7 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 	},
 }
 
-local function on_attach(_, bufnr)
+local function on_attach(client, bufnr)
 	local function buf_set_option(...)
 		vim.api.nvim_buf_set_option(bufnr, ...)
 	end
@@ -54,13 +54,13 @@ local function on_attach(_, bufnr)
 	map("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
 	map("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
 	map("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-	map("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+	map("n", "<space>ca", ":CodeActionMenu<CR>", opts) -- this is provided by the code action menu plugin
+	map("v", "<space>ca", ":CodeActionMenu<CR>", opts) -- this is provided by the code action menu plugin
 	map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 	map("n", "ge", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
 	map("n", "lp", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
 	map("n", "ln", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
 	map("n", "<space>fm", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-	map("v", "<space>ca", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", opts)
 end
 
 require("nvim-lsp-installer").on_server_ready(function(server)
@@ -72,6 +72,12 @@ require("nvim-lsp-installer").on_server_ready(function(server)
 		},
 		settings = {},
 	}
+
+	if opts.capabilities.document_highlight then
+		cmd("autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()")
+		cmd("autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()")
+		cmd("autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()")
+	end
 
 	server:setup(opts)
 	cmd([[ do User LspAttachBuffers ]])

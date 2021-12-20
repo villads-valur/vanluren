@@ -13,11 +13,9 @@ local sources = {
 null_ls.setup({
 	debug = false,
 	sources = sources,
-	on_attach = function(client)
-		-- format on save
-		if client.resolved_capabilities.document_formatting then
-			cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()")
-		end
+	on_attach = function()
+		-- Auto format on save
+		cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()")
 		-- Add a format command
 		cmd("command! Format lua vim.lsp.buf.formatting()")
 	end,

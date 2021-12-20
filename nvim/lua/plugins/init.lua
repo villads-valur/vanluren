@@ -92,6 +92,8 @@ return packer.startup(function()
 
 	use({ "jose-elias-alvarez/nvim-lsp-ts-utils", after = { "nvim-treesitter" } })
 
+	use({ "RishabhRD/nvim-lsputils", requires = "RishabhRD/popfix" })
+
 	-- Null Ls
 	use({
 		"jose-elias-alvarez/null-ls.nvim",

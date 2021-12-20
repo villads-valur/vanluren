@@ -247,6 +247,11 @@ _G.packer_plugins = {
     path = "/Users/villadsvalur/.local/share/nvim/site/pack/packer/opt/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
+  ["nvim-lsputils"] = {
+    loaded = true,
+    path = "/Users/villadsvalur/.local/share/nvim/site/pack/packer/start/nvim-lsputils",
+    url = "https://github.com/RishabhRD/nvim-lsputils"
+  },
   ["nvim-tree.lua"] = {
     commands = { "NvimTreeToggle", "NvimTreeFocus" },
     config = { "require('plugins.configs.nvim-tree')" },
@@ -290,6 +295,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/villadsvalur/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  popfix = {
+    loaded = true,
+    path = "/Users/villadsvalur/.local/share/nvim/site/pack/packer/start/popfix",
+    url = "https://github.com/RishabhRD/popfix"
   },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,
@@ -359,55 +369,55 @@ if not vim.g.packer_custom_loader_enabled then
   vim.g.packer_custom_loader_enabled = true
 end
 
--- Setup for: vim-matchup
-time([[Setup for vim-matchup]], true)
-try_loadstring("\27LJ\2\nN\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0B\0\2\1K\0\1\0\16vim-matchup\21packer_lazy_load\nutils\frequire\0", "setup", "vim-matchup")
-time([[Setup for vim-matchup]], false)
 -- Setup for: nvim-lspconfig
 time([[Setup for nvim-lspconfig]], true)
 try_loadstring("\27LJ\2\nU\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0006if &ft == \"packer\" | echo \"\" | else | silent! e %\bcmd\bvims\1\0\4\0\a\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0B\0\2\0016\0\4\0009\0\5\0003\2\6\0)\3\0\0B\0\3\1K\0\1\0\0\rdefer_fn\bvim\19nvim-lspconfig\21packer_lazy_load\nutils\frequire\0", "setup", "nvim-lspconfig")
 time([[Setup for nvim-lspconfig]], false)
--- Config for: nvim-lightbulb
-time([[Config for nvim-lightbulb]], true)
-require('plugins.configs.lightbulb')
-time([[Config for nvim-lightbulb]], false)
--- Config for: alpha-nvim
-time([[Config for alpha-nvim]], true)
-require('plugins.configs.dashboard')
-time([[Config for alpha-nvim]], false)
+-- Setup for: vim-matchup
+time([[Setup for vim-matchup]], true)
+try_loadstring("\27LJ\2\nN\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0B\0\2\1K\0\1\0\16vim-matchup\21packer_lazy_load\nutils\frequire\0", "setup", "vim-matchup")
+time([[Setup for vim-matchup]], false)
 -- Config for: vim-github-dark
 time([[Config for vim-github-dark]], true)
 require('plugins.configs.theme')
 time([[Config for vim-github-dark]], false)
+-- Config for: alpha-nvim
+time([[Config for alpha-nvim]], true)
+require('plugins.configs.dashboard')
+time([[Config for alpha-nvim]], false)
+-- Config for: nvim-lightbulb
+time([[Config for nvim-lightbulb]], true)
+require('plugins.configs.lightbulb')
+time([[Config for nvim-lightbulb]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-web-devicons ]]
-vim.cmd [[ packadd feline.nvim ]]
-
--- Config for: feline.nvim
-require('plugins.configs.statusline')
-
 vim.cmd [[ packadd bufferline.nvim ]]
 
 -- Config for: bufferline.nvim
 require('plugins.configs.bufferline')
 
+vim.cmd [[ packadd feline.nvim ]]
+
+-- Config for: feline.nvim
+require('plugins.configs.statusline')
+
 time([[Sequenced loading]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Telescope lua require("packer.load")({'telescope.nvim'}, { cmd = "Telescope", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file NvimTreeToggle lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file NvimTreeFocus lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeFocus", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Telescope lua require("packer.load")({'telescope.nvim'}, { cmd = "Telescope", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 time([[Defining lazy-load commands]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
+vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'better-escape.nvim', 'friendly-snippets'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-treesitter'}, { event = "BufRead *" }, _G.packer_plugins)]]
 vim.cmd [[au VimEnter * ++once lua require("packer.load")({'packer.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
-vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'better-escape.nvim', 'friendly-snippets'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end

@@ -61,6 +61,10 @@ local function on_attach(client, bufnr)
 	map("n", "lp", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
 	map("n", "ln", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
 	map("n", "<space>fm", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+
+	if client.name == "tsserver" then
+		opts.capabilities.document_formatting = false
+	end
 end
 
 require("nvim-lsp-installer").on_server_ready(function(server)

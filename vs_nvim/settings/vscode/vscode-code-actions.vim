@@ -80,8 +80,16 @@ xnoremap <C-w>gd <Cmd>call VSCodeNotify('editor.action.revealDefinitionAside')<C
 
 " open quickfix menu for spelling corrections and refactoring
 " only keyboard arrows can be used to navigate, for a solution, see https://github.com/asvetliakov/vscode-neovim#keyboard-quickfix
-nnoremap z= <Cmd>call VSCodeNotify('editor.action.quickFix')<CR>
+nnoremap <leader>ca <Cmd>call VSCodeNotify('keyboard-quickfix.openQuickFix')<CR>
+xnoremap <leader>ca <Cmd>call VSCodeNotify('keyboard-quickfix.openQuickFix')<CR>
+
 
 " workaround for calling command picker in visual mode
 xnoremap <C-S-P> <Cmd>call VSCodeNotifyVisual('workbench.action.showCommands', 1)<CR>
 xnoremap <C-S-F> <Cmd>call VSCodeNotifyVisual('workbench.action.findInFiles', 0)<CR>
+
+nnoremap ln <CMD>call VSCodeNotify('editor.action.marker.next')<CR>
+xnoremap ln <CMD>call VSCodeNotify('editor.action.marker.next')<CR>
+
+nnoremap lp <CMD>call VSCodeNotify('editor.action.marker.prev')<CR>
+xnoremap lp <CMD>call VSCodeNotify('editor.action.marker.prev')<CR>

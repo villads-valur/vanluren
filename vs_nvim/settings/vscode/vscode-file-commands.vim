@@ -61,3 +61,8 @@ AlterCommand xa[ll] Xall
 
 nnoremap ZZ <Cmd>Wq<CR>
 nnoremap ZQ <Cmd>Quit!<CR>
+
+nnoremap <leader>t :Find<CR>
+xnoremap <leader>t :Find<CR>
+nnoremap <leader>w :Write<CR>
+xnoremap <leader>w :write<CR>

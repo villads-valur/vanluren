@@ -7,7 +7,7 @@ function! s:switchEditor(...) abort
 endfunction
 
 command! -complete=file -nargs=? Tabedit if empty(<q-args>) | call VSCodeNotify('workbench.action.quickOpen') | else | call VSCodeExtensionNotify('open-file', expand(<q-args>), 0) | endif
-command! -complete=file Tabnew call VSCodeExtensionNotify('open-file', '__vscode_new__', 0)
+command! -complete=file -nargs=? Tabnew call VSCodeExtensionNotify('open-file', '__vscode_new__', 0)
 command! Tabfind call VSCodeNotify('workbench.action.quickOpen')
 command! Tab echoerr 'Not supported'
 command! Tabs echoerr 'Not supported'
@@ -38,3 +38,10 @@ nnoremap gt <Cmd>call <SID>switchEditor(v:count, 'next')<CR>
 xnoremap gt <Cmd>call <SID>switchEditor(v:count, 'next')<CR>
 nnoremap gT <Cmd>call <SID>switchEditor(v:count, 'prev')<CR>
 xnoremap gT <Cmd>call <SID>switchEditor(v:count, 'prev')<CR>
+
+nnoremap <Tab> :Tabnext<CR>
+xnoremap <Tab> :Tabnext<CR>
+
+nnoremap <S-Tab> :Tabprevious<CR> 
+xnoremap <S-Tab> :Tabprevious<CR> 
+

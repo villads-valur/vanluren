@@ -50,12 +50,15 @@ AlterCommand explore
 " nnoremap <leader>n <Cmd>call <SID>splitNew('v', '__vscode_new__')<CR>
 " xnoremap <leader>n <Cmd>call <SID>splitNew('v', '__vscode_new__')<CR>
 
-xnoremap <leader>n <Cmd>call VSCodeNotify('workbench.view.explorer.enabled')<CR>
+nnoremap <leader>n <Cmd>call VSCodeNotify('workbench.view.explorer')<CR>
+noremap <leader>n <Cmd>call VSCodeNotify('workbench.view.explorer')<CR>
 
 nnoremap <leader>q <Cmd>call VSCodeNotify('workbench.action.closeActiveEditor')<CR>
 xnoremap <leader>q <Cmd>call VSCodeNotify('workbench.action.closeActiveEditor')<CR>
 nnoremap <leader>c <Cmd>call VSCodeNotify('workbench.action.closeActiveEditor')<CR>
 xnoremap <leader>c <Cmd>call VSCodeNotify('workbench.action.closeActiveEditor')<CR>
+nnoremap <leader>x <Cmd>call VSCodeNotify('workbench.action.closeActiveEditor')<CR>
+xnoremap <leader>x <Cmd>call VSCodeNotify('workbench.action.closeActiveEditor')<CR>
 nnoremap <leader><C-c> <Cmd>call VSCodeNotify('workbench.action.closeActiveEditor')<CR>
 xnoremap <leader><C-c> <Cmd>call VSCodeNotify('workbench.action.closeActiveEditor')<CR>
 
@@ -144,8 +147,8 @@ xnoremap <leader><S-Left> <Cmd>call VSCodeNotify('workbench.action.moveActiveEdi
 nnoremap <leader><S-Right> <Cmd>call VSCodeNotify('workbench.action.moveActiveEditorGroupRight')<CR>
 xnoremap <leader><S-Right> <Cmd>call VSCodeNotify('workbench.action.moveActiveEditorGroupRight')<CR>
 
-nnoremap <leader>w <Cmd>call VSCodeNotify('workbench.action.focusNextGroup')<CR>
-xnoremap <leader>w <Cmd>call VSCodeNotify('workbench.action.focusNextGroup')<CR>
+" nnoremap <leader>w <Cmd>call VSCodeNotify('workbench.action.focusNextGroup')<CR>
+" xnoremap <leader>w <Cmd>call VSCodeNotify('workbench.action.focusNextGroup')<CR>
 nnoremap <leader><C-w> <Cmd>call VSCodeNotify('workbench.action.focusNextGroup')<CR>
 xnoremap <leader><C-w> <Cmd>call VSCodeNotify('workbench.action.focusNextGroup')<CR>
 nnoremap <leader>W <Cmd>call VSCodeNotify('workbench.action.focusPreviousGroup')<CR>
@@ -153,8 +156,17 @@ xnoremap <leader>W <Cmd>call VSCodeNotify('workbench.action.focusPreviousGroup')
 nnoremap <leader>p <Cmd>call VSCodeNotify('workbench.action.focusPreviousGroup')<CR>
 xnoremap <leader>p <Cmd>call VSCodeNotify('workbench.action.focusPreviousGroup')<CR>
 
-nnoremap <leader>t <Cmd>call VSCodeNotify('workbench.action.focusFirstEditorGroup')<CR>
-xnoremap <leader>t <Cmd>call VSCodeNotify('workbench.action.focusFirstEditorGroup')<CR>
-nnoremap <leader>b <Cmd>call VSCodeNotify('workbench.action.focusLastEditorGroup')<CR>
-xnoremap <leader>b <Cmd>call VSCodeNotify('workbench.action.focusLastEditorGroup')<CR>
+" nnoremap <leader>t <Cmd>call VSCodeNotify('workbench.action.focusFirstEditorGroup')<CR>
+" xnoremap <leader>t <Cmd>call VSCodeNotify('workbench.action.focusFirstEditorGroup')<CR>
+" nnoremap <leader>b <Cmd>call VSCodeNotify('workbench.action.focusLastEditorGroup')<CR>
+" xnoremap <leader>b <Cmd>call VSCodeNotify('workbench.action.focusLastEditorGroup')<CR>
+
+
+
+nnoremap <leader>g <Cmd>call VSCodeNotify('workbench.view.scm')<CR>
+xnoremap <leader>g <Cmd>call VSCodeNotify('workbench.view.scm')<CR>
+
+nnoremap <leader>fw <Cmd>call VSCodeNotify('workbench.action.findInFiles')<CR>
+xnoremap <leader>fw <Cmd>call VSCodeNotify('workbench.action.findInFiles')<CR>
+
 

@@ -1,4 +1,9 @@
-require("settings")
-require("mappings")
+-- Settings
+require("lua/settings")
+require("lua/mappings")
+require("lua/colorschemes")
 
-require("plugins/packer")
+-- Plugins
+require("lua/plugins/packer")
+require("lua/plugins/alpha")
+require("lua/plugins/ayu")

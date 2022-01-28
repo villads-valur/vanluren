@@ -14,10 +14,11 @@ map('i', '<leader>w', '<C-c>:w<CR>', opts)
 
 -- Window
 map('n', '<leader>q', ':q<CR>', opts)
-
 map('n', '<leader>v', ':vsplit<CR>', opts)
 map('n', '<leader>h', ':hsplit<CR>', opts)
 
+-- Search
+map('n','<Esc><Esc>', ':noh<CR>', opts)
 
 -- open terminal
 map('n', '<C-t>', ':Term<CR>', { noremap = true })

@@ -79,4 +79,7 @@ return packer.startup(function()
 		after = "nvim-lspconfig",
 		config = config("null-ls"),
 	})
+
+	-- autopairs
+	use({ "windwp/nvim-autopairs", config = config("autopairs") })
 end)

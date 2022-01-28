@@ -12,14 +12,18 @@ local config = function(name)
 end
 
 return packer.startup(function()
-  use 'wbthomason/packer.nvim' -- packer can manage itself
+  use {
+   'wbthomason/packer.nvim',
+   event = 'VimEnter'
+ } -- packer can manage itself
+
+  use 'nvim-lua/plenary.nvim'
 
   -- tpope essentials
   use 'tpope/vim-surround'
 
-  -- UI
+  -- icons
   use 'kyazdani42/nvim-web-devicons'
-
 
   -- dashboard
   use {
@@ -36,7 +40,6 @@ return packer.startup(function()
 
   use 'LunarVim/onedarker.nvim'
 
-
   --- statusline
    use {
       'feline-nvim/feline.nvim',
@@ -50,5 +53,12 @@ return packer.startup(function()
       after = 'nvim-web-devicons', -- optional, for file icon
       config = config('nvim-tree')
   }
+
+  -- telescope
+  use {
+    'nvim-telescope/telescope.nvim',
+    config = config('telescope'),
+  }
+
 
 end)

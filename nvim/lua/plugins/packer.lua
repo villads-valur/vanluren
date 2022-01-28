@@ -31,4 +31,13 @@ return packer.startup(function()
     "LunarVim/onedarker.nvim",
   }
 
+  -- tree view
+  use {
+      'kyazdani42/nvim-tree.lua',
+      requires = {
+        'kyazdani42/nvim-web-devicons', -- optional, for file icon
+      },
+      config = config("nvim-tree")
+  }
+
 end)

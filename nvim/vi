@@ -1,7 +1,0 @@
-vim.cmd([[
-  if strftime("%H") < 18
-    colorscheme ayu-light
-  else
-    colorscheme onedarker
-  endif
-]])

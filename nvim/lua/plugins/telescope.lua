@@ -66,3 +66,5 @@ map("n", "<Leader>cc", ":Telescope<CR>")
 -- Language stuf
 map("n", "<Leader>ca", ":Telescope lsp_code_actions<CR>")
 map("n", "<Leader>ca", ":Telescope lsp_range_code_actions<CR>")
+map("n", "gd", ":Telescope lsp_definitions<CR>")
+map("n", "gr", ":Telescope lsp_refrences<CR>")

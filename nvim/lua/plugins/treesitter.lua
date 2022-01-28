@@ -3,6 +3,8 @@ require("nvim-treesitter.configs").setup({
 		"lua",
 		"vim",
 		"tsx",
+		"typescript",
+		"prisma",
 	},
 	highlight = {
 		enable = true,

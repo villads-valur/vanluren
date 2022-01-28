@@ -1,7 +1,8 @@
 -- Dashboard configuration file
-
 local alpha = require("alpha")
 local dashboard = require("alpha.themes.dashboard")
+local map = require("utils").map
+local cmd = vim.cmd
 
 -- setup footer
 local function footer()
@@ -32,5 +33,8 @@ dashboard.section.buttons.val = {
 }
 
 dashboard.section.footer.val = footer()
+
+cmd("command! Dashboard :Alpha")
+map("n", "<Leader>;", ":Dashboard<CR>")
 
 alpha.setup(dashboard.config)

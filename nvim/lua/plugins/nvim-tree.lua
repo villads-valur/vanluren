@@ -46,4 +46,6 @@ g.nvim_tree_icons = {
 }
 
 map("n", "<Leader>n", ":NvimTreeToggle<CR>")
-map("n", "<Leader>nf", ":NvimTreeFindFile<CR>")
+map("n", "<Leader>e", ":NvimTreeToggle<CR>")
+
+map("n", "<Leader>fe", ":NvimTreeFindFile<CR>")

@@ -1,7 +1,7 @@
 -- Settings
-require("lua/settings")
-require("lua/mappings")
-require("lua/colorschemes")
+require("settings")
+require("mappings")
+require("colorschemes")
 
 -- Plugins
-require("lua/plugins/packer")
+require("plugins/packer")

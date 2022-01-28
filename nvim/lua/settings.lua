@@ -8,7 +8,7 @@ local g = vim.g         	-- global variables
 local opt = vim.opt         	-- global/buffer/windows-scoped options
 
 -- General
-g.mapleader = ''       -- change leader to a comma
+g.mapleader = ''              -- change leader to a space
 opt.mouse = 'a'               -- enable mouse support
 opt.clipboard = 'unnamedplus' -- copy/paste to system clipboard
 opt.swapfile = false          -- don't use swapfile
@@ -21,6 +21,8 @@ opt.splitbelow = true         -- orizontal split to the bottom
 opt.ignorecase = true         -- ignore case letters when search
 opt.smartcase = true          -- ignore lowercase for the whole pattern
 opt.linebreak = true          -- wrap on word boundary
+opt.encoding = "utf-8"        -- Set encoding to  UTF-8
+opt.cursorline = true         -- Highlight the current line
 
 -- remove whitespace on save
 cmd [[au BufWritePre * :%s/\s\+$//e]]
@@ -63,7 +65,6 @@ opt.completeopt = 'menuone,noselect'
 
 -- Terminal visual tweaks
 --- enter insert mode when switching to terminal
---- close terminal buffer on process exit
 cmd [[
     autocmd TermOpen * setlocal listchars= nonumber norelativenumber nocursorline
 ]]

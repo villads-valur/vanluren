@@ -1,4 +1,3 @@
-
-require('ayu').setup({
-  light = true
+require("ayu").setup({
+	light = true,
 })

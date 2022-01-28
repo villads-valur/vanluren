@@ -5,4 +5,3 @@ require("lua/colorschemes")
 
 -- Plugins
 require("lua/plugins/packer")
-

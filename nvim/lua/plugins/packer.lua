@@ -1,9 +1,9 @@
-
 -- Plugin manager configuration file
 local cmd = vim.cmd
+
 cmd [[packadd packer.nvim]]
 
-local packer = require 'packer'
+local packer = require('packer')
 
 local use = packer.use
 
@@ -11,33 +11,44 @@ local config = function(name)
 	return string.format("require('plugins.%s')", name)
 end
 
--- Add packages
 return packer.startup(function()
   use 'wbthomason/packer.nvim' -- packer can manage itself
+
+  -- tpope essentials
+  use 'tpope/vim-surround'
+
+  -- UI
+  use 'kyazdani42/nvim-web-devicons'
+
 
   -- dashboard
   use {
     'goolord/alpha-nvim',
-    requires = { 'kyazdani42/nvim-web-devicons' },
+    after = 'nvim-web-devicons',
+    config = config('alpha')
   }
 
-  -- colorschemes
+  --- colorschemes
   use {
-    "Shatur/neovim-ayu",
-    config = config("ayu")
+    'Shatur/neovim-ayu',
+    config = config('ayu')
   }
 
-  use{
-    "LunarVim/onedarker.nvim",
-  }
+  use 'LunarVim/onedarker.nvim'
 
-  -- tree view
+
+  --- statusline
+   use {
+      'feline-nvim/feline.nvim',
+      after = 'nvim-web-devicons',
+      config = config('feline')
+   }
+
+  --- tree view
   use {
       'kyazdani42/nvim-tree.lua',
-      requires = {
-        'kyazdani42/nvim-web-devicons', -- optional, for file icon
-      },
-      config = config("nvim-tree")
+      after = 'nvim-web-devicons', -- optional, for file icon
+      config = config('nvim-tree')
   }
 
 end)

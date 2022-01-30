@@ -82,4 +82,15 @@ return packer.startup(function()
 
 	-- autopairs
 	use({ "windwp/nvim-autopairs", config = config("autopairs") })
+
+	-- better escape
+	use({ "max397574/better-escape.nvim" })
+
+	use({ "lukas-reineke/indent-blankline.nvim", config = config("indentline") })
+
+	-- bufferline
+	use({ "akinsho/bufferline.nvim", config = config("bufferline") })
+
+	-- gitsigns
+	use({ "lewis6991/gitsigns.nvim" })
 end)

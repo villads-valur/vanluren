@@ -1,10 +1,8 @@
 -- Plugin manager configuration file
 local cmd = vim.cmd
-
 cmd([[packadd packer.nvim]])
 
 local packer = require("packer")
-
 local use = packer.use
 
 local config = function(name)
@@ -12,10 +10,13 @@ local config = function(name)
 end
 
 return packer.startup(function()
+	use("lewis6991/impatient.nvim")
+
+	-- packer can manage itself
 	use({
 		"wbthomason/packer.nvim",
 		event = "VimEnter",
-	}) -- packer can manage itself
+	})
 
 	use("nvim-lua/plenary.nvim")
 
@@ -89,8 +90,49 @@ return packer.startup(function()
 	use({ "lukas-reineke/indent-blankline.nvim", config = config("indentline") })
 
 	-- bufferline
-	use({ "akinsho/bufferline.nvim", config = config("bufferline") })
+	use({ "akinsho/bufferline.nvim", after = "nvim-web-devicons", config = config("bufferline") })
 
 	-- gitsigns
 	use({ "lewis6991/gitsigns.nvim" })
+
+	-- snippets
+	use({
+		"rafamadriz/friendly-snippets",
+		event = "InsertEnter",
+	})
+
+	use({
+		"hrsh7th/nvim-cmp",
+		config = config("cmp"),
+	})
+
+	use({
+		"L3MON4D3/LuaSnip",
+		wants = "friendly-snippets",
+		after = "nvim-cmp",
+	})
+
+	use({
+		"saadparwaiz1/cmp_luasnip",
+		after = "LuaSnip",
+	})
+
+	use({
+		"hrsh7th/cmp-nvim-lsp",
+		after = "cmp-nvim-lua",
+	})
+
+	use({
+		"hrsh7th/cmp-nvim-lua",
+	})
+
+	use({
+		"hrsh7th/cmp-buffer",
+		after = "cmp-nvim-lsp",
+	})
+
+	use({
+		"hrsh7th/cmp-path",
+		after = "cmp-buffer",
+	})
 end)

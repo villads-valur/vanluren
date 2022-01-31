@@ -1,5 +1,1 @@
-require("feline").setup({
-	components = {
-		active = {},
-	},
-})
+require("feline").setup({})

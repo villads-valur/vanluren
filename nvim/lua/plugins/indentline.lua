@@ -12,6 +12,8 @@ require("indent_blankline").setup({
 		"nvchad_cheatsheet",
 		"lsp-installer",
 		"scratch",
+		"unnamed",
+		"alpha",
 	},
 	buftype_exclude = { "terminal" },
 	show_trailing_blankline_indent = false,

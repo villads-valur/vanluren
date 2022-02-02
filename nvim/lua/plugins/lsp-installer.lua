@@ -33,6 +33,8 @@ local function on_attach(client, bufnr)
 	map("n", "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
 	map("n", "lp", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>")
 	map("n", "ln", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>")
+
+	client.resolved_capabilities.document_formatting = false
 end
 
 -- Loop through the servers listed above.
@@ -44,11 +46,6 @@ for _, server_name in pairs(servers) do
 				on_attach = on_attach,
 			}
 
-			if server.name == "tsserver" then
-				opts.on_attach = function(client, bufnr)
-					client.resolved_capabilities.document_formatting = false
-				end
-			end
 			server:setup(opts)
 		end)
 		if not server:is_installed() then

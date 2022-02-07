@@ -1,21 +1,16 @@
-local lsp_installer = require("nvim-lsp-installer.servers")
-local map = require("utils").map
+local M = {}
 local cmd = vim.cmd
+local map = require("utils").map
 
-local servers = {
-	"sumneko_lua",
-	"tsserver",
-	"prismals",
-	"cssls",
-}
-
-local function on_attach(client, bufnr)
-	local function buf_set_option(...)
-		vim.api.nvim_buf_set_option(bufnr, ...)
-	end
-
-	-- Enable completion triggered by <c-x><c-o>
-	buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+function M.on_attach()
+	vim.lsp.handlers["textDocument/codeAction"] = require("lsputil.codeAction").code_action_handler
+	vim.lsp.handlers["textDocument/references"] = require("lsputil.locations").references_handler
+	vim.lsp.handlers["textDocument/definition"] = require("lsputil.locations").definition_handler
+	vim.lsp.handlers["textDocument/declaration"] = require("lsputil.locations").declaration_handler
+	vim.lsp.handlers["textDocument/typeDefinition"] = require("lsputil.locations").typeDefinition_handler
+	vim.lsp.handlers["textDocument/implementation"] = require("lsputil.locations").implementation_handler
+	vim.lsp.handlers["textDocument/documentSymbol"] = require("lsputil.symbols").document_handler
+	vim.lsp.handlers["workspace/sybol"] = require("lsputil.symbols").workspace_handler
 
 	-- Map to easier commands
 	cmd("command! LspDef lua vim.lsp.buf.definition()")
@@ -33,23 +28,6 @@ local function on_attach(client, bufnr)
 	map("n", "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
 	map("n", "lp", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>")
 	map("n", "ln", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>")
-
-	client.resolved_capabilities.document_formatting = false
 end
 
--- Loop through the servers listed above.
-for _, server_name in pairs(servers) do
-	local server_available, server = lsp_installer.get_server(server_name)
-	if server_available then
-		server:on_ready(function()
-			local opts = {
-				on_attach = on_attach,
-			}
-
-			server:setup(opts)
-		end)
-		if not server:is_installed() then
-			server:install()
-		end
-	end
-end
+return M

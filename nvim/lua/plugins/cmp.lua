@@ -1,13 +1,17 @@
 vim.opt.completeopt = "menuone,noselect"
 local cmp = require("cmp")
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+
+require("luasnip.loaders.from_vscode").lazy_load()
 
 require("cmp").setup({
+	completion = {
+		completeopt = "menu,menuone,noinsert",
+	},
 	snippet = {
 		expand = function(args)
 			require("luasnip").lsp_expand(args.body)
 		end,
-	} or {
-		expand = function(args) end,
 	},
 	formatting = {
 		format = function(entry, vim_item)
@@ -61,3 +65,5 @@ require("cmp").setup({
 		{ name = "path" },
 	},
 })
+
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))

@@ -11,3 +11,6 @@ require("colorschemes")
 
 -- Plugins
 require("plugins/packer")
+
+-- LSP
+require("lsp")

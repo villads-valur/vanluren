@@ -66,8 +66,9 @@ return packer.startup(function()
 
 	use({
 		"williamboman/nvim-lsp-installer",
-		config = config("lsp-installer"),
 	})
+
+	use({ "RishabhRD/nvim-lsputils", requires = { "RishabhRD/popfix" } })
 
 	use({
 		"nvim-treesitter/nvim-treesitter",
@@ -78,7 +79,6 @@ return packer.startup(function()
 	use({
 		"jose-elias-alvarez/null-ls.nvim",
 		after = "nvim-lspconfig",
-		config = config("null-ls"),
 	})
 
 	-- autopairs

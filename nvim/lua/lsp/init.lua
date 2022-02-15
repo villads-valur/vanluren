@@ -56,6 +56,7 @@ null_ls.setup({
 				"html",
 				"markdown",
 				"css",
+				"less",
 				"typescript",
 				"typescriptreact",
 				"javascript",
@@ -74,6 +75,9 @@ null_ls.setup({
 
 		-- Prisma
 		b.formatting.prismaFmt,
+
+		-- eslint
+		b.diagnostics.eslint,
 	},
 	on_attach = on_attach,
 })

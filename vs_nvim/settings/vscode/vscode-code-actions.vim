@@ -39,8 +39,8 @@ nnoremap <expr> <Plug>VSCodeCommentary <SID>vscodeCommentary()
 nnoremap <expr> <Plug>VSCodeCommentaryLine <SID>vscodeCommentary() . '_'
 
 " Bind C-/ to vscode commentary since calling from vscode produces double comments due to multiple cursors
-xnoremap <expr> <C-/> <SID>vscodeCommentary()
-nnoremap <expr> <C-/> <SID>vscodeCommentary() . '_'
+xnoremap <expr> gc <SID>vscodeCommentary()
+nnoremap <expr> gc <SID>vscodeCommentary() . '_'
 
 function! s:vscodeGoToDefinition(str)
     if exists('b:vscode_controlled') && b:vscode_controlled

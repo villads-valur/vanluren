@@ -2,9 +2,8 @@ vim.opt.completeopt = "menuone,noselect"
 local cmp = require("cmp")
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
-require("luasnip.loaders.from_vscode").lazy_load()
 
-require("cmp").setup({
+cmp.setup({
 	completion = {
 		completeopt = "menu,menuone,noinsert",
 	},

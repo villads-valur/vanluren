@@ -56,7 +56,7 @@ return require("packer").startup(function()
 	use("tpope/vim-surround")
 	use("tpope/vim-commentary")
 
-	-- telescope
+	-- Telescope
 	use({
 		"nvim-telescope/telescope.nvim",
 		requires = {
@@ -67,6 +67,9 @@ return require("packer").startup(function()
 
 	-- Bufferline
 	use({ "akinsho/bufferline.nvim", after = "nvim-web-devicons", config = config("bufferline") })
+
+	-- Buffkill
+	use("qpkorr/vim-bufkill")
 
 	-- Better escape
 	use({ "max397574/better-escape.nvim", event = "InsertCharPre" })

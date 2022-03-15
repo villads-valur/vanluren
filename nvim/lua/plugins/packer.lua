@@ -39,7 +39,7 @@ return packer.startup(function()
 		config = config("ayu"),
 	})
 
-	use("LunarVim/onedarker.nvim")
+	use("navarasu/onedark.nvim")
 
 	--- statusline
 	use({
@@ -59,6 +59,13 @@ return packer.startup(function()
 	use({
 		"nvim-telescope/telescope.nvim",
 		config = config("telescope"),
+	})
+
+	use({
+		"weilbith/nvim-code-action-menu",
+		config = config("code-action-menu"),
+		cmd = "CodeActionMenu",
+		after = "telescope",
 	})
 
 	-- LSP stuff
@@ -89,6 +96,20 @@ return packer.startup(function()
 
 	-- gitsigns
 	use({ "lewis6991/gitsigns.nvim" })
+
+	-- JSX
+	use("maxmellon/vim-jsx-pretty")
+
+	-- Annotations
+	use({
+		"danymat/neogen",
+		config = function()
+			require("neogen").setup({})
+		end,
+		requires = "nvim-treesitter/nvim-treesitter",
+		-- Uncomment next line if you want to follow only stable versions
+		-- tag = "*"
+	})
 
 	-- snippets
 	use({

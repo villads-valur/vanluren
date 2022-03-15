@@ -7,6 +7,15 @@ local b = null_ls.builtins
 
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+local function organize_imports()
+	local params = {
+		command = "_typescript.organizeImports",
+		arguments = { vim.api.nvim_buf_get_name(0) },
+		title = "",
+	}
+	vim.lsp.buf.execute_command(params)
+end
+
 local on_attach = function(client, bufnr)
 	appearance.setup()
 
@@ -21,29 +30,21 @@ end
 lsp_installer.on_server_ready(function(server)
 	local opts = {
 		on_attach = on_attach,
-
 		capabilities = capabilities,
 	}
 
 	if server.name == "tsserver" then
 		opts.root_dir = lspconfig.util.root_pattern("tsconfig.json", ".git")
-		opts.on_attach = function(client, bufnr)
-			client.resolved_capabilities.document_formatting = false
-			on_attach(client, bufnr)
-		end
-	end
-
-	if server.name == "eslint" then
-		opts.root_dir = lspconfig.util.root_pattern(".eslintrc", ".eslintrc.json", ".git")
-
-		opts.on_attach = function(client, bufnr)
-			client.resolved_capabilities.document_formatting = false
-			on_attach(client, bufnr)
-		end
-
-		opts.settings = {
-			format = { enable = true },
+		opts.commands = {
+			OrganizeImports = {
+				organize_imports,
+				description = "Organize Imports",
+			},
 		}
+		opts.on_attach = function(client, bufnr)
+			client.resolved_capabilities.document_formatting = false
+			on_attach(client, bufnr)
+		end
 	end
 
 	server:setup(opts)
@@ -51,19 +52,7 @@ end)
 
 null_ls.setup({
 	sources = {
-		b.formatting.prettierd.with({
-			filetypes = {
-				"html",
-				"markdown",
-				"css",
-				"less",
-				"typescript",
-				"typescriptreact",
-				"javascript",
-				"javascriptreact",
-				"json",
-			},
-		}),
+		b.formatting.prettierd,
 
 		-- Lua
 		b.formatting.stylua,
@@ -77,7 +66,7 @@ null_ls.setup({
 		b.formatting.prismaFmt,
 
 		-- eslint
-		b.diagnostics.eslint,
+		b.diagnostics.eslint_d,
 	},
 	on_attach = on_attach,
 })

@@ -4,13 +4,15 @@ if present then
 	impatient.enable_profile()
 end
 
--- Settings
-require("settings")
-require("mappings")
-require("colorschemes")
+if not vim.g.vscode then
+	-- Settings
+	require("settings")
+	require("mappings")
+	require("colorschemes")
 
--- Plugins
-require("plugins/packer")
+	-- Plugins
+	require("plugins/packer")
 
--- LSP
-require("lsp")
+	-- LSP
+	require("lsp")
+end

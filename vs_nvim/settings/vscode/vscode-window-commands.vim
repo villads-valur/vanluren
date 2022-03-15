@@ -62,7 +62,7 @@ xnoremap <leader>x <Cmd>call VSCodeNotify('workbench.action.closeActiveEditor')<
 nnoremap <leader><C-c> <Cmd>call VSCodeNotify('workbench.action.closeActiveEditor')<CR>
 xnoremap <leader><C-c> <Cmd>call VSCodeNotify('workbench.action.closeActiveEditor')<CR>
 
-" window/splits management 
+" window/splits management
 nnoremap <leader>s <Cmd>call <SID>split('h')<CR>
 xnoremap <leader>s <Cmd>call <SID>split('h')<CR>
 nnoremap <leader><C-s> <Cmd>call <SID>split('h')<CR>
@@ -147,20 +147,8 @@ xnoremap <leader><S-Left> <Cmd>call VSCodeNotify('workbench.action.moveActiveEdi
 nnoremap <leader><S-Right> <Cmd>call VSCodeNotify('workbench.action.moveActiveEditorGroupRight')<CR>
 xnoremap <leader><S-Right> <Cmd>call VSCodeNotify('workbench.action.moveActiveEditorGroupRight')<CR>
 
-" nnoremap <leader>w <Cmd>call VSCodeNotify('workbench.action.focusNextGroup')<CR>
-" xnoremap <leader>w <Cmd>call VSCodeNotify('workbench.action.focusNextGroup')<CR>
 nnoremap <leader><C-w> <Cmd>call VSCodeNotify('workbench.action.focusNextGroup')<CR>
 xnoremap <leader><C-w> <Cmd>call VSCodeNotify('workbench.action.focusNextGroup')<CR>
-nnoremap <leader>W <Cmd>call VSCodeNotify('workbench.action.focusPreviousGroup')<CR>
-xnoremap <leader>W <Cmd>call VSCodeNotify('workbench.action.focusPreviousGroup')<CR>
-nnoremap <leader>p <Cmd>call VSCodeNotify('workbench.action.focusPreviousGroup')<CR>
-xnoremap <leader>p <Cmd>call VSCodeNotify('workbench.action.focusPreviousGroup')<CR>
-
-" nnoremap <leader>t <Cmd>call VSCodeNotify('workbench.action.focusFirstEditorGroup')<CR>
-" xnoremap <leader>t <Cmd>call VSCodeNotify('workbench.action.focusFirstEditorGroup')<CR>
-" nnoremap <leader>b <Cmd>call VSCodeNotify('workbench.action.focusLastEditorGroup')<CR>
-" xnoremap <leader>b <Cmd>call VSCodeNotify('workbench.action.focusLastEditorGroup')<CR>
-
 
 
 nnoremap <leader>g <Cmd>call VSCodeNotify('workbench.view.scm')<CR>
@@ -168,5 +156,9 @@ xnoremap <leader>g <Cmd>call VSCodeNotify('workbench.view.scm')<CR>
 
 nnoremap <leader>fw <Cmd>call VSCodeNotify('workbench.action.findInFiles')<CR>
 xnoremap <leader>fw <Cmd>call VSCodeNotify('workbench.action.findInFiles')<CR>
+
+nnoremap <leader>t <Cmd>call VSCodeNotify('workbench.action.quickOpenNavigateNextInFilePicker')<CR>
+xnoremap <leader>t <Cmd>call VSCodeNotify(''workbench.action.quickOpenNavigateNextInFilePicker')<CR>
+
 
 

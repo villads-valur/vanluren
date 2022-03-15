@@ -39,9 +39,7 @@ xnoremap gt <Cmd>call <SID>switchEditor(v:count, 'next')<CR>
 nnoremap gT <Cmd>call <SID>switchEditor(v:count, 'prev')<CR>
 xnoremap gT <Cmd>call <SID>switchEditor(v:count, 'prev')<CR>
 
-nnoremap <Tab> :Tabnext<CR>
-xnoremap <Tab> :Tabnext<CR>
-
-nnoremap <S-Tab> :Tabprevious<CR> 
-xnoremap <S-Tab> :Tabprevious<CR> 
-
+nnoremap <Tab> <Cmd>call <SID>switchEditor(v:count, 'next')<CR>
+xnoremap <Tab> <Cmd>call <SID>switchEditor(v:count, 'next')<CR>
+nnoremap <S-Tab> <Cmd>call <SID>switchEditor(v:count, 'prev')<CR>
+xnoremap <S-Tab> <Cmd>call <SID>switchEditor(v:count, 'prev')<CR>

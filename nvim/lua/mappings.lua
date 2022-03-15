@@ -22,4 +22,6 @@ map("n", "<Leader>h", ":hsplit<CR>", opts)
 map("n", "<Esc><Esc>", ":noh<CR>", opts)
 
 -- open terminal
-map("n", "<C-t>", ":Term<CR>", { noremap = true })
+map("n", "<Leader>o", ":Term<CR>", { noremap = true })
+
+map("n", "<Leader>ca", ":CodeActionMenu<CR>",opts)

@@ -4,7 +4,6 @@ if present then
 	impatient.enable_profile()
 end
 
-if not vim.g.vscode then
 	-- Settings
 	require("settings")
 	require("mappings")
@@ -15,4 +14,3 @@ if not vim.g.vscode then
 
 	-- LSP
 	require("lsp")
-end

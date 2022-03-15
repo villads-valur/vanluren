@@ -1,4 +1,15 @@
-return require('packer').startup(function(use)
+-- Plugin manager configuration file
+local cmd = vim.cmd
+cmd([[packadd packer.nvim]])
+
+local packer = require("packer")
+local use = packer.use
+
+local config = function(name)
+	return string.format("require('plugins.configs.%s')", name)
+end
+
+return require('packer').startup(function()
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
@@ -12,7 +23,7 @@ return require('packer').startup(function(use)
       requires = {
         'kyazdani42/nvim-web-devicons', -- optional, for file icon
       },
-      config = function() require'nvim-tree'.setup {} end
+      config = config("nvim-tree")
   }
 
   -- LSP stuff
@@ -34,6 +45,7 @@ return require('packer').startup(function(use)
       -- Snippets
       {'L3MON4D3/LuaSnip'},
       {'rafamadriz/friendly-snippets'},
-    }
+    },
+    config = config("lsp-zero")
   }
 end)

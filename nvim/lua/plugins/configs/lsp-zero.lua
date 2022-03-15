@@ -13,6 +13,15 @@ lsp.ensure_installed({
 	"tailwindcss",
 })
 
+lsp.configure("tsserver", {
+	flags = {
+		debounce_text_changes = 200,
+	},
+	on_attach = function(client, bufnr)
+		client.resolved_capabilities.document_formatting = false
+	end,
+})
+
 lsp.setup()
 
 -- Map to easier commands

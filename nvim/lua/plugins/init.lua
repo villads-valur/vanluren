@@ -24,11 +24,11 @@ return require("packer").startup(function()
 		config = config("alpha"),
 	})
 
-	--- statusline
+	-- Statusline
 	use({
-		"feline-nvim/feline.nvim",
-		after = "nvim-web-devicons",
-		config = config("feline"),
+		"nvim-lualine/lualine.nvim",
+		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+		config = config("lualine"),
 	})
 
 	-- Modes
@@ -54,6 +54,7 @@ return require("packer").startup(function()
 
 	-- Tpope essentials
 	use("tpope/vim-surround")
+	use("tpope/vim-commentary")
 
 	-- telescope
 	use({

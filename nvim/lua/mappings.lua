@@ -21,7 +21,3 @@ map("n", "<Leader>h", ":hsplit<CR>", opts)
 -- Search
 map("n", "<Esc><Esc>", ":noh<CR>", opts)
 
--- open terminal
-map("n", "<Leader>o", ":Term<CR>", { noremap = true })
-
-map("n", "<Leader>ca", ":CodeActionMenu<CR>",opts)

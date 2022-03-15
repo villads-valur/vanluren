@@ -1,10 +1,18 @@
-local lsp = require('lsp-zero')
+local lsp = require("lsp-zero")
 local map = require("utils").map
 local cmd = vim.cmd
 
-
-lsp.preset('recommended')
+lsp.preset("recommended")
 lsp.nvim_workspace()
+
+lsp.ensure_installed({
+	"html",
+	"sumneko_lua",
+	"tsserver",
+	"dockerls",
+	"tailwindcss",
+})
+
 lsp.setup()
 
 -- Map to easier commands

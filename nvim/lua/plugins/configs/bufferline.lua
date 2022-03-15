@@ -1,7 +1,16 @@
 local map = require("utils").map
 
 require("bufferline").setup({
-	offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
+	offsets = {
+		{
+			filetype = "NvimTree",
+			text = function()
+				return vim.fn.getcwd()
+			end,
+			highlight = "Directory",
+			text_align = "left",
+		},
+	},
 	buffer_close_icon = "",
 	modified_icon = "",
 	close_icon = "",

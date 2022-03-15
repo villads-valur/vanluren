@@ -4,7 +4,7 @@ require("onedark").setup({
 require("onedark").load()
 
 vim.cmd([[
-	if strftime("%H") < 17
+	if strftime("%H") > 9 && strftime("%H") < 17
 	  set background=light
 	  colorscheme ayu-light
 	else

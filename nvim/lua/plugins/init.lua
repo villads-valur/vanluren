@@ -17,6 +17,20 @@ return require("packer").startup(function()
 	use({ "navarasu/onedark.nvim" })
 	use({ "Shatur/neovim-ayu" })
 
+	-- Dashboard
+	use({
+		"goolord/alpha-nvim",
+		after = "nvim-web-devicons",
+		config = config("alpha"),
+	})
+
+	--- statusline
+	use({
+		"feline-nvim/feline.nvim",
+		after = "nvim-web-devicons",
+		config = config("feline"),
+	})
+
 	-- Modes
 	use({
 		"mvllow/modes.nvim",

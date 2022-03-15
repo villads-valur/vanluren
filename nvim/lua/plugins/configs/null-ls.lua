@@ -7,6 +7,17 @@ for _, formatter in ipairs(formatter_install.get_installed_formatters()) do
 	table.insert(sources, null_ls.builtins.formatting[formatter.name].with(config))
 end
 
+
 null_ls.setup({
-	sources = sources,
+ 	sources = sources,
+    on_attach = function(client)
+        if client.resolved_capabilities.document_formatting then
+            vim.cmd([[
+            augroup LspFormatting
+                autocmd! * <buffer>
+                autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+            augroup END
+            ]])
+        end
+    end,
 })

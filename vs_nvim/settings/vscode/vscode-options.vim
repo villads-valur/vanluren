@@ -60,7 +60,7 @@ set inccommand=
 " lazyredraw breaks the movement
 set nolazyredraw
 
-set clipboard+=unnamedplus
+set clipboard=unnamedplus
 
 function s:forceLocalOptions()
     setlocal nowrap

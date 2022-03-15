@@ -1,92 +1,101 @@
--- General Nvim Settings
-local opt = vim.opt
-local g = vim.g
-local options = {
-	clipboard = "unnamedplus",
-	cmdheight = 1,
-	ruler = false,
-	hidden = true,
-	ignorecase = true,
-	smartcase = true,
-	mapleader = " ",
-	mouse = "a",
-	number = true,
-	numberwidth = 2,
-	relativenumber = false,
-	expandtab = true,
-	shiftwidth = 2,
-	smartindent = true,
-	tabstop = 4,
-	timeoutlen = 400,
-	updatetime = 250,
-	undofile = true,
-	fillchars = { eob = " " },
-}
+-----------------------------------------------------------
+-- Neovim settings
+-----------------------------------------------------------
+local cmd = vim.cmd -- execute Vim commands
+local exec = vim.api.nvim_exec -- execute Vimscript
+local fn = vim.fn -- call Vim functions
+local g = vim.g -- global variables
+local opt = vim.opt -- global/buffer/windows-scoped options
 
-opt.title = true
-opt.clipboard = options.clipboard
-opt.cmdheight = options.cmdheight
-opt.cul = true -- cursor line
+-- General
+opt.mouse = "a" -- enable mouse support
+opt.clipboard = "unnamedplus" -- copy/paste to system clipboard
+opt.swapfile = false -- don't use swapfile
 
--- Indentline
-opt.expandtab = options.expandtab
-opt.shiftwidth = options.shiftwidth
-opt.smartindent = options.smartindent
+opt.number = true -- show line number
+opt.showmatch = true -- highlight matching parenthesis
+opt.foldmethod = "marker" -- enable folding (default 'foldmarker')
+opt.splitright = true -- vertical split to the right
+opt.splitbelow = true -- orizontal split to the bottom
+opt.ignorecase = true -- ignore case letters when search
+opt.smartcase = true -- ignore lowercase for the whole pattern
+opt.linebreak = true -- wrap on word boundary
+opt.encoding = "utf-8" -- Set encoding to  UTF-8
+opt.cursorline = true -- Highlight the current line
 
--- disable tilde on end of buffer: https://github.com/neovim/neovim/pull/8546#issuecomment-643643758
-opt.fillchars = options.fillchars
+-- remove whitespace on save
+cmd([[au BufWritePre * :%s/\s\+$//e]])
 
-opt.hidden = options.hidden
-opt.ignorecase = options.ignorecase
-opt.smartcase = options.smartcase
-opt.mouse = options.mouse
+-- highlight on yank
+exec(
+	[[
+  augroup YankHighlight
+    autocmd!
+    autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
+  augroup end
+]],
+	false
+)
 
--- Numbers
-opt.number = options.number
-opt.numberwidth = options.numberwidth
-opt.relativenumber = options.relativenumber
-opt.ruler = options.ruler
+-- Memory, CPU
+opt.hidden = true -- enable background buffers
+opt.history = 100 -- remember n lines in history
+opt.lazyredraw = true -- faster scrolling
+opt.synmaxcol = 240 -- max column for syntax highlight
 
--- disable nvim intro
-opt.shortmess:append("sI")
+-- Colorscheme
+opt.termguicolors = true -- enable 24-bit RGB colors
 
-opt.signcolumn = "yes"
-opt.splitbelow = true
-opt.splitright = true
-opt.tabstop = options.tabstop
-opt.termguicolors = true
-opt.timeoutlen = options.timeoutlen
-opt.undofile = options.undofile
+-- Tabs, indent
+opt.expandtab = true -- use spaces instead of tabs
+opt.shiftwidth = 2 -- shift 4 spaces when tab
+opt.tabstop = 2 -- 1 tab == 4 spaces
+opt.smartindent = true -- autoindent new lines
 
--- interval for writing swap file to disk, also used by gitsigns
-opt.updatetime = options.updatetime
+-- don't auto commenting new lines
+cmd([[au BufEnter * set fo-=c fo-=r fo-=o]])
 
--- go to previous/next line with h,l,left arrow and right arrow
--- when cursor reaches end/beginning of line
-opt.whichwrap:append("<>[]hl")
+-- 2 spaces for selected filetypes
+cmd([[
+  autocmd FileType xml,html,xhtml,css,scss,less,javascript,javascriptreact,typescript,typescriptreact,lua,yaml setlocal shiftwidth=2 tabstop=2
+]])
 
--- disable some builtin vim plugins
+-- Autocompletion
+-- insert mode completion options
+opt.completeopt = "menuone,noselect"
+
+-- Terminal visual tweaks
+--- enter insert mode when switching to terminal
+cmd([[
+    autocmd TermOpen * setlocal listchars= nonumber norelativenumber nocursorline
+]])
+
+-- Startup
+-- disable builtins plugins
 local disabled_built_ins = {
-	"2html_plugin",
-	"getscript",
-	"getscriptPlugin",
-	"gzip",
-	"logipat",
 	"netrw",
 	"netrwPlugin",
 	"netrwSettings",
 	"netrwFileHandlers",
-	"matchit",
-	"tar",
-	"tarPlugin",
-	"rrhelper",
-	"spellfile_plugin",
-	"vimball",
-	"vimballPlugin",
+	"gzip",
 	"zip",
 	"zipPlugin",
+	"tar",
+	"tarPlugin",
+	"getscript",
+	"getscriptPlugin",
+	"vimball",
+	"vimballPlugin",
+	"2html_plugin",
+	"logipat",
+	"rrhelper",
+	"spellfile_plugin",
+	"matchit",
 }
 
 for _, plugin in pairs(disabled_built_ins) do
 	g["loaded_" .. plugin] = 1
 end
+
+-- disable nvim intro
+opt.shortmess:append("sI")

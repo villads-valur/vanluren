@@ -1,8 +1,12 @@
-local cmp = require("cmp")
-
 vim.opt.completeopt = "menuone,noselect"
+local cmp = require("cmp")
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+
 
 cmp.setup({
+	completion = {
+		completeopt = "menu,menuone,noinsert",
+	},
 	snippet = {
 		expand = function(args)
 			require("luasnip").lsp_expand(args.body)
@@ -10,7 +14,7 @@ cmp.setup({
 	},
 	formatting = {
 		format = function(entry, vim_item)
-			local icons = require("plugins.configs.lspkind-icons")
+			local icons = require("icons")
 			vim_item.kind = string.format("%s %s", icons[vim_item.kind], vim_item.kind)
 
 			vim_item.menu = ({
@@ -60,3 +64,5 @@ cmp.setup({
 		{ name = "path" },
 	},
 })
+
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))

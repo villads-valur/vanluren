@@ -1,37 +1,27 @@
-local map = require("utils").map
-local g = vim.g
+-- Keymaps configuration file: keymaps of neovim
+-- and plugins.
 
--- map the leader key
--- Leader is Space as always
-vim.g.mapleader = " " -- 'vim.g' sets global variables
+local map = vim.api.nvim_set_keymap
+local opts = { noremap = true, silent = true }
+
+-- Basic
+-- use space as a the leader key
+map("n", "<Space", "<Nop>", opts)
+vim.g.mapleader = " "
 
 -- Writing
-map("n", "<Leader>w", ":w<CR>")
-map("n", "<Leader>q", ":q<CR>")
-map("i", "jj", "<ESC>")
-map({ "n", "v" }, "x", '"_x') -- don't yank text on cut ( x )
+map("n", "<Leader>w", ":w<CR>", opts)
+map("i", "<Leader>w", "<C-c>:w<CR>", opts)
+
+-- Window
+map("n", "<Leader>q", ":q<CR>", opts)
+map("n", "<Leader>v", ":vsplit<CR>", opts)
+map("n", "<Leader>h", ":hsplit<CR>", opts)
 
 -- Search
-map("n", "<ESC><ESC>", ":nohlsearch<CR>")
-map("n", "<Leader>n", ":NvimTreeToggle<CR>")
+map("n", "<Esc><Esc>", ":noh<CR>", opts)
 
--- Buffers
-map("n", "<Tab>", ":bnext<CR>")
-map("n", "<S-Tab>", ":bprev<CR>")
-map("n", "<Leader>x", ":bd<CR>")
+-- open terminal
+map("n", "<Leader>o", ":Term<CR>", { noremap = true })
 
--- Splits
-map("n", "<Leader>v", ":vnew<CR>")
-map("n", "<Leader><Down>", "<C-W><C-J>")
-map("n", "<Leader><Up>", "<C-W><C-K>")
-map("n", "<Leader><Right>", ":vnew<CR>")
-map("n", "<Leader><Left>", "<C-W><C-H>")
-
--- Nvim Tree
-map("n", "<Leader>n", ":NvimTreeToggle<CR>")
-
--- Keybindings
-map("n", "<Leader>t", ":Telescope find_files<CR>")
-map("n", "<Leader>b", ":Telescope live_grep<CR>")
-map("n", "<Leader>sf", ":Telescope live_grep<CR>")
-map("n", "<Leader>ca", "lua require'telescope.builtin.lsp_code_action'.planets{}")
+map("n", "<Leader>ca", ":CodeActionMenu<CR>",opts)

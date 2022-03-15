@@ -64,13 +64,27 @@ return require("packer").startup(function()
 		config = config("telescope"),
 	})
 
-	-- bufferline
+	-- Bufferline
 	use({ "akinsho/bufferline.nvim", after = "nvim-web-devicons", config = config("bufferline") })
 
-	-- better escape
-	use("max397574/better-escape.nvim")
+	-- Better escape
+	use({ "max397574/better-escape.nvim", event = "InsertCharPre" })
 
-	use({ "lukas-reineke/indent-blankline.nvim", config = config("indentline") })
+	-- Indentline
+	use({ "lukas-reineke/indent-blankline.nvim", config = config("indentline"), event = "BufRead" })
+
+	-- Gitsigns
+	use({ "lewis6991/gitsigns.nvim", requires = {
+		"nvim-lua/plenary.nvim",
+	}, config = config("gitsigns") })
+
+	-- TreeSitter
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		event = { "BufRead", "BufNewFile" },
+		config = config("treesitter"),
+		run = ":TSUpdate",
+	})
 
 	-- Formatting
 	use({
@@ -79,6 +93,7 @@ return require("packer").startup(function()
 		after = "nvim-lspconfig", -- To prevent null-ls from failing to read buffer
 		config = config("null-ls"),
 	})
+
 	-- LSP stuff
 	use({
 		"VonHeikemen/lsp-zero.nvim",
@@ -97,7 +112,7 @@ return require("packer").startup(function()
 
 			-- Snippets
 			{ "L3MON4D3/LuaSnip" },
-			{ "rafamadriz/friendly-snippets" },
+			{ "rafamadriz/friendly-snippets", event = "InsertEnter" },
 		},
 		config = config("lsp-zero"),
 	})

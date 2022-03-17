@@ -18,10 +18,8 @@ map("n", "<Leader>q", ":q<CR>", opts)
 map("n", "<Leader>v", ":vsplit<CR>", opts)
 map("n", "<Leader>h", ":hsplit<CR>", opts)
 
+-- Buffers
+map("n", "<Leader>x", ":BD<CR>", opts)
+
 -- Search
 map("n", "<Esc><Esc>", ":noh<CR>", opts)
-
--- open terminal
-map("n", "<Leader>o", ":Term<CR>", { noremap = true })
-
-map("n", "<Leader>ca", ":CodeActionMenu<CR>",opts)

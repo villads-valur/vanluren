@@ -1,14 +1,21 @@
-require("onedark").setup({
-	style = "darker",
-})
-require("onedark").load()
+local currentTime = os.date("*t")
 
-vim.cmd([[
-	if strftime("%H") < 17
-	  set background=light
-	  colorscheme ayu-light
-	else
-	  set background=dark
-	  colorscheme onedark
-	endif
-]])
+if currentTime.hour >= 16 then
+	require("onedark").setup({
+		style = "darker",
+	})
+
+	vim.opt.background = "dark"
+
+	require("onedark").load()
+
+	vim.cmd("colorscheme onedark")
+else
+	vim.opt.background = "light"
+
+	require("ayu").setup({
+		mirage = false,
+		overrides = {},
+	})
+	vim.cmd("colorscheme ayu-light")
+end

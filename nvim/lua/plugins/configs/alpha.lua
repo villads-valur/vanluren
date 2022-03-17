@@ -27,7 +27,6 @@ dashboard.section.buttons.val = {
 	dashboard.button("f", " Find file", ":Telescope find_files<CR>"),
 	dashboard.button("r", " Recent Files", ":Telescope oldfiles<CR>"),
 	dashboard.button("s", " Settings", ":e $MYVIMRC<CR>"),
-	dashboard.button("p", " Packer Settings", ":e $MYVIMRC/lua/plugins/packer<CR>"),
 	dashboard.button("u", " Update plugins", ":PackerUpdate<CR>"),
 	dashboard.button("q", " Quit", ":qa<CR>"),
 }

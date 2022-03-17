@@ -61,7 +61,3 @@ map("n", "<Leader>t", ":Telescope find_files<CR>")
 map("n", "<Leader>ff", ":Telescope find_files<CR>")
 map("n", "<Leader>fw", ":Telescope live_grep<CR>")
 map("n", "<Leader>cc", ":Telescope<CR>")
-
--- Language stuf
-map("n", "gd", ":Telescope lsp_definitions<CR>")
-map("n", "gr", ":Telescope lsp_refrences<CR>")

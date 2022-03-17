@@ -4,13 +4,9 @@ if present then
 	impatient.enable_profile()
 end
 
-	-- Settings
-	require("settings")
-	require("mappings")
-	require("colorschemes")
+-- Settings
+require("settings")
+require("mappings")
+require("colorschemes")
 
-	-- Plugins
-	require("plugins/packer")
-
-	-- LSP
-	require("lsp")
+require("plugins")

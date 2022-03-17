@@ -55,6 +55,7 @@ return require("packer").startup(function()
 	-- Tpope essentials
 	use("tpope/vim-surround")
 	use("tpope/vim-commentary")
+	use("tpope/vim-fugitive")
 
 	-- Telescope
 	use({
@@ -73,6 +74,8 @@ return require("packer").startup(function()
 
 	-- Better escape
 	use({ "max397574/better-escape.nvim", event = "InsertCharPre" })
+	-- Autopairs
+	use({ "windwp/nvim-autopairs", config = config("autopairs"), event = "InsertEnter" })
 
 	-- Indentline
 	use({ "lukas-reineke/indent-blankline.nvim", config = config("indentline"), event = "BufRead" })
@@ -89,6 +92,9 @@ return require("packer").startup(function()
 		config = config("treesitter"),
 		run = ":TSUpdate",
 	})
+
+	--Documentation generator
+	use({ "kkoomen/vim-doge", config = config("doge") })
 
 	-- Formatting
 	use({
@@ -116,7 +122,7 @@ return require("packer").startup(function()
 
 			-- Snippets
 			{ "L3MON4D3/LuaSnip" },
-			{ "rafamadriz/friendly-snippets", event = "InsertEnter" },
+			{ "rafamadriz/friendly-snippets" },
 		},
 		config = config("lsp-zero"),
 	})

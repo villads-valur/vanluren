@@ -94,7 +94,11 @@ return require("packer").startup(function()
 	})
 
 	--Documentation generator
-	use({ "kkoomen/vim-doge", config = config("doge") })
+	use({
+		"danymat/neogen",
+		config = config("neogen"),
+		requires = "nvim-treesitter/nvim-treesitter",
+	})
 
 	-- Formatting
 	use({

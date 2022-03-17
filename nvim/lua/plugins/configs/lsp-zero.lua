@@ -51,6 +51,8 @@ cmd("command! LspDiagNext lua vim.diagnostic.goto_next()")
 cmd("command! LspDiagLine lua vim.diagnostic.show_line_diagnostics()")
 cmd("command! LspSignatureHelp lua vim.buf.signature_help()")
 
+map("n", "<Leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
+map("v", "<Leader>ca", "<cmd>lua vim.lsp.buf.range_code_action()<CR>")
 map("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>")
 map("n", "<Leader>rn", "<cmd>lua vim.buf.rename()<CR>")
 map("n", "lp", "<cmd>lua vim.diagnostic.goto_prev()<CR>")

@@ -85,6 +85,9 @@ return require("packer").startup(function()
 		"nvim-lua/plenary.nvim",
 	}, config = config("gitsigns") })
 
+	-- Copilot
+	use("github/copilot.vim")
+
 	-- TreeSitter
 	use({
 		"nvim-treesitter/nvim-treesitter",

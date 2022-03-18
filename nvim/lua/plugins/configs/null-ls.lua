@@ -7,7 +7,6 @@ null_ls.setup({
 	sources = {
 		builtins.formatting.prettier_d_slim,
 		builtins.formatting.prismaFmt,
-		builtins.formatting.style_lua,
 	},
 	on_attach = function(client)
 		if client.resolved_capabilities.document_formatting then

@@ -86,7 +86,7 @@ return require("packer").startup(function()
 	}, config = config("gitsigns") })
 
 	-- Copilot
-	use("github/copilot.vim")
+	use({"github/copilot.vim", config=config("copilot")})
 
 	-- TreeSitter
 	use({

@@ -24,6 +24,7 @@ opt.linebreak = true -- wrap on word boundary
 opt.encoding = "utf-8" -- Set encoding to  UTF-8
 opt.cursorline = true -- Highlight the current line
 opt.signcolumn = "yes" --  Always show the sign colum
+opt.laststatus = 3 -- joined status bar
 
 -- remove whitespace on save
 cmd([[au BufWritePre * :%s/\s\+$//e]])

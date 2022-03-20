@@ -61,12 +61,15 @@ return require("packer").startup(function()
 	})
 
 	-- Smooth scrolling
-	use("karb94/neoscroll.nvim")
+	use({ "karb94/neoscroll.nvim", config = config("neoscroll") })
 
 	-- Tpope essentials
 	use("tpope/vim-surround")
 	use("tpope/vim-commentary")
 	use("tpope/vim-fugitive")
+
+	-- Lightspeed
+	use({ "ggandor/lightspeed.nvim", config = config("lightspeed") })
 
 	-- Telescope
 	use({

@@ -8,7 +8,6 @@ if currentTime.hour >= 8 and currentTime.hour <= 16 then
 		overrides = {},
 	})
 	vim.cmd("colorscheme ayu-light")
-
 else
 	require("onedark").setup({
 		style = "darker",

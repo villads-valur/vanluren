@@ -52,16 +52,16 @@ return require("packer").startup(function()
 	-- Monitor startup time
 	use("lewis6991/impatient.nvim")
 
-  -- Boost startup time
-  use({
-    "nathom/filetype.nvim",
-    config = function()
-      vim.g.did_load_filetypes = 1
-    end
-  })
+	-- Boost startup time
+	use({
+		"nathom/filetype.nvim",
+		config = function()
+			vim.g.did_load_filetypes = 1
+		end,
+	})
 
-  -- Smooth scrolling
-  use ( 'karb94/neoscroll.nvim' )
+	-- Smooth scrolling
+	use("karb94/neoscroll.nvim")
 
 	-- Tpope essentials
 	use("tpope/vim-surround")
@@ -77,14 +77,14 @@ return require("packer").startup(function()
 		config = config("telescope"),
 	})
 
-  use({
-    "nvim-telescope/telescope-fzf-native.nvim",
-    after = "telescope.nvim",
-    run = "make",
-    config = function()
-      require("telescope").load_extension "fzf"
-    end,
-  })
+	use({
+		"nvim-telescope/telescope-fzf-native.nvim",
+		after = "telescope.nvim",
+		run = "make",
+		config = function()
+			require("telescope").load_extension("fzf")
+		end,
+	})
 
 	-- Bufferline
 	use({ "akinsho/bufferline.nvim", after = "nvim-web-devicons", config = config("bufferline") })
@@ -101,11 +101,11 @@ return require("packer").startup(function()
 	-- Autopairs
 	use({ "windwp/nvim-autopairs", config = config("autopairs"), event = "InsertEnter" })
 
--- Auto close tags
-  use({
-    "windwp/nvim-ts-autotag",
-    after = "nvim-treesitter",
-  })
+	-- Auto close tags
+	use({
+		"windwp/nvim-ts-autotag",
+		after = "nvim-treesitter",
+	})
 
 	-- Indentline
 	use({ "lukas-reineke/indent-blankline.nvim", config = config("indentline"), event = "BufRead" })
@@ -116,7 +116,7 @@ return require("packer").startup(function()
 	}, config = config("gitsigns") })
 
 	-- Copilot
-	use({"github/copilot.vim", config=config("copilot")})
+	use({ "github/copilot.vim", config = config("copilot") })
 
 	-- TreeSitter
 	use({
@@ -164,4 +164,11 @@ return require("packer").startup(function()
 		config = config("lsp-zero"),
 	})
 
+	-- LSP saga
+	use({
+		"tami5/lspsaga.nvim",
+		event = "BufRead",
+		after = "nvim-lspconfig",
+		config = config("lsp-saga"),
+	})
 end)

@@ -22,6 +22,5 @@ map("n", "<Leader>h", ":hsplit<CR>", opts)
 map("n", "<Leader>x", ":Bdelete<CR>", opts)
 map("n", "<Leader>x", ":Bdelete<CR>", opts)
 
-
 -- Search
 map("n", "<Esc><Esc>", ":noh<CR>", opts)

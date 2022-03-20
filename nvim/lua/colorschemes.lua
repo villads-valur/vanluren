@@ -1,6 +1,15 @@
 local currentTime = os.date("*t")
 
-if currentTime.hour >= 16 then
+if currentTime.hour >= 8 and currentTime.hour <= 16 then
+	vim.opt.background = "light"
+
+	require("ayu").setup({
+		mirage = false,
+		overrides = {},
+	})
+	vim.cmd("colorscheme ayu-light")
+
+else
 	require("onedark").setup({
 		style = "darker",
 	})
@@ -10,12 +19,4 @@ if currentTime.hour >= 16 then
 	require("onedark").load()
 
 	vim.cmd("colorscheme onedark")
-else
-	vim.opt.background = "light"
-
-	require("ayu").setup({
-		mirage = false,
-		overrides = {},
-	})
-	vim.cmd("colorscheme ayu-light")
 end

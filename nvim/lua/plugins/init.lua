@@ -52,6 +52,17 @@ return require("packer").startup(function()
 	-- Monitor startup time
 	use("lewis6991/impatient.nvim")
 
+  -- Boost startup time
+  use({
+    "nathom/filetype.nvim",
+    config = function()
+      vim.g.did_load_filetypes = 1
+    end
+  })
+
+  -- Smooth scrolling
+  use ( 'karb94/neoscroll.nvim' )
+
 	-- Tpope essentials
 	use("tpope/vim-surround")
 	use("tpope/vim-commentary")
@@ -66,16 +77,35 @@ return require("packer").startup(function()
 		config = config("telescope"),
 	})
 
+  use({
+    "nvim-telescope/telescope-fzf-native.nvim",
+    after = "telescope.nvim",
+    run = "make",
+    config = function()
+      require("telescope").load_extension "fzf"
+    end,
+  })
+
 	-- Bufferline
 	use({ "akinsho/bufferline.nvim", after = "nvim-web-devicons", config = config("bufferline") })
 
 	-- Buffkill
 	use("qpkorr/vim-bufkill")
 
+	-- Buffkill
+	use("moll/vim-bbye")
+
 	-- Better escape
 	use({ "max397574/better-escape.nvim", event = "InsertCharPre" })
+
 	-- Autopairs
 	use({ "windwp/nvim-autopairs", config = config("autopairs"), event = "InsertEnter" })
+
+-- Auto close tags
+  use({
+    "windwp/nvim-ts-autotag",
+    after = "nvim-treesitter",
+  })
 
 	-- Indentline
 	use({ "lukas-reineke/indent-blankline.nvim", config = config("indentline"), event = "BufRead" })
@@ -133,4 +163,5 @@ return require("packer").startup(function()
 		},
 		config = config("lsp-zero"),
 	})
+
 end)

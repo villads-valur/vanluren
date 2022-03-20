@@ -5,7 +5,7 @@ local formatter_install = require("format-installer")
 null_ls.setup({
 	debug = false,
 	sources = {
-		builtins.formatting.prettier_d_slim,
+		builtins.formatting.prettierd,
 		builtins.formatting.prismaFmt,
 	},
 	on_attach = function(client)

@@ -11,7 +11,8 @@ local opt = vim.opt -- global/buffer/windows-scoped options
 opt.mouse = "a" -- enable mouse support
 opt.clipboard = "unnamedplus" -- copy/paste to system clipboard
 opt.swapfile = false -- don't use swapfile
-
+opt.updatetime = 300 -- Length of time to wait before triggering the plugin
+opt.timeoutlen = 300 -- Length of time to wait for a mapped sequence
 opt.number = true -- show line number
 opt.showmatch = true -- highlight matching parenthesis
 opt.foldmethod = "marker" -- enable folding (default 'foldmarker')
@@ -49,17 +50,17 @@ opt.termguicolors = true -- enable 24-bit RGB colors
 
 -- Tabs, indent
 opt.expandtab = true -- use spaces instead of tabs
-opt.shiftwidth = 2 -- shift 4 spaces when tab
-opt.tabstop = 2 -- 1 tab == 4 spaces
+opt.shiftwidth = 2 -- shift 2 spaces when tab
+opt.tabstop = 2 -- 1 tab == 2 spaces
 opt.smartindent = true -- autoindent new lines
 
 -- don't auto commenting new lines
 cmd([[au BufEnter * set fo-=c fo-=r fo-=o]])
 
 -- 2 spaces for selected filetypes
-cmd([[
-  autocmd FileType xml,html,xhtml,css,scss,less,javascript,javascriptreact,typescript,typescriptreact,lua,yaml setlocal shiftwidth=2 tabstop=2
-]])
+-- cmd([[
+--   autocmd FileType xml,html,xhtml,css,scss,less,javascript,javascriptreact,typescript,typescriptreact,lua,yaml setlocal shiftwidth=2 tabstop=2
+-- ]])
 
 -- Autocompletion
 -- insert mode completion options

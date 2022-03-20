@@ -19,7 +19,9 @@ map("n", "<Leader>v", ":vsplit<CR>", opts)
 map("n", "<Leader>h", ":hsplit<CR>", opts)
 
 -- Buffers
-map("n", "<Leader>x", ":BD<CR>", opts)
+map("n", "<Leader>x", ":Bdelete<CR>", opts)
+map("n", "<Leader>x", ":Bdelete<CR>", opts)
+
 
 -- Search
 map("n", "<Esc><Esc>", ":noh<CR>", opts)

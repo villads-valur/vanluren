@@ -1,11 +1,11 @@
 local currentTime = os.date("*t")
 
 if currentTime.hour >= 8 and currentTime.hour >= 16 then
+	vim.opt.background = "dark"
+
 	require("onedark").setup({
 		style = "darker",
 	})
-
-	vim.opt.background = "dark"
 
 	require("onedark").load()
 

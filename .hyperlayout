@@ -1,0 +1,35 @@
+{
+  "default": {
+    "entry": "tab",
+    "layout": [
+      "echo Welcome back 🚀",
+      [
+        [
+          "cd $HOME/Developer/cozero/core/apps/dashboard && yarn run dev",
+          [
+            "cd $HOME/Developer/cozero/core/apps/api-gateway && yarn run start:dev",
+            "cd $HOME/Developer/cozero/core/apps/central-service && yarn run start:dev"
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "cd $HOME/Developer/cozero/core/apps/log-service && yarn run start:dev",
+            "cd $HOME/Developer/cozero/core/apps/act-service && yarn run start:dev"
+          ],
+          [
+            "cd $HOME/Developer/cozero/core/apps/share-service && yarn run start:dev",
+            "cd $HOME/Developer/cozero/core/apps/auth-service && yarn run start:dev"
+          ]
+        ]
+      ],
+      [
+        [
+          "cd $HOME/Developer/cozero/core/apps/calculations-service && yarn run start:dev",
+          "cd $HOME/Developer/cozero/core/apps/cubejs && yarn run dev"
+        ]
+      ]
+    ]
+  }
+}

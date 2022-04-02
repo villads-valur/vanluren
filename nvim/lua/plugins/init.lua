@@ -60,9 +60,6 @@ return require("packer").startup(function()
 		end,
 	})
 
-	-- Smooth scrolling
-	use({ "karb94/neoscroll.nvim", config = config("neoscroll") })
-
 	-- Tpope essentials
 	use("tpope/vim-surround")
 	use("tpope/vim-commentary")

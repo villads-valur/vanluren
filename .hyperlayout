@@ -2,7 +2,7 @@
   "default": {
     "entry": "tab",
     "layout": [
-      "echo Welcome back 🚀",
+      "cd ~/Developer/Cozero/core/",
       [
         [
           "cd $HOME/Developer/cozero/core/apps/dashboard && yarn run dev",
@@ -31,5 +31,18 @@
         ]
       ]
     ]
+  },
+  "website": {
+    "entry": "tab",
+    "layout": [
+      "cd ~/Developer/Cozero/website/",
+      [
+        [
+          "cd $HOME/Developer/Cozero/website/apps/frontend/ && yarn dev",
+          "cd $HOME/Developer/Cozero/website/apps/cms/ && yar dev"
+        ]
+      ]
+    ]
   }
+
 }

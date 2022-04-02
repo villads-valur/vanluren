@@ -50,5 +50,5 @@ map("v", "<Leader>ca", ":<C-U>lua require('lspsaga.codeaction').range_code_actio
 map("n", "gh", "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>")
 map("n", "gd", "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>")
 map("n", "<Leader>rn", "<cmd>lua require('lspsaga.rename').rename()<CR>")
-map("n", "lp", "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()")
-map("n", "ln", "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>")
+map("n", "lp", ":LspDiagPrev<CR>")
+map("n", "ln", ":LspDiagNext<CR>")

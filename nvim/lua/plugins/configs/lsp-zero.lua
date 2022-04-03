@@ -14,6 +14,8 @@ end
 lsp.preset("recommended")
 lsp.nvim_workspace()
 
+require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./snippets" } })
+
 lsp.ensure_installed({
 	"html",
 	"sumneko_lua",

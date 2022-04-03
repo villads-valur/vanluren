@@ -1,6 +1,16 @@
 -- Plugin manager configuration file
-local cmd = vim.cmd
-cmd([[packadd packer.nvim]])
+local fn = vim.fn
+local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+if fn.empty(fn.glob(install_path)) > 0 then
+	packer_bootstrap = fn.system({
+		"git",
+		"clone",
+		"--depth",
+		"1",
+		"https://github.com/wbthomason/packer.nvim",
+		install_path,
+	})
+end
 
 local packer = require("packer")
 local use = packer.use
@@ -90,7 +100,7 @@ return require("packer").startup(function()
 	use({ "akinsho/bufferline.nvim", after = "nvim-web-devicons", config = config("bufferline") })
 
 	-- Buffkill
-	use("qpkorr/vim-bufkill")
+	use({ "qpkorr/vim-bufkill", config = config("buff-kill") })
 
 	-- Buffkill
 	use("moll/vim-bbye")
@@ -102,10 +112,7 @@ return require("packer").startup(function()
 	use({ "windwp/nvim-autopairs", config = config("autopairs"), event = "InsertEnter" })
 
 	-- Auto close tags
-	use({
-		"windwp/nvim-ts-autotag",
-		after = "nvim-treesitter",
-	})
+	use({ "windwp/nvim-ts-autotag" })
 
 	-- Indentline
 	use({ "lukas-reineke/indent-blankline.nvim", config = config("indentline"), event = "BufRead" })
@@ -171,4 +178,10 @@ return require("packer").startup(function()
 		after = "nvim-lspconfig",
 		config = config("lsp-saga"),
 	})
+
+	-- Automatically set up your configuration after cloning packer.nvim
+	-- Put this at the end after all plugins
+	if packer_bootstrap then
+		require("packer").sync()
+	end
 end)

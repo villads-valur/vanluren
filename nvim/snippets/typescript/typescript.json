@@ -1,0 +1,11 @@
+{
+  "reactFunctionComponent": {
+    "prefix": "rfce",
+    "body": "import React from 'react'\n\nconst ${TM_FILENAME_BASE} = ({}:Props) => {\n\treturn (\n\t\t<div>\n\t\t\t$0\n\t\t</div>\n\t)\n}\n\nexport default ${TM_FILENAME_BASE}",
+    "description": "Creates a React functional component with prop types and exports it by default"
+  },
+  "consoleLog": {
+    "prefix": "clg",
+    "body": "console.log()"
+  }
+}

@@ -100,7 +100,7 @@ return require("packer").startup(function()
 	use({ "akinsho/bufferline.nvim", after = "nvim-web-devicons", config = config("bufferline") })
 
 	-- Buffkill
-	use({ "qpkorr/vim-bufkill", config = config("buff-kill") })
+	use({ "qpkorr/vim-bufkill", config = config("buffkill") })
 
 	-- Buffkill
 	use("moll/vim-bbye")

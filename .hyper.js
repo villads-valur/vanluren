@@ -160,9 +160,7 @@ module.exports = {
     "hyper-pane",
     "hyperlayout",
   ],
-  localPlugins: [
-  "fig-hyper-integration"
-],
+  localPlugins: ["fig-hyper-integration"],
   keymaps: {},
 };
 //# sourceMappingURL=config-default.js.map

@@ -23,12 +23,6 @@
             "cd $HOME/Developer/cozero/core/apps/auth-service && yarn run start:dev"
           ]
         ]
-      ],
-      [
-        [
-          "cd $HOME/Developer/cozero/core/apps/calculations-service && yarn run start:dev",
-          "cd $HOME/Developer/cozero/core/apps/cubejs && yarn run dev"
-        ]
       ]
     ]
   },

@@ -4,7 +4,7 @@
 // See https://hyper.is#cfg for all currently supported options.
 module.exports = {
   config: {
-    // choose either `'stable'` for receiving highly polished,
+    scrollback: 2147483647, // choose either `'stable'` for receiving highly polished,
     // or `'canary'` for less polished but more frequent updates
     updateChannel: "stable",
     // default font size in pixels for all tabs
@@ -160,7 +160,7 @@ module.exports = {
     "hyper-pane",
     "hyperlayout",
   ],
-  localPlugins: ["fig-hyper-integration"],
+  localPlugins: [],
   keymaps: {},
 };
 //# sourceMappingURL=config-default.js.map

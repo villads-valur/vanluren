@@ -21,11 +21,14 @@ end
 
 return require("packer").startup(function()
 	-- Packer can manage itself
-	use("wbthomason/packer.nvim")
+	use({ "wbthomason/packer.nvim" })
 
 	-- Colorschemes
 	use({ "navarasu/onedark.nvim" })
+
 	use({ "Shatur/neovim-ayu" })
+
+	use({ "cormacrelf/dark-notify", config = config("dark-notify") })
 
 	-- Dashboard
 	use({
@@ -39,6 +42,9 @@ return require("packer").startup(function()
 		"nvim-lualine/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 		config = config("lualine"),
+		cond = function()
+			return not vim.g.vscode
+		end,
 	})
 
 	-- Modes
@@ -47,6 +53,9 @@ return require("packer").startup(function()
 		config = function()
 			vim.opt.cursorline = true
 			require("modes").setup()
+		end,
+		cond = function()
+			return not vim.g.vscode
 		end,
 	})
 
@@ -57,10 +66,13 @@ return require("packer").startup(function()
 			"kyazdani42/nvim-web-devicons", -- optional, for file icon
 		},
 		config = config("nvim-tree"),
+		cond = function()
+			return not vim.g.vscode
+		end,
 	})
 
 	-- Monitor startup time
-	use("lewis6991/impatient.nvim")
+	use({ "lewis6991/impatient.nvim" })
 
 	-- Boost startup time
 	use({

@@ -58,7 +58,3 @@ AlterCommand x[it] Xit
 AlterCommand qa[ll] Qall
 AlterCommand wqa[ll] Wqall
 AlterCommand xa[ll] Xall
-
-nnoremap <Leader>w :Write<CR>
-xnoremap <Leader>w :Write<CR>
-

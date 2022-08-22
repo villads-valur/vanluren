@@ -14,7 +14,7 @@ end
 lsp.preset("recommended")
 lsp.nvim_workspace()
 
-require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./snippets" } })
+require("luasnip.loaders.from_vscode").lazy_load()
 
 lsp.ensure_installed({
 	"html",
@@ -29,8 +29,8 @@ lsp.configure("tsserver", {
 		debounce_text_changes = 200,
 	},
 	on_attach = function(client, bufnr)
-		client.resolved_capabilities.document_formatting = false
-		client.resolved_capabilities.document_range_formatting = false
+		client.server_capabilities.documentFormattingProvider = false
+		client.server_capabilities.documentRangeFormattingProvider = false
 	end,
 	commands = {
 		OrganizeImports = {
@@ -42,25 +42,22 @@ lsp.configure("tsserver", {
 
 lsp.configure("jsonls", {
 	on_attach = function(client, bufnr)
-		client.resolved_capabilities.document_formatting = false
-		client.resolved_capabilities.document_range_formatting = false
 		client.server_capabilities.documentFormattingProvider = false
+		client.server_capabilities.documentRangeFormattingProvider = false
 	end,
 })
 
 lsp.configure("sumneko_lua", {
 	on_attach = function(client, bufnr)
-		client.resolved_capabilities.document_formatting = false
-		client.resolved_capabilities.document_range_formatting = false
 		client.server_capabilities.documentFormattingProvider = false
+		client.server_capabilities.documentRangeFormattingProvider = false
 	end,
 })
 
 lsp.configure("prismals", {
 	on_attach = function(client, bufnr)
-		client.resolved_capabilities.document_formatting = false
-		client.resolved_capabilities.document_range_formatting = false
 		client.server_capabilities.documentFormattingProvider = false
+		client.server_capabilities.documentRangeFormattingProvider = false
 	end,
 })
 

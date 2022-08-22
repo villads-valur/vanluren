@@ -1,10 +1,30 @@
-require("dark_notify").run({
+local cmd = vim.cmd
+local dn = require("dark_notify")
+local opt = vim.opt
+
+-- Default theme
+opt.bg = "dark"
+cmd("colorscheme onedark")
+
+-- DarkNotify
+
+function nox()
+	cmd("colorscheme onedark")
+	cmd("set bg=dark")
+end
+
+function lumos()
+	cmd("colorscheme ayu-light")
+	cmd("set bg=light")
+end
+
+dn.configure({
 	schemes = {
-		-- you can use a different colorscheme for each
 		dark = "onedark",
-		-- even a different `set background=light/dark` setting or lightline theme
-		-- if you use lightline, you may want to configure lightline themes,
-		-- even if they're the same one, especially if the theme reacts to :set bg
 		light = "ayu-light",
 	},
 })
+
+cmd("command! Nox :lua nox()")
+cmd("command! Lumos :lua lumos()")
+cmd("command! ToggleDN :lua require('dark_notify').toggle()")

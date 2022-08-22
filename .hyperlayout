@@ -23,9 +23,15 @@
           ],
           [
             "cd $HOME/Developer/cozero/core/apps/share-service && yarn run start:dev",
-            "cd $HOME/Developer/cozero/core/apps/cubejs && yarn dev"
+            "cd $HOME/Developer/cozero/core/apps/calculations-service/ && yarn start:dev"
           ]
         ]
+      ],
+      [
+         [
+            "cd $HOME/Developer/cozero/core/apps/act-processor && yarn start:dev",
+            "cd $HOME/Developer/cozero/core/apps/cubejs && yarn dev"
+         ]
       ]
     ]
   },

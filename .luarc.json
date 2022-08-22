@@ -5,6 +5,8 @@
     ],
     "Lua.diagnostics.globals": [
         "vim",
-        "format_prettier"
+        "format_prettier",
+        "lumos",
+        "nox"
     ]
 }

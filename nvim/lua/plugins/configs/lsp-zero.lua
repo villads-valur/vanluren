@@ -11,6 +11,11 @@ local function organize_imports()
 	vim.lsp.buf.execute_command(params)
 end
 
+local function custom_on_attach(client, bufnr)
+	client.server_capabilities.documentFormattingProvider = false
+	client.server_capabilities.documentRangeFormattingProvider = false
+end
+
 lsp.preset("recommended")
 lsp.nvim_workspace()
 
@@ -28,10 +33,7 @@ lsp.configure("tsserver", {
 	flags = {
 		debounce_text_changes = 200,
 	},
-	on_attach = function(client, bufnr)
-		client.server_capabilities.documentFormattingProvider = false
-		client.server_capabilities.documentRangeFormattingProvider = false
-	end,
+	on_attach = custom_on_attach,
 	commands = {
 		OrganizeImports = {
 			organize_imports,
@@ -41,24 +43,15 @@ lsp.configure("tsserver", {
 })
 
 lsp.configure("jsonls", {
-	on_attach = function(client, bufnr)
-		client.server_capabilities.documentFormattingProvider = false
-		client.server_capabilities.documentRangeFormattingProvider = false
-	end,
+	on_attach = custom_on_attach,
 })
 
 lsp.configure("sumneko_lua", {
-	on_attach = function(client, bufnr)
-		client.server_capabilities.documentFormattingProvider = false
-		client.server_capabilities.documentRangeFormattingProvider = false
-	end,
+	on_attach = custom_on_attach,
 })
 
 lsp.configure("prismals", {
-	on_attach = function(client, bufnr)
-		client.server_capabilities.documentFormattingProvider = false
-		client.server_capabilities.documentRangeFormattingProvider = false
-	end,
+	on_attach = custom_on_attach,
 })
 
 lsp.setup()

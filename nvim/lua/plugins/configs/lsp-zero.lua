@@ -29,11 +29,12 @@ lsp.ensure_installed({
 	"tailwindcss",
 })
 
+lsp.on_attach(custom_on_attach)
+
 lsp.configure("tsserver", {
 	flags = {
 		debounce_text_changes = 200,
 	},
-	on_attach = custom_on_attach,
 	commands = {
 		OrganizeImports = {
 			organize_imports,
@@ -42,19 +43,23 @@ lsp.configure("tsserver", {
 	},
 })
 
-lsp.configure("jsonls", {
-	on_attach = custom_on_attach,
-})
-
-lsp.configure("sumneko_lua", {
-	on_attach = custom_on_attach,
-})
-
-lsp.configure("prismals", {
-	on_attach = custom_on_attach,
+lsp.set_preferences({
+	sign_icons = {
+		error = "✘",
+		warn = "▲",
+		hint = "⚑",
+		info = "",
+	},
 })
 
 lsp.setup()
+
+vim.diagnostic.config({
+	virtual_text = false,
+	update_in_insert = true,
+	signs = true,
+	underline = true,
+})
 
 -- Map to easier commands
 cmd("command! LspDef lua vim.buf.definition()")
@@ -67,3 +72,5 @@ cmd("command! LspDiagPrev lua vim.diagnostic.goto_prev()")
 cmd("command! LspDiagNext lua vim.diagnostic.goto_next()")
 cmd("command! LspDiagLine lua vim.diagnostic.show_line_diagnostics()")
 cmd("command! LspSignatureHelp lua vim.buf.signature_help()")
+
+-- Keybindings

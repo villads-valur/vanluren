@@ -1,10 +1,16 @@
 local cmd = vim.cmd
 local dn = require("dark_notify")
 local opt = vim.opt
+local onedark = require("onedark")
 
 -- Default theme
 opt.bg = "dark"
-cmd("colorscheme onedark")
+
+onedark.setup({
+	style = "darker",
+})
+
+onedark.load()
 
 -- DarkNotify
 

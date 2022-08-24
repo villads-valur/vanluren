@@ -25,6 +25,7 @@ return require("packer").startup(function()
 
 	-- Colorschemes
 	use({ "navarasu/onedark.nvim" })
+	use({ "LunarVim/onedarker.nvim" })
 
 	use({ "Shatur/neovim-ayu" })
 
@@ -206,7 +207,7 @@ return require("packer").startup(function()
 
 	-- LSP saga
 	use({
-		"tami5/lspsaga.nvim",
+		"kkharji/lspsaga.nvim",
 		event = "BufRead",
 		after = "nvim-lspconfig",
 		config = config("lsp-saga"),

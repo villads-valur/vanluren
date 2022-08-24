@@ -22,7 +22,7 @@ dashboard.section.header.val = {
 
 -- menu
 dashboard.section.buttons.val = {
-	dashboard.button("f", " Find file", ":Telescope find_files<CR>"),
+	dashboard.button("t", " Find file", ":Telescope find_files<CR>"),
 	dashboard.button("r", " Recent Files", ":Telescope oldfiles<CR>"),
 	dashboard.button("s", " Settings", ":e $MYVIMRC<CR>"),
 	dashboard.button("u", " Update plugins", ":PackerUpdate<CR>"),

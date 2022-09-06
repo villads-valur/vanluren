@@ -17,9 +17,9 @@ saga.init_lsp_saga({
 	finder_reference_icon = "  ",
 	max_preview_lines = 10,
 	finder_action_keys = {
-		open = "o",
-		vsplit = "s",
-		split = "i",
+		open = "<CR>",
+		vsplit = "v",
+		hsplit = "h",
 		quit = "q",
 		scroll_down = "<C-f>",
 		scroll_up = "<C-b>",

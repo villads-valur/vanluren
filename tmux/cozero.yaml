@@ -1,45 +1,37 @@
 session_name: cozero
 windows:
-  - window_name: Editor
+  - window_name: editor
     focus: true
     panes:
       - null
-  - window_name: Main Servers
+  - window_name: main servers
     layout: main-horizontal
     start_directory: ~/Developer/Cozero/core/apps
     panes:
       - shell_command:
           - cd dashboard
-          - yarn dev
       - shell_command:
           - cd api-gateway
-          - yarn start:dev
       - shell_command:
           - cd central-service
-          - yarn start:dev
-  - window_name: Domains
+  - window_name: domains
     layout: tiled
     start_directory: ~/Developer/Cozero/core/apps
     panes:
       - shell_command:
           - cd auth-service
-          - yarn start:dev
       - shell_command:
           - cd act-service
-          - yarn start:dev
       - shell_command:
           - cd log-service
-          - yarn start:dev
       - shell_command:
           - cd share-service
-          - yarn start:dev
-  - window_name: Helpers
+  - window_name: helpers
     layout: main-horizontal
     start_directory: ~/Developer/Cozero/core/apps
     panes:
       - shell_command:
           - cd cubejs
-          - yarn dev
       - shell_command:
           - cd calculations-processor
       - shell_command:

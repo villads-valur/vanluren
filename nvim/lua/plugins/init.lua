@@ -26,9 +26,7 @@ return require("packer").startup(function()
 	-- Colorschemes
 	use({ "navarasu/onedark.nvim" })
 	use({ "LunarVim/onedarker.nvim" })
-
 	use({ "Shatur/neovim-ayu" })
-
 	use({ "cormacrelf/dark-notify", config = config("dark-notify") })
 
 	-- Dashboard
@@ -122,42 +120,19 @@ return require("packer").startup(function()
 	use({ "windwp/nvim-autopairs", config = config("autopairs"), event = "InsertEnter" })
 
 	-- Auto close tags
-	use({ "windwp/nvim-ts-autotag" })
+	use({
+		"windwp/nvim-ts-autotag",
+		config = config("autotag"),
+		event = "InsertEnter",
+	})
 
 	-- Indentline
 	use({ "lukas-reineke/indent-blankline.nvim", config = config("indentline"), event = "BufRead" })
-
-	-- Goyo Lua version
-	use({
-		"folke/zen-mode.nvim",
-		config = function()
-			require("zen-mode").setup({
-				-- your configuration comes here
-				-- or leave it empty to use the default settings
-				-- refer to the configuration section below
-			})
-		end,
-	})
-
-	-- Limelight lua version
-	use({
-		"folke/twilight.nvim",
-		config = function()
-			require("twilight").setup({
-				-- your configuration comes here
-				-- or leave it empty to use the default settings
-				-- refer to the configuration section below
-			})
-		end,
-	})
 
 	-- Gitsigns
 	use({ "lewis6991/gitsigns.nvim", requires = {
 		"nvim-lua/plenary.nvim",
 	}, config = config("gitsigns") })
-
-	-- Copilot
-	use({ "github/copilot.vim", config = config("copilot") })
 
 	-- TreeSitter
 	use({

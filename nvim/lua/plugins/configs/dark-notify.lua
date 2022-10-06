@@ -1,21 +1,15 @@
 local cmd = vim.cmd
 local dn = require("dark_notify")
-local opt = vim.opt
 local onedark = require("onedark")
 
--- Default theme
-opt.bg = "dark"
-
 onedark.setup({
-	style = "darker",
+	style = "cool",
 })
-
-onedark.load()
 
 -- DarkNotify
 
 function nox()
-	cmd("colorscheme onedark")
+	cmd("colorscheme tokyodark")
 	cmd("set bg=dark")
 end
 
@@ -26,10 +20,12 @@ end
 
 dn.configure({
 	schemes = {
-		dark = "onedark",
+		dark = "tokyodark",
 		light = "ayu-light",
 	},
 })
+
+dn.run()
 
 cmd("command! Nox :lua nox()")
 cmd("command! Lumos :lua lumos()")

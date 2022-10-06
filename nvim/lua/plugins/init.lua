@@ -26,13 +26,14 @@ return require("packer").startup(function()
 	-- Colorschemes
 	use({ "navarasu/onedark.nvim" })
 	use({ "LunarVim/onedarker.nvim" })
+	use({ "tiagovla/tokyodark.nvim" })
 	use({ "Shatur/neovim-ayu" })
 	use({ "cormacrelf/dark-notify", config = config("dark-notify") })
 
 	-- Dashboard
 	use({
 		"goolord/alpha-nvim",
-		after = "nvim-web-devicons",
+		requires = { "kyazdani42/nvim-web-devicons" },
 		config = config("alpha"),
 	})
 

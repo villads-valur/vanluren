@@ -8,6 +8,8 @@ null_ls.setup({
 		builtins.formatting.prettierd,
 		builtins.formatting.prismaFmt,
 		builtins.formatting.stylua,
+		builtins.diagnostics.vale,
+		builtins.completion.spell,
 	},
 	on_attach = function(client)
 		if client.server_capabilities.documentFormattingProvider then

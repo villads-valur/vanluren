@@ -1,5 +1,4 @@
 local lsp = require("lsp-zero")
-local map = require("utils").map
 local cmd = vim.cmd
 
 local function organize_imports()
@@ -11,7 +10,7 @@ local function organize_imports()
 	vim.lsp.buf.execute_command(params)
 end
 
-local function custom_on_attach(client, bufnr)
+local function custom_on_attach(client)
 	client.server_capabilities.documentFormattingProvider = false
 	client.server_capabilities.documentRangeFormattingProvider = false
 end

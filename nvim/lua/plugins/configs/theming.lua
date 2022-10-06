@@ -1,6 +1,11 @@
 local cmd = vim.cmd
 local dn = require("dark_notify")
 local onedark = require("onedark")
+local nightfox = require("nightfox")
+
+nightfox.setup({
+	dim_inactive = true,
+})
 
 onedark.setup({
 	style = "cool",
@@ -9,7 +14,7 @@ onedark.setup({
 -- DarkNotify
 
 function nox()
-	cmd("colorscheme tokyodark")
+	cmd("colorscheme carbonfox")
 	cmd("set bg=dark")
 end
 
@@ -20,7 +25,7 @@ end
 
 dn.configure({
 	schemes = {
-		dark = "tokyodark",
+		dark = "carbonfox",
 		light = "ayu-light",
 	},
 })

@@ -28,7 +28,8 @@ return require("packer").startup(function()
 	use({ "LunarVim/onedarker.nvim" })
 	use({ "tiagovla/tokyodark.nvim" })
 	use({ "Shatur/neovim-ayu" })
-	use({ "cormacrelf/dark-notify", config = config("dark-notify") })
+	use({ "EdenEast/nightfox.nvim" })
+	use({ "cormacrelf/dark-notify", config = config("theming") })
 
 	-- Dashboard
 	use({

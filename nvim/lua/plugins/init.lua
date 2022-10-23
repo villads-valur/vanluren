@@ -24,12 +24,14 @@ return require("packer").startup(function()
 	use({ "wbthomason/packer.nvim" })
 
 	-- Colorschemes
-	use({ "navarasu/onedark.nvim" })
-	use({ "LunarVim/onedarker.nvim" })
-	use({ "tiagovla/tokyodark.nvim" })
-	use({ "Shatur/neovim-ayu" })
-	use({ "EdenEast/nightfox.nvim" })
+	use({ "LunarVim/onedarker.nvim", config = config("theming") })
+	use({ "tiagovla/tokyodark.nvim", config = config("theming") })
+	use({ "Shatur/neovim-ayu", config = config("theming") })
+	use({ "EdenEast/nightfox.nvim", config = config("theming") })
 	use({ "cormacrelf/dark-notify", config = config("theming") })
+	use({ "projekt0n/github-nvim-theme", config = config("theming") })
+	use({ "olimorris/onedarkpro.nvim", config = config("theming") })
+	use({ "rebelot/kanagawa.nvim", config = config("theming") })
 
 	-- Dashboard
 	use({
@@ -57,6 +59,14 @@ return require("packer").startup(function()
 		end,
 		cond = function()
 			return not vim.g.vscode
+		end,
+	})
+
+	-- Zen mode
+	use({
+		"folke/zen-mode.nvim",
+		config = function()
+			require("zen-mode").setup({})
 		end,
 	})
 
@@ -195,15 +205,7 @@ return require("packer").startup(function()
 		"findango/vim-mdx",
 	})
 
-	-- Markdown preview
-	use({
-		"iamcco/markdown-preview.nvim",
-		run = "cd app && yarn install",
-		setup = function()
-			vim.g.mkdp_filetypes = { "markdown" }
-		end,
-		ft = { "markdown" },
-	})
+	use({ "toppair/peek.nvim", run = "deno task --quiet build:fast" })
 
 	-- Easy motion
 	use({

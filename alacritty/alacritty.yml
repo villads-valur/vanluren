@@ -19,7 +19,7 @@ font:
     family: BlexMono Nerd Font
     style: Text
   bold:
-    family: BlexMono Nerd Font Mono Bold
+    family: BlexMono Nerd Font Mono
     style: Bold
   italic:
     family: BlexMono Nerd Font

@@ -3,7 +3,7 @@ env:
 window:
   dynamic_title: true
   padding:
-    x: 4
+    x: 2
     'y': 2
   startup_mode: Fullscreen
   title: Terminal
@@ -16,14 +16,14 @@ scrolling:
   multiplier: 3
 font:
   normal:
-    family: Hack Nerd Font
-    style: Regular
+    family: BlexMono Nerd Font
+    style: Text
   bold:
-    family: Monaco
+    family: BlexMono Nerd Font Mono
     style: Bold
   italic:
-    family: Hack Nerd Font
-    style: Regular Italic
+    family: BlexMono Nerd Font
+    style: Italic
   size: 14.5
   offset:
     x: 0
@@ -36,26 +36,26 @@ alt_send_esc: false
 live_config_reload: true
 colors:
   primary:
-    background: '0x1f1f28'
-    foreground: '0xdcd7ba'
+    background: '0xfafafa'
+    foreground: '0x5b6672'
   normal:
-    black: '0x090618'
-    red: '0xc34043'
-    green: '0x76946a'
-    yellow: '0xc0a36e'
-    blue: '0x7e9cd8'
-    magenta: '0x957fb8'
-    cyan: '0x6a9589'
-    white: '0xc8c093'
+    black: '0x000000'
+    red: '0xf2590b'
+    green: '0x76cc00'
+    yellow: '0xf29717'
+    blue: '0x41a5d9'
+    magenta: '0x9965cc'
+    cyan: '0x4dbf98'
+    white: '0xc7c7c7'
   bright:
-    black: '0x727169'
-    red: '0xe82424'
-    green: '0x98bb6c'
-    yellow: '0xe6c384'
-    blue: '0x7fb4ca'
-    magenta: '0x938aa9'
-    cyan: '0x7aa89f'
-    white: '0xdcd7ba'
+    black: '0x676767'
+    red: '0xd6646a'
+    green: '0xa3d900'
+    yellow: '0xe7c446'
+    blue: '0x6871ff'
+    magenta: '0xa37acc'
+    cyan: '0x56d9ad'
+    white: '0xfeffff'
   indexed_colors:
     - index: 16
       color: '0x3ddbd9'
@@ -101,6 +101,10 @@ colors:
       color: '0xf4a261'
     - index: 17
       color: '0xd67ad2'
+    - index: 16
+      color: '0xffa066'
+    - index: 17
+      color: '0xff5d62'
     - index: 16
       color: '0xffa066'
     - index: 17

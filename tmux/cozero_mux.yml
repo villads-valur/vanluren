@@ -1,7 +1,0 @@
-session_name: cozero
-root: ~/Developer/Cozero/core/
-startup_window: editor
-windows:
-  - editor:
-      panes:
-        - vi .

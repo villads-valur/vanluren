@@ -1,7 +1,5 @@
 local packer = require("packer")
-local use = packer.use
-
-local config = function(name)
+local use = packer.use local config = function(name)
 	return string.format("require('plugins.configs.%s')", name)
 end
 
@@ -154,20 +152,10 @@ return require("packer").startup(function()
 		config = config("lsp-zero"),
 	})
 
-	-- -- LSP saga
-	-- use({
-	-- 	"kkharji/lspsaga.nvim",
-	-- 	event = "BufRead",
-	-- 	after = "nvim-lspconfig",
-	-- 	config = config("lsp-saga"),
-	-- })
-
 	--MDX Syntax highlighting
 	use({
 		"findango/vim-mdx",
 	})
-
-	-- use({ "toppair/peek.nvim", run = "deno task --quiet build:fast" })
 
 	-- Easy motion
 	use({

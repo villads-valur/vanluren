@@ -1,8 +1,9 @@
 local actions = require("telescope.actions")
 local previewers = require("telescope.previewers")
 local map = require("utils").map
+local telescope = require("telescope")
 
-require("telescope").setup({
+telescope.setup({
 	defaults = {
 		mappings = {
 			i = {
@@ -55,6 +56,9 @@ require("telescope").setup({
 		buffer_previewer_maker = previewers.buffer_previewer_maker,
 	},
 })
+
+telescope.load_extension("fzf")
+telescope.load_extension("emoji")
 
 -- Telescope specific maps
 map("n", "<Leader>t", ":Telescope find_files<CR>")

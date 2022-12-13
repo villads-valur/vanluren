@@ -1,17 +1,3 @@
--- Plugin manager configuration file
-local fn = vim.fn
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if fn.empty(fn.glob(install_path)) > 0 then
-	packer_bootstrap = fn.system({
-		"git",
-		"clone",
-		"--depth",
-		"1",
-		"https://github.com/wbthomason/packer.nvim",
-		install_path,
-	})
-end
-
 local packer = require("packer")
 local use = packer.use
 
@@ -24,14 +10,9 @@ return require("packer").startup(function()
 	use({ "wbthomason/packer.nvim" })
 
 	-- Colorschemes
-	use({ "LunarVim/onedarker.nvim", config = config("theming") })
-	use({ "tiagovla/tokyodark.nvim", config = config("theming") })
 	use({ "Shatur/neovim-ayu", config = config("theming") })
-	use({ "EdenEast/nightfox.nvim", config = config("theming") })
 	use({ "cormacrelf/dark-notify", config = config("theming") })
-	use({ "projekt0n/github-nvim-theme", config = config("theming") })
 	use({ "olimorris/onedarkpro.nvim", config = config("theming") })
-	use({ "rebelot/kanagawa.nvim", config = config("theming") })
 
 	-- Dashboard
 	use({
@@ -45,9 +26,6 @@ return require("packer").startup(function()
 		"nvim-lualine/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 		config = config("lualine"),
-		cond = function()
-			return not vim.g.vscode
-		end,
 	})
 
 	-- Modes
@@ -56,17 +34,6 @@ return require("packer").startup(function()
 		config = function()
 			vim.opt.cursorline = true
 			require("modes").setup()
-		end,
-		cond = function()
-			return not vim.g.vscode
-		end,
-	})
-
-	-- Zen mode
-	use({
-		"folke/zen-mode.nvim",
-		config = function()
-			require("zen-mode").setup({})
 		end,
 	})
 
@@ -77,9 +44,6 @@ return require("packer").startup(function()
 			"kyazdani42/nvim-web-devicons", -- optional, for file icon
 		},
 		config = config("nvim-tree"),
-		cond = function()
-			return not vim.g.vscode
-		end,
 	})
 
 	-- Monitor startup time
@@ -111,10 +75,8 @@ return require("packer").startup(function()
 		"nvim-telescope/telescope-fzf-native.nvim",
 		after = "telescope.nvim",
 		run = "make",
-		config = function()
-			require("telescope").load_extension("fzf")
-		end,
 	})
+	use("xiyaowong/telescope-emoji.nvim")
 
 	-- Bufferline
 	use({ "akinsho/bufferline.nvim", after = "nvim-web-devicons", config = config("bufferline") })
@@ -159,6 +121,7 @@ return require("packer").startup(function()
 		"danymat/neogen",
 		config = config("neogen"),
 		requires = "nvim-treesitter/nvim-treesitter",
+		event = { "BufRead", "BufNewFile" },
 	})
 
 	-- Formatting
@@ -184,7 +147,6 @@ return require("packer").startup(function()
 			{ "saadparwaiz1/cmp_luasnip" },
 			{ "hrsh7th/cmp-nvim-lsp" },
 			{ "hrsh7th/cmp-nvim-lua" },
-
 			-- Snippets
 			{ "L3MON4D3/LuaSnip" },
 			{ "rafamadriz/friendly-snippets" },
@@ -192,20 +154,20 @@ return require("packer").startup(function()
 		config = config("lsp-zero"),
 	})
 
-	-- LSP saga
-	use({
-		"kkharji/lspsaga.nvim",
-		event = "BufRead",
-		after = "nvim-lspconfig",
-		config = config("lsp-saga"),
-	})
+	-- -- LSP saga
+	-- use({
+	-- 	"kkharji/lspsaga.nvim",
+	-- 	event = "BufRead",
+	-- 	after = "nvim-lspconfig",
+	-- 	config = config("lsp-saga"),
+	-- })
 
 	--MDX Syntax highlighting
 	use({
 		"findango/vim-mdx",
 	})
 
-	use({ "toppair/peek.nvim", run = "deno task --quiet build:fast" })
+	-- use({ "toppair/peek.nvim", run = "deno task --quiet build:fast" })
 
 	-- Easy motion
 	use({
@@ -213,8 +175,4 @@ return require("packer").startup(function()
 		event = "BufRead",
 		config = config("hop"),
 	})
-	-- Automatically set up your configuration after cloning packer.nvim
-	if packer_bootstrap then
-		require("packer").sync()
-	end
 end)

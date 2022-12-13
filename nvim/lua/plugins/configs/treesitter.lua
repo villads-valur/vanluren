@@ -10,20 +10,9 @@ require("nvim-treesitter.configs").setup({
 		enable = true,
 		use_languagetree = true,
 	},
+	indent = { enable = true },
+	autopairs = { enable = true },
 	autotag = {
 		enable = true,
-		filetypes = {
-			"html",
-			"javascript",
-			"typescript",
-			"javascriptreact",
-			"typescriptreact",
-			"svelte",
-			"vue",
-			"tsx",
-			"jsx",
-			"rescript",
-			"xml",
-		},
 	},
 })

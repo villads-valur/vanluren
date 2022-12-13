@@ -20,7 +20,7 @@ font:
     style: Text
   bold:
     family: BlexMono Nerd Font Mono
-    style: Bold
+    style: SemiBold
   italic:
     family: BlexMono Nerd Font
     style: Italic
@@ -31,31 +31,30 @@ font:
   glyph_offset:
     x: 0
     'y': 0
-  use_thin_strokes: true
 alt_send_esc: false
 live_config_reload: true
 colors:
   primary:
-    background: '0xfafafa'
-    foreground: '0x5b6672'
+    background: '0x0f1419'
+    foreground: '0xe6e1cf'
   normal:
     black: '0x000000'
-    red: '0xf2590b'
-    green: '0x76cc00'
-    yellow: '0xf29717'
-    blue: '0x41a5d9'
-    magenta: '0x9965cc'
-    cyan: '0x4dbf98'
-    white: '0xc7c7c7'
+    red: '0xf34a4a'
+    green: '0xbae67e'
+    yellow: '0xffee99'
+    blue: '0x73d0ff'
+    magenta: '0xd4bfff'
+    cyan: '0x83CEC6'
+    white: '0xf2f2f2'
   bright:
-    black: '0x676767'
-    red: '0xd6646a'
-    green: '0xa3d900'
-    yellow: '0xe7c446'
-    blue: '0x6871ff'
-    magenta: '0xa37acc'
-    cyan: '0x56d9ad'
-    white: '0xfeffff'
+    black: '0x737d87'
+    red: '0xff3333'
+    green: '0xc2d94c'
+    yellow: '0xe7c547'
+    blue: '0x59c2ff'
+    magenta: '0xb77ee0'
+    cyan: '0x5ccfe6'
+    white: '0xffffff'
   indexed_colors:
     - index: 16
       color: '0x3ddbd9'
@@ -109,14 +108,48 @@ colors:
       color: '0xffa066'
     - index: 17
       color: '0xff5d62'
+    - index: 16
+      color: '0xffa066'
+    - index: 17
+      color: '0xff5d62'
+    - index: 16
+      color: '0xffa066'
+    - index: 17
+      color: '0xff5d62'
+    - index: 16
+      color: '0xffa066'
+    - index: 17
+      color: '0xff5d62'
+    - index: 16
+      color: '0xffa066'
+    - index: 17
+      color: '0xff5d62'
+    - index: 16
+      color: '0xd18616'
+    - index: 17
+      color: '0xffa198'
+    - index: 16
+      color: '0xffa066'
+    - index: 17
+      color: '0xff5d62'
+    - index: 16
+      color: '#ffa066'
+    - index: 17
+      color: '#ff5d62'
   cursor:
     text: CellBackground
-    cursor: '#528bff'
+    cursor: '#528BFF'
   selection:
     text: CellForeground
-    background: '0x2d4f67'
-    foreground: '0xc8c093'
+    background: '#3E4451'
+    foreground: '#c8c093'
 key_bindings:
   - key: I
     mods: Control
     chars: "\e[105;5u"
+  - key: Right
+    mods: Alt
+    chars: "\eF"
+  - key: Left
+    mods: Alt
+    chars: "\eB"

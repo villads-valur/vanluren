@@ -3,17 +3,21 @@
 -----------------------------------------------------------
 local cmd = vim.cmd -- execute Vim commands
 local exec = vim.api.nvim_exec -- execute Vimscript
-local fn = vim.fn -- call Vim functions
 local g = vim.g -- global variables
 local opt = vim.opt -- global/buffer/windows-scoped options
 
 -- General
+opt.shortmess:append("sI")
+opt.copyindent = true
+opt.fillchars = { eob = " " } -- Disable `~` on nonexistent lines
 opt.mouse = "a" -- enable mouse support
+opt.pumheight = 10 -- enable mouse support
 opt.clipboard = "unnamedplus" -- copy/paste to system clipboard
 opt.swapfile = false -- don't use swapfile
-opt.updatetime = 300 -- Length of time to wait before triggering the plugin
-opt.timeoutlen = 300 -- Length of time to wait for a mapped sequence
+opt.updatetime = 100 -- Length of time to wait before triggering the plugin
+opt.timeoutlen = 200 -- Length of time to wait for a mapped sequence
 opt.number = true -- show line number
+opt.preserveindent = true
 opt.showmatch = true -- highlight matching parenthesis
 opt.foldmethod = "marker" -- enable folding (default 'foldmarker')
 opt.splitright = true -- vertical split to the right
@@ -23,11 +27,23 @@ opt.smartcase = true -- ignore lowercase for the whole pattern
 opt.linebreak = true -- wrap on word boundary
 opt.encoding = "utf-8" -- Set encoding to  UTF-8
 opt.cursorline = true -- Highlight the current line
-opt.signcolumn = "yes" --  Always show the sign colum
+opt.signcolumn = "yes:2" --  Always show the sign colum
 opt.laststatus = 3 -- joined status bar
-
--- remove whitespace on save
-cmd([[au BufWritePre * :%s/\s\+$//e]])
+opt.wildignore = "*node_modules/**" -- Don't search inside Node.js modules
+opt.showmode = false -- Hide status
+opt.emoji = false --- Fix emoji display
+opt.completeopt = "menuone,noselect"
+-- Memory, CPU
+opt.hidden = true -- enable background buffers
+opt.history = 100 -- remember n lines in history
+opt.lazyredraw = true -- faster scrolling
+-- Colorscheme
+opt.termguicolors = true -- enable 24-bit RGB colors
+-- Tabs, indent
+opt.expandtab = true -- use spaces instead of tabs
+opt.shiftwidth = 2 -- shift 2 spaces when tab
+opt.tabstop = 2 -- 1 tab == 2 spaces
+opt.smartindent = true -- autoindent new lines
 
 -- highlight on yank
 exec(
@@ -40,32 +56,8 @@ exec(
 	false
 )
 
--- Memory, CPU
-opt.hidden = true -- enable background buffers
-opt.history = 100 -- remember n lines in history
-opt.lazyredraw = true -- faster scrolling
-opt.synmaxcol = 240 -- max column for syntax highlight
-
--- Colorscheme
-opt.termguicolors = true -- enable 24-bit RGB colors
-
--- Tabs, indent
-opt.expandtab = true -- use spaces instead of tabs
-opt.shiftwidth = 2 -- shift 2 spaces when tab
-opt.tabstop = 2 -- 1 tab == 2 spaces
-opt.smartindent = true -- autoindent new lines
-
 -- don't auto commenting new lines
 cmd([[au BufEnter * set fo-=c fo-=r fo-=o]])
-
--- 2 spaces for selected filetypes
--- cmd([[
---   autocmd FileType xml,html,xhtml,css,scss,less,javascript,javascriptreact,typescript,typescriptreact,lua,yaml setlocal shiftwidth=2 tabstop=2
--- ]])
-
--- Autocompletion
--- insert mode completion options
-opt.completeopt = "menuone,noselect"
 
 -- Terminal visual tweaks
 --- enter insert mode when switching to terminal
@@ -94,6 +86,7 @@ local disabled_built_ins = {
 	"rrhelper",
 	"spellfile_plugin",
 	"matchit",
+	"black",
 }
 
 for _, plugin in pairs(disabled_built_ins) do
@@ -101,4 +94,3 @@ for _, plugin in pairs(disabled_built_ins) do
 end
 
 -- disable nvim intro
-opt.shortmess:append("sI")

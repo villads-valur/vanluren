@@ -96,10 +96,17 @@ return {
 		dependencies = { "mason.nvim" },
 		opts = function()
 			local nls = require("null-ls")
+			local builtins = nls.builtins
+
 			return {
 				sources = {
-					nls.builtins.formatting.prettierd,
-					nls.builtins.formatting.stylua,
+					builtins.formatting.prettierd,
+					builtins.formatting.prismaFmt,
+					builtins.formatting.stylua,
+					builtins.diagnostics.vale,
+					builtins.completion.spell.with({
+						filetypes = { "markdown" },
+					}),
 				},
 			}
 		end,

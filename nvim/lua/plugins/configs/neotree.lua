@@ -5,6 +5,6 @@ return {
 	"nvim-neo-tree/neo-tree.nvim",
 	init = function()
 		map("n", "<Leader>n", "<CMD>NeoTreeShowToggle<CR>", opts)
-		map("n", "<Leader>nf", "<CMD>NeoTreeFocusToggle<CR>", opts)
+		map("n", "<Leader>nf", "<CMD>NeoTreeRevealToggle<CR>", opts)
 	end,
 }

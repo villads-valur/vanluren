@@ -24,6 +24,8 @@ local plugins = {
 	import("treesitter"),
 	import("mini"),
 	import("lualine"),
+	import("indent-blankline"),
+	import("gitsigns"),
 }
 
 require("lazy").setup(plugins)

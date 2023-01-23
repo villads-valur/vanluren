@@ -2,6 +2,15 @@ local cmd = vim.cmd
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
+local function organize_imports()
+	local params = {
+		command = "_typescript.organizeImports",
+		arguments = { vim.api.nvim_buf_get_name(0) },
+		title = "",
+	}
+	vim.lsp.buf.execute_command(params)
+end
+
 return {
 	{
 		"williamboman/mason.nvim",
@@ -23,6 +32,14 @@ return {
 	},
 	{
 		"neovim/nvim-lspconfig",
+		opts = {
+			diagnostics = {
+				underline = true,
+				update_in_insert = false,
+				virtual_text = { spacing = 4, prefix = "●" },
+				severity_sort = true,
+			},
+		},
 		config = function()
 			local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 			local lsp_attach = function(client, bufnr)
@@ -49,7 +66,7 @@ return {
 				map("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 				map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 				map("n", "gf", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-				map("n", "gs", "<cmd>LspSignatureHelp<CR>")
+				map("n", "gs", "<cmd>LspSignatureHelp<CR>", opts)
 
 				map("n", "<Leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 				map("v", "<Leader>ca", ":<C-U>lua vim.lsp.buf.range_code_action()<CR>", opts)
@@ -62,6 +79,12 @@ return {
 					lspconfig[server_name].setup({
 						on_attach = lsp_attach,
 						capabilities = lsp_capabilities,
+						commands = {
+							OrganizeImports = {
+								organize_imports,
+								description = "Organize Imports",
+							},
+						},
 					})
 				end,
 			})
@@ -114,15 +137,6 @@ return {
 					{ name = "buffer" },
 					{ name = "path" },
 				}),
-				formatting = {
-					format = function(_, item)
-						local icons = require("lazyvim.config").icons.kinds
-						if icons[item.kind] then
-							item.kind = icons[item.kind] .. item.kind
-						end
-						return item
-					end,
-				},
 				experimental = {
 					ghost_text = {
 						hl_group = "LspCodeLens",

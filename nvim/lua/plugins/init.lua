@@ -17,7 +17,6 @@ local plugins = {
 	import("alpha"),
 	import("hop"),
 	import("tpope-essentials"),
-	import("which-key"),
 	import("bufferline"),
 	import("buf-remove"),
 	import("lsp"),

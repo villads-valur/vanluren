@@ -23,6 +23,7 @@ local plugins = {
 	import("lsp"),
 	import("treesitter"),
 	import("mini"),
+	import("lualine"),
 }
 
 require("lazy").setup(plugins)

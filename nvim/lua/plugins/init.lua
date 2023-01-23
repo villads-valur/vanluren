@@ -25,6 +25,7 @@ local plugins = {
 	import("lualine"),
 	import("indent-blankline"),
 	import("gitsigns"),
+	import("ts-autotag"),
 }
 
 require("lazy").setup(plugins)

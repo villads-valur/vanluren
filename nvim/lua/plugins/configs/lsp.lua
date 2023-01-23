@@ -1,4 +1,7 @@
 local cmd = vim.cmd
+local map = vim.api.nvim_set_keymap
+local opts = { noremap = true, silent = true }
+
 return {
 	{
 		"williamboman/mason.nvim",
@@ -39,6 +42,18 @@ return {
 				cmd("command! LspSignatureHelp lua vim.lsp.buf.signature_help()")
 
 				cmd([[autocmd BufWritePre * lua vim.lsp.buf.format()]])
+
+				map("n", "lp", ":LspDiagPrev<CR>", opts)
+				map("n", "ln", ":LspDiagNext<CR>", opts)
+
+				map("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+				map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+				map("n", "gf", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+				map("n", "gs", "<cmd>LspSignatureHelp<CR>")
+
+				map("n", "<Leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+				map("v", "<Leader>ca", ":<C-U>lua vim.lsp.buf.range_code_action()<CR>", opts)
+				map("n", "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 			end
 
 			local lspconfig = require("lspconfig")
@@ -52,7 +67,6 @@ return {
 			})
 		end,
 	},
-	{ "hrsh7th/cmp-nvim-lsp", config = function() end },
 	{
 		"jose-elias-alvarez/null-ls.nvim",
 		event = "BufReadPre",

@@ -47,3 +47,6 @@ windows:
       - commands:
           - cd cubejs
           - yarn dev
+      - commands:
+          - ../
+          - java -Dconfig.file=./elasticmq.conf  -jar ~/Developer/Cozero/elasticmq-server-1.3.9.jar

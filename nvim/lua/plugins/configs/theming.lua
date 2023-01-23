@@ -13,7 +13,7 @@ require("onedarkpro").setup({
 })
 
 local light_theme = "ayu-light"
-local dark_theme = "onedarkpro"
+local dark_theme = "onedark"
 
 -- DarkNotify
 function nox()

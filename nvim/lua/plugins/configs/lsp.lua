@@ -23,8 +23,6 @@ return {
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
-					-- Replace these with whatever servers you want to install
-					"rust_analyzer",
 					"tsserver",
 				},
 			})
@@ -41,6 +39,11 @@ return {
 			},
 		},
 		config = function()
+			local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+			for type, icon in pairs(signs) do
+				local hl = "DiagnosticSign" .. type
+				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+			end
 			local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 			local lsp_attach = function(client, bufnr)
 				client.server_capabilities.documentFormattingProvider = false
@@ -71,6 +74,21 @@ return {
 				map("n", "<Leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 				map("v", "<Leader>ca", ":<C-U>lua vim.lsp.buf.range_code_action()<CR>", opts)
 				map("n", "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+
+				vim.api.nvim_create_autocmd("CursorHold", {
+					buffer = bufnr,
+					callback = function()
+						local opts = {
+							focusable = false,
+							close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+							border = "rounded",
+							source = "always",
+							prefix = " ",
+							scope = "cursor",
+						}
+						vim.diagnostic.open_float(nil, opts)
+					end,
+				})
 			end
 
 			local lspconfig = require("lspconfig")
@@ -103,11 +121,20 @@ return {
 					builtins.formatting.prettierd,
 					builtins.formatting.prismaFmt,
 					builtins.formatting.stylua,
-					builtins.diagnostics.vale,
 					builtins.completion.spell.with({
 						filetypes = { "markdown" },
 					}),
 				},
+				on_attach = function(client)
+					if client.server_capabilities.documentFormattingProvider then
+						vim.cmd([[
+            augroup LspFormatting
+                autocmd! * <buffer>
+                autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()
+            augroup END
+            ]])
+					end
+				end,
 			}
 		end,
 	},
@@ -119,9 +146,13 @@ return {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"saadparwaiz1/cmp_luasnip",
+			"hrsh7th/cmp-nvim-lua",
 		},
 		opts = function()
 			local cmp = require("cmp")
+			local luasnip = require("luasnip")
+      local compare = require("cmp.config.compare")
+
 			return {
 				completion = {
 					completeopt = "menu,menuone,noinsert",
@@ -131,24 +162,52 @@ return {
 						require("luasnip").lsp_expand(args.body)
 					end,
 				},
+
+				sorting = {
+					priority_weight = 2,
+					comparators = {
+						compare.offset,
+						compare.exact,
+						compare.score,
+						compare.kind,
+						compare.sort_text,
+						compare.length,
+						compare.order,
+					},
+				},
 				mapping = cmp.mapping.preset.insert({
 					["<C-b>"] = cmp.mapping.scroll_docs(-4),
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
-					["<C-Space>"] = cmp.mapping.complete(),
 					["<C-e>"] = cmp.mapping.abort(),
-					["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+					["<CR>"] = cmp.mapping.confirm({
+						behavior = cmp.ConfirmBehavior.Replace,
+						select = true,
+					}),
+					["<Tab>"] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							cmp.select_next_item()
+						elseif luasnip.expand_or_jumpable() then
+							luasnip.expand_or_jump()
+						else
+							fallback()
+						end
+					end, { "i", "s" }),
+					["<S-Tab>"] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							cmp.select_prev_item()
+						elseif luasnip.jumpable(-1) then
+							luasnip.jump(-1)
+						else
+							fallback()
+						end
+					end, { "i", "s" }),
 				}),
 				sources = cmp.config.sources({
-					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
+					{ name = "nvim_lsp" },
 					{ name = "buffer" },
 					{ name = "path" },
 				}),
-				experimental = {
-					ghost_text = {
-						hl_group = "LspCodeLens",
-					},
-				},
 			}
 		end,
 	},

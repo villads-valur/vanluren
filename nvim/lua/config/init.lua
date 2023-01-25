@@ -60,12 +60,6 @@ exec(
 -- don't auto commenting new lines
 cmd([[au BufEnter * set fo-=c fo-=r fo-=o]])
 
--- Terminal visual tweaks
---- enter insert mode when switching to terminal
-cmd([[
-    autocmd TermOpen * setlocal listchars= nonumber norelativenumber nocursorline
-]])
-
 -- Startup
 -- disable builtins plugins
 local disabled_built_ins = {

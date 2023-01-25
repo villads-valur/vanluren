@@ -26,6 +26,7 @@ local plugins = {
 	import("indent-blankline"),
 	import("gitsigns"),
 	import("ts-autotag"),
+	import("luasnip"),
 }
 
 require("lazy").setup(plugins)

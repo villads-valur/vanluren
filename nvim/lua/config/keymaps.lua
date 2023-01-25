@@ -6,7 +6,7 @@ local opts = { noremap = true, silent = true }
 
 -- Basic
 -- use space as a the leader key
-map("n", "<Space", "<Nop>", opts)
+map("n", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 
 -- Writing

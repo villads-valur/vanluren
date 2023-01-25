@@ -1,10 +1,9 @@
-local hop = require("hop")
-local map = require("utils").map
-
-hop.setup()
-
-map("n", "t", ":HopChar1<CR>")
-map("n", "tt", ":HopChar2<CR>")
-map("n", "T", ":HopAnywhere<CR>")
-map("n", "l", ":HopLineStart<CR>")
-map("n", "L", ":HopLine<CR>")
+return {
+	"phaazon/hop.nvim",
+	branch = "v2", -- optional but strongly recommended
+	event = "VeryLazy",
+	config = function()
+		-- you can configure Hop the way you like here; see :h hop-config
+		require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
+	end,
+}

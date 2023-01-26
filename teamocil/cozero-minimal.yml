@@ -1,4 +1,4 @@
-name: cozero
+name: cozero-mini
 windows:
   - name: editor
     root: ~/Developer/Cozero/_core

@@ -27,6 +27,8 @@ local plugins = {
 	import("gitsigns"),
 	import("ts-autotag"),
 	import("luasnip"),
+	import("null-ls"),
+	import("cmp"),
 }
 
 require("lazy").setup(plugins)

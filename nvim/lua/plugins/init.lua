@@ -30,6 +30,7 @@ local plugins = {
 	import("null-ls"),
 	import("cmp"),
 	import("zen"),
+	import("prettier"),
 }
 
 require("lazy").setup(plugins)

@@ -24,6 +24,12 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"tsserver",
+					sumneko_lua = {
+						Lua = {
+							workspace = { checkThirdParty = false },
+							telemetry = { enable = false },
+						},
+					},
 				},
 			})
 		end,

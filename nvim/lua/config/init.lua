@@ -17,7 +17,6 @@ opt.clipboard = "unnamedplus" -- copy/paste to system clipboard
 opt.swapfile = false -- don't use swapfile
 opt.updatetime = 100 -- Length of time to wait before triggering the plugin
 opt.timeoutlen = 200 -- Length of time to wait for a mapped sequence
-opt.number = true -- show line number
 opt.preserveindent = true
 opt.showmatch = true -- highlight matching parenthesis
 opt.foldmethod = "marker" -- enable folding (default 'foldmarker')
@@ -28,8 +27,6 @@ opt.smartcase = true -- ignore lowercase for the whole pattern
 opt.linebreak = true -- wrap on word boundary
 opt.encoding = "utf-8" -- Set encoding to  UTF-8
 opt.cursorline = true -- Highlight the current line
-wo.cursorline = true -- Highlight the current line
-opt.signcolumn = "yes:2" --  Always show the sign colum
 opt.laststatus = 3 -- joined status bar
 opt.wildignore = "*node_modules/**" -- Don't search inside Node.js modules
 opt.showmode = false -- Hide status
@@ -38,6 +35,7 @@ opt.completeopt = "menuone,noselect"
 -- Memory, CPU
 opt.hidden = true -- enable background buffers
 opt.history = 100 -- remember n lines in history
+opt.undofile = true
 opt.lazyredraw = true -- faster scrolling
 -- Colorscheme
 opt.termguicolors = true -- enable 24-bit RGB colors
@@ -46,6 +44,10 @@ opt.expandtab = true -- use spaces instead of tabs
 opt.shiftwidth = 2 -- shift 2 spaces when tab
 opt.tabstop = 2 -- 1 tab == 2 spaces
 opt.smartindent = true -- autoindent new lines
+
+wo.signcolumn = "yes:2" --  Always show the sign colum
+wo.cursorline = true -- Highlight the current line
+wo.number = true -- show line number
 
 -- highlight on yank
 exec(

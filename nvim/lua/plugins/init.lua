@@ -29,6 +29,7 @@ local plugins = {
 	import("luasnip"),
 	import("null-ls"),
 	import("cmp"),
+	import("zen"),
 }
 
 require("lazy").setup(plugins)

@@ -27,6 +27,7 @@ opt.ignorecase = true -- ignore case letters when search
 opt.smartcase = true -- ignore lowercase for the whole pattern
 opt.linebreak = true -- wrap on word boundary
 opt.encoding = "utf-8" -- Set encoding to  UTF-8
+opt.cursorline = true -- Highlight the current line
 wo.cursorline = true -- Highlight the current line
 opt.signcolumn = "yes:2" --  Always show the sign colum
 opt.laststatus = 3 -- joined status bar

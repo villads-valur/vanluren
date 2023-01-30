@@ -9,7 +9,7 @@ return {
 
 		return {
 			sources = {
-				-- builtins.formatting.prettierd,
+				builtins.formatting.prettierd,
 				builtins.formatting.prismaFmt,
 				builtins.formatting.stylua,
 				builtins.completion.spell.with({

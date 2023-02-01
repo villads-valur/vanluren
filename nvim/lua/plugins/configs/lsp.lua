@@ -68,8 +68,6 @@ return {
 				cmd("command! LspDiagLine lua vim.diagnostic.show_line_diagnostics()")
 				cmd("command! LspSignatureHelp lua vim.lsp.buf.signature_help()")
 
-				cmd([[autocmd BufWritePre * lua vim.lsp.buf.format()]])
-
 				map("n", "lp", ":LspDiagPrev<CR>", opts)
 				map("n", "ln", ":LspDiagNext<CR>", opts)
 

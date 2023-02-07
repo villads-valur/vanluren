@@ -35,17 +35,17 @@ alt_send_esc: false
 live_config_reload: true
 colors:
   primary:
-    background: '#1F1F28'
-    foreground: '#ABB2BF'
+    background: '0xfafafa'
+    foreground: '0x5b6672'
   normal:
-    black: '#5C6370'
-    red: '#E06C75'
-    green: '#98C379'
-    yellow: '#E5C07B'
-    blue: '#61AFEF'
-    magenta: '#C678DD'
-    cyan: '#56b6c2'
-    white: '#828997'
+    black: '0x000000'
+    red: '0xf2590b'
+    green: '0x76cc00'
+    yellow: '0xf29717'
+    blue: '0x41a5d9'
+    magenta: '0x9965cc'
+    cyan: '0x4dbf98'
+    white: '0xc7c7c7'
   bright:
     black: '0x676767'
     red: '0xd6646a'

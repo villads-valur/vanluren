@@ -31,6 +31,8 @@ local plugins = {
 	import("cmp"),
 	import("zen"),
 	import("prettier"),
+	import("ayu"),
+	import("dark-notify"),
 }
 
 require("lazy").setup(plugins)

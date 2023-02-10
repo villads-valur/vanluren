@@ -36,7 +36,7 @@ opt.completeopt = "menuone,noselect"
 opt.hidden = true -- enable background buffers
 opt.history = 100 -- remember n lines in history
 opt.undofile = true
-opt.lazyredraw = true -- faster scrolling
+opt.lazyredraw = false -- faster scrolling
 -- Colorscheme
 opt.termguicolors = true -- enable 24-bit RGB colors
 -- Tabs, indent

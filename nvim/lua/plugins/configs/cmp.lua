@@ -1,3 +1,4 @@
+--#region
 return {
 	"hrsh7th/nvim-cmp",
 	event = "InsertEnter",
@@ -14,6 +15,9 @@ return {
 		local compare = require("cmp.config.compare")
 
 		return {
+			view = {
+				entries = "custom", -- can be "custom", "wildmenu" or "native"
+			},
 			completion = {
 				completeopt = "menu,menuone,noinsert",
 			},
@@ -22,7 +26,24 @@ return {
 					require("luasnip").lsp_expand(args.body)
 				end,
 			},
+			window = {
+				completion = {
+					winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+					col_offset = -3,
+					side_padding = 0,
+				},
+			},
+			formatting = {
+				fields = { "kind", "abbr", "menu" },
+				format = function(entry, vim_item)
+					local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+					local strings = vim.split(kind.kind, "%s", { trimempty = true })
+					kind.kind = " " .. (strings[1] or "") .. " "
+					kind.menu = "    (" .. (strings[2] or "") .. ")"
 
+					return kind
+				end,
+			},
 			sorting = {
 				priority_weight = 2,
 				comparators = {
@@ -41,7 +62,6 @@ return {
 				["<C-e>"] = cmp.mapping.abort(),
 				["<CR>"] = cmp.mapping.confirm({
 					behavior = cmp.ConfirmBehavior.Replace,
-					select = true,
 				}),
 				["<Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then

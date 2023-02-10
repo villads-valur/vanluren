@@ -4,7 +4,7 @@ window:
   dynamic_title: true
   padding:
     x: 2
-    'y': 2
+    "y": 2
   startup_mode: Fullscreen
   title: Terminal
   class:
@@ -27,122 +27,122 @@ font:
   size: 14.5
   offset:
     x: 0
-    'y': 0
+    "y": 0
   glyph_offset:
     x: 0
-    'y': 0
+    "y": 0
 alt_send_esc: false
 live_config_reload: true
 colors:
   primary:
-    background: '0xfafafa'
-    foreground: '0x5b6672'
+    background: "0xfafafa"
+    foreground: "0x5b6672"
   normal:
-    black: '0x000000'
-    red: '0xf2590b'
-    green: '0x76cc00'
-    yellow: '0xf29717'
-    blue: '0x41a5d9'
-    magenta: '0x9965cc'
-    cyan: '0x4dbf98'
-    white: '0xc7c7c7'
+    black: "0x000000"
+    red: "0xf2590b"
+    green: "0x76cc00"
+    yellow: "0xf29717"
+    blue: "0x41a5d9"
+    magenta: "0x9965cc"
+    cyan: "0x4dbf98"
+    white: "0xc7c7c7"
   bright:
-    black: '0x676767'
-    red: '0xd6646a'
-    green: '0xa3d900'
-    yellow: '0xe7c446'
-    blue: '0x6871ff'
-    magenta: '0xa37acc'
-    cyan: '0x56d9ad'
-    white: '0xfeffff'
+    black: "0x676767"
+    red: "0xd6646a"
+    green: "0xa3d900"
+    yellow: "0xe7c446"
+    blue: "0x6871ff"
+    magenta: "0xa37acc"
+    cyan: "0x56d9ad"
+    white: "0xfeffff"
   indexed_colors:
     - index: 16
-      color: '0x3ddbd9'
+      color: "0x3ddbd9"
     - index: 17
-      color: '0xff7eb6'
+      color: "0xff7eb6"
     - index: 16
-      color: '0xd18616'
+      color: "0xd18616"
     - index: 17
-      color: '0xff938a'
+      color: "0xff938a"
     - index: 16
-      color: '0xd18616'
+      color: "0xd18616"
     - index: 17
-      color: '0xf97583'
+      color: "0xf97583"
     - index: 16
-      color: '0xf4a261'
+      color: "0xf4a261"
     - index: 17
-      color: '0xd67ad2'
+      color: "0xd67ad2"
     - index: 16
-      color: '0x3ddbd9'
+      color: "0x3ddbd9"
     - index: 17
-      color: '0xff7eb6'
+      color: "0xff7eb6"
     - index: 16
-      color: '0xd18616'
+      color: "0xd18616"
     - index: 17
-      color: '0xffa198'
+      color: "0xffa198"
     - index: 16
-      color: '0xf4a261'
+      color: "0xf4a261"
     - index: 17
-      color: '0xd67ad2'
+      color: "0xd67ad2"
     - index: 16
-      color: '0xd18616'
+      color: "0xd18616"
     - index: 17
-      color: '0xffa198'
+      color: "0xffa198"
     - index: 16
-      color: '0xd18616'
+      color: "0xd18616"
     - index: 17
-      color: '0xf97583'
+      color: "0xf97583"
     - index: 16
-      color: '0xd18616'
+      color: "0xd18616"
     - index: 17
-      color: '0xff938a'
+      color: "0xff938a"
     - index: 16
-      color: '0xf4a261'
+      color: "0xf4a261"
     - index: 17
-      color: '0xd67ad2'
+      color: "0xd67ad2"
     - index: 16
-      color: '0xffa066'
+      color: "0xffa066"
     - index: 17
-      color: '0xff5d62'
+      color: "0xff5d62"
     - index: 16
-      color: '0xffa066'
+      color: "0xffa066"
     - index: 17
-      color: '0xff5d62'
+      color: "0xff5d62"
     - index: 16
-      color: '0xffa066'
+      color: "0xffa066"
     - index: 17
-      color: '0xff5d62'
+      color: "0xff5d62"
     - index: 16
-      color: '0xffa066'
+      color: "0xffa066"
     - index: 17
-      color: '0xff5d62'
+      color: "0xff5d62"
     - index: 16
-      color: '0xffa066'
+      color: "0xffa066"
     - index: 17
-      color: '0xff5d62'
+      color: "0xff5d62"
     - index: 16
-      color: '0xffa066'
+      color: "0xffa066"
     - index: 17
-      color: '0xff5d62'
+      color: "0xff5d62"
     - index: 16
-      color: '0xd18616'
+      color: "0xd18616"
     - index: 17
-      color: '0xffa198'
+      color: "0xffa198"
     - index: 16
-      color: '0xffa066'
+      color: "0xffa066"
     - index: 17
-      color: '0xff5d62'
+      color: "0xff5d62"
     - index: 16
-      color: '#ffa066'
+      color: "#ffa066"
     - index: 17
-      color: '#ff5d62'
+      color: "#ff5d62"
   cursor:
     text: CellBackground
-    cursor: '#528BFF'
+    cursor: "#528BFF"
   selection:
     text: CellForeground
-    background: '#3E4451'
-    foreground: '#c8c093'
+    background: "#3E4451"
+    foreground: "#c8c093"
 key_bindings:
   - key: I
     mods: Control

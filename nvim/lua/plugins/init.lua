@@ -29,10 +29,13 @@ local plugins = {
 	import("luasnip"),
 	import("null-ls"),
 	import("cmp"),
+	import("lspkind"),
 	import("zen"),
 	import("prettier"),
 	import("ayu"),
 	import("dark-notify"),
+	import("colorizer"),
+	import("copilot"),
 }
 
 require("lazy").setup(plugins)

@@ -13,7 +13,7 @@ HIST_STAMPS="mm/dd/yyyy"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-plugins=(git macos vscode web-search)
+plugins=(git macos tmux)
 
 source $ZSH/oh-my-zsh.sh
 export LANG=da_DK.UTF-8
@@ -40,6 +40,10 @@ alias clean-slate="sudo rm -rf node_modules && yarn cache clean"
 alias g="git"
 alias gs="git status"
 alias gc="cz"
+
+# tmux
+alias t="tmux -f $HOME/.config/tmux/tmux.conf"
+alias tk="tkss"
 
 
 # Docker

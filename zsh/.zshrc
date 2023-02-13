@@ -10,13 +10,10 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 HIST_STAMPS="mm/dd/yyyy"
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
 plugins=(git macos tmux)
 
 source $ZSH/oh-my-zsh.sh
-export LANG=da_DK.UTF-8
+export LANG=en_GB.UTF-8
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 

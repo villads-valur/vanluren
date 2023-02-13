@@ -39,6 +39,8 @@ alias clean-slate="sudo rm -rf node_modules && yarn cache clean"
 # Git
 alias g="git"
 alias gs="git status"
+alias gc="cz"
+
 
 # Docker
 alias dc="docker-compose"

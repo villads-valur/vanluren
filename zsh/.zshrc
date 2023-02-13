@@ -13,7 +13,7 @@ HIST_STAMPS="mm/dd/yyyy"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-plugins=(git osx vscode web-search)
+plugins=(git macos vscode web-search)
 
 source $ZSH/oh-my-zsh.sh
 export LANG=da_DK.UTF-8
@@ -27,11 +27,6 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 alias slack="open -a /Applications/Slack.app"
 alias chrome=" open -a /Applications/Google\ Chrome.app"
 
-# SW2 specifik alias'
-alias sw2-ready="yarn; bundle install; bundle exec rake db:migrate i18n:phraseapp:pull;"
-alias sw2-kill="kill $(lsof -ti:3000,8888,1025,1080)"
-alias sw2-phrases="bundle exec rake i18n:phraseapp:pull"
-
 # My alias'
 alias v="nvim"
 alias vim="nvim"
@@ -43,13 +38,11 @@ alias clean-slate="sudo rm -rf node_modules && yarn cache clean"
 
 # Git
 alias g="git"
+alias gs="git status"
 
 # Docker
 alias dc="docker-compose"
 alias k="kubectl"
-
-# JS
-alias cy="yarn cy:open"
 
 # Utility
 alias hg='history | grep'
@@ -72,13 +65,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
-export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
-export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
-export PATH="$PATH:$(yarn global bin)"
-
 # place this after nvm initialization!
 autoload -U add-zsh-hook
 load-nvmrc() {
@@ -91,6 +77,5 @@ load-nvmrc() {
 }
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
-
 
 export FZF_DEFAULT_COMMAND='rg --files'

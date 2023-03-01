@@ -3,7 +3,7 @@ env:
 window:
   dynamic_title: true
   padding:
-    x: 2
+    x: 1
     'y': 2
   startup_mode: Fullscreen
   title: Terminal
@@ -14,17 +14,23 @@ draw_bold_text_with_bright_colors: true
 scrolling:
   history: 10000
   multiplier: 3
+shell:
+  program: zsh
+  args:
+    - '-l'
+    - '-c'
+    - tmux attach || tmux new -s main
 font:
   normal:
-    family: BlexMono Nerd Font
-    style: Text
+    family: Liga SFMono Nerd Font
+    style: Regular
   bold:
-    family: BlexMono Nerd Font Mono
-    style: SemiBold
+    family: Liga SFMono Nerd Font
+    style: Bold
   italic:
-    family: BlexMono Nerd Font
+    family: Liga SFMono Nerd Font
     style: Italic
-  size: 14.5
+  size: 14
   offset:
     x: 0
     'y': 0
@@ -57,81 +63,81 @@ colors:
     white: '0xfeffff'
   indexed_colors:
     - index: 16
-      color: '0x3ddbd9'
+      color: '#3ddbd9'
     - index: 17
-      color: '0xff7eb6'
+      color: '#ff7eb6'
     - index: 16
-      color: '0xd18616'
+      color: '#d18616'
     - index: 17
-      color: '0xff938a'
+      color: '#ff938a'
     - index: 16
-      color: '0xd18616'
+      color: '#d18616'
     - index: 17
-      color: '0xf97583'
+      color: '#f97583'
     - index: 16
-      color: '0xf4a261'
+      color: '#f4a261'
     - index: 17
-      color: '0xd67ad2'
+      color: '#d67ad2'
     - index: 16
-      color: '0x3ddbd9'
+      color: '#3ddbd9'
     - index: 17
-      color: '0xff7eb6'
+      color: '#ff7eb6'
     - index: 16
-      color: '0xd18616'
+      color: '#d18616'
     - index: 17
-      color: '0xffa198'
+      color: '#ffa198'
     - index: 16
-      color: '0xf4a261'
+      color: '#f4a261'
     - index: 17
-      color: '0xd67ad2'
+      color: '#d67ad2'
     - index: 16
-      color: '0xd18616'
+      color: '#d18616'
     - index: 17
-      color: '0xffa198'
+      color: '#ffa198'
     - index: 16
-      color: '0xd18616'
+      color: '#d18616'
     - index: 17
-      color: '0xf97583'
+      color: '#f97583'
     - index: 16
-      color: '0xd18616'
+      color: '#d18616'
     - index: 17
-      color: '0xff938a'
+      color: '#ff938a'
     - index: 16
-      color: '0xf4a261'
+      color: '#f4a261'
     - index: 17
-      color: '0xd67ad2'
+      color: '#d67ad2'
     - index: 16
-      color: '0xffa066'
+      color: '#ffa066'
     - index: 17
-      color: '0xff5d62'
+      color: '#ff5d62'
     - index: 16
-      color: '0xffa066'
+      color: '#ffa066'
     - index: 17
-      color: '0xff5d62'
+      color: '#ff5d62'
     - index: 16
-      color: '0xffa066'
+      color: '#ffa066'
     - index: 17
-      color: '0xff5d62'
+      color: '#ff5d62'
     - index: 16
-      color: '0xffa066'
+      color: '#ffa066'
     - index: 17
-      color: '0xff5d62'
+      color: '#ff5d62'
     - index: 16
-      color: '0xffa066'
+      color: '#ffa066'
     - index: 17
-      color: '0xff5d62'
+      color: '#ff5d62'
     - index: 16
-      color: '0xffa066'
+      color: '#ffa066'
     - index: 17
-      color: '0xff5d62'
+      color: '#ff5d62'
     - index: 16
-      color: '0xd18616'
+      color: '#d18616'
     - index: 17
-      color: '0xffa198'
+      color: '#ffa198'
     - index: 16
-      color: '0xffa066'
+      color: '#ffa066'
     - index: 17
-      color: '0xff5d62'
+      color: '#ff5d62'
     - index: 16
       color: '#ffa066'
     - index: 17

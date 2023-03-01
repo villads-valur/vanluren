@@ -3,6 +3,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 export ZSH=$HOME/.oh-my-zsh
+export PATH="/Users/villadsvalur/.nvm/versions/node/v18.14.0/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/villadsvalur/.cargo/bin:/Users/villadsvalur/.local/share/bob/nvim-bin"
 
 ZSH_THEME=powerlevel10k/powerlevel10k
 
@@ -37,6 +38,8 @@ alias clean-slate="sudo rm -rf node_modules && yarn cache clean"
 alias g="git"
 alias gs="git status"
 alias gc="cz"
+alias gai="git add -i"
+alias gcai="aicommits"
 
 # tmux
 alias t="tmux -f $HOME/.config/tmux/tmux.conf"

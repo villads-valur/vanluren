@@ -26,18 +26,18 @@ windows:
     layout: tiled
     panes:
       - commands:
-          - cd act-service
+          - cd act-service-sls
           - yarn start:dev
       - commands:
           - cd log-service
       - commands:
-          - cd share-service
+          - cd share-service-sls
   - name: calc-services
     root: ~/Developer/Cozero/_core/apps
     layout: tiled
     panes:
       - commands:
-          - cd calculations-service
+          - cd calculations-service-sls
           - yarn start:dev
       - commands:
           - cd reports-service

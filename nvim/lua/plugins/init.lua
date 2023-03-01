@@ -31,11 +31,11 @@ local plugins = {
 	import("cmp"),
 	import("lspkind"),
 	import("zen"),
-	import("prettier"),
 	import("ayu"),
 	import("dark-notify"),
 	import("colorizer"),
 	import("copilot"),
+	import("github-actions"),
 }
 
 require("lazy").setup(plugins)

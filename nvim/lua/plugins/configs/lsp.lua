@@ -23,6 +23,7 @@ return {
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
+					"prisma",
 					"tsserver",
 					sumneko_lua = {
 						Lua = {
@@ -52,8 +53,8 @@ return {
 			end
 			local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 			local lsp_attach = function(client, bufnr)
-				client.server_capabilities.documentFormattingProvider = false
-				client.server_capabilities.documentRangeFormattingProvider = false
+				-- client.server_capabilities.documentFormattingProvider = false
+				-- client.server_capabilities.documentRangeFormattingProvider = false
 
 				-- Map to easier commands
 				cmd("command! LspDef lua vim.lsp.buf.definition()")

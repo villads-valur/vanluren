@@ -12,6 +12,7 @@ return {
 		null_ls.setup({
 			sources = {
 				null_ls.builtins.formatting.prettierd,
+				null_ls.builtins.formatting.yamlfmt,
 				null_ls.builtins.formatting.prismaFmt,
 				null_ls.builtins.formatting.stylua,
 				null_ls.builtins.completion.spell.with({

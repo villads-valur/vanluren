@@ -7,6 +7,8 @@ return {
 		map("n", "<Leader>t", "<CMD>Telescope find_files<CR>", opts)
 		map("n", "<Leader>fw", "<CMD>Telescope live_grep<CR>", opts)
 		map("n", "<Leader>fb", "<CMD>Telescope find_buffers<CR>", opts)
+
+		map("n", "<Leader>gt", "<CMD>Telescope git_status<CR>", opts)
 	end,
 	opts = function()
 		local telescope = require("telescope")

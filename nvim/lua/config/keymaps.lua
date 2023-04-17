@@ -20,3 +20,5 @@ map("n", "<Leader>h", ":hsplit<CR>", opts)
 
 -- Search
 map("n", "<Esc><Esc>", ":noh<CR>", opts)
+
+map("v", "p", '"_dP', opts)

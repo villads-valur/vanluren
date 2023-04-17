@@ -35,7 +35,6 @@ local plugins = {
 	import("dark-notify"),
 	import("colorizer"),
 	import("copilot"),
-	import("github-actions"),
 }
 
 require("lazy").setup(plugins)

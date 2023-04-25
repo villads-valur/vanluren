@@ -16,7 +16,7 @@ plugins=(git macos tmux)
 source $ZSH/oh-my-zsh.sh
 export LANG=en_GB.UTF-8
 export VISUAL=nvim
-export EDITOR="$VISUAL"
+export EDITOR="code --wait"
 
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"

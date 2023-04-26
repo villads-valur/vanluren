@@ -19,22 +19,21 @@ local plugins = {
 	import("tpope-essentials"),
 	import("bufferline"),
 	import("buf-remove"),
-	import("lsp"),
 	import("treesitter"),
 	import("mini"),
 	import("lualine"),
 	import("indent-blankline"),
 	import("gitsigns"),
 	import("ts-autotag"),
-	import("luasnip"),
-	import("null-ls"),
-	import("cmp"),
-	import("lspkind"),
 	import("zen"),
 	import("ayu"),
 	import("dark-notify"),
 	import("colorizer"),
 	import("copilot"),
+	-- lsp stuff:
+	import("lsp-zero"),
+	import("luasnip"),
+	import("lspkind"),
 }
 
 require("lazy").setup(plugins)

@@ -19,6 +19,14 @@ return {
 					opts = { skip = true },
 				},
 			},
+			lsp = {
+				signature = {
+					enabled = false,
+				},
+				hover = {
+					enabled = false,
+				},
+			},
 		})
 	end,
 	requires = {

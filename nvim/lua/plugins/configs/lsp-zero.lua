@@ -2,15 +2,6 @@ local cmd = vim.cmd
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
-local function organize_imports()
-	local params = {
-		command = "_typescript.organizeImports",
-		arguments = { vim.api.nvim_buf_get_name(0) },
-		title = "",
-	}
-	vim.lsp.buf.execute_command(params)
-end
-
 return {
 	{
 		"VonHeikemen/lsp-zero.nvim",
@@ -25,6 +16,9 @@ return {
 		event = "BufReadPre",
 		dependencies = { "mason.nvim" },
 	},
+
+	{ "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
+	{ "jose-elias-alvarez/typescript.nvim", lazy = true },
 	{
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
@@ -202,16 +196,6 @@ return {
 				"prismals",
 			})
 
-			lsp.configure("tsserver", {
-				single_file_support = false,
-				commands = {
-					OrganizeImports = {
-						organize_imports,
-						description = "Organize Imports",
-					},
-				},
-			})
-
 			lsp.setup()
 
 			local null_ls = require("null-ls")
@@ -219,6 +203,7 @@ return {
 			null_ls.setup({
 				sources = {
 					-- Replace these with the tools you have installed
+					require("typescript.extensions.null-ls.code-actions"),
 					null_ls.builtins.formatting.prettierd,
 					null_ls.builtins.formatting.yamlfmt,
 					null_ls.builtins.formatting.prismaFmt,
@@ -228,7 +213,17 @@ return {
 					}),
 				},
 			})
+
+			require("typescript").setup({
+				server = {
+					on_attach = function(client, bufnr)
+						-- You can find more commands in the documentation:
+						-- https://github.com/jose-elias-alvarez/typescript.nvim#commands
+
+						vim.keymap.set("n", "<leader>ci", "<cmd>TypescriptAddMissingImports<cr>", { buffer = bufnr })
+					end,
+				},
+			})
 		end,
 	},
-	{ "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
 }

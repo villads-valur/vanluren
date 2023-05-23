@@ -26,6 +26,7 @@ windows:
           - yarn start:dev
       - commands:
           - cd log-service
+          - yarn start:dev
       - commands:
           - cd share-service-sls
       - commands:

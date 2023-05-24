@@ -4,7 +4,6 @@ fi
 
 export ZSH=$HOME/.oh-my-zsh
 export PATH="/Users/villadsvalur/.nvm/versions/node/v18.14.0/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/villadsvalur/.cargo/bin:/Users/villadsvalur/.local/share/bob/nvim-bin"
-export OPENAI_API_KEY="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"
 
 ZSH_THEME=powerlevel10k/powerlevel10k
 

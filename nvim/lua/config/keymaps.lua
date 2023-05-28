@@ -1,24 +1,28 @@
--- Keymaps configuration file: keymaps of neovim
--- and plugins.
+-- Keymaps are automatically loaded on the VeryLazy event
+-- Default keymaps that are always set: https://github.com/LazyLazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 
-local map = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
+local keymap = vim.keymap.set
+local silent = { silent = true }
 
--- Basic
--- use space as a the leader key
-map("n", "<Space>", "<Nop>", opts)
-vim.g.mapleader = " "
+-- General
+keymap("n", "<Leader>w", "<cmd>w<cr>", silent)
+keymap("n", "<Leader>v", "<cmd>vsplit<cr>", silent)
+keymap("n", "<Leader>q", "<cmd>q<cr>", silent)
 
--- Writing
-map("n", "<Leader>w", ":w<CR>", opts)
-map("i", "<Leader>w", "<C-c>:w<CR>", opts)
+---- Remove highlights
+keymap("n", "<CR>", ":noh<CR><CR>", silent)
+keymap("n", "<ESC><ESC>", ":noh<CR><CR>", silent)
 
--- Window
-map("n", "<Leader>q", ":q<CR>", opts)
-map("n", "<Leader>v", ":vsplit<CR>", opts)
-map("n", "<Leader>h", ":hsplit<CR>", opts)
+---- Don't yank on delete char
+keymap("n", "x", '"_x', silent)
+keymap("n", "X", '"_X', silent)
+keymap("v", "x", '"_x', silent)
+keymap("v", "X", '"_X', silent)
 
--- Search
-map("n", "<Esc><Esc>", ":noh<CR>", opts)
+-- Don't yank on visual paste
+keymap("v", "p", '"_dP', silent)
 
-map("v", "p", '"_dP', opts)
+-- Buffers
+keymap("n", "<Tab>", "<cmd>bnext<CR>", silent)
+keymap("n", "<S-Tab>", "<cmd>bprevious<CR>", silent)
+keymap("n", "<leader>x", "<cmd>bd<cr>", silent)

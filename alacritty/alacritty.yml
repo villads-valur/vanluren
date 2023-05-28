@@ -22,13 +22,13 @@ shell:
     - tmux attach || tmux new -s main
 font:
   normal:
-    family: Liga SFMono Nerd Font
+    family: SFMono Nerd Font 
     style: Regular
   bold:
-    family: Liga SFMono Nerd Font
+    family: SFMono Nerd Font 
     style: Bold
   italic:
-    family: Liga SFMono Nerd Font
+    family: SFMono Nerd Font 
     style: Italic
   size: 14
   offset:

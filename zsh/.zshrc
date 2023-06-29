@@ -52,6 +52,7 @@ alias k="kubectl"
 
 # Utility
 alias hg='history | grep'
+alias sleep="pmset displaysleepnow"
 
 kill_port() {
   if [ -n "$1" ]

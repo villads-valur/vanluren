@@ -28,6 +28,7 @@ return {
       mappings = {
         ["<space>"] = "none",
       },
+      position = "right",
     },
     default_component_configs = {
       indent = {

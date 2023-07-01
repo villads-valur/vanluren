@@ -16,7 +16,7 @@ plugins=(git macos tmux)
 source $ZSH/oh-my-zsh.sh
 export LANG=en_GB.UTF-8
 export VISUAL=nvim
-export EDITOR="code --wait"
+export EDITOR="nvim"
 
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
@@ -39,7 +39,7 @@ alias g="git"
 alias gs="git status"
 alias gc="cz"
 alias gai="git add -i"
-alias gcai="aicommits --type conventional"
+alias gcai="aicommits"
 
 # tmux
 alias t="tmux -f $HOME/.config/tmux/tmux.conf"
@@ -52,6 +52,7 @@ alias k="kubectl"
 
 # Utility
 alias hg='history | grep'
+alias sleep="pmset displaysleepnow"
 
 kill_port() {
   if [ -n "$1" ]

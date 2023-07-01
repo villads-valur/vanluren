@@ -86,3 +86,6 @@ add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
 export FZF_DEFAULT_COMMAND='rg --files'
+
+# To customize prompt, run `p10k configure` or edit ~/Developer/personal/vanluren/zsh/.p10k.zsh.
+[[ ! -f ~/Developer/personal/vanluren/zsh/.p10k.zsh ]] || source ~/Developer/personal/vanluren/zsh/.p10k.zsh

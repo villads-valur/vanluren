@@ -20,8 +20,8 @@ return {
   },
   opts = {
     filesystem = {
-      bind_to_cwd = false,
-      follow_current_file = true,
+      bind_to_cwd = true,
+      follow_current_file = false,
       use_libuv_file_watcher = true,
     },
     window = {

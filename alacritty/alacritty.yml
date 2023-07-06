@@ -4,7 +4,7 @@ window:
   dynamic_title: true
   padding:
     x: 1
-    'y': 2
+    "y": 2
   startup_mode: Fullscreen
   title: Terminal
   class:
@@ -13,142 +13,141 @@ window:
 draw_bold_text_with_bright_colors: true
 scrolling:
   history: 10000
-  multiplier: 3
+multiplier: 3
 shell:
   program: zsh
   args:
-    - '-l'
-    - '-c'
+    - "-l"
+    - "-c"
     - tmux attach || tmux new -s main
 font:
   normal:
-    family: SFMono Nerd Font 
+    family: SFMono Nerd Font
     style: Regular
   bold:
-    family: SFMono Nerd Font 
+    family: SFMono Nerd Font
     style: Bold
   italic:
-    family: SFMono Nerd Font 
+    family: SFMono Nerd Font
     style: Italic
-  size: 14
+  size: 14.5
   offset:
     x: 0
-    'y': 0
+    "y": 0
   glyph_offset:
     x: 0
-    'y': 0
-alt_send_esc: false
+    "y": 0
 live_config_reload: true
 colors:
   primary:
-    background: '0xfafafa'
-    foreground: '0x5b6672'
+    background: "0xfafafa"
+    foreground: "0x5b6672"
   normal:
-    black: '0x000000'
-    red: '0xf2590b'
-    green: '0x76cc00'
-    yellow: '0xf29717'
-    blue: '0x41a5d9'
-    magenta: '0x9965cc'
-    cyan: '0x4dbf98'
-    white: '0xc7c7c7'
+    black: "0x000000"
+    red: "0xf2590b"
+    green: "0x76cc00"
+    yellow: "0xf29717"
+    blue: "0x41a5d9"
+    magenta: "0x9965cc"
+    cyan: "0x4dbf98"
+    white: "0xc7c7c7"
   bright:
-    black: '0x676767'
-    red: '0xd6646a'
-    green: '0xa3d900'
-    yellow: '0xe7c446'
-    blue: '0x6871ff'
-    magenta: '0xa37acc'
-    cyan: '0x56d9ad'
-    white: '0xfeffff'
+    black: "0x676767"
+    red: "0xd6646a"
+    green: "0xa3d900"
+    yellow: "0xe7c446"
+    blue: "0x6871ff"
+    magenta: "0xa37acc"
+    cyan: "0x56d9ad"
+    white: "0xfeffff"
   indexed_colors:
     - index: 16
-      color: '#3ddbd9'
+      color: "#3ddbd9"
     - index: 17
-      color: '#ff7eb6'
+      color: "#ff7eb6"
     - index: 16
-      color: '#d18616'
+      color: "#d18616"
     - index: 17
-      color: '#ff938a'
+      color: "#ff938a"
     - index: 16
-      color: '#d18616'
+      color: "#d18616"
     - index: 17
-      color: '#f97583'
+      color: "#f97583"
     - index: 16
-      color: '#f4a261'
+      color: "#f4a261"
     - index: 17
-      color: '#d67ad2'
+      color: "#d67ad2"
     - index: 16
-      color: '#3ddbd9'
+      color: "#3ddbd9"
     - index: 17
-      color: '#ff7eb6'
+      color: "#ff7eb6"
     - index: 16
-      color: '#d18616'
+      color: "#d18616"
     - index: 17
-      color: '#ffa198'
+      color: "#ffa198"
     - index: 16
-      color: '#f4a261'
+      color: "#f4a261"
     - index: 17
-      color: '#d67ad2'
+      color: "#d67ad2"
     - index: 16
-      color: '#d18616'
+      color: "#d18616"
     - index: 17
-      color: '#ffa198'
+      color: "#ffa198"
     - index: 16
-      color: '#d18616'
+      color: "#d18616"
     - index: 17
-      color: '#f97583'
+      color: "#f97583"
     - index: 16
-      color: '#d18616'
+      color: "#d18616"
     - index: 17
-      color: '#ff938a'
+      color: "#ff938a"
     - index: 16
-      color: '#f4a261'
+      color: "#f4a261"
     - index: 17
-      color: '#d67ad2'
+      color: "#d67ad2"
     - index: 16
-      color: '#ffa066'
+      color: "#ffa066"
     - index: 17
-      color: '#ff5d62'
+      color: "#ff5d62"
     - index: 16
-      color: '#ffa066'
+      color: "#ffa066"
     - index: 17
-      color: '#ff5d62'
+      color: "#ff5d62"
     - index: 16
-      color: '#ffa066'
+      color: "#ffa066"
     - index: 17
-      color: '#ff5d62'
+      color: "#ff5d62"
     - index: 16
-      color: '#ffa066'
+      color: "#ffa066"
     - index: 17
-      color: '#ff5d62'
+      color: "#ff5d62"
     - index: 16
-      color: '#ffa066'
+      color: "#ffa066"
     - index: 17
-      color: '#ff5d62'
+      color: "#ff5d62"
     - index: 16
-      color: '#ffa066'
+      color: "#ffa066"
     - index: 17
-      color: '#ff5d62'
+      color: "#ff5d62"
     - index: 16
-      color: '#d18616'
+      color: "#d18616"
     - index: 17
-      color: '#ffa198'
+      color: "#ffa198"
     - index: 16
-      color: '#ffa066'
+      color: "#ffa066"
     - index: 17
-      color: '#ff5d62'
+      color: "#ff5d62"
     - index: 16
-      color: '#ffa066'
+      color: "#ffa066"
     - index: 17
-      color: '#ff5d62'
+      color: "#ff5d62"
   cursor:
     text: CellBackground
-    cursor: '#528BFF'
+    cursor: "#528BFF"
   selection:
     text: CellForeground
-    background: '#3E4451'
-    foreground: '#c8c093'
+    background: "#3E4451"
+    foreground: "#c8c093"
 key_bindings:
   - key: I
     mods: Control

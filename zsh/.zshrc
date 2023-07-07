@@ -35,6 +35,7 @@ alias chrome=" open -a /Applications/Google\ Chrome.app"
 alias v="nvim"
 alias vim="nvim"
 alias vi="nvim"
+alias i="nvim" # Stupid alias for stupid people
 alias oldvim="vim"
 alias gcob="gco -b"
 alias c="clear"

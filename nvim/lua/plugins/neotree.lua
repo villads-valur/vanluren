@@ -15,13 +15,13 @@ return {
       end,
       desc = "Explorer NeoTree (cwd)",
     },
-    { "<leader>n", "<leader>fe", desc = "Explorer NeoTree (root dir)", remap = true },
-    { "<leader>N", "<leader>fE", desc = "Explorer NeoTree (cwd)", remap = true },
+    { "<leader>n", "<leader>fE", desc = "Explorer NeoTree", remap = true },
+    { "<leader>N", "<leader>fe", desc = "Explorer NeoTree (root)", remap = true },
   },
   opts = {
     filesystem = {
-      bind_to_cwd = true,
-      follow_current_file = false,
+      bind_to_cwd = false,
+      follow_current_file = true,
       use_libuv_file_watcher = true,
     },
     window = {

@@ -4,17 +4,18 @@ return {
 
   "nvim-telescope/telescope.nvim",
   keys = {
-    { "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
     { "<leader>/", Util.telescope("live_grep"), desc = "Grep (root dir)" },
     { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
-    { "<leader><space>", Util.telescope("files"), desc = "Find Files (root dir)" },
     -- find
-    { "<leader>t", Util.telescope("files"), desc = "Find Files (root dir)" },
+    { "<leader><space>", Util.telescope("files", { cwd = vim.loop.cwd() }), desc = "Find Files (cwd)" },
+    { "<leader>t", Util.telescope("files", { cwd = vim.loop.cwd() }), desc = "Find Files (cwd)" },
+    { "<leader>ff", Util.telescope("files", { cwd = false }), desc = "Find Files (cwd)" },
+    { "<leader>fF", Util.telescope("files"), desc = "Find Files (Root)" },
     { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
-    { "<leader>ff", Util.telescope("files"), desc = "Find Files (root dir)" },
-    { "<leader>fF", Util.telescope("files", { cwd = false }), desc = "Find Files (cwd)" },
-    { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
-    { "<leader>fR", Util.telescope("oldfiles", { cwd = vim.loop.cwd() }), desc = "Recent (cwd)" },
+    { "<leader>fr", Util.telescope("oldfiles", { cwd = vim.loop.cwd() }), desc = "Recent (cwd)" },
+    { "<leader>fR", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
+    -- Buffers
+    { "<leader>bL", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
     -- git
     { "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
     { "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "status" },
@@ -25,8 +26,8 @@ return {
     { "<leader>sC", "<cmd>Telescope commands<cr>", desc = "Commands" },
     { "<leader>sd", "<cmd>Telescope diagnostics bufnr=0<cr>", desc = "Document diagnostics" },
     { "<leader>sD", "<cmd>Telescope diagnostics<cr>", desc = "Workspace diagnostics" },
-    { "<leader>sg", Util.telescope("live_grep"), desc = "Grep (root dir)" },
-    { "<leader>sG", Util.telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
+    { "<leader>sg", Util.telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
+    { "<leader>sG", Util.telescope("live_grep"), desc = "Grep (root dir)" },
     { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
     { "<leader>sH", "<cmd>Telescope highlights<cr>", desc = "Search Highlight Groups" },
     { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
@@ -34,8 +35,8 @@ return {
     { "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Jump to Mark" },
     { "<leader>so", "<cmd>Telescope vim_options<cr>", desc = "Options" },
     { "<leader>sR", "<cmd>Telescope resume<cr>", desc = "Resume" },
-    { "<leader>sw", Util.telescope("grep_string"), desc = "Word (root dir)" },
-    { "<leader>sW", Util.telescope("grep_string", { cwd = false }), desc = "Word (cwd)" },
+    { "<leader>sw", Util.telescope("grep_string", { cwd = false }), desc = "Word (cwd)" },
+    { "<leader>sW", Util.telescope("grep_string"), desc = "Word (root dir)" },
     { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
     {
       "<leader>ss",
@@ -78,6 +79,20 @@ return {
     defaults = {
       prompt_prefix = " ",
       selection_caret = " ",
+      file_ignore_patterns = {
+        ".git/",
+        ".cache",
+        "%.o",
+        "%.a",
+        "%.out",
+        "%.class",
+        "%.pdf",
+        "%.mkv",
+        "%.mp4",
+        "%.zip",
+        "node_modules",
+        "dist",
+      },
       mappings = {
         i = {
           ["<c-t>"] = function(...)
@@ -107,6 +122,9 @@ return {
           end,
           ["<C-b>"] = function(...)
             return require("telescope.actions").preview_scrolling_up(...)
+          end,
+          ["<ESC>"] = function(...)
+            return require("telescope.actions").close(...)
           end,
         },
         n = {

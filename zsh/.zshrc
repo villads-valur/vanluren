@@ -37,7 +37,6 @@ alias vim="nvim"
 alias vi="nvim"
 alias i="nvim" # Stupid alias for stupid people
 alias oldvim="vim"
-alias gcob="gco -b"
 alias c="clear"
 alias clean-slate="sudo rm -rf node_modules && yarn cache clean"
 
@@ -45,6 +44,7 @@ alias clean-slate="sudo rm -rf node_modules && yarn cache clean"
 alias g="git"
 alias gs="git status"
 alias gc="cz"
+alias gcob="gco -b"
 alias gai="git add -i"
 alias gcai="aicommits"
 

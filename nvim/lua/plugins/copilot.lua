@@ -1,5 +1,5 @@
 return {
-  enabled = false,
+  enabled = true,
   "zbirenbaum/copilot.lua",
   cmd = "Copilot",
   event = "InsertEnter",
@@ -13,5 +13,6 @@ return {
         accept = "<C-j>",
       },
     },
+    copilot_node_command = vim.fn.expand("$HOME") .. "/.config/nvm/versions/node/v20.3.1/bin/node", -- Node.js version must be > 16.x
   },
 }

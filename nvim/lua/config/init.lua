@@ -49,15 +49,19 @@ wo.signcolumn = "yes:2" --  Always show the sign colum
 wo.cursorline = true -- Highlight the current line
 wo.number = true -- show line number
 
+vim.cmd([[
+  let g:loaded_perl_provider = 0
+  let g:loaded_ruby_provider = 0
+]])
 -- highlight on yank
 exec(
-	[[
+  [[
   augroup YankHighlight
     autocmd!
     autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
   augroup end
 ]],
-	false
+  false
 )
 
 -- don't auto commenting new lines
@@ -66,27 +70,27 @@ cmd([[au BufEnter * set fo-=c fo-=r fo-=o]])
 -- Startup
 -- disable builtins plugins
 local disabled_built_ins = {
-	"netrw",
-	"netrwPlugin",
-	"netrwSettings",
-	"netrwFileHandlers",
-	"gzip",
-	"zip",
-	"zipPlugin",
-	"tar",
-	"tarPlugin",
-	"getscript",
-	"getscriptPlugin",
-	"vimball",
-	"vimballPlugin",
-	"2html_plugin",
-	"logipat",
-	"rrhelper",
-	"spellfile_plugin",
-	"matchit",
-	"black",
+  "netrw",
+  "netrwPlugin",
+  "netrwSettings",
+  "netrwFileHandlers",
+  "gzip",
+  "zip",
+  "zipPlugin",
+  "tar",
+  "tarPlugin",
+  "getscript",
+  "getscriptPlugin",
+  "vimball",
+  "vimballPlugin",
+  "2html_plugin",
+  "logipat",
+  "rrhelper",
+  "spellfile_plugin",
+  "matchit",
+  "black",
 }
 
 for _, plugin in pairs(disabled_built_ins) do
-	g["loaded_" .. plugin] = 1
+  g["loaded_" .. plugin] = 1
 end

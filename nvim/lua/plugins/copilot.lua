@@ -1,10 +1,8 @@
 return {
-  enabled = true,
   "zbirenbaum/copilot.lua",
   cmd = "Copilot",
   event = "InsertEnter",
   opts = {
-    enabled = true,
     auto_refresh = true,
     suggestion = {
       enabled = true,

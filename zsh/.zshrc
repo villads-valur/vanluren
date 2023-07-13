@@ -30,6 +30,7 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # General alias'
 alias slack="open -a /Applications/Slack.app"
 alias chrome=" open -a /Applications/Google\ Chrome.app"
+alias @="~"
 
 # My alias'
 alias v="nvim"

@@ -8,4 +8,19 @@ return {
     keys[#keys + 1] = { "Ln", "<cmd>lua vim.diagnostic.goto_prev()<cr>" }
     keys[#keys + 1] = { "Lp", "<cmd>lua vim.diagnostic.goto_prev()<cr>" }
   end,
+  opts = {
+    ---@type lspconfig.options
+    servers = {
+      volar = {
+        -- typescript = {
+        --   tsdk = vim.fn.expand("$HOME") .. "/.config/yarn/global/node_modules/typescript/lib",
+        -- },
+        -- settings = {
+        --   filetypes = { "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
+        -- },
+      },
+      tsserver = {},
+      lua_ls = {},
+    },
+  },
 }

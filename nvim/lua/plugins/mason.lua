@@ -1,8 +1,10 @@
 return {
   "williamboman/mason.nvim",
   opts = function(_, opts)
-    opts.ensure_installed = opts.ensure_installed or {}
-    table.insert(opts.ensure_installed, "prettierd")
-    table.insert(opts.ensure_installed, "vue-language-server")
+    vim.list_extend(opts.ensure_installed, {
+      "prettierd",
+      "vue-language-server",
+      "solargraph",
+    })
   end,
 }

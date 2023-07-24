@@ -14,6 +14,7 @@ return {
       solargraph = {},
       tsserver = {},
       lua_ls = {},
+      stylelint_lsp = {},
     },
   },
 }

@@ -9,7 +9,8 @@ return {
     keys[#keys + 1] = { "Lp", "<cmd>lua vim.diagnostic.goto_prev()<cr>" }
   end,
   opts = {
-    format_notify = true,
+    -- Good for debugging
+    format_notify = false,
     servers = {
       lua_ls = {},
       solargraph = {},

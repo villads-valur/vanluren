@@ -8,9 +8,9 @@ return {
       "stylua",
       "prettierd",
       "solargraph",
-      "vetur-vls"
+      -- "vetur-vls"
       -- Install vue-language-server when we move to vue 3
-      -- "vue-language-server"
+      "vue-language-server"
     },
   },
   ---@param opts MasonSettings | {ensure_installed: string[]}

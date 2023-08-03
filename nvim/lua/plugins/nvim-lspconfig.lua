@@ -14,13 +14,17 @@ return {
     servers = {
       lua_ls = {},
       solargraph = {},
-      tsserver = {},
+      tsserver = {
+        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'json' },
+      },
       -- vuels = {},
       volar = {
         tsdk = vim.fn.expand('$HOME/.config/yarn/global/node_modules/typescript'),
-        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
+        filetypes = { 'vue' }
       },
-      stylelint_lsp = {},
+      stylelint_lsp = {
+        filetypes = { 'css', 'scss', 'less', 'vue', 'html' },
+      },
       eslint = {
         settings = {
           workingDirectory = { mode = "auto" },
@@ -32,6 +36,10 @@ return {
         require("lazyvim.util").on_attach(function(client)
           if client.name == "volar" then
             client.server_capabilities.documentFormattingProvider = false
+          elseif client.name == "tsserver" then
+            client.server_capabilities.documentFormattingProvider = false
+          elseif client.name == "eslint" then
+            client.server_capabilities.documentFormattingProvider = true
           end
         end)
       end,

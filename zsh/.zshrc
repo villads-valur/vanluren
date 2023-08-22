@@ -24,6 +24,8 @@ export LANG=en_GB.UTF-8
 export VISUAL=nvim
 export EDITOR="nvim"
 
+alias python3="/opt/homebrew/bin/python3.10"
+
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 

@@ -1,3 +1,4 @@
+local icons = require("lazyvim.config").icons
 return {
   "goolord/alpha-nvim",
   opts = function()
@@ -16,7 +17,7 @@ return {
     dashboard.section.buttons.val = {
       dashboard.button("f", " " .. " Find file", ":Telescope find_files <CR>"),
       dashboard.button("r", " " .. " Recent files", ":Telescope oldfiles <CR>"),
-      dashboard.button("u", "󰒲 " .. " Update plugins", "<CMD>Lazy update<CR>"),
+      dashboard.button("u", " " .. " Update plugins", "<CMD>Lazy update<CR>"),
       dashboard.button("q", " " .. " Quit", ":qa<CR>"),
     }
 

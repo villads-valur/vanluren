@@ -17,6 +17,7 @@ plugins=(
   tmux 
   zsh-completions 
   zsh-autosuggestions
+  zsh-kitty
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -55,6 +56,9 @@ alias gcai="aicommits"
 alias t="tmux -f $HOME/.config/tmux/tmux.conf"
 alias tk="tkss"
 
+# Kitty
+alias dark="kitty +kitten themes --reload-in=all One Half Dark"
+alias light="kitty +kitten themes --reload-in=all Ayu Light"
 
 # Docker
 alias dc="docker-compose"

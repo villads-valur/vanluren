@@ -13,24 +13,27 @@ return {
     format_notify = false,
     servers = {
       lua_ls = {},
-      solargraph = { "ruby", "rakefile" },
-      settings = {
-        solargraph = {
-          autoformat = true,
-          completion = true,
-          diagnostic = true,
-          folding = true,
-          references = true,
-          rename = true,
-          symbols = true,
+      solargraph = {
+        "ruby",
+        "rakefile",
+        settings = {
+          solargraph = {
+            autoformat = true,
+            completion = true,
+            diagnostic = true,
+            folding = true,
+            references = true,
+            rename = true,
+            symbols = true,
+          },
         },
       },
-      tsserver = {
-        filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "json" },
-      },
+      -- tsserver = {
+      --   filetypes = { "javascriptreact", "typescriptreact", "json" },
+      -- },
       volar = {
         tsdk = vim.fn.expand("$HOME/.config/yarn/global/node_modules/typescript"),
-        filetypes = { "vue", "javascript" },
+        filetypes = { "vue", "javascript", "typescript" },
       },
       stylelint_lsp = {
         filetypes = { "css", "scss", "less", "vue", "html" },

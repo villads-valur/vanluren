@@ -33,7 +33,7 @@ return {
       -- },
       volar = {
         tsdk = vim.fn.expand("$HOME/.config/yarn/global/node_modules/typescript"),
-        filetypes = { "vue", "javascript", "typescript" },
+        filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
       },
       stylelint_lsp = {
         filetypes = { "css", "scss", "less", "vue", "html" },

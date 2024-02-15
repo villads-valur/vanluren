@@ -5,7 +5,7 @@ end
 
 function dark()
   vim.cmd("set background=dark")
-  vim.cmd("colorscheme one-half-dark")
+  vim.cmd("colorscheme edge")
 end
 
 return {
@@ -21,6 +21,11 @@ return {
     "Vanluren/neovim-onehalf",
     -- dir = "~/Developer/personal/neovim-onehalf/",
     name = "neovim-onehalf",
+    lazy = false,
+    priority = 1000,
+  },
+  {
+    "sainnhe/edge",
     lazy = false,
     priority = 1000,
     config = function()

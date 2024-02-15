@@ -107,5 +107,7 @@ export PATH=/opt/homebrew/bin:/Users/villadsvalur/.nvm/versions/node/v18.14.0/bi
 source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 
+# This loads RVM into a shell session.
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"

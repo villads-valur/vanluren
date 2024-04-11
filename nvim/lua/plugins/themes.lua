@@ -5,7 +5,7 @@ end
 
 function dark()
   vim.cmd("set background=dark")
-  vim.cmd("colorscheme edge")
+  vim.cmd("colorscheme one-half-dark")
 end
 
 return {
@@ -23,8 +23,5 @@ return {
     name = "neovim-onehalf",
     lazy = false,
     priority = 1000,
-    config = function()
-      vim.cmd("command Dark silent lua dark()")
-    end,
   },
 }

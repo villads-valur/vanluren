@@ -5,7 +5,7 @@ return {
     local dark_notify = require("dark_notify")
     dark_notify.run({
       schemes = {
-        dark = "edge",
+        dark = "one-half-dark",
         light = {
           colorscheme = "ayu-light",
         },

@@ -23,11 +23,6 @@ return {
     name = "neovim-onehalf",
     lazy = false,
     priority = 1000,
-  },
-  {
-    "sainnhe/edge",
-    lazy = false,
-    priority = 1000,
     config = function()
       vim.cmd("command Dark silent lua dark()")
     end,

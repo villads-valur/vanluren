@@ -28,3 +28,7 @@ keymap("n", "<S-Tab>", "<cmd>bprevious<CR>", silent)
 keymap("n", "<leader>x", "<cmd>bd<cr>", silent)
 keymap("n", "<leader>x", "<cmd>bd<cr>", silent)
 keymap("n", "<leader>cn", "<cmd>:set rnu!<cr>", silent)
+
+-- Move lines
+keymap("v", "<A-j>", ":m '>+1<CR>gv=gv") -- move line up(v)
+keymap("v", "<A-k>", ":m '<-2<CR>gv=gv") -- move line down(v)

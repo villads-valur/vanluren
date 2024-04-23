@@ -20,6 +20,7 @@ return {
     { "<leader>as", desc = "summarize text" },
     { "<leader>ag", desc = "generate git message" },
     { "<leader>ao", "<CMD>NeoAIOpen<CR>", desc = "open NeoAi" },
+    { "<leader>ac", "<CMD>NeoAIContext<CR>", desc = "open NeoAiContext" },
   },
   config = function()
     require("neoai").setup()

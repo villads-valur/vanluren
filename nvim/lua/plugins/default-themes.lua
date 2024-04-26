@@ -6,5 +6,6 @@ return {
   {
     "catppuccin/nvim",
     enabled = false,
+    opts = {},
   },
 }

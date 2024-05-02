@@ -3,7 +3,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 export ZSH=$HOME/.oh-my-zsh
-export PATH="/Users/villadsvalur/.nvm/versions/node/v18.14.0/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/villadsvalur/.cargo/bin:/Users/villadsvalur/.local/share/bob/nvim-bin"
+export ZSH_CUSTOM=$HOME/Developer/personal/vanluren/zsh
 
 ZSH_THEME=powerlevel10k/powerlevel10k
 
@@ -14,7 +14,6 @@ HIST_STAMPS="mm/dd/yyyy"
 plugins=(
   git 
   macos 
-  tmux 
   zsh-completions 
   zsh-autosuggestions
   zsh-kitty
@@ -51,6 +50,7 @@ alias gc="cz"
 alias gcob="gco -b"
 alias gai="git add -i"
 alias gcai="aicommits"
+alias gsc="git stash clear" # Clear all stashes, over
 
 # tmux
 alias t="tmux -f $HOME/.config/tmux/tmux.conf"
@@ -103,11 +103,8 @@ export FZF_DEFAULT_COMMAND='rg --files'
 
 # To customize prompt, run `p10k configure` or edit ~/Developer/personal/vanluren/zsh/.p10k.zsh.
 [[ ! -f ~/Developer/personal/vanluren/zsh/.p10k.zsh ]] || source ~/Developer/personal/vanluren/zsh/.p10k.zsh
-export PATH=/opt/homebrew/bin:/Users/villadsvalur/.nvm/versions/node/v18.14.0/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/villadsvalur/.cargo/bin:/Users/villadsvalur/.local/share/bob/nvim-bin
-source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 
 # This loads RVM into a shell session.
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+
+export PATH="/Users/villadsvalur/.nvm/versions/node/v18.14.0/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/villadsvalur/.cargo/bin:/Users/villadsvalur/.local/share/bob/nvim-bin:$HOME/.rvm/bin/opt/homebrew/opt/ruby/bin:/opt/homebrew/bin:/Users/villadsvalur/.nvm/versions/node/v18.14.0/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/villadsvalur/.cargo/bin:/Users/villadsvalur/.local/share/bob/nvim-bin:$PATH"

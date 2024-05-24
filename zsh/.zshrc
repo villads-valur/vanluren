@@ -107,4 +107,4 @@ export FZF_DEFAULT_COMMAND='rg --files'
 # This loads RVM into a shell session.
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
-export PATH="/Users/villadsvalur/.nvm/versions/node/v18.14.0/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/villadsvalur/.cargo/bin:/Users/villadsvalur/.local/share/bob/nvim-bin:$HOME/.rvm/bin/opt/homebrew/opt/ruby/bin:/opt/homebrew/bin:/Users/villadsvalur/.nvm/versions/node/v18.14.0/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/villadsvalur/.cargo/bin:/Users/villadsvalur/.local/share/bob/nvim-bin:$PATH"
+export PATH="/Users/villadsvalur/.nvm/versions/node/v18.14.0/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/villadsvalur/.cargo/bin:/Users/villadsvalur/.local/share/bob/nvim-bin:$HOME/.rvm/bin/opt/homebrew/opt/ruby/bin:/opt/homebrew/bin:/Users/villadsvalur/.nvm/versions/node/v18.14.0/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/villadsvalur/.cargo/bin:/Users/villadsvalur/.local/share/bob/nvim-bin:$(yarn global bin):$PATH"

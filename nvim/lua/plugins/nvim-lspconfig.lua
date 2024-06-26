@@ -9,7 +9,10 @@ return {
     keys[#keys + 1] = { "Lp", "<cmd>lua vim.diagnostic.goto_prev()<cr>" }
   end,
   opts = {
-    -- Good for debugging
+    inlay_hints = {
+      enabled = false,
+      exclude = {}, -- filetypes for which you don't want to enable inlay hints
+    }, -- Good for debugging
     format_notify = false,
     servers = {
       lua_ls = {},

@@ -42,6 +42,7 @@ alias i="nvim" # Stupid alias for stupid people
 alias oldvim="vim"
 alias c="clear"
 alias clean-slate="sudo rm -rf node_modules && yarn cache clean"
+alias y="yarn"
 
 # Git
 alias g="git"

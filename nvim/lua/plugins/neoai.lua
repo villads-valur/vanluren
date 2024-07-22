@@ -1,5 +1,6 @@
 return {
   "Bryley/neoai.nvim",
+  enable = false,
   dependencies = {
     "MunifTanjim/nui.nvim",
   },

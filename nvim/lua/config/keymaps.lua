@@ -200,12 +200,12 @@ map("t", "<C-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 map("t", "<c-_>", "<cmd>close<cr>", { desc = "which_key_ignore" })
 
 -- windows
-map("n", "<leader>www", "<C-W>p", { desc = "Other Window", remap = true })
-map("n", "<leader>wwd", "<C-W>c", { desc = "Delete Window", remap = true })
-map("n", "<leader>ww-", "<C-W>s", { desc = "Split Window Below", remap = true })
-map("n", "<leader>ww|", "<C-W>v", { desc = "Split Window Right", remap = true })
-map("n", "<leader>w-", "<C-W>s", { desc = "Split Window Below", remap = true })
-map("n", "<leader>w|", "<C-W>v", { desc = "Split Window Right", remap = true })
+map("n", "<leader>oww", "<C-W>p", { desc = "Other Window", remap = true })
+map("n", "<leader>owd", "<C-W>c", { desc = "Delete Window", remap = true })
+map("n", "<leader>ow-", "<C-W>s", { desc = "Split Window Below", remap = true })
+map("n", "<leader>ow|", "<C-W>v", { desc = "Split Window Right", remap = true })
+map("n", "<leader>o-", "<C-W>s", { desc = "Split Window Below", remap = true })
+map("n", "<leader>o|", "<C-W>v", { desc = "Split Window Right", remap = true })
 
 -- tabs
 map("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })

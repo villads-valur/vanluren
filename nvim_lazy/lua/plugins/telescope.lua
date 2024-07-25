@@ -2,17 +2,26 @@ return {
   "nvim-telescope/telescope.nvim",
   keys = function()
     return {
-      { "<leader>T", ":Telescope find_files<CR>", desc = "Find Files (Root Dir)" },
-      { "<leader>t", ":Telescope find_files<CR>", desc = "Find Files (cwd)" },
-      { "<leader>/", ":Telescope live_grep<CR>", desc = "Find string in files (cwd)" },
+      { "<leader>T", LazyVim.pick("auto"), desc = "Find Files (Root Dir)" },
+      { "<leader>t", LazyVim.pick("auto", { root = false }), desc = "Find Files (cwd)" },
     }
   end,
   opts = function()
     local actions = require("telescope.actions")
+
     local open_with_trouble = function(...)
       return require("trouble.sources.telescope").open(...)
     end
-
+    local find_files_no_ignore = function()
+      local action_state = require("telescope.actions.state")
+      local line = action_state.get_current_line()
+      LazyVim.pick("find_files", { no_ignore = true, default_text = line })()
+    end
+    local find_files_with_hidden = function()
+      local action_state = require("telescope.actions.state")
+      local line = action_state.get_current_line()
+      LazyVim.pick("find_files", { hidden = true, default_text = line })()
+    end
 
     return {
       defaults = {
@@ -52,4 +61,3 @@ return {
     }
   end,
 }
-

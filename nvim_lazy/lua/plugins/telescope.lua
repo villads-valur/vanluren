@@ -1,5 +1,6 @@
 return {
   "nvim-telescope/telescope.nvim",
+  cmd = { "Telescope", "TelescopePrompt", "TelescopeResults" },
   keys = function()
     return {
       { "<leader>T", LazyVim.pick("auto"), desc = "Find Files (Root Dir)" },

@@ -1,6 +1,7 @@
 return {
 	"nvim-telescope/telescope.nvim",
-	events = { "BufWinEnter" },
+	cmd = "Telescope",
+	events = { "VimEnter" },
 	keys = {
 		{ "<leader>t", ":Telescope git_files<CR>", desc = "Find Files (root)" },
 		{ "<leader>T", ":Telescope find_files<CR>", desc = "Find Files (cwd)" },

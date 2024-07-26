@@ -8,24 +8,19 @@ return {
 	keys = function()
 		return {
 			{
-				"<leader>n",
-				function()
-					require("neo-tree.command").execute({ toggle = true })
-				end,
-				desc = "Explorer NeoTree (root dir)",
-			},
-			{
-				"<leader>N",
+				"<leader>fe",
 				function()
 					require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
 				end,
 				desc = "Explorer NeoTree (cwd)",
 			},
+			{ "<leader>n", "<leader>fE", desc = "Explorer NeoTree", remap = true },
+			{ "<leader>N", "<leader>fe", desc = "Explorer NeoTree (root)", remap = true },
 		}
 	end,
 	opts = {
 		filesystem = {
-			bind_to_cwd = false,
+			bind_to_cwd = true,
 			follow_current_file = {
 				enabled = false,
 			},

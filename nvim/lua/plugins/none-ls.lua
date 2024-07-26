@@ -29,16 +29,10 @@ return {
 		"nvimtools/none-ls.nvim",
 		event = { "BufReadPre", "BufNewFile" },
 		opts = function()
-			local builtin_sources = require("null-ls").builtins
-
-			-- You can customize your 'builtin sources' and 'external sources' here.
-			builtin_sources.formatting.shfmt.with({
-				command = "shfmt",
-				args = { "-i", "2", "-filename", "$FILENAME" },
-			})
-
-			-- Attach the user lsp mappings to every none-ls client.
-			return { on_attach = function() end }
+			local null_ls = require("null-ls")
+			return {
+				root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
+			}
 		end,
 	},
 }

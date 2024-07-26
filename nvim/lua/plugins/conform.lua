@@ -1,5 +1,6 @@
 return {
 	"stevearc/conform.nvim",
+	event = {"BufReadPre", "BufWritePre"},
 	opts = {
 		format_on_save = {
 			-- I recommend these options. See :help conform.format for details.

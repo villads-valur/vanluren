@@ -34,12 +34,24 @@ return {
 
 			cmp.setup({
 				formatting = lsp_zero.cmp_format({ details = true }),
+				preselect = "item",
+				completion = {
+					completeopt = "menu,menuone,noinsert",
+				},
+				window = {
+					completion = cmp.config.window.bordered(),
+					documentation = cmp.config.window.bordered(),
+				},
 				mapping = cmp.mapping.preset.insert({
-					["<CR>"] = cmp.mapping.complete(),
+
+					["<CR>"] = cmp.mapping.confirm({ select = false }),
 					["<C-u>"] = cmp.mapping.scroll_docs(-4),
 					["<C-d>"] = cmp.mapping.scroll_docs(4),
+
 					["<C-f>"] = cmp_action.luasnip_jump_forward(),
 					["<C-b>"] = cmp_action.luasnip_jump_backward(),
+					["<Tab>"] = cmp_action.luasnip_supertab(),
+					["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
 				}),
 				snippet = {
 					expand = function(args)
@@ -64,21 +76,57 @@ return {
 			local lsp_zero = require("lsp-zero")
 			lsp_zero.extend_lspconfig()
 
-			--- if you want to know more about lsp-zero and mason.nvim
-			--- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
+			local vue_typescript_plugin = "/home/dev/.local/share/npm"
+				.. "/lib/node_modules"
+				.. "/@vue/language-server/node_modules"
+				.. "@vue/typescript-plugin"
+
 			lsp_zero.on_attach(function(client, bufnr)
-				-- see :help lsp-zero-keybindings
-				-- to learn the available actions
-				lsp_zero.default_keymaps({ buffer = bufnr })
+				local opts = { buffer = bufnr }
+				lsp_zero.default_keymaps({ buffer = bufnr, exclude = { "K" } })
+				vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<cr>", opts)
+				vim.keymap.set("n", "gh", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
+				vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
+				vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
+				vim.keymap.set("n", "lp", "<cmd>lua vim.diagnostic.goto_prev()<cr>")
+				vim.keymap.set("n", "ln", "<cmd>lua vim.diagnostic.goto_next()<cr>")
+				vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 			end)
 
 			require("mason-lspconfig").setup({
-				ensure_installed = {},
+				ensure_installed = { "volar", "tsserver", "jsonls" },
 				handlers = {
-					-- this first function is the "default handler"
-					-- it applies to every language server without a "custom handler"
 					function(server_name)
 						require("lspconfig")[server_name].setup({})
+					end,
+					tsserver = function()
+						local vue_typescript_plugin = require("mason-registry")
+							.get_package("vue-language-server")
+							:get_install_path() .. "/node_modules/@vue/language-server" .. "/node_modules/@vue/typescript-plugin"
+
+						require("lspconfig").tsserver.setup({
+							init_options = {
+								plugins = {
+									{
+										name = "@vue/typescript-plugin",
+										location = vue_typescript_plugin,
+										languages = { "javascript", "typescript", "vue" },
+									},
+								},
+							},
+							filetypes = {
+								"javascript",
+								"javascriptreact",
+								"javascript.jsx",
+								"typescript",
+								"typescriptreact",
+								"typescript.tsx",
+								"vue",
+							},
+						})
+					end,
+					volar = function()
+						require("lspconfig").volar.setup({})
 					end,
 				},
 			})

@@ -32,6 +32,10 @@ return {
 			local cmp = require("cmp")
 			local cmp_action = lsp_zero.cmp_action()
 
+			require("luasnip").filetype_extend("javascriptreact", { "html" })
+			require("luasnip").filetype_extend("typescriptreact", { "html" })
+			require("luasnip").filetype_extend("vue", { "html" })
+
 			cmp.setup({
 				formatting = lsp_zero.cmp_format({ details = true }),
 				preselect = "item",
@@ -93,12 +97,36 @@ return {
 				vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 			end)
 
+			vim.fn.sign_define("DiagnosticSignError", {
+				text = "",
+				numhl = "DiagnosticSignError",
+				texthl = "DiagnosticSignError",
+			})
+			vim.fn.sign_define("DiagnosticSignWarn", {
+				text = "⚠",
+				numhl = "DiagnosticSignWarn",
+				texthl = "DiagnosticSignWarn",
+			})
+			vim.fn.sign_define("DiagnosticSignInformation", {
+				text = "",
+				numhl = "DiagnosticSignInformation",
+				texthl = "DiagnosticSignInformation",
+			})
+			vim.fn.sign_define("DiagnosticSignHint", {
+				text = "",
+				numhl = "DiagnosticSignHint",
+				texthl = "DiagnosticSignHint",
+			})
+
 			require("mason-lspconfig").setup({
 				ensure_installed = { "volar", "tsserver", "jsonls" },
 				handlers = {
 					function(server_name)
 						require("lspconfig")[server_name].setup({})
 					end,
+					stylelint_lsp = {
+						filetypes = { "css", "scss", "less", "vue", "html" },
+					},
 					tsserver = function()
 						local vue_typescript_plugin = require("mason-registry")
 							.get_package("vue-language-server")

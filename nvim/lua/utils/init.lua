@@ -1,7 +1,4 @@
 local M = {}
-
-local cmd = vim.cmd
-
 M.map = function(mode, keys, command, opt)
   local options = { noremap = true, silent = true }
   if opt then

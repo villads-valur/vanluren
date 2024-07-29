@@ -3,21 +3,21 @@ return {
   keys = function()
     return {
       {
-        "<leader>fe",
-        function()
-          require("neo-tree.command").execute({ toggle = true, dir = require("lazyvim.util").root.get() })
-        end,
-        desc = "Explorer NeoTree (root dir)",
-      },
-      {
-        "<leader>fE",
+        "<leader>n",
         function()
           require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
         end,
-        desc = "Explorer NeoTree (cwd)",
+        desc = "Explorer NeoTree",
+        remap = true,
       },
-      { "<leader>n", "<leader>fE", desc = "Explorer NeoTree", remap = true },
-      { "<leader>N", "<leader>fe", desc = "Explorer NeoTree (root)", remap = true },
+      {
+        "<leader>N",
+        function()
+          require("neo-tree.command").execute({ toggle = true, dir = require("lazyvim.util").root.get() })
+        end,
+        desc = "Explorer NeoTree (root)",
+        remap = true,
+      },
     }
   end,
   opts = {

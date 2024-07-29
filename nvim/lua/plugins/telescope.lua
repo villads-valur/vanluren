@@ -5,6 +5,8 @@ return {
     return {
       { "<leader>T", LazyVim.pick("auto"), desc = "Find Files (Root Dir)" },
       { "<leader>t", LazyVim.pick("auto", { root = false }), desc = "Find Files (cwd)" },
+      { "<leader>/", "<cmd>Telescope live_grep<cr>", desc = "Search (Grep)" },
+      { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Find Recent" },
     }
   end,
   opts = function()

@@ -17,6 +17,7 @@ plugins=(
   zsh-completions 
   zsh-autosuggestions
   zsh-kitty
+  nvim-switcher
 )
 
 source $ZSH/oh-my-zsh.sh

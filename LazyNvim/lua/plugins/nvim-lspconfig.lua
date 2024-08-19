@@ -8,39 +8,36 @@ return {
     keys[#keys + 1] = { "Ln", "<cmd>lua vim.diagnostic.goto_prev()<cr>" }
     keys[#keys + 1] = { "Lp", "<cmd>lua vim.diagnostic.goto_prev()<cr>" }
   end,
-  opts = {
-    inlay_hints = {
-      enabled = false,
-      exclude = {}, -- filetypes for which you don't want to enable inlay hints
-    }, -- Good for debugging
-    format_notify = false,
-    servers = {
-      lua_ls = {},
-      volar = {
-        tsdk = vim.fn.expand("$HOME/.config/yarn/global/node_modules/typescript"),
-        filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
-      },
-      stylelint_lsp = {
-        filetypes = { "css", "scss", "less", "vue", "html" },
-      },
-      eslint = {
-        settings = {
-          workingDirectory = { mode = "auto" },
+  opts = function(_, opts)
+    local vue_typescript_plugin = require("mason-registry").get_package("vue-language-server"):get_install_path()
+      .. "/node_modules/@vue/language-server"
+      .. "/node_modules/@vue/typescript-plugin"
+
+    opts.servers = vim.tbl_deep_extend("force", opts.servers, {
+      volar = {},
+      -- Volar 2.0 has discontinued their "take over mode" which in previous version provided support for typescript in vue files.
+      -- The new approach to get typescript support involves using the typescript language server along side volar.
+      tsserver = {
+        init_options = {
+          plugins = {
+            -- Use typescript language server along with vue typescript plugin
+            {
+              name = "@vue/typescript-plugin",
+              location = vue_typescript_plugin,
+              languages = { "javascript", "typescript", "vue" },
+            },
+          },
+        },
+        filetypes = {
+          "javascript",
+          "javascriptreact",
+          "javascript.jsx",
+          "typescript",
+          "typescriptreact",
+          "typescript.tsx",
+          "vue",
         },
       },
-    },
-    setup = {
-      volar = function()
-        require("lazyvim.util").lsp.on_attach(function(client)
-          if client.name == "volar" then
-            client.server_capabilities.documentFormattingProvider = false
-          elseif client.name == "tsserver" then
-            client.server_capabilities.documentFormattingProvider = false
-          elseif client.name == "eslint" then
-            client.server_capabilities.documentFormattingProvider = true
-          end
-        end)
-      end,
-    },
-  },
+    })
+  end,
 }

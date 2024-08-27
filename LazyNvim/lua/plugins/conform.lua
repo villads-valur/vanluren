@@ -1,23 +1,17 @@
 return {
   "stevearc/conform.nvim",
   optional = true,
-  opts = {
-    formatters_by_ft = {
-      javascript = { "prettierd", "prettier" },
-      javascriptreact = { "prettierd", "prettier" },
-      typescript = { "prettierd", "prettier" },
-      typescriptreact = { "prettierd", "prettier" },
-      vue = { "prettierd", "prettier" },
-      css = { "prettierd", "prettier" },
-      scss = { "prettierd", "prettier" },
-      less = { "prettierd", "prettier" },
-      html = { "prettierd", "prettier" },
-      json = { "prettierd", "prettier" },
-      jsonc = { "prettierd", "prettier" },
-      yaml = { "prettierd", "prettier" },
-      markdown = { "prettierd", "prettier" },
-      graphql = { "prettierd", "prettier" },
-      handlebars = { "prettierd", "prettier" },
-    },
-  },
+  opts = function(_, opts)
+    opts.formatters_by_ft = opts.formatters_by_ft or {}
+    for _, ft in ipairs(supported) do
+      opts.formatters_by_ft[ft] = { "prettier" }
+    end
+
+    opts.formatters = opts.formatters or {}
+    opts.formatters.prettier = {
+      condition = function(_, ctx)
+        return M.has_parser(ctx) and (vim.g.lazyvim_prettier_needs_config ~= true or M.has_config(ctx))
+      end,
+    }
+  end,
 }

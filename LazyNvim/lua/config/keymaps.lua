@@ -1,43 +1,36 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyLazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 
-local keymap = vim.keymap.set
+local map = vim.keymap.set
 local silent = { silent = true }
 
 -- General
-keymap("n", "<Leader>w", "<cmd>w<cr>", silent)
-keymap("n", "<Leader>v", "<cmd>vsplit<cr>", silent)
-keymap("n", "<Leader>q", "<cmd>q<cr>", silent)
+map("n", "<Leader>w", "<cmd>w<cr>", silent)
+map("n", "<Leader>v", "<cmd>vsplit<cr>", silent)
+map("n", "<Leader>q", "<cmd>q<cr>", silent)
 
 ---- Remove highlights
-keymap("n", "<CR>", ":noh<CR><CR>", silent)
-keymap("n", "<ESC><ESC>", ":noh<CR><CR>", silent)
+map("n", "<CR>", ":noh<CR><CR>", silent)
+map("n", "<ESC><ESC>", ":noh<CR><CR>", silent)
 
 ---- Don't yank on delete char
-keymap("n", "x", '"_x', silent)
-keymap("n", "X", '"_X', silent)
-keymap("v", "x", '"_x', silent)
-keymap("v", "X", '"_X', silent)
+map("n", "x", '"_x', silent)
+map("n", "X", '"_X', silent)
+map("v", "x", '"_x', silent)
+map("v", "X", '"_X', silent)
 
 -- Don't yank on visual paste
-keymap("v", "p", '"_dP', silent)
+map("v", "p", '"_dP', silent)
 
 -- Buffers
-keymap("n", "<Tab>", "<CMD>bnext<CR>", silent)
-keymap("n", "<S-Tab>", "<CMD>bprevious<CR>", silent)
-keymap("n", "<Leader>x", "<CMD>bd<cr>", silent)
-keymap("n", "<Leader>cn", "<CMD>:set rnu!<cr>", silent)
+map("n", "<Tab>", "<CMD>bnext<CR>", silent)
+map("n", "<S-Tab>", "<CMD>bprevious<CR>", silent)
+map("n", "<Leader>x", "<CMD>bd<cr>", silent)
+map("n", "<Leader>cn", "<CMD>:set rnu!<cr>", silent)
 
 -- Move lines
-keymap("v", "<A-j>", ":m '>+1<CR>gv=gv") -- move line up(v)
-keymap("v", "<A-k>", ":m '<-2<CR>gv=gv") -- move line down(v)
-
----- LAZY VIM DEFAULTS -----
-
--- DO NOT USE `LazyVim.safe_keymap_set` IN YOUR OWN CONFIG!!
--- use `vim.keymap.set` instead
-local map = LazyVim.safe_keymap_set
-local delete = vim.keymap.del
+map("v", "<A-j>", ":m '>+1<CR>gv=gv") -- move line up(v)
+map("v", "<A-k>", ":m '<-2<CR>gv=gv") -- move line down(v)
 
 -- better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
@@ -72,7 +65,6 @@ map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
 map("n", "]b", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
-map("n", "<leader>bd", LazyVim.ui.bufremove, { desc = "Delete Buffer" })
 map("n", "<leader>bD", "<cmd>:bd<cr>", { desc = "Delete Buffer and Window" })
 
 -- Clear search with <esc>
@@ -164,7 +156,6 @@ map("n", "<leader>ub", function() LazyVim.toggle("background", false, {"light", 
 -- lazygit
 map("n", "<leader>gg", function() LazyVim.lazygit( { cwd = LazyVim.root.git() }) end, { desc = "Lazygit (Root Dir)" })
 map("n", "<leader>gG", function() LazyVim.lazygit() end, { desc = "Lazygit (cwd)" })
-map("n", "<leader>gb", LazyVim.lazygit.blame_line, { desc = "Git Blame Line" })
 
 map("n", "<leader>gf", function()
   local git_path = vim.api.nvim_buf_get_name(0)
@@ -183,13 +174,6 @@ map("n", "<leader>uhp", ":lua require('precognition').peek()<cr>", { desc = "Pee
 
 -- LazyVim Changelog
 map("n", "<leader>L", function() LazyVim.news.changelog() end, { desc = "LazyVim Changelog" })
-
--- floating terminal
-local lazyterm = function() LazyVim.terminal(nil, { cwd = LazyVim.root() }) end
-map("n", "<leader>ft", lazyterm, { desc = "Terminal (Root Dir)" })
-map("n", "<leader>fT", function() LazyVim.terminal() end, { desc = "Terminal (cwd)" })
-map("n", "<c-/>", lazyterm, { desc = "Terminal (Root Dir)" })
-map("n", "<c-_>", lazyterm, { desc = "which_key_ignore" })
 
 -- Terminal Mappings
 map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })

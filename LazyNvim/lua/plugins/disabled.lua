@@ -29,4 +29,8 @@ return {
     enabled = false,
   },
   { "echasnovski/mini.ai", enabled = false },
+  {
+    "ggandor/leap.nvim",
+    enabled = false,
+  },
 }

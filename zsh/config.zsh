@@ -1,0 +1,33 @@
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+source $HOME/Developer/personal/vanluren/zsh/variables.zsh
+
+plugins=(
+  git
+  zsh-syntax-highlighting
+  zsh-autosuggestions
+)
+
+source $HOME/Developer/personal/vanluren/zsh/alias.zsh
+source $HOME/Developer/personal/vanluren/zsh/functions.zsh
+
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# place this after nvm initialization!
+autoload -U add-zsh-hook
+
+add-zsh-hook chpwd load-nvmrc
+
+load-nvmrc
+
+# powerlevel10k needs to be installed via Brew !!!
+source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/Developer/personal/vanluren/zsh/.p10k.zsh.
+[[ ! -f ~/Developer/personal/vanluren/zsh/.p10k.zsh ]] || source ~/Developer/personal/vanluren/zsh/.p10k.zsh
+
+

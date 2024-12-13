@@ -2,16 +2,17 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-source $HOME/Developer/personal/vanluren/zsh/variables.zsh
-
 plugins=(
   git
   zsh-syntax-highlighting
   zsh-autosuggestions
 )
 
+source $HOME/Developer//personal/vanluren/zsh/plugins.zsh
+source $HOME/Developer/personal/vanluren/zsh/variables.zsh
 source $HOME/Developer/personal/vanluren/zsh/alias.zsh
 source $HOME/Developer/personal/vanluren/zsh/functions.zsh
+
 
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

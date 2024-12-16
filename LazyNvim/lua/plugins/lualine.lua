@@ -2,7 +2,6 @@ return {
   "nvim-lualine/lualine.nvim",
   opts = function()
     local icons = require("lazyvim.config").icons
-    local Util = require("lazyvim.util")
     return {
       options = {
         theme = "auto",
@@ -25,7 +24,9 @@ return {
           { "filename", path = 1, symbols = { modified = "  ", readonly = "", unnamed = "" } },
         },
         lualine_x = {
-          { require("lazy.status").updates, cond = require("lazy.status").has_updates, color = Util.ui.fg("Special") },
+          {
+            require("lazy.status").updates,
+          },
           {
             "diff",
             symbols = {

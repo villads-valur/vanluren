@@ -1,0 +1,26 @@
+shell-integration = zsh
+auto-update = check
+command = /bin/zsh
+
+# Font 
+font-family = "SFMono Nerd Font"
+font-size = 15
+
+# Theme
+theme = dark:Atom,light:ayu_light
+
+# Window
+fullscreen = true
+window-inherit-font-size = true
+window-inherit-working-directory = true
+window-theme = auto
+quit-after-last-window-closed = true
+macos-titlebar-style = "tabs"
+
+
+#Keybindings
+keybind = ctrl+v=new_split:right
+
+
+
+

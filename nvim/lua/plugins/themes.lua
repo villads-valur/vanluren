@@ -18,6 +18,13 @@ return {
 	{
 		"Shatur/neovim-ayu",
 		priority = 1000,
-		enabled = false,
+	},
+	{
+		"Vanluren/neovim-onehalf",
+		priority = 1000,
+		lazy = false,
+		config = function()
+			vim.cmd("colorscheme onehalf")
+		end,
 	},
 }

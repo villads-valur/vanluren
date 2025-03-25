@@ -1,47 +1,48 @@
--- prefil edit window with common scenarios to avoid repeating query and submit immediately
-local prefill_edit_window = function(request)
-  require("avante.api").edit()
-  local code_bufnr = vim.api.nvim_get_current_buf()
-  local code_winid = vim.api.nvim_get_current_win()
-  if code_bufnr == nil or code_winid == nil then
-    return
+-- Function to get the visually selected text
+local function get_visual_selection()
+  local start_pos = vim.fn.getpos("'<")
+  local end_pos = vim.fn.getpos("'>")
+  local lines = vim.fn.getline(start_pos[2], end_pos[2])
+
+  if #lines == 0 then
+    return ""
   end
-  vim.api.nvim_buf_set_lines(code_bufnr, 0, -1, false, { request })
-  -- Optionally set the cursor position to the end of the input
-  vim.api.nvim_win_set_cursor(code_winid, { 1, #request + 1 })
-  -- Simulate Ctrl+S keypress to submit
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-s>", true, true, true), "v", true)
+
+  -- Handle the first and last line selections that might be partial
+  if #lines == 1 then
+    lines[1] = string.sub(lines[1], start_pos[3], end_pos[3])
+  else
+    lines[1] = string.sub(lines[1], start_pos[3])
+    lines[#lines] = string.sub(lines[#lines], 1, end_pos[3])
+  end
+
+  return table.concat(lines, "\n")
 end
 
--- NOTE: most templates are inspired from ChatGPT.nvim -> chatgpt-actions.json
-local avante_grammar_correction = "Correct the text to standard English, but keep any code blocks inside intact."
-local avante_keywords = "Extract the main keywords from the following text"
-local avante_code_readability_optimization = [[
+-- Ask Avante with a question template that includes the selected code
+local ask_avante_with_selection = function(question_template)
+  local selected_code = get_visual_selection()
+  if selected_code == "" then
+    vim.notify("No text selected", vim.log.levels.WARN)
+    return
+  end
 
-  Optimize the following code
-  You must optimize any readability issues in the code snippet.
-  Some readability issues to consider:
-  - Unclear naming
-  - Unclear purpose
-  - Redundant or obvious comments
-  - Lack of comments
-  - Long or complex one liners
-  - Too much nesting
-  - Long variable names
-  - Inconsistent naming and code style.
-  - Code repetition
-  - Inefficient code
-  - Unnecessary code
-  You may identify additional problems. The user submits a small section of code from a larger file.
-  Only list lines with readability issues, in the format <line_num>|<issue and proposed solution>
-  If there's no issues with code respond with only: <OK>
-]]
-local avante_optimize_code = "Optimize the following code"
-local avante_explain_code = "Explain the following code"
-local avante_complete_code = "Complete the following codes written in " .. vim.bo.filetype
-local avante_add_docstring = "Add docstring to the following codes"
-local avante_fix_bugs = "Fix the bugs inside the following codes if any"
-local avante_add_tests = "Implement tests for the following code"
+  -- Format the question with the selected code
+  local formatted_question = question_template:gsub("{{selection}}", selected_code)
+  require("avante.api").ask({ question = formatted_question })
+end
+
+-- Templates with placeholders for selected code
+local avante_question_templates = {
+  grammar_correction = "Correct the text to standard English, but keep any code blocks inside intact.",
+  keywords = "Extract the main keywords from the selected text.",
+  code_readability = "Optimize the selected code for readability issues. Some readability issues to consider:\n- Unclear naming\n- Unclear purpose\n- Redundant or obvious comments\n- Lack of comments\n- Long or complex one liners\n- Too much nesting\n- Long variable names\n- Inconsistent naming and code style\n- Code repetition\n- Inefficient code\n- Unnecessary code\nOnly list lines with readability issues, in the format <line_num>|<issue and proposed solution>\nIf there's no issues with code respond with only: No further optimizations to do!",
+  explain_code = "Explain the selected code",
+  complete_code = "Complete the selected code written in " .. vim.bo.filetype .. ".",
+  add_docstring = "Add docstring to the selected code.",
+  fix_bugs = "Fix the bugs inside the selected code if any.",
+  add_tests = "Implement tests for the selected code.",
+}
 
 ---@class avante.CoreConfig: avante.Config
 return {
@@ -106,6 +107,78 @@ return {
     },
   },
   keys = {
-    { mode = { "v" } },
+    -- Updated keybindings that use the new function with templates
+    {
+      "<Leader>ao",
+      function()
+        ask_avante_with_selection(avante_question_templates.code_readability)
+      end,
+      mode = { "v" },
+      desc = "Optimize code readability",
+    },
+    {
+      "<Leader>ag",
+      function()
+        ask_avante_with_selection(avante_question_templates.grammar_correction)
+      end,
+      mode = { "v" },
+      desc = "Correct grammar",
+    },
+    {
+      "<leader>ax",
+      function()
+        ask_avante_with_selection(avante_question_templates.explain_code)
+      end,
+      desc = "Explain Code",
+      mode = { "v" },
+    },
+    {
+      "<leader>ac",
+      function()
+        ask_avante_with_selection(avante_question_templates.complete_code)
+      end,
+      desc = "Complete Code",
+      mode = { "v" },
+    },
+    {
+      "<leader>ad",
+      function()
+        ask_avante_with_selection(avante_question_templates.add_docstring)
+      end,
+      desc = "Add Docstring",
+      mode = { "v" },
+    },
+    {
+      "<leader>af",
+      function()
+        ask_avante_with_selection(avante_question_templates.fix_bugs)
+      end,
+      desc = "Fix Bugs",
+      mode = { "v" },
+    },
+    {
+      "<leader>at",
+      function()
+        ask_avante_with_selection(avante_question_templates.add_tests)
+      end,
+      desc = "Add Tests",
+      mode = { "v" },
+    },
+    {
+      "<leader>ak",
+      function()
+        ask_avante_with_selection(avante_question_templates.keywords)
+      end,
+      desc = "Extract Keywords",
+      mode = { "v" },
+    },
+    {
+      "<leader>az",
+      function()
+        ask_avante_with_selection(avante_question_templates.optimize_code)
+      end,
+      desc = "Optimize Code",
+      mode = { "v" },
+    },
   },
 }

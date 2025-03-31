@@ -22,10 +22,6 @@ end
 -- Ask Avante with a question template that includes the selected code
 local ask_avante_with_selection = function(question_template)
   local selected_code = get_visual_selection()
-  if selected_code == "" then
-    vim.notify("No text selected", vim.log.levels.WARN)
-    return
-  end
 
   -- Format the question with the selected code
   local formatted_question = question_template:gsub("{{selection}}", selected_code)
@@ -36,7 +32,7 @@ end
 local avante_question_templates = {
   grammar_correction = "Correct the text to standard English, but keep any code blocks inside intact.",
   keywords = "Extract the main keywords from the selected text.",
-  code_readability = "Optimize the selected code for readability issues. Some readability issues to consider:\n- Unclear naming\n- Unclear purpose\n- Redundant or obvious comments\n- Lack of comments\n- Long or complex one liners\n- Too much nesting\n- Long variable names\n- Inconsistent naming and code style\n- Code repetition\n- Inefficient code\n- Unnecessary code\nOnly list lines with readability issues, in the format <line_num>|<issue and proposed solution>\nIf there's no issues with code respond with only: No further optimizations to do!",
+  code_readability = "Optimize the selected code for readability issues. Some readability issues to consider:\n- Unclear naming\n- Unclear purpose\n- Redundant or obvious comments\n- Lack of comments\n- Long or complex one liners\n- Too much nesting\n- Long variable names\n- Inconsistent naming and code style\n- Code repetition\n- Inefficient code\n- Unnecessary code.\n Suggest the updated code.",
   explain_code = "Explain the selected code",
   complete_code = "Complete the selected code written in " .. vim.bo.filetype .. ".",
   add_docstring = "Add docstring to the selected code.",
@@ -75,7 +71,7 @@ return {
       max_tokens = 4096,
     },
     dual_boost = {
-      enabled = true,
+      enabled = false,
       first_provider = "openai",
       second_provider = "copilot",
       prompt = "Based on the two reference outputs below, generate a response that incorporates elements from both but reflects your own judgment and unique perspective. Do not provide any explanation, just give the response directly. Reference Output 1: [{{provider1_output}}], Reference Output 2: [{{provider2_output}}]",

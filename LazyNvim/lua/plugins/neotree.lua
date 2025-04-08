@@ -27,8 +27,13 @@ return {
         enabled = true,
       },
       use_libuv_file_watcher = true,
-      always_show = { -- remains visible even if other settings would normally hide it
-        ".github",
+      filtered_items = {
+        always_show_by_pattern = { -- uses glob style patterns
+          ".github*",
+          ".gitignore",
+          ".prettierrc",
+          ".eslintrc",
+        },
       },
     },
     window = {

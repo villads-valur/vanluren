@@ -33,6 +33,7 @@ return {
           ".gitignore",
           ".prettierrc",
           ".eslintrc",
+          "ælakdsfjadf",
         },
       },
     },

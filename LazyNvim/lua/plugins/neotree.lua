@@ -27,6 +27,9 @@ return {
         enabled = true,
       },
       use_libuv_file_watcher = true,
+      always_show = { -- remains visible even if other settings would normally hide it
+        ".github",
+      },
     },
     window = {
       mappings = {

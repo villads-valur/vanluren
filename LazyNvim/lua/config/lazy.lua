@@ -33,7 +33,10 @@ require("lazy").setup({
     version = false, -- always use the latest git commit
     keymaps = false,
   },
-  checker = { enabled = true }, -- automatically check for plugin updates
+  checker = {
+    enabled = true,
+    notify = false, -- notify on update
+  }, -- automatically check for plugin updates
   performance = {
     rtp = {
       -- disable some rtp plugins

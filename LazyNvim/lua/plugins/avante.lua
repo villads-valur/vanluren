@@ -61,15 +61,21 @@ return {
   },
   ---@class avante.Config
   opts = {
-    provider = "copilot",
-    copilot = {
-      endpoint = "https://api.githubcopilot.com",
-      model = "gpt-4o-2024-08-06",
-      allow_insecure = false, -- Allow insecure server connections
+    provider = "openai",
+    openai = {
+      endpoint = "https://api.openai.com/v1",
+      model = "o4-mini-2025-04-16",
       timeout = 30000, -- Timeout in milliseconds
-      temperature = 0,
-      max_tokens = 4096,
+      max_completion_tokens = 4096,
     },
+    -- copilot = {
+    --   endpoint = "https://api.githubcopilot.com",
+    --   model = "gpt-4o-2024-08-06",
+    --   allow_insecure = false, -- Allow insecure server connections
+    --   timeout = 30000, -- Timeout in milliseconds
+    --   temperature = 0,
+    --   max_tokens = 4096,
+    -- },
     dual_boost = {
       enabled = false,
       first_provider = "openai",

@@ -1,6 +1,6 @@
 return {
   "neovim/nvim-lspconfig",
-  init = function()
+  opts = function()
     local keys = require("lazyvim.plugins.lsp.keymaps").get()
     keys[#keys + 1] = { "gh", "<cmd>lua vim.lsp.buf.hover()<cr>" }
     keys[#keys + 1] = { "ln", "<cmd>lua vim.diagnostic.goto_next({severity=vim.diagnostic.severity['ERROR']})<cr>" }

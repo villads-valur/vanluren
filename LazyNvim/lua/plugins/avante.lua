@@ -42,6 +42,7 @@ local avante_question_templates = {
 
 ---@class avante.CoreConfig: avante.Config
 return {
+  enabled = false,
   "yetone/avante.nvim",
   event = "VeryLazy",
   lazy = false,

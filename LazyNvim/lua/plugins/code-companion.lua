@@ -49,17 +49,12 @@ return {
                 .. ctx.filetype
                 .. "developer. Suggest optimizations the selected code for readability and perfomance issues. Some readability issues to consider:\n- Unclear naming\n- Unclear purpose\n- Redundant or obvious comments\n- Lack of comments\n- Long or complex one liners\n- Too much nesting\n- Long variable names\n- Inconsistent naming and code style\n- Code repetition\n- Inefficient code\n- Unnecessary code.\n Suggest the updated code."
             end,
-            opts = {
-              contains_code = true,
-            },
           },
           {
             role = "user",
-            content = function(ctx)
-              local helper = require("codecompanion.helpers.actions")
-              local snippet = helper.get_code(ctx.start_line, ctx.end_line)
-
-              return "I have the following code:\n\n```" .. ctx.filetype .. "\n" .. snippet .. "\n```\n\n"
+            content = function(context)
+              local text = require("codecompanion.helpers.actions").get_code(context.start_line, context.end_line)
+              return "I have the following code:\n\n```" .. context.filetype .. "\n" .. text .. "\n```\n\n"
             end,
             opts = {
               contains_code = true,
@@ -67,13 +62,26 @@ return {
           },
         },
         opts = {
-          ignore_system_prompt = true,
           mapping = "<LocalLeader>ao",
           modes = { "v" },
-          auto_submit = false,
-          short_name = "hello",
+          auto_submit = true,
+          short_name = "optimize",
           stop_context_insertion = true,
           user_prompt = true,
+        },
+      },
+      ["Hello"] = {
+        strategy = "chat",
+        description = "Greet the user",
+        prompt = {
+          { role = "system", content = "You are a helpful assistant." },
+          { role = "user", content = "Hello!" },
+        },
+        opts = {
+          mapping = "/hello",
+          modes = { "n" },
+          auto_submit = true,
+          short_name = "hello",
         },
       },
       ["Explain Code"] = {

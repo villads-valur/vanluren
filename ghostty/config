@@ -20,7 +20,4 @@ macos-titlebar-style = "tabs"
 
 #Keybindings
 keybind = ctrl+v=new_split:right
-
-
-
-
+keybind = shift+enter=text:\n

@@ -1,0 +1,84 @@
+# Claude Code Configuration
+
+This is your personal Claude Code workspace configuration.
+
+## Collaboration Guidelines
+
+### Git
+- Follow conventional commits for all git commits and other interactions
+- NEVER put yourself as the co-author on commits
+- Commit early and often, but verify with me before the commit
+
+### Code Style
+- I want to optimise for readability, security, maintainability and performance
+- I want to make sure that my code is always as clear as possible for my co-workers to understand
+- I comment if something is complex and needs context, and never too much.
+- I am a good code-scout, i leave the code better than it was before but don't do big refators without planning and prioritizing them into my workflow
+
+### Communication & Workflow
+- When encountering errors: Try 2-3 alternative approaches first, then ask for guidance
+- Ask more questions rather than making assumptions
+- For feature requests: Plan implementation first, get approval, execute, then verify against specs
+- Provide brief progress updates as I work
+- When exploring unfamiliar codebases: Figure it out myself first, then ask specific questions rather than assume
+
+### Testing & Deployment
+- Always add unit tests for new features if possible - ask before starting
+- Prefer unit tests, but ask about integration tests when they might make sense
+- Write tests first (TDD approach) and verify with you before implementation
+- You might change your mind during implementation, so verify we should proceed
+- Avoid breaking changes when possible - work around issues rather than adding migration files
+
+### Dependencies & Tools
+- Always ask before adding any new dependency
+- Check if there's already a dependency doing the same job before adding new ones
+- Prefer yarn, but also use npm and bun depending on the project
+- If project has linting setup, always ensure it passes - run commands after implementing and fix any issues
+- I use NVIM via the `vi` command - allow me to do manual edits when possible
+
+### Project Structure & Naming
+- Follow project conventions first, but personal preferences are:
+  - File names: kebab-case
+  - Component names: PascalCase
+  - Functions/variables: camelCase
+  - Constants: UPPER_SNAKE_CASE
+- Imports: Follow project conventions, prefer TypeScript best practices and use aliases
+
+### Architecture & Code Organization
+- Centralize business logic in API, keep frontend as simple as possible
+- Prefer pure functions and basic components
+- Use existing state management in project, default to React's built-in state management
+- Use custom hooks where possible instead of complex state libraries
+- Feature-based folder structure with colocated files
+- Don't over-optimize early - handle main errors/validations without going overboard
+- Use existing logging/monitoring (like Sentry), add explicit logging only where errors are anticipated
+
+### Tech Stack Preferences
+- Optimize for TypeScript-based solutions
+- Backend: NestJS or Express
+- Frontend: React or React Native
+- ORM: TypeORM or Prisma
+- Database: SQL-based RDS (primarily PostgreSQL)
+
+### Learning & Corrections
+- Correct me when I use incorrect terminology so I can learn proper terms
+
+### Code Quality & Cleanup
+- Do NOT create tech_debt files or similar workaround files
+- Fix issues directly when they come up rather than deferring them
+- Always clean up implementation after completion - remove any unneeded changes, files, or artifacts
+- Leave the codebase cleaner than before without adding temporary solutions
+
+## Project Context
+This directory contains your global Claude Code settings and project memory.
+
+## Common Commands
+- `npm run lint` - Run linting
+- `npm run typecheck` - Run type checking
+- `npm run test` - Run tests
+- `npm run build` - Build the project
+
+## Notes
+- Add project-specific context and instructions here
+- Include any custom workflows or preferences
+- Document frequently used patterns or conventions

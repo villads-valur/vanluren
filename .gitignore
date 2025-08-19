@@ -13,3 +13,18 @@ nvim/.nvim
 nvim/undodir/
 tmux/cozero.yml
 tmux/cozero_website.yml
+
+# Claude Code sensitive files
+claude/projects/
+claude/shell-snapshots/
+claude/todos/
+claude/agents/
+claude/statsig/
+claude/.claude_history
+claude/.claude_cache
+claude/*.log
+claude/*.key
+claude/*.pem
+claude/*.env
+claude/.env.*
+claude/secrets.*

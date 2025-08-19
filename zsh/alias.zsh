@@ -43,3 +43,5 @@ alias lg="lazygit"
 alias lazy="lazygit"
 alias lga="lazygit add"
 
+# Claude
+alias claude-code="claude"

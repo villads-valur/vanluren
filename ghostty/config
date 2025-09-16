@@ -7,7 +7,7 @@ font-family = "SFMono Nerd Font"
 font-size = 15
 
 # Theme
-theme = dark:Atom,light:ayu_light
+theme = dark:atom,light:Ayu Light
 
 # Window
 fullscreen = true

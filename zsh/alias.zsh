@@ -45,3 +45,7 @@ alias lga="lazygit add"
 
 # Claude
 alias claude-code="claude"
+
+# Kvalifik
+alias ev="cd ~/Developer/ev-remarketing/"
+alias banijay="cd ~/Developer/banijay/"

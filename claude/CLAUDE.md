@@ -82,3 +82,4 @@ This directory contains your global Claude Code settings and project memory.
 - Add project-specific context and instructions here
 - Include any custom workflows or preferences
 - Document frequently used patterns or conventions
+- Stop using `sleep` for waiting, this makes my screen go black

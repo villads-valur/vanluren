@@ -28,7 +28,7 @@ return {
     "MagicDuck/grug-far.nvim",
     enabled = false,
   },
-  { "echasnovski/mini.ai", enabled = false },
+  { "nvim-mini/mini.ai", enabled = false },
   {
     "ggandor/leap.nvim",
     enabled = false,

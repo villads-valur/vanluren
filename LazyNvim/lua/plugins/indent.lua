@@ -27,7 +27,7 @@ return {
     main = "ibl",
   },
   {
-    "echasnovski/mini.indentscope",
+    "nvim-mini/mini.indentscope",
     opts = {
       -- symbol = "▏",
       symbol = "│",

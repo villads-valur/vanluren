@@ -33,4 +33,8 @@ return {
     "ggandor/leap.nvim",
     enabled = false,
   },
+  {
+    "Exafunction/codeium.nvim",
+    enabled = false,
+  },
 }

@@ -1,11 +1,38 @@
 return {
   "neovim/nvim-lspconfig",
-  opts = function()
-    local keys = require("lazyvim.plugins.lsp.keymaps").get()
-    keys[#keys + 1] = { "gh", "<cmd>lua vim.lsp.buf.hover()<cr>" }
-    keys[#keys + 1] = { "ln", "<cmd>lua vim.diagnostic.goto_next({severity=vim.diagnostic.severity['ERROR']})<cr>" }
-    keys[#keys + 1] = { "lp", "<cmd>lua vim.diagnostic.goto_prev({severity=vim.diagnostic.severity['ERROR']})<cr>" }
-    keys[#keys + 1] = { "Ln", "<cmd>lua vim.diagnostic.goto_prev()<cr>" }
-    keys[#keys + 1] = { "Lp", "<cmd>lua vim.diagnostic.goto_prev()<cr>" }
-  end,
+  opts = {
+    -- LSP server configurations
+    servers = {},
+  },
+  keys = {
+    { "gh", vim.lsp.buf.hover, desc = "Hover Documentation" },
+    {
+      "ln",
+      function()
+        vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
+      end,
+      desc = "Next Error",
+    },
+    {
+      "lp",
+      function()
+        vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })
+      end,
+      desc = "Previous Error",
+    },
+    {
+      "Ln",
+      function()
+        vim.diagnostic.goto_next()
+      end,
+      desc = "Next Diagnostic",
+    },
+    {
+      "Lp",
+      function()
+        vim.diagnostic.goto_prev()
+      end,
+      desc = "Previous Diagnostic",
+    },
+  },
 }

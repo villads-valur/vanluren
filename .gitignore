@@ -28,3 +28,6 @@ claude/*.pem
 claude/*.env
 claude/.env.*
 claude/secrets.*
+claude/debug
+claude/file-history
+claude/history.jsonl

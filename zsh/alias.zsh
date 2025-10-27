@@ -36,7 +36,6 @@ alias k="kubectl"
 
 # Utility
 alias hg='history | grep'
-alias sleep="pmset displaysleepnow"
 
 # lazygit
 alias lg="lazygit"

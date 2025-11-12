@@ -1,3 +1,15 @@
 {
-  "alwaysThinkingEnabled": false
+  "alwaysThinkingEnabled": false,
+  "permissions": {
+    "allow": [
+      "Read(~/.zshrc)",
+      "Bash(yarn:*)",
+      "Bash(yarn run:*)",
+      "Bash(bun:*)",
+      "Bash(git:*)",
+      "Bash(gh:*)",
+      "Bash(curl:*)"
+    ],
+    "defaultMode": "plan"
+  }
 }

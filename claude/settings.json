@@ -1,5 +1,4 @@
 {
-  "alwaysThinkingEnabled": false,
   "permissions": {
     "allow": [
       "Read(~/.zshrc)",
@@ -11,5 +10,6 @@
       "Bash(curl:*)"
     ],
     "defaultMode": "plan"
-  }
+  },
+  "alwaysThinkingEnabled": true
 }

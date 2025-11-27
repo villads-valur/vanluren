@@ -31,3 +31,4 @@ claude/secrets.*
 claude/debug
 claude/file-history
 claude/history.jsonl
+claude/plans/*

@@ -22,16 +22,19 @@ alias gai="git add -i"
 alias gcai="aicommits"
 alias gsc="git stash clear" # Clear all stashes, over
 
-# tmux
-alias t="tmux -f $HOME/.config/tmux/tmux.conf"
-alias tk="tkss"
-
-# Kitty
-alias dark="kitty +kitten themes --reload-in=all One Half Dark"
-alias light="kitty +kitten themes --reload-in=all Ayu Light"
 
 # Docker
 alias dc="docker-compose"
+alias dcu="docker-compose up -d" # start all containers in detached mode
+alias dsa="docker stop $(docker ps -q)" # stop all running containers
+alias dxc="docker container exec"
+alias dxci="docker container exec -it" # excute in interactive terminal
+alias docker-stop-all="dsa"
+alias docker-start-all="dcu"
+alias docker-restart-all="docker container restart $(docker ps -q)"
+alias docker-clean-up="docker volume prune"
+
+# Kube
 alias k="kubectl"
 
 # Utility

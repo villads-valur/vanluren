@@ -11,5 +11,5 @@
     ],
     "defaultMode": "plan"
   },
-  "alwaysThinkingEnabled": true
+  "alwaysThinkingEnabled": false
 }

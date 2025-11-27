@@ -43,3 +43,53 @@ source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/compl
 
 # bun completions
 [ -s "/Users/villadsvalur/.bun/_bun" ] && source "/Users/villadsvalur/.bun/_bun"
+
+_wtp() {
+        local -a opts # Declare a local array
+        local current
+        current=${words[-1]} # -1 means "the last element"
+        if [[ "$current" == "-"* ]]; then
+                # Current word starts with a hyphen, so complete flags/options
+                opts=("${(@f)$(env WTP_SHELL_COMPLETION=1 ${words[@]:0:#words[@]-1} ${current} --generate-shell-completion)}")
+        else
+                # Current word does not start with a hyphen, so complete subcommands
+                opts=("${(@f)$(env WTP_SHELL_COMPLETION=1 ${words[@]:0:#words[@]-1} --generate-shell-completion)}")
+        fi
+
+        if [[ "${opts[1]}" != "" ]]; then
+                _describe 'values' opts
+        else
+                _files
+        fi
+}
+
+# Don't run the completion function when being source-ed or eval-ed.
+# See https://github.com/urfave/cli/issues/1874 for discussion.
+if [ "$funcstack[1]" = "_wtp" ]; then
+        _wtp
+fi
+
+# wtp cd command hook for zsh
+wtp() {
+    for arg in "$@"; do
+        if [[ "$arg" == "--generate-shell-completion" ]]; then
+            command wtp "$@"
+            return $?
+        fi
+    done
+    if [[ "$1" == "cd" ]]; then
+        if [[ -z "$2" ]]; then
+            echo "Usage: wtp cd <worktree>" >&2
+            return 1
+        fi
+        local target_dir
+        target_dir=$(command wtp cd "$2" 2>/dev/null)
+        if [[ $? -eq 0 && -n "$target_dir" ]]; then
+            cd "$target_dir"
+        else
+            command wtp cd "$2"
+        fi
+    else
+        command wtp "$@"
+    fi
+}

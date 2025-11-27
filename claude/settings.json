@@ -7,7 +7,19 @@
       "Bash(bun:*)",
       "Bash(git:*)",
       "Bash(gh:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Search(*)",
+      "Search(pattern:*)",
+      "Search(pattern:*, include:*)",
+      "Read(*)",
+      "Edit(*)",
+      "Write(*)"
+    ],
+    "ask": [
+      "Read(./.env*)",
+      "Read(./secrets/**)",
+      "Read(./**/credentials*)",
+      "Bash(rm -rf:*)"
     ],
     "defaultMode": "plan"
   },

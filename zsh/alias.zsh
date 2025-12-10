@@ -16,7 +16,7 @@ alias y="yarn"
 # Git
 alias g="git"
 alias gs="git status"
-alias gc="cz"
+alias gc="gc -i"
 alias gcob="gco -b"
 alias gai="git add -i"
 alias gcai="aicommits"
@@ -47,6 +47,7 @@ alias lga="lazygit add"
 
 # Claude
 alias claude-code="claude"
+alias cursor="cursor-agent"
 
 # Kvalifik
 alias ev="cd ~/Developer/ev-remarketing/"

@@ -12,16 +12,16 @@ alias oldvim="vim"
 alias c="clear"
 alias clean-slate="sudo rm -rf node_modules && yarn cache clean"
 alias y="yarn"
+alias p="pnpm"
 
 # Git
 alias g="git"
 alias gs="git status"
-alias gc="gc -i"
+alias gc="cz"
 alias gcob="gco -b"
-alias gai="git add -i"
-alias gcai="aicommits"
+alias gai="cz --name cz_ai commit"
+alias gcai='cz --name cz_ai commit'
 alias gsc="git stash clear" # Clear all stashes, over
-
 
 # Docker
 alias dc="docker-compose"

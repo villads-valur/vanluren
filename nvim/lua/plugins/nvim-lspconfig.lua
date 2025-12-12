@@ -1,9 +1,5 @@
 return {
   "neovim/nvim-lspconfig",
-  opts = {
-    -- LSP server configurations
-    servers = {},
-  },
   keys = {
     { "gh", vim.lsp.buf.hover, desc = "Hover Documentation" },
     {

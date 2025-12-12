@@ -17,11 +17,11 @@ alias p="pnpm"
 # Git
 alias g="git"
 alias gs="git status"
-alias gc="cz"
+alias gc="oco"
 alias gcob="gco -b"
-alias gai="cz --name cz_ai commit"
-alias gcai='cz --name cz_ai commit'
-alias gsc="git stash clear" # Clear all stashes, over
+alias gai="oco"
+alias gcai='oco'
+alias gsc="git stash clear" # Clear all stashes
 
 # Docker
 alias dc="docker-compose"

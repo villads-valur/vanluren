@@ -1,19 +1,26 @@
 {
   "permissions": {
     "allow": [
+      "Read(*)",
+      "Edit(*)",
+      "Write(*)",
+      "Search(*)",
+      "Search(pattern:*)",
+      "Search(pattern:*, include:*)",
       "Read(~/.zshrc)",
       "Bash(yarn:*)",
       "Bash(yarn run:*)",
+      "Bash(npm:*)",
+      "Bash(npm run:*)",
+      "Bash(npx:*)",
+      "Bash(pnpm:*)",
       "Bash(bun:*)",
       "Bash(git:*)",
       "Bash(gh:*)",
       "Bash(curl:*)",
-      "Search(*)",
-      "Search(pattern:*)",
-      "Search(pattern:*, include:*)",
-      "Read(*)",
-      "Edit(*)",
-      "Write(*)"
+      "Bash(cat:*)",
+      "Bash(docker:*)",
+      "Bash(docker-compose:*)"
     ],
     "ask": [
       "Read(./.env*)",

@@ -30,5 +30,9 @@
     ],
     "defaultMode": "plan"
   },
-  "alwaysThinkingEnabled": true
+  "alwaysThinkingEnabled": true,
+  "statusLine": {
+    "type": "command",
+    "command": "input=$(cat); cwd=$(echo \"$input\" | jq -r '.workspace.current_dir'); model=$(echo \"$input\" | jq -r '.model.display_name'); user=$(whoami); host=$(hostname -s); dir=$(basename \"$cwd\"); branch=$(git -C \"$cwd\" -c core.useBuiltinFSMonitor=false branch --show-current 2>/dev/null); if [ -n \"$branch\" ]; then printf '%s@%s %s (%s) [%s]' \"$user\" \"$host\" \"$dir\" \"$branch\" \"$model\"; else printf '%s@%s %s [%s]' \"$user\" \"$host\" \"$dir\" \"$model\"; fi"
+  }
 }

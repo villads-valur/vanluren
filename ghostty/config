@@ -2,12 +2,24 @@ shell-integration = zsh
 auto-update = check
 command = /bin/zsh
 
-# Font 
+# Font
 font-family = "SFMono Nerd Font"
 font-size = 15
 
 # Theme
 theme = dark:atom,light:Ayu Light
+
+# Clipboard
+clipboard-read = allow
+clipboard-write = allow
+copy-on-select = clipboard
+
+# Cursor
+cursor-style = bar
+cursor-style-blink = false
+
+# Scrollback
+scrollback-limit = 10000
 
 # Window
 fullscreen = true

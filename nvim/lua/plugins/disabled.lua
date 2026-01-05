@@ -9,7 +9,7 @@ return {
   },
   {
     "Bryley/neoai.nvim",
-    enable = false,
+    enabled = false,
   },
   {
     "folke/persistence.nvim",
@@ -29,10 +29,6 @@ return {
     enabled = false,
   },
   { "nvim-mini/mini.ai", enabled = false },
-  {
-    "ggandor/leap.nvim",
-    enabled = false,
-  },
   {
     "Exafunction/codeium.nvim",
     enabled = false,

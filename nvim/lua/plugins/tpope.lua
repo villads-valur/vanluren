@@ -1,8 +1,6 @@
 return {
   "tpope/vim-fugitive",
   keys = {
-    "<Leader>gb",
-    "<CMD>Git blame<CR>",
-    desc = "Toggle blame buffer",
+    { "<Leader>gB", "<CMD>Git blame<CR>", desc = "Git blame (fugitive)" },
   },
 }

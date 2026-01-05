@@ -1,10 +1,8 @@
 -----------------------------------------------------------
 -- Neovim settings
 -----------------------------------------------------------
-local cmd = vim.cmd -- execute Vim commands
-local exec = vim.api.nvim_exec -- execute Vimscript
-local g = vim.g -- global variables
-local opt = vim.opt -- global/buffer/windows-scoped options
+local g = vim.g
+local opt = vim.opt
 local wo = vim.wo
 
 -- General
@@ -14,7 +12,7 @@ opt.fillchars = { eob = " " } -- Disable `~` on nonexistent lines
 opt.mouse = "a" -- enable mouse support
 opt.pumheight = 10 -- enable mouse support
 opt.clipboard = "unnamedplus" -- copy/paste to system clipboard
-opt.swapfile = false -- don't use swapfile
+-- swapfile disabled in options.lua
 opt.updatetime = 100 -- Length of time to wait before triggering the plugin
 opt.timeoutlen = 200 -- Length of time to wait for a mapped sequence
 opt.preserveindent = true
@@ -54,18 +52,19 @@ vim.cmd([[
   let g:loaded_ruby_provider = 0
 ]])
 -- highlight on yank
-exec(
-  [[
-  augroup YankHighlight
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
-  augroup end
-]],
-  false
-)
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = vim.api.nvim_create_augroup("YankHighlight", { clear = true }),
+  callback = function()
+    vim.highlight.on_yank({ higroup = "IncSearch", timeout = 700 })
+  end,
+})
 
 -- don't auto commenting new lines
-cmd([[au BufEnter * set fo-=c fo-=r fo-=o]])
+vim.api.nvim_create_autocmd("BufEnter", {
+  callback = function()
+    vim.opt.formatoptions:remove({ "c", "r", "o" })
+  end,
+})
 
 -- Startup
 -- disable builtins plugins

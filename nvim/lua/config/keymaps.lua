@@ -28,10 +28,6 @@ map("n", "<S-Tab>", "<CMD>bprevious<CR>", silent)
 map("n", "<Leader>x", "<CMD>bd<cr>", silent)
 map("n", "<Leader>cn", "<CMD>:set rnu!<cr>", silent)
 
--- Move lines
-map("v", "<A-j>", ":m '>+1<CR>gv=gv") -- move line up(v)
-map("v", "<A-k>", ":m '<-2<CR>gv=gv") -- move line down(v)
-
 -- better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
 map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })

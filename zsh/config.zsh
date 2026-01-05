@@ -19,8 +19,7 @@ source $HOME/Developer/personal/vanluren/zsh/functions.zsh
 
 
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# p10k is sourced below after powerlevel10k theme is loaded
 
 # place this after nvm initialization!
 autoload -U add-zsh-hook
@@ -42,7 +41,7 @@ fi
 # source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 
 # bun completions
-[ -s "/Users/villadsvalur/.bun/_bun" ] && source "/Users/villadsvalur/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 _wtp() {
         local -a opts # Declare a local array
@@ -97,5 +96,4 @@ wtp() {
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"

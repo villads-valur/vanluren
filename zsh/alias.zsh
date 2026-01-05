@@ -26,12 +26,12 @@ alias gsc="git stash clear" # Clear all stashes
 # Docker
 alias dc="docker-compose"
 alias dcu="docker-compose up -d" # start all containers in detached mode
-alias dsa="docker stop $(docker ps -q)" # stop all running containers
+dsa() { docker stop $(docker ps -q); } # stop all running containers
 alias dxc="docker container exec"
 alias dxci="docker container exec -it" # excute in interactive terminal
 alias docker-stop-all="dsa"
 alias docker-start-all="dcu"
-alias docker-restart-all="docker container restart $(docker ps -q)"
+docker-restart-all() { docker container restart $(docker ps -q); }
 alias docker-clean-up="docker volume prune"
 
 # Kube

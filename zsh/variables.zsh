@@ -8,7 +8,5 @@ export DISABLE_UNTRACKED_FILES_DIRTY="true"
 export HIST_STAMPS="mm/dd/yyyy"
 export FZF_DEFAULT_COMMAND='rg --files'
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# NVM is loaded in config.zsh
 

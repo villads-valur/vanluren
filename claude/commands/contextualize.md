@@ -9,13 +9,13 @@ Read and summarise the project documentation to understand the current context.
 
 ## Steps
 
-1. **Check for project docs** - Look for these files in the current directory:
+1. **Check for project docs** - Look for these files in `./.claude/`:
    - `CLAUDE.md` - Project-specific context and working agreements
    - `architecture.md` - System design and technical architecture
    - `decisions-and-learnings.md` - Technical decisions and gotchas
    - `planning.md` - Current work and task tracking
 
-2. **Read what exists** - Read each file that exists
+2. **Read what exists** - Read each file that exists in `./.claude/`
 
 3. **Check git status** - Run `git status` and `git log --oneline -10` to understand recent work
 

@@ -31,6 +31,15 @@ Global configuration for Claude Code. This file is the authoritative source for 
 - Don't over-optimise early - handle main errors/validations without going overboard
 - Use existing logging/monitoring (like Sentry), add explicit logging only where errors are anticipated
 
+### Readability Preferences
+
+- **Avoid ternary operators** for complex logic - use explicit `if/else` instead
+  - Simple assignment OK: `const x = condition ? a : b`
+  - Nested/complex ternaries: always use `if/else` blocks
+- **Use descriptive variable names in lambdas** when the body is complex
+  - Short lambdas OK: `.map((f) => f.id)`
+  - Complex lambdas: use `item`, `folder`, `doc`, etc. instead of single chars
+
 ## Testing
 
 - Always ask before adding tests for new features
@@ -79,16 +88,23 @@ Imports: follow project conventions, prefer TypeScript best practices with alias
 
 ## Project Documentation Structure
 
-Every project follows this documentation pattern:
+Every project should have a `.claude/` directory with these files:
 
-| File | Purpose |
-|------|---------|
-| `CLAUDE.md` | Project-specific context and working agreements |
-| `architecture.md` | System design, technical architecture |
-| `decisions-and-learnings.md` | Technical decisions, lessons learned, gotchas |
-| `planning.md` | Current work, task tracking, progress |
+| File | Purpose | Auto-loaded? |
+|------|---------|--------------|
+| `CLAUDE.md` | Project-specific context and working agreements | ✅ Yes |
+| `architecture.md` | System design, technical architecture | Via @import |
+| `decisions-and-learnings.md` | Technical decisions, lessons learned, gotchas | Via @import |
+| `planning.md` | Current work, task tracking, progress | Manual read |
 
-**At session start:** Read project-level documentation files if they exist before starting work.
+**Templates:** `~/.claude/templates/`
+
+| Template | Use for |
+|----------|---------|
+| `project-claude.md` | New project `.claude/CLAUDE.md` |
+| `architecture.md` | New project `.claude/architecture.md` |
+| `decisions-and-learnings.md` | New project `.claude/decisions-and-learnings.md` |
+| `planning.md` | New task `.claude/planning.md` |
 
 ## Common Commands
 

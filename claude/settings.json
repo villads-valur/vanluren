@@ -24,7 +24,77 @@
       "Bash(curl:*)",
       "Bash(cat:*)",
       "Bash(docker:*)",
-      "Bash(docker-compose:*)"
+      "Bash(docker-compose:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(ls:*)",
+      "Bash(mkdir:*)",
+      "Bash(chmod:*)",
+      "Bash(bash:*)",
+      "Bash(psql:*)",
+      "Bash(kubectl:*)",
+      "Bash(az aks command invoke:*)",
+      "Bash(docker rm:*)",
+      "Bash(./folder-structure.sh:*)",
+      "WebSearch",
+      "WebFetch(domain:medium.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:authzed.com)",
+      "WebFetch(domain:uploads.linear.app)",
+      "WebFetch(domain:cloud.nx.app)",
+      "mcp__linear__get_issue",
+      "mcp__linear__list_issues",
+      "mcp__linear__list_comments",
+      "mcp__linear__get_project",
+      "mcp__linear__list_projects",
+      "mcp__linear__list_teams",
+      "mcp__linear__update_issue",
+      "mcp__linear__create_issue",
+      "mcp__linear__create_comment",
+      "mcp__github__get_me",
+      "mcp__github__pull_request_read",
+      "mcp__github__create_pull_request",
+      "mcp__github__update_pull_request",
+      "mcp__github__add_issue_comment",
+      "mcp__github__get_file_contents",
+      "mcp__github__search_issues",
+      "mcp__github__search_pull_requests",
+      "mcp__github__search_users",
+      "mcp__github__search_code",
+      "mcp__github__list_pull_requests",
+      "mcp__github__get_commit",
+      "Bash(mv:*)",
+      "Bash(~/.claude/statusline-command.sh)",
+      "Bash(vim:*)",
+      "Bash(xargs -I {} sh -c 'echo \"\"=== {} ===\"\" && cat {}')",
+      "Bash(nvim -u NONE -i NONE -N --cmd \"set rtp^=~/.local/share/nvim/lazy/lazy.nvim\" --cmd \"lua require\\(''lazy''\\).setup\\({spec = {import = ''lazyvim.plugins.extras.lang.typescript''}}\\)\" +\"execute ''e ~/.local/share/nvim/lazy/LazyVim/lua/lazyvim/plugins/extras/lang/typescript.lua''\" +\"set number\" +\"silent %s#.*#&#\" +\"qa!\")",
+      "Bash(xargs cat:*)",
+      "Bash(xargs -I {} bash -c 'ls {} | grep -i tool || true')",
+      "Bash(ln:*)",
+      "mcp__linear__search_documentation",
+      "Bash(sort:*)",
+      "mcp__figma__get_screenshot",
+      "mcp__figma__get_metadata",
+      "WebFetch(domain:www.i18next.com)",
+      "Bash(brew install:*)",
+      "Bash(k9s version:*)",
+      "WebFetch(domain:www.npmjs.com)",
+      "Bash(./generate-duplicate-test-files.sh:*)",
+      "Bash(rm:*)",
+      "WebFetch(domain:orm.drizzle.team)",
+      "Bash(xargs basename:*)",
+      "mcp__figma__get_design_context",
+      "Bash(pgrep:*)",
+      "Bash(ps:*)",
+      "Bash(PGPASSWORD=postgrespassword psql:*)",
+      "Bash(echo:*)",
+      "Bash(source .env.local)",
+      "Bash(source .env.default)"
+    ],
+    "deny": [
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)",
+      "Bash(git push --force-with-lease:*)"
     ],
     "ask": [
       "Read(./.env*)",
@@ -32,18 +102,18 @@
       "Read(./**/credentials*)",
       "Bash(rm -rf:*)"
     ],
-    "defaultMode": "plan"
+    "defaultMode": "dontAsk"
   },
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline-command.sh",
     "padding": 0
   },
+  "enabledPlugins": {
+    "typescript-lsp@claude-plugins-official": true
+  },
   "alwaysThinkingEnabled": true,
   "companyAnnouncements": [
     "Welcome, Villads 👋"
-  ],
-  "enabledPlugins": {
-    "typescript-lsp@claude-plugins-official": true
-  }
+  ]
 }

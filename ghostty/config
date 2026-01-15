@@ -45,7 +45,7 @@ keybind = super+minus=decrease_font_size:1
 keybind = super+0=reset_font_size
 
 minimum-contrast = 1.1
-unfocused-split-opacity = 0.55
+unfocused-split-opacity = 0.75
 
 # ─────────────────────────────────────────────────────────────
 # Input & Clipboard

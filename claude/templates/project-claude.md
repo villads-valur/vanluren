@@ -5,7 +5,7 @@
 @.claude/architecture.md
 @.claude/decisions-and-learnings.md
 
-## Overview
+## Project Overview
 
 Brief description of what this project does.
 

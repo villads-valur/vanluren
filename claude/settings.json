@@ -102,7 +102,7 @@
       "Read(./**/credentials*)",
       "Bash(rm -rf:*)"
     ],
-    "defaultMode": "dontAsk"
+    "defaultMode": "default"
   },
   "statusLine": {
     "type": "command",

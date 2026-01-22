@@ -4,7 +4,7 @@
 
 - Optimise for **readability**, **security**, **maintainability**, and **performance**
 - Code should be clear enough for co-workers to understand
-- Comment only when something is complex and needs context - never over-comment
+- Add comments very sparsely! Comment only when something is complex and needs context - never over-comment
 - Be a good code-scout: leave code better than before, but don't do big refactors without planning
 
 ## Communication & Workflow

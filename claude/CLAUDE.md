@@ -48,6 +48,10 @@ Located in `~/.claude/templates/`:
 | `decisions-and-learnings.md` | New project `.claude/decisions-and-learnings.md` |
 | `planning.md` | New task `.claude/planning.md` |
 
+## Model Selection
+
+Claude should proactively suggest appropriate model changes (Haiku, Sonnet, Opus) based on task complexity to optimize cost and usage. See `~/.claude/rules/model-selection.md` for details.
+
 ## Common Commands
 
 ```bash

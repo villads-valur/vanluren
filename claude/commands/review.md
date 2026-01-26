@@ -14,11 +14,102 @@ model: sonnet
 
 ### Code Quality
 
-- [ ] Readable and clear to co-workers
-- [ ] No over-engineering or unnecessary complexity
-- [ ] Comments only where logic isn't self-evident
+- [ ] **Useless comments**: Flag comments that restate what code does, explain obvious names, or are commented-out code
+- [ ] **Arrow anti-pattern**: Flag deeply nested code (3+ levels) that could be flattened with early returns
+- [ ] **Missing guard clauses**: Flag nested if/else that could use early returns
+- [ ] **Long functions**: Flag functions doing multiple things that should be split
+- [ ] **Complex ternaries**: Flag nested or multi-line ternaries (use if/else instead)
 - [ ] Follows project naming conventions
-- [ ] No useless comments added, naming supports undertanding
+
+#### Complex Ternary Example
+
+Flag this:
+```ts
+const status = user.isActive
+  ? user.hasSubscription
+    ? 'premium'
+    : 'free'
+  : user.wasActive ? 'churned' : 'inactive';
+```
+
+Prefer:
+```ts
+function getStatus(user) {
+  if (!user.isActive) {
+    return user.wasActive ? 'churned' : 'inactive';
+  }
+  if (user.hasSubscription) {
+    return 'premium';
+  }
+  return 'free';
+}
+```
+
+#### Useless Comments Example
+
+Flag these:
+```ts
+// increment counter
+counter++;
+
+// get user by id
+const user = getUserById(id);
+
+// TODO: remove this later
+// const oldValue = calculateOld();
+
+/**
+ * Returns the sum of a and b
+ */
+function add(a: number, b: number) {
+  return a + b;
+}
+```
+
+#### Early Return Example
+
+Flag this:
+```ts
+function process(data) {
+  if (data) {
+    if (data.isValid) {
+      // 20 lines of logic
+    }
+  }
+}
+```
+
+Prefer:
+```ts
+function process(data) {
+  if (!data) return;
+  if (!data.isValid) return;
+  // 20 lines of logic
+}
+```
+
+#### Long Function Example
+
+Flag functions that do multiple unrelated things:
+```ts
+async function handleUserRegistration(data) {
+  // validate input (10 lines)
+  // create user in database (15 lines)
+  // send welcome email (10 lines)
+  // log analytics event (5 lines)
+  // update admin dashboard cache (10 lines)
+}
+```
+
+Prefer splitting into focused functions:
+```ts
+async function handleUserRegistration(data) {
+  const validated = validateRegistrationData(data);
+  const user = await createUser(validated);
+  await sendWelcomeEmail(user);
+  trackRegistration(user);
+}
+```
 
 ### Architecture
 

@@ -6,8 +6,38 @@
 
 ## Branch Update Strategy
 
-- **Merge main into feature branches** (not rebase) - safer, no force push needed
+- **Merge main into feature branches** (do not rebase) - safer, no force push needed
 - **Squash & merge PRs via GitHub UI** - never merge to main via CLI
 - I sometimes use GitHub's "Update Branch" button to sync with main, so fetch often
 - Avoid rebasing shared/pushed branches
 - I normally use GitHub's merge button in the UI to merge PRs
+
+## Git Worktree Workflow
+
+**When Work is Assigned:**
+
+1. **Determine the worktree**:
+   - New work → Create new worktree: `git -C {project}-main worktree add ../{project}-{ticket-id}-{description} -b {ticket-id}/{description}`
+   - Continuing work → Find existing: `git -C {project}-main worktree list`
+
+2. **Switch to worktree directory**: All file operations happen in `{worktree}/`, not parent container
+
+3. **Create/read task context**:
+   - For new worktrees: Create `{worktree}/.claude/planning.md` with task plan and progress tracking
+   - For existing worktrees: Read `{worktree}/.claude/planning.md` to understand current state
+
+4. **Read the relevant issue or ticket** (including all comments) to understand requirements
+
+5. **Plan and proceed** with implementation
+
+## Git Merge Strategy
+
+**Branch updates**: Merge main into feature branches (not rebase)
+
+- Use GitHub's "Update Branch" button or `git merge main`
+- Avoid force push and history rewriting
+
+**PR merges**: Squash & merge via GitHub UI only
+
+- **RARELY merge to main via CLI** - always use GitHub's merge button
+- This ensures the merge queue is used (CI runs on final merged state)

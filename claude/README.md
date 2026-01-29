@@ -16,7 +16,7 @@ I keep my Claude Code configuration in this git repository and symlink it to `~/
 
 ## Directory Structure
 
-```
+````
 claude/
 ├── CLAUDE.md              # Global instructions (auto-loaded)
 ├── rules/                 # Modular rule files (auto-loaded)
@@ -112,16 +112,29 @@ Contains:
 
 For each project, I aim to have:
 
-```
+
 project/.claude/
 ├── CLAUDE.md                  # Project overview
 ├── rules/                     # Project-specific rules
 ├── architecture.md            # System design
 ├── decisions-and-learnings.md # Gotchas, past decisions
 └── planning.md                # Current task (in worktrees)
-```
+
 
 I don't set this up beforehand. I open Claude Code on a project and populate the `.claude/` directory as I go.
+
+### Worktree Convention
+
+I use git worktrees for parallel work. Each project lives in a `{project-name}-main` directory which tracks the main branch. Feature work happens in sibling worktrees:
+
+```
+~/developer/
+├── myapp-main/           # Main branch (always clean)
+├── myapp-feat-auth/      # Feature worktree
+└── myapp-fix-login/      # Another worktree
+```
+
+New worktrees branch off from `{project}-main`. Each worktree gets its own `planning.md` to track that specific task.
 
 ### Key Files Explained
 
@@ -130,7 +143,7 @@ I don't set this up beforehand. I open Claude Code on a project and populate the
 ```markdown
 @.claude/architecture.md
 @.claude/decisions-and-learnings.md
-```
+````
 
 This ensures Claude gets context automatically without having to remember to read these files itself.
 

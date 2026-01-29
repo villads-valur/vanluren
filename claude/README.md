@@ -16,7 +16,7 @@ I keep my Claude Code configuration in this git repository and symlink it to `~/
 
 ## Directory Structure
 
-````
+```
 claude/
 ├── CLAUDE.md              # Global instructions (auto-loaded)
 ├── rules/                 # Modular rule files (auto-loaded)
@@ -50,6 +50,7 @@ claude/
 │   └── planning.md
 ├── settings.json          # Permissions, statusline, plugins
 └── statusline-command.sh  # Custom status bar script
+```
 
 ## Disclaimer
 
@@ -84,12 +85,12 @@ Slash commands I use regularly:
 
 Skills are auto-invoked based on context. They trigger when you say things like:
 
-| Skill | Triggers on |
-|-------|-------------|
-| `commit` | "commit this", "save my changes" |
-| `pr` | "create a PR", "open a pull request" |
-| `cleanup` | "clean up the code", "remove noise" |
-| `contextualize` | "get context", "what is this project" |
+| Skill           | Triggers on                            |
+| --------------- | -------------------------------------- |
+| `commit`        | "commit this", "save my changes"       |
+| `pr`            | "create a PR", "open a pull request"   |
+| `cleanup`       | "clean up the code", "remove noise"    |
+| `contextualize` | "get context", "what is this project"  |
 | `code-reviewer` | "review this code", "check for issues" |
 
 Skills contain the same logic as their corresponding commands but are invoked automatically when Claude detects the intent.
@@ -112,14 +113,12 @@ Contains:
 
 For each project, I aim to have:
 
-
 project/.claude/
-├── CLAUDE.md                  # Project overview
-├── rules/                     # Project-specific rules
-├── architecture.md            # System design
+├── CLAUDE.md # Project overview
+├── rules/ # Project-specific rules
+├── architecture.md # System design
 ├── decisions-and-learnings.md # Gotchas, past decisions
-└── planning.md                # Current task (in worktrees)
-
+└── planning.md # Current task (in worktrees)
 
 ### Worktree Convention
 
@@ -141,7 +140,7 @@ New worktrees branch off from `{project}-main`. Each worktree gets its own `plan
 ```markdown
 @.claude/architecture.md
 @.claude/decisions-and-learnings.md
-````
+```
 
 This ensures Claude gets context automatically without having to remember to read these files itself.
 

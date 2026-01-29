@@ -62,16 +62,14 @@ These are automatically loaded by Claude Code. I split them into separate files 
 
 - **core-principles.md** - How I want Claude to communicate (ask questions, provide updates, correct my terminology)
 - **git-workflow.md** - My branching strategy, commit conventions, worktree workflow
-- **model-selection.md** - Prompts Claude to suggest cheaper models for simple tasks
+- **model-selection.md** - Prompts Claude to suggest cheaper models for simple tasks(Very much WIP)
 
 ### Commands (`commands/`)
 
 Slash commands I use regularly:
 
-- `/commit` - Creates a conventional commit
-- `/pr` - Creates a pull request
-- `/review` - Reviews code against my preferences
 - `/checkpoint` - Saves progress to planning.md
+- `/review` - Reviews code against my preferences
 - `/contextualize` - Reads project docs to get up to speed
 
 ### Templates (`templates/`)
@@ -93,14 +91,16 @@ Contains:
 For each project, I aim to have:
 
 ```
+
 project/
 └── .claude/
-    ├── CLAUDE.md                  # Project overview
-    ├── rules/                     # Project-specific rules
-    ├── architecture.md            # System design
-    ├── decisions-and-learnings.md # Gotchas, past decisions
-    └── planning.md                # Current task (in worktrees)
-```
+├── CLAUDE.md # Project overview
+├── rules/ # Project-specific rules
+├── architecture.md # System design
+├── decisions-and-learnings.md # Gotchas, past decisions
+└── planning.md # Current task (in worktrees)
+
+````
 
 I don't set this up beforehand. I open Claude Code on a project and populate the `.claude/` directory as I go.
 
@@ -111,7 +111,7 @@ I don't set this up beforehand. I open Claude Code on a project and populate the
 ```markdown
 @.claude/architecture.md
 @.claude/decisions-and-learnings.md
-```
+````
 
 This ensures Claude gets context automatically without having to remember to read these files itself.
 
@@ -122,10 +122,3 @@ This ensures Claude gets context automatically without having to remember to rea
 **`planning.md`** - One per worktree. Holds the current task status, what needs to be done, progress tracking. When I create a new worktree for a task, I create a fresh `planning.md` for that work.
 
 **`rules/`** - Project-specific guidelines. Think of these as team-specific rules for that codebase. When I find myself adding the same rule to multiple projects, I promote it to the global rules instead.
-
-## What's Probably Wrong
-
-- The rules might be too verbose or contradictory in places
-- The permission list has grown organically and could use cleanup
-- I'm still figuring out the best balance between global and project-specific rules
-- The worktree workflow is something I'm experimenting with

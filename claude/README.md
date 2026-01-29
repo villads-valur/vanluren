@@ -6,12 +6,12 @@ I keep my Claude Code configuration in this git repository and symlink it to `~/
 
 ```
 ~/.claude/
-├── CLAUDE.md -> ~/developer/personal/vanluren/claude/CLAUDE.md
-├── rules/    -> ~/developer/personal/vanluren/claude/rules/
-├── commands/ -> ~/developer/personal/vanluren/claude/commands/
-├── skills/   -> ~/developer/personal/vanluren/claude/skills/
-├── templates/-> ~/developer/personal/vanluren/claude/templates/
-└── settings.json -> ~/developer/personal/vanluren/claude/settings.json
+├── CLAUDE.md     -> <this-repo>/CLAUDE.md
+├── rules/        -> <this-repo>/rules/
+├── commands/     -> <this-repo>/commands/
+├── skills/       -> <this-repo>/skills/
+├── templates/    -> <this-repo>/templates/
+└── settings.json -> <this-repo>/settings.json
 ```
 
 ## Directory Structure

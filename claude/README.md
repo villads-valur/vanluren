@@ -91,13 +91,12 @@ Contains:
 For each project, I aim to have:
 
 ```
-project/
-└── .claude/
-    ├── CLAUDE.md                  # Project overview
-    ├── rules/                     # Project-specific rules
-    ├── architecture.md            # System design
-    ├── decisions-and-learnings.md # Gotchas, past decisions
-    └── planning.md                # Current task (in worktrees)
+project/.claude/
+  CLAUDE.md                  # Project overview
+  rules/                     # Project-specific rules
+  architecture.md            # System design
+  decisions-and-learnings.md # Gotchas, past decisions
+  planning.md                # Current task (in worktrees)
 ```
 
 I don't set this up beforehand. I open Claude Code on a project and populate the `.claude/` directory as I go.

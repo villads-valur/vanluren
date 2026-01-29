@@ -121,8 +121,6 @@ project/.claude/
 └── planning.md                # Current task (in worktrees)
 
 
-I don't set this up beforehand. I open Claude Code on a project and populate the `.claude/` directory as I go.
-
 ### Worktree Convention
 
 I use git worktrees for parallel work. Each project lives in a `{project-name}-main` directory which tracks the main branch. Feature work happens in sibling worktrees:

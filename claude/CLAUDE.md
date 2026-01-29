@@ -37,6 +37,19 @@ project/
 4. **User memory** (`~/.claude/CLAUDE.md`, `~/.claude/rules/*.md`)
 5. **Project local** (`./CLAUDE.local.md` - gitignored)
 
+## Worktree Convention
+
+Projects use git worktrees. Each project has a `{project}-main` directory tracking the main branch. Feature work happens in sibling worktrees branched from main:
+
+```
+~/developer/
+├── myapp-main/           # Main branch
+├── myapp-feat-auth/      # Feature worktree
+└── myapp-fix-login/      # Another worktree
+```
+
+Each worktree gets its own `planning.md` for that specific task.
+
 ## Templates
 
 Located in `~/.claude/templates/`:

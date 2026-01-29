@@ -35,9 +35,14 @@ claude/
 │   ├── pr.md              # /pr
 │   ├── review.md          # /review
 │   ├── checkpoint.md      # /checkpoint
-│   └── contextualize.md   # /contextualize
-├── skills/                # More complex workflows
-│   └── code-reviewer/     # Code review skill
+│   ├── contextualize.md   # /contextualize
+│   └── cleanup.md         # /cleanup
+├── skills/                # Auto-invoked workflows
+│   ├── code-reviewer/     # Code review skill
+│   ├── cleanup/           # Code cleanup skill
+│   ├── commit/            # Git commit skill
+│   ├── pr/                # Pull request skill
+│   └── contextualize/     # Project context skill
 ├── templates/             # Templates for new projects
 │   ├── project-claude.md
 │   ├── architecture.md
@@ -68,9 +73,26 @@ These are automatically loaded by Claude Code. I split them into separate files 
 
 Slash commands I use regularly:
 
-- `/checkpoint` - Saves progress to planning.md
-- `/review` - Reviews code against my preferences
-- `/contextualize` - Reads project docs to get up to speed
+- `/commit` - Create a conventional commit
+- `/pr` - Create a pull request
+- `/review` - Review code against my preferences
+- `/cleanup` - Clean up code (remove useless comments, simplify nesting, remove dead code)
+- `/checkpoint` - Save progress to planning.md
+- `/contextualize` - Read project docs, worktree context, and GitHub status
+
+### Skills (`skills/`)
+
+Skills are auto-invoked based on context. They trigger when you say things like:
+
+| Skill | Triggers on |
+|-------|-------------|
+| `commit` | "commit this", "save my changes" |
+| `pr` | "create a PR", "open a pull request" |
+| `cleanup` | "clean up the code", "remove noise" |
+| `contextualize` | "get context", "what is this project" |
+| `code-reviewer` | "review this code", "check for issues" |
+
+Skills contain the same logic as their corresponding commands but are invoked automatically when Claude detects the intent.
 
 ### Templates (`templates/`)
 
@@ -92,11 +114,11 @@ For each project, I aim to have:
 
 ```
 project/.claude/
-  CLAUDE.md                  # Project overview
-  rules/                     # Project-specific rules
-  architecture.md            # System design
-  decisions-and-learnings.md # Gotchas, past decisions
-  planning.md                # Current task (in worktrees)
+├── CLAUDE.md                  # Project overview
+├── rules/                     # Project-specific rules
+├── architecture.md            # System design
+├── decisions-and-learnings.md # Gotchas, past decisions
+└── planning.md                # Current task (in worktrees)
 ```
 
 I don't set this up beforehand. I open Claude Code on a project and populate the `.claude/` directory as I go.

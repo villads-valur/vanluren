@@ -45,6 +45,9 @@ alias lg="lazygit"
 alias lazy="lazygit"
 alias lga="lazygit add"
 
-# Claude
+# AI 
 alias cursor="cursor-agent"
+alias oc="opencode"
+
+
 

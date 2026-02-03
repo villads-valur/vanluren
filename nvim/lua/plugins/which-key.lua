@@ -16,6 +16,7 @@ return {
         { "<leader>go", group = "Octo", icon = { icon = "" } },
         { "<leader>goc", group = "Comments", icon = { icon = "" } },
         { "<leader>gor", group = "Reviews", icon = { icon = "" } },
+        { "<leader>gR", group = "review.nvim", icon = { icon = "󰈭" } },
         { "<leader>q", group = "quit/session" },
         { "<leader>u", group = "ui", icon = { icon = "󰙵 ", color = "cyan" } },
         { "<leader>x", group = "diagnostics/quickfix", icon = { icon = "󱖫 ", color = "green" } },

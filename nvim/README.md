@@ -15,19 +15,17 @@ A modern, TypeScript/JavaScript-focused Neovim configuration built on [LazyVim](
 ```
 nvim/
 ├── init.lua                    # Entry point
-├── lazy-lock.json              # Plugin version locks (52 plugins)
+├── lazy-lock.json              # Plugin version locks (~50 plugins)
 ├── lazyvim.json                # LazyVim extras configuration
 ├── stylua.toml                 # Lua formatter (2 spaces, 120 cols)
 └── lua/
     ├── config/
-    │   ├── init.lua            # Core settings, disabled builtins
+    │   ├── init.lua            # Core settings
     │   ├── lazy.lua            # Plugin manager bootstrap
     │   ├── keymaps.lua         # Custom key mappings
     │   ├── options.lua         # Additional options
     │   └── autocmds.lua        # Autocommands
-    ├── plugins/                # Plugin configurations (26 files)
-    └── utils/
-        └── init.lua            # Utility functions
+    └── plugins/                # Plugin configurations
 ```
 
 ## Key Bindings
@@ -36,12 +34,12 @@ nvim/
 
 | Key | Action |
 |-----|--------|
-| `<Leader>w` | Save file |
-| `<Leader>q` | Quit |
-| `<Leader>x` | Delete buffer |
-| `<Leader>v` | Vertical split |
-| `<Leader>l` | Open Lazy plugin manager |
-| `<Leader>cf` | Format code |
+| `<leader>w` | Save file |
+| `<leader>v` | Vertical split |
+| `<leader>l` | Open Lazy plugin manager |
+| `<leader>cf` | Format code |
+| `<leader>qq` | Quit all |
+| `<leader>bd` | Delete buffer |
 
 ### Navigation
 
@@ -81,8 +79,9 @@ nvim/
 | Key | Action |
 |-----|--------|
 | `gh` | Hover documentation |
-| `ln` / `lp` | Next/previous error |
-| `Ln` / `Lp` | Next/previous diagnostic |
+| `]d` / `[d` | Next/previous diagnostic |
+| `]e` / `[e` | Next/previous error |
+| `]w` / `[w` | Next/previous warning |
 
 ### Editing
 
@@ -107,7 +106,7 @@ nvim/
 - **nvim-lspconfig** - LSP configuration
 - **mason.nvim** - LSP installer
 - **blink.cmp** - Modern completion engine
-- **nvim-treesitter** - Syntax highlighting (16 languages)
+- **nvim-treesitter** - Syntax highlighting (19 languages)
 - **conform.nvim** / **nvim-lint** - Formatting and linting
 
 ### Git
@@ -133,7 +132,6 @@ nvim/
 
 Enabled extras from LazyVim:
 
-- `ai.codeium` (disabled via custom config)
 - `coding.mini-surround`
 - `lang.markdown`
 - `lang.yaml`

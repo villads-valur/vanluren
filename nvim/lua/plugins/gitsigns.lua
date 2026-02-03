@@ -19,6 +19,9 @@ return {
     current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>",
     on_attach = function(buffer)
       local gs = package.loaded.gitsigns
+      if not gs then
+        return
+      end
 
       local function map(mode, l, r, desc)
         vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })

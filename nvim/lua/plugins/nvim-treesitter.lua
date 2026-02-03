@@ -1,10 +1,9 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   opts = {
-    highlight = { enable = true },
-    indent = { enable = true },
     ensure_installed = {
       "bash",
+      "css",
       "html",
       "javascript",
       "json",
@@ -14,6 +13,8 @@ return {
       "markdown",
       "markdown_inline",
       "regex",
+      "rust",
+      "toml",
       "tsx",
       "typescript",
       "vim",

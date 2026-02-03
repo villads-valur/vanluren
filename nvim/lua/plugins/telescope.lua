@@ -12,9 +12,6 @@ return {
   opts = function()
     local actions = require("telescope.actions")
 
-    local open_with_trouble = function(...)
-      return require("trouble.sources.telescope").open(...)
-    end
     local find_files_no_ignore = function()
       local action_state = require("telescope.actions.state")
       local line = action_state.get_current_line()
@@ -28,8 +25,8 @@ return {
 
     return {
       defaults = {
-        prompt_prefix = " ",
-        selection_caret = " ",
+        prompt_prefix = " ",
+        selection_caret = " ",
         -- open files in the first window that is an actual file.
         -- use the current window if no other window is available.
         get_selection_window = function()
@@ -45,8 +42,6 @@ return {
         end,
         mappings = {
           i = {
-            ["<c-t>"] = open_with_trouble,
-            ["<a-t>"] = open_with_trouble,
             ["<a-i>"] = find_files_no_ignore,
             ["<a-h>"] = find_files_with_hidden,
             ["<C-Down>"] = actions.cycle_history_next,

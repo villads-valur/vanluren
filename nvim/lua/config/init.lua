@@ -61,38 +61,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 -- don't auto commenting new lines
 vim.api.nvim_create_autocmd("BufEnter", {
+  group = vim.api.nvim_create_augroup("DisableAutoComment", { clear = true }),
   callback = function()
     vim.opt.formatoptions:remove({ "c", "r", "o" })
   end,
 })
 
--- Startup
--- disable builtins plugins
-local disabled_built_ins = {
-  "netrw",
-  "netrwPlugin",
-  "netrwSettings",
-  "netrwFileHandlers",
-  "gzip",
-  "zip",
-  "zipPlugin",
-  "tar",
-  "tarPlugin",
-  "getscript",
-  "getscriptPlugin",
-  "vimball",
-  "vimballPlugin",
-  "2html_plugin",
-  "logipat",
-  "rrhelper",
-  "spellfile_plugin",
-  "matchit",
-  "black",
-  "matchparen",
-  "tohtml",
-  "tutor",
-}
-
-for _, plugin in pairs(disabled_built_ins) do
-  g["loaded_" .. plugin] = 1
-end
+-- Disable providers (already handled in lazy.lua performance.rtp.disabled_plugins for built-ins)

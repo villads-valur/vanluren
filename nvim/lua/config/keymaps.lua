@@ -2,31 +2,24 @@
 -- Default keymaps that are always set: https://github.com/LazyLazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 
 local map = vim.keymap.set
-local silent = { silent = true }
 
 -- General
-map("n", "<Leader>w", "<cmd>w<cr>", silent)
-map("n", "<Leader>v", "<cmd>vsplit<cr>", silent)
-map("n", "<Leader>q", "<cmd>q<cr>", silent)
-
----- Remove highlights
-map("n", "<CR>", ":noh<CR><CR>", silent)
-map("n", "<ESC><ESC>", ":noh<CR><CR>", silent)
+map("n", "<leader>w", "<cmd>w<cr>", { silent = true, desc = "Save File" })
+map("n", "<leader>v", "<cmd>vsplit<cr>", { silent = true, desc = "Vertical Split" })
 
 ---- Don't yank on delete char
-map("n", "x", '"_x', silent)
-map("n", "X", '"_X', silent)
-map("v", "x", '"_x', silent)
-map("v", "X", '"_X', silent)
+map("n", "x", '"_x', { silent = true, desc = "Delete char (no yank)" })
+map("n", "X", '"_X', { silent = true, desc = "Delete char backward (no yank)" })
+map("v", "x", '"_x', { silent = true, desc = "Delete selection (no yank)" })
+map("v", "X", '"_X', { silent = true, desc = "Delete selection (no yank)" })
 
 -- Don't yank on visual paste
-map("v", "p", '"_dP', silent)
+map("v", "p", '"_dP', { silent = true, desc = "Paste (no yank)" })
 
 -- Buffers
-map("n", "<Tab>", "<CMD>bnext<CR>", silent)
-map("n", "<S-Tab>", "<CMD>bprevious<CR>", silent)
-map("n", "<Leader>x", "<CMD>bd<cr>", silent)
-map("n", "<Leader>cn", "<CMD>:set rnu!<cr>", silent)
+map("n", "<Tab>", "<cmd>bnext<cr>", { silent = true, desc = "Next Buffer" })
+map("n", "<S-Tab>", "<cmd>bprevious<cr>", { silent = true, desc = "Previous Buffer" })
+map("n", "<leader>cn", "<cmd>set rnu!<cr>", { silent = true, desc = "Toggle Relative Numbers" })
 
 -- better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
@@ -84,9 +77,9 @@ map("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result
 map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result" })
 
 -- Add undo break-points
-map("i", ",", ",<c-g>u")
-map("i", ".", ".<c-g>u")
-map("i", ";", ";<c-g>u")
+map("i", ",", ",<c-g>u", { desc = "Add undo break-point" })
+map("i", ".", ".<c-g>u", { desc = "Add undo break-point" })
+map("i", ";", ";<c-g>u", { desc = "Add undo break-point" })
 
 -- save file
 map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
@@ -95,8 +88,8 @@ map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
 map("n", "<leader>K", "<cmd>norm! K<cr>", { desc = "Keywordprg" })
 
 -- better indenting
-map("v", "<", "<gv")
-map("v", ">", ">gv")
+map("v", "<", "<gv", { desc = "Indent left and reselect" })
+map("v", ">", ">gv", { desc = "Indent right and reselect" })
 
 -- lazy
 map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
@@ -139,8 +132,6 @@ map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
 -- highlights under cursor
 map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 map("n", "<leader>uI", "<cmd>InspectTree<cr>", { desc = "Inspect Tree" })
-map("n", "<leader>uh", ":lua require('precognition').toggle()<cr>", { desc = "Toggle Hints" })
-map("n", "<leader>uhp", ":lua require('precognition').peek()<cr>", { desc = "Peek hints" })
 
 
 -- LazyVim Changelog

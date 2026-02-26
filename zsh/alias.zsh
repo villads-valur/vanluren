@@ -49,7 +49,7 @@ alias lga="lazygit add"
 alias cursor="cursor-agent"
 alias oc="opencode"
 
-alias tuicr="$HOME/developer/tuicr/target/debug/tuicr"
+alias tuicr="$HOME/developer/tuicr/target/release/tuicr"
 
 
 

@@ -1,7 +1,7 @@
 -- Plugins explicitly disabled
 return {
   { "folke/edgy.nvim", enabled = false },
-  { "ggandor/leap.nvim", enabled = false },
+  { "andyg/leap.nvim.git", name = "leap.nvim", enabled = false },
   { "folke/persistence.nvim", enabled = false },
   { "folke/tokyonight.nvim", enabled = false },
   { "catppuccin/nvim", enabled = false },

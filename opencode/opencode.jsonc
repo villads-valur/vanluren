@@ -12,7 +12,7 @@
     ],
   },
   "plugin": [
-    "opencode-anthropic-oauth"
+    "opencode-claude-auth"
   ],
   "mcp": {
     "notion": {

@@ -6,8 +6,14 @@
     "/Users/villads-valur/.claude/rules/*.md",
   ],
   "skills": {
-    "paths": ["/Users/villads-valur/.claude/skills"],
+    "paths": [
+      "./skills",
+      "/Users/villads-valur/.claude/skills"
+    ],
   },
+  "plugin": [
+    "opencode-anthropic-oauth"
+  ],
   "mcp": {
     "notion": {
       "type": "remote",

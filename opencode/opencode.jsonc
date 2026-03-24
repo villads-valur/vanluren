@@ -1,10 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "instructions": [
-    "/Users/villads-valur/.claude/CLAUDE.md",
-    "/Users/villads-valur/.claude/working-agreements.md",
-    "/Users/villads-valur/.claude/rules/*.md",
-  ],
+  "instructions": [],
   "skills": {
     "paths": [
       "./skills",

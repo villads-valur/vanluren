@@ -43,13 +43,21 @@
 - Use environment variables for secrets
 - Verify file paths before write operations
 
-## External File Loading
-When you encounter an @file reference below, use your Read tool to load it only when relevant to the current task. Do NOT preload all references.
+## Git Workflow
+- Merge main into feature branches (do not rebase), no force push
+- Squash & merge PRs via GitHub UI, never merge to main via CLI
+- Follow conventional commits; never add AI as co-author or mention AI generated code
 
-For git workflow, commits, branches, worktrees, and PRs: @~/.claude/rules/git-workflow.md
-For React component patterns, hooks, state, and effects: @~/.claude/rules/react.md
-For architecture decisions and project structure: @~/.claude/rules/architecture.md
-For creating tickets or issues (Linear, GitHub): @~/.claude/rules/project-management.md
-For naming conventions (files, components, variables): @~/.claude/rules/naming-conventions.md
-For code quality, readability, and cleanup: @~/.claude/rules/code-quality.md
-For tech stack choices and preferences: @~/.claude/rules/tech-stack.md
+## Code Quality
+- No complex/nested ternaries, use explicit `if/else`
+- Use descriptive variable names in complex lambdas (not single chars)
+- Clean up after implementation: remove unneeded changes, files, artifacts
+- No tech-debt files or workaround files, fix issues directly
+
+## Naming Conventions
+- Files: kebab-case. Components: PascalCase. Functions/variables: camelCase. Constants: UPPER_SNAKE_CASE.
+
+## Architecture
+- Centralise business logic in API, keep frontend simple
+- Feature-based folder structure with colocated files
+- Custom hooks over complex state libraries

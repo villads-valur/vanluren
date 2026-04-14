@@ -7,7 +7,12 @@ allowed-tools: Bash(git worktree:*), Bash(git branch:*), Bash(mkdir:*), Read, Wr
 # Git Worktree
 
 Create a git worktree for a workstream, add a `.claude/` directory in the worktree with `planning.md` and `decisions-and-learnings.md`.
-Use the templates from `~/.claude/templates` for the files.
+
+## Templates
+
+Templates are bundled with this skill:
+- [planning-template.md](planning-template.md) - for `.claude/planning.md`
+- [decisions-template.md](decisions-template.md) - for `.claude/decisions-and-learnings.md`
 
 ## Naming
 
@@ -53,13 +58,13 @@ Use the templates from `~/.claude/templates` for the files.
 
 6. **Create planning.md**
 
-   - Use template from `~/.claude/templates/planning.md`
+   - Use template from `${CLAUDE_SKILL_DIR}/planning-template.md`
    - Fill in the task description and initial plan based on the issue/ticket
    - Update the date to today
 
 7. **Create decisions-and-learnings.md**
 
-   - Use template from `~/.claude/templates/decisions-and-learnings.md`
+   - Use template from `${CLAUDE_SKILL_DIR}/decisions-template.md`
    - Update the date to today
 
 8. **Read issue/ticket** (if available)

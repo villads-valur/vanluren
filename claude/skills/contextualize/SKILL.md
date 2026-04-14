@@ -11,7 +11,7 @@ Get up to speed on a project quickly.
 ## What to Read
 
 ### Project Docs (`.claude/`)
-- `CLAUDE.md` - Project context and working agreements
+- `CLAUDE.md` - Project context and conventions
 - `architecture.md` - System design
 - `decisions-and-learnings.md` - Technical decisions and gotchas
 - `planning.md` - Current work and task tracking

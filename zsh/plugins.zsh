@@ -1,4 +1,4 @@
-source $HOME/Developer/personal/vanluren/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/Developer/personal/vanluren/zsh/plugins/git.plugin.zsh
 
 

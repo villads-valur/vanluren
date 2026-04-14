@@ -1,6 +1,6 @@
 ---
 description: Clean up code by removing noise and simplifying complexity
-model: anthropic/claude-opus-4-5
+model: anthropic/claude-sonnet-4-6
 ---
 
 ## Context

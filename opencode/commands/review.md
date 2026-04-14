@@ -1,6 +1,6 @@
 ---
 description: Review code for quality and best practices
-model: openai/gpt-5.3-codex
+model: anthropic/claude-sonnet-4-6
 ---
 
 ## Context

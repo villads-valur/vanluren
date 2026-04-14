@@ -1,6 +1,5 @@
 ---
 description: Create a pull request
-model: openai/gpt-5.4
 ---
 
 ## Context

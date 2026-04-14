@@ -1,6 +1,5 @@
 ---
 description: Fetch and merge main into current branch
-model: anthropic/claude-opus-4-5
 ---
 
 ## Task

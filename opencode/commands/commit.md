@@ -1,6 +1,5 @@
 ---
 description: Create a git commit with conventional format
-model: anthropic/claude-opus-4-5
 ---
 
 ## Context

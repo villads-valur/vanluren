@@ -19,15 +19,15 @@
       "enabled": true,
     },
   },
-  "model": "anthropic/claude-opus-4-6",
-  "small_model": "anthropic/claude-sonnet-4-5",
+  "model": "anthropic/claude-opus-4-7",
+  "small_model": "anthropic/claude-sonnet-4-6",
   "agent": {
     "plan": {
-      "model": "anthropic/claude-opus-4-6",
+      "model": "anthropic/claude-opus-4-7",
       "description": "Use for planning code-writing tasks",
     },
     "build": {
-      "model": "anthropic/claude-opus-4-6",
+      "model": "anthropic/claude-opus-4-7",
       "description": "Use for code-writing tasks",
     },
     "writing": {
@@ -35,11 +35,11 @@
       "description": "Use for writing-heavy tasks",
     },
     "stupid": {
-      "model": "anthropic/claude-sonnet-4-5",
+      "model": "anthropic/claude-sonnet-4-6",
       "description": "Our little stupid boy",
     },
     "code-simplifier": {
-      "model": "anthropic/claude-opus-4-6",
+      "model": "anthropic/claude-opus-4-7",
       "description": "Simplify and refine code while preserving behavior",
       "prompt": "You are an expert code simplification specialist focused on improving clarity, consistency, and maintainability while preserving exact functionality. Focus on recently modified code unless instructed otherwise.\n\nCore principles:\n1. Preserve functionality exactly, never change behavior, outputs, or features.\n2. Apply project standards from CLAUDE.md and repository rules.\n3. Improve readability by reducing unnecessary complexity and nesting.\n4. Remove redundancy, dead code, and obvious comments that restate code.\n5. Avoid nested ternaries, prefer explicit if/else or switch for multi-condition logic.\n6. Choose clarity over brevity, avoid clever one-liners that hurt maintainability.\n\nProcess:\n1. Identify recently modified code sections.\n2. Refine structure and naming for clarity.\n3. Keep abstractions that help organization, remove those that do not.\n4. Keep changes focused and minimal to the touched scope.\n5. Verify functionality is unchanged.\n6. Document only significant simplifications.",
       "hidden": true,

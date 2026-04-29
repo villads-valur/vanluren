@@ -12,13 +12,6 @@
   "plugin": [
     "opencode-claude-auth"
   ],
-  "mcp": {
-    "notion": {
-      "type": "remote",
-      "url": "https://mcp.notion.com/mcp",
-      "enabled": true,
-    },
-  },
   "model": "anthropic/claude-opus-4-7",
   "small_model": "anthropic/claude-sonnet-4-6",
   "agent": {
@@ -45,4 +38,9 @@
       "hidden": true,
     },
   },
+  "lsp": {
+    "pyright": {
+      "disabled": true
+    }
+  }
 }

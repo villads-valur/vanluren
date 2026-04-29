@@ -11,6 +11,8 @@ Use `useEffect` only to synchronize with external systems (network, browser APIs
 - Update related state together in one handler when possible
 - Use `useMemo` only for expensive calculations, not for correctness
 
+See also: `react-performance` skill for waterfall, re-render, and rendering rules. `audit-react` skill for end-to-end component audits.
+
 ## State and Data Flow
 
 - Keep the minimal source of truth, derive everything else
@@ -21,6 +23,8 @@ Use `useEffect` only to synchronize with external systems (network, browser APIs
 - Use Context for shared feature-level state when prop drilling becomes noisy
 - Treat server state separately from UI state, and use dedicated data-fetching tools for it
 - Use global state only when state must be shared across unrelated parts of the app
+
+See also: `react-composition-patterns` skill for compound components, lifting state into providers, and avoiding boolean prop proliferation.
 
 ## React Compiler Memoization
 

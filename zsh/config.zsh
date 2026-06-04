@@ -12,10 +12,10 @@ plugins=(
   zsh-autosuggestions
 )
 
-source $HOME/Developer/personal/vanluren/zsh/plugins.zsh
-source $HOME/Developer/personal/vanluren/zsh/variables.zsh
-source $HOME/Developer/personal/vanluren/zsh/alias.zsh
-source $HOME/Developer/personal/vanluren/zsh/functions.zsh
+source $HOME/code/personal/vanluren/zsh/plugins.zsh
+source $HOME/code/personal/vanluren/zsh/variables.zsh
+source $HOME/code/personal/vanluren/zsh/alias.zsh
+source $HOME/code/personal/vanluren/zsh/functions.zsh
 
 
 
@@ -34,8 +34,8 @@ load-nvmrc
 # powerlevel10k needs to be installed via Brew !!!
 source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
 
-# To customize prompt, run `p10k configure` or edit ~/Developer/personal/vanluren/zsh/.p10k.zsh.
-[[ ! -f ~/Developer/personal/vanluren/zsh/.p10k.zsh ]] || source ~/Developer/personal/vanluren/zsh/.p10k.zsh
+# To customize prompt, run `p10k configure` or edit ~/code/personal/vanluren/zsh/.p10k.zsh.
+[[ ! -f ~/code/personal/vanluren/zsh/.p10k.zsh ]] || source ~/code/personal/vanluren/zsh/.p10k.zsh
 
 if [[ -n $GHOSTTY_RESOURCES_DIR ]]; then
   source "$GHOSTTY_RESOURCES_DIR"/shell-integration/zsh/ghostty-integration

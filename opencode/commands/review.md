@@ -22,6 +22,7 @@ model: anthropic/claude-sonnet-4-6
 #### Complex Ternary Example
 
 Flag this:
+
 ```ts
 const status = user.isActive
   ? user.hasSubscription
@@ -31,6 +32,7 @@ const status = user.isActive
 ```
 
 Prefer:
+
 ```ts
 function getStatus(user) {
   if (!user.isActive) {
@@ -46,6 +48,7 @@ function getStatus(user) {
 #### Useless Comments Example
 
 Flag these:
+
 ```ts
 // increment counter
 counter++;
@@ -67,6 +70,7 @@ function add(a: number, b: number) {
 #### Early Return Example
 
 Flag this:
+
 ```ts
 function process(data) {
   if (data) {
@@ -78,6 +82,7 @@ function process(data) {
 ```
 
 Prefer:
+
 ```ts
 function process(data) {
   if (!data) return;
@@ -89,6 +94,7 @@ function process(data) {
 #### Long Function Example
 
 Flag functions that do multiple unrelated things:
+
 ```ts
 async function handleUserRegistration(data) {
   // validate input (10 lines)
@@ -100,6 +106,7 @@ async function handleUserRegistration(data) {
 ```
 
 Prefer splitting into focused functions:
+
 ```ts
 async function handleUserRegistration(data) {
   const validated = validateRegistrationData(data);
@@ -142,3 +149,5 @@ Provide feedback using conventional comments:
 - `PRAISE:` - Good practice worth noting
 
 Focus on what matters. Don't nitpick formatting if linting handles it.
+
+Use as many subagents as possible to speed up and make sure that each are given solid context to get going.

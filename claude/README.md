@@ -41,6 +41,7 @@ claude/
 │   ├── cleanup/
 │   ├── code-simplifier/
 │   ├── handoff/
+│   ├── dream/                 # Daily transcript review (launchd)
 │   ├── worktree/              # Includes planning + decisions templates
 │   ├── ticket/
 │   ├── stacking-pr/
@@ -90,6 +91,7 @@ Claude Code merged custom commands into skills, so every skill here is both a `/
 | `cleanup`                    | Remove noise: useless comments, debug code, dead code      |
 | `code-simplifier`            | Simplify recently changed code without changing behaviour  |
 | `handoff`                    | Save the session to `planning.md` for `/compact`, a new session or a bork sub-issue (manual only) |
+| `dream`                      | Daily review of my transcripts into a report of proposed rule/skill/settings/memory changes; `/dream apply` walks me through it (manual only, runs via launchd) |
 | `ticket`                     | Write a ticket in my Goal / Context / Acceptance criteria format |
 | `worktree`                   | Create a bork worktree with `planning.md` + decisions file |
 | `stacking-pr`                | Stacked PRs with the `gh stack` extension                  |

@@ -30,7 +30,10 @@ if claude -p "/dream run $DIGEST (headless)" \
   --add-dir "$HOME/.claude" \
   --no-session-persistence \
   > "$DAY/report.md.tmp" 2> "$DAY/run.log" && grep -q '^# Dream' "$DAY/report.md.tmp"; then
-  sed -n '/^# Dream/,$p' "$DAY/report.md.tmp" > "$DAY/report.md"
+  REPORT="$DAY/report.md"
+  n=2
+  while [ -e "$REPORT" ]; do REPORT="$DAY/report-$n.md"; n=$((n + 1)); done
+  sed -n '/^# Dream/,$p' "$DAY/report.md.tmp" > "$REPORT"
   rm "$DAY/report.md.tmp"
   mv "$DREAMS/.run-started" "$DREAMS/.last-run"
   notify "Report ready: run /dream apply"

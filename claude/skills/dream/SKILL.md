@@ -10,9 +10,11 @@ disable-model-invocation: true
 Learn from how I actually used Claude since the last dream, and turn that into concrete, small improvements to my setup. You only ever propose in `run`; changes happen in `apply`, with me.
 
 - Dreams dir: `~/.claude/dreams/` (`<date>/digest.md`, `<date>/report.md`). Not in any repo, keep it that way
-- Latest report: !`find ~/.claude/dreams -name report.md 2>/dev/null | sort | tail -1 | grep . || echo none`
+- Latest report: !`find ~/.claude/dreams -name 'report*.md' 2>/dev/null | sort | tail -1 | grep . || echo none`
 
-Parse `$ARGUMENTS`: `run` (default) or `apply`.
+Parse `$ARGUMENTS`: `run` or `apply`. With neither, `apply` if the latest report still has `Status: open` findings, else `run`.
+
+Never overwrite a report: if `<date>/report.md` exists, write `report-2.md`, `report-3.md`, ….
 
 ## The public-repo rule
 

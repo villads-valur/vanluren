@@ -1,11 +1,25 @@
 # Lazy-load nvm: sourcing nvm.sh is the slowest part of shell startup.
-# The newest installed node goes on PATH so node, npm and global tools work without loading nvm.
+# The default node goes on PATH so node, npm and global tools work without loading nvm.
 export NVM_DIR="$HOME/.nvm"
 
+# Resolve the nvm default alias (e.g. default -> lts/* -> lts/lithium -> v26.13.0) by reading alias files
 () {
-  local node_versions=($NVM_DIR/versions/node/v*(N/nOn))
-  if (( $#node_versions )); then
-    export PATH="$node_versions[1]/bin:$PATH"
+  local version=default
+  local hops=0
+  while [[ -f $NVM_DIR/alias/$version ]] && (( hops++ < 10 )); do
+    version=$(<$NVM_DIR/alias/$version)
+  done
+
+  local node_dir=$NVM_DIR/versions/node
+  local matches
+  if [[ $version == (node|stable) ]]; then
+    matches=($node_dir/v*(N/nOn))
+  else
+    matches=($node_dir/v${version#v}(N/) $node_dir/v${version#v}.*(N/nOn))
+  fi
+
+  if (( $#matches )); then
+    export PATH="$matches[1]/bin:$PATH"
   fi
 }
 

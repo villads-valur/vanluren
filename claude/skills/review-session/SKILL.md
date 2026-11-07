@@ -94,7 +94,7 @@ Per PR, in `$TMPDIR/bork-review/` (`<id>` is the bork issue ID):
 ```
 Review PR #<n> (<url>): <head-branch> → <base-branch>, head commit <sha>.
 
-Follow ~/.claude/skills/review/SKILL.md: its checks, finding verification and report format (High/Medium/Low, file:line, plain description, conventional-comment draft, PR description notes, verdict).
+Follow ~/.claude/skills/review/SKILL.md and the files it links (checks.md, smells.md, spec.md, report.md in the same folder): its checks, finding verification and report format (High/Medium/Low, file:line, plain description, conventional-comment draft, PR description notes, verdict).
 
 - Diff: `gh pr diff <n>` or `git diff origin/<base>...<sha>`
 - PR description and linked issues: `gh pr view <n>`; bork issue: `bork issue show <id>`

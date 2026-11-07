@@ -86,7 +86,9 @@ link "$DOTFILES/lazygit/config.yml" "$HOME/Library/Application Support/lazygit/c
 
 echo "==> Claude"
 for f in CLAUDE.md rules commands settings.json statusline-command.sh; do
-  link "$DOTFILES/claude/$f" "$HOME/.claude/$f"
+  if [ -e "$DOTFILES/claude/$f" ]; then
+    link "$DOTFILES/claude/$f" "$HOME/.claude/$f"
+  fi
 done
 # Link skills one by one so Claude Code's own ~/.claude/skills/synced stays untouched.
 # Older setups linked the whole folder; linking into it would clobber the repo's skills.

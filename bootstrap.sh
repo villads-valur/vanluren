@@ -44,6 +44,10 @@ gh auth status >/dev/null 2>&1 || gh auth login -h github.com -s admin:public_ke
 if [ ! -f "$HOME/.ssh/id_ed25519" ]; then
   mkdir -p "$HOME/.ssh" && chmod 700 "$HOME/.ssh"
   ssh-keygen -t ed25519 -C "$(whoami)@$(scutil --get LocalHostName)" -f "$HOME/.ssh/id_ed25519" -N ""
+fi
+# Checked separately so a failed upload is retried on the next run
+GITHUB_KEYS="$(gh ssh-key list 2>/dev/null || true)"
+if ! grep -qF "$(awk '{print $2}' "$HOME/.ssh/id_ed25519.pub")" <<<"$GITHUB_KEYS"; then
   gh ssh-key add "$HOME/.ssh/id_ed25519.pub" --title "$(scutil --get ComputerName) $(date +%Y-%m-%d)"
 fi
 if ! grep -qx 'Host github.com' "$HOME/.ssh/config" 2>/dev/null; then
@@ -81,7 +85,12 @@ echo "==> Claude"
 for f in CLAUDE.md rules commands settings.json statusline-command.sh; do
   link "$DOTFILES/claude/$f" "$HOME/.claude/$f"
 done
-# Link skills one by one so Claude Code's own ~/.claude/skills/synced stays untouched
+# Link skills one by one so Claude Code's own ~/.claude/skills/synced stays untouched.
+# Older setups linked the whole folder; linking into it would clobber the repo's skills.
+if [ -L "$HOME/.claude/skills" ]; then
+  rm "$HOME/.claude/skills"
+fi
+mkdir -p "$HOME/.claude/skills"
 for skill in "$DOTFILES"/claude/skills/*/; do
   link "${skill%/}" "$HOME/.claude/skills/$(basename "$skill")"
 done

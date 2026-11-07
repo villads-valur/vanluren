@@ -1,15 +1,15 @@
 # Smell Baseline
 
-Fowler code smells (_Refactoring_, ch. 3) that apply even when a repo documents nothing. Always judgement calls ("possible Feature Envy"); a documented repo standard overrides them.
+Code smells from Martin Fowler's _Refactoring_ (chapter 3). Use them even in repos with no written standards. Report a smell as "possible ...", never as a hard rule, and let the repo's own standards win when they disagree.
 
-- **Mysterious Name**: name doesn't reveal what it does or holds → rename; if no honest name comes, the design is murky
-- **Duplicated Code**: same logic shape in several hunks or files → extract the shared shape
-- **Feature Envy**: function reaches into another object's data more than its own → move it to that data
-- **Data Clumps**: the same fields/params keep travelling together → bundle them into one type
-- **Primitive Obsession**: a string/number standing in for a domain concept → give it its own small type
-- **Repeated Switches**: same `switch`/`if` cascade on the same type in several places → one shared map or polymorphism
-- **Shotgun Surgery**: one logical change forces scattered edits → gather what changes together
-- **Divergent Change**: one module edited for several unrelated reasons → split by reason to change
-- **Speculative Generality**: abstraction, params or hooks the spec doesn't need → inline until a real need shows
-- **Message Chains**: long `a.b().c().d()` navigation → hide the walk behind one function
-- **Middle Man**: function/class that mostly delegates → call the real target directly
+- **Mysterious Name**: you can't tell from the name what a variable, function or type is for. Suggest a clearer name; if none fits, the code is probably doing too much
+- **Duplicated Code**: the same logic appears more than once in the change. Pull it into one place both can call
+- **Feature Envy**: a function works mostly with another module's data. Move it next to that data
+- **Data Clumps**: the same group of values gets passed around together. Turn them into one type
+- **Primitive Obsession**: a plain string or number stands in for something with real meaning (an ID, a status, money). Give it a dedicated type
+- **Repeated Switches**: the same `switch` or `if` chain on one value shows up in several places. Use a single lookup or move the behaviour onto the type
+- **Shotgun Surgery**: one change needs small edits in lots of files. Keep things that change together in one place
+- **Divergent Change**: one file keeps changing for unrelated reasons. Split it so each part has one reason to change
+- **Speculative Generality**: options, parameters or abstractions added for needs nobody has yet. Remove them until there's a real need
+- **Message Chains**: code digs through objects (`a.b().c().d()`). Give the first object a method that does the lookup
+- **Middle Man**: a function or class that just passes calls along. Call the real target directly

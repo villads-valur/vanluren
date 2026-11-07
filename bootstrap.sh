@@ -99,6 +99,13 @@ fi
 cargo build --release --manifest-path "$BORK/main/Cargo.toml"
 ln -sf "$BORK/main/target/release/bork" /opt/homebrew/bin/bork
 
+echo "==> Dock"
+dockutil --find Ghostty >/dev/null || dockutil --add /Applications/Ghostty.app --no-restart
+if dockutil --find Terminal >/dev/null; then
+  dockutil --remove Terminal --no-restart
+fi
+killall Dock
+
 echo "==> Neovim plugins"
 nvim --headless "+Lazy! sync" +qa
 

@@ -23,7 +23,7 @@ Structured performance and UI-quality audit for React 19 and React Native. Produ
 - User asks to "audit this component", "check this UI", "audit react", "review the perf of X"
 - Before shipping a non-trivial component or screen
 - When investigating "this feels slow" reports
-- During PR review, to go deeper than the general `code-reviewer` skill
+- During PR review, to go deeper than the general `review` skill
 
 ## Workflow
 

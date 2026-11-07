@@ -1,23 +1,20 @@
 # Global Claude Code Configuration
 
-Personal configuration for all projects. Global rules are loaded from `~/.claude/rules/`.
+Personal configuration for all projects. Global rules in `~/.claude/rules/` are loaded automatically.
 
-## Worktree Convention
+## Project Layout (bork)
 
-Projects use git worktrees. Each project has a `{project}-main` directory tracking the main branch. Feature work happens in sibling worktrees branched from main:
+Projects are managed with `bork` across git worktrees and tmux. Each project is a container directory (not a git repo) with a `main/` worktree and sibling issue worktrees:
 
 ```
-~/developer/
-├── myapp-main/           # Main branch
-├── myapp-feat-auth/      # Feature worktree
-└── myapp-fix-login/      # Another worktree
+{project}/
+├── .bork/                 # Bork state (config.toml, state.json)
+├── AGENTS.md              # Project-level agent instructions
+├── main/                  # Main branch worktree (git repo)
+└── {issue-id}-{slug}/     # Issue worktree, branch `{issue-id}/{slug}`
 ```
 
-Each worktree gets its own `planning.md` for that specific task.
+- Agents start in the container directory; do file work inside the issue's worktree, not `main/`
+- Use `bork issue start` / `bork worktree` to create worktrees (see `rules/git-workflow.md`)
+- Each worktree can keep its own `.claude/planning.md` for that task
 
-## Model Selection
-
-Claude should proactively suggest appropriate model changes (Haiku, Sonnet, Opus) based on task complexity to optimize cost and usage. See `~/.claude/rules/model-selection.md` for details.
-
-@rules/rtk.md
-@RTK.md

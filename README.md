@@ -19,5 +19,5 @@ I keep this repo checked out and symlink the bits I want into place (mostly unde
 ## Notes
 
 - This is intentionally personal and opinionated; expect machine-specific paths and preferences.
-- `zsh/config.zsh` currently assumes the repo lives at `~/Developer/personal/vanluren/`.
+- `zsh/config.zsh` currently assumes the repo lives at `~/code/personal/vanluren/main/`.
 - Each folder is usable on its own.

@@ -1,4 +1,2 @@
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $HOME/code/personal/vanluren/zsh/plugins/git.plugin.zsh
-
-
+source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $DOTFILES_ZSH/plugins/git.plugin.zsh

@@ -1,12 +1,9 @@
-export ZSH=$HOME/.oh-my-zsh
-export ZSH_CUSTOM=$HOME/.oh-my-zsh/custom
-export ZSH_THEME="powerlevel10k/powerlevel10k"
 export LANG=en_GB.UTF-8
 export VISUAL=nvim
-export EDITOR="nvim"
-export DISABLE_UNTRACKED_FILES_DIRTY="true"
-export HIST_STAMPS="mm/dd/yyyy"
+export EDITOR=nvim
 export FZF_DEFAULT_COMMAND='rg --files'
 
-# NVM is loaded in config.zsh
-
+HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
+HISTSIZE=50000
+SAVEHIST=50000
+setopt extended_history share_history hist_ignore_dups hist_ignore_space hist_reduce_blanks

@@ -35,7 +35,6 @@ claude/
 │   ├── testing.md             # Test philosophy
 │   ├── tech-stack.md          # Languages and frameworks I use
 │   ├── naming-conventions.md
-│   ├── model-selection.md     # When to suggest a different model
 │   ├── project-management.md  # Ticket formatting
 │   ├── react.md               # React rules (scoped to React files via `paths:`)
 │   └── writing-style.md       # How I write
@@ -46,7 +45,6 @@ claude/
 │   ├── cleanup/
 │   ├── code-simplifier/
 │   ├── checkpoint/
-│   ├── contextualize/
 │   ├── worktree/              # Includes planning + decisions templates
 │   ├── stacking-pr/
 │   ├── post-review/
@@ -73,7 +71,6 @@ Loaded automatically by Claude Code from `~/.claude/rules/`. Split into separate
 
 - **core-principles.md** - How I want Claude to communicate (ask questions, provide updates, correct my terminology)
 - **git-workflow.md** - Branching strategy, commit conventions, bork worktree workflow
-- **model-selection.md** - When to suggest `/model` switches and how to pick subagent models
 
 ### Skills (`skills/`)
 
@@ -87,7 +84,6 @@ Claude Code merged custom commands into skills, so every skill here is both a `/
 | `cleanup`                    | Remove noise: useless comments, debug code, dead code      |
 | `code-simplifier`            | Simplify recently changed code without changing behaviour  |
 | `checkpoint`                 | Save progress to `planning.md` before `/compact` (manual only) |
-| `contextualize`              | Read project docs, bork issue and GitHub status            |
 | `worktree`                   | Create a bork worktree with `planning.md` + decisions file |
 | `stacking-pr`                | Stacked PRs with the `gh stack` extension                  |
 | `post-review`                | Post a tuicr review to a GitHub PR                         |

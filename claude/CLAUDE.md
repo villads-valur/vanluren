@@ -18,6 +18,3 @@ Projects are managed with `bork` across git worktrees and tmux. Each project is 
 - Use `bork issue start` / `bork worktree` to create worktrees (see `rules/git-workflow.md`)
 - Each worktree can keep its own `.claude/planning.md` for that task
 
-## Model Selection
-
-Suggest a better-fitting model when task complexity clearly warrants it. See `rules/model-selection.md`.

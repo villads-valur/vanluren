@@ -87,7 +87,80 @@
       "Read(./**/credentials*)",
       "Bash(rm -rf:*)"
     ],
-    "defaultMode": "default"
+    "defaultMode": "bypassPermissions"
+  },
+  "hooks": {
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cat > /dev/null; { [ -n \"$BORK_STATUS_DIR\" ] && [ -n \"$BORK_SESSION\" ] && printf '{\"status\":\"WaitingInput\",\"updated_at\":%s}' \"$(date +%s)000\" > \"$BORK_STATUS_DIR/$BORK_SESSION.json\"; } || true"
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cat > /dev/null; { [ -n \"$BORK_STATUS_DIR\" ] && [ -n \"$BORK_SESSION\" ] && printf '{\"status\":\"WaitingPermission\",\"updated_at\":%s}' \"$(date +%s)000\" > \"$BORK_STATUS_DIR/$BORK_SESSION.json\"; } || true"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "AskUserQuestion",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cat > /dev/null; { [ -n \"$BORK_STATUS_DIR\" ] && [ -n \"$BORK_SESSION\" ] && printf '{\"status\":\"WaitingInput\",\"updated_at\":%s}' \"$(date +%s)000\" > \"$BORK_STATUS_DIR/$BORK_SESSION.json\"; } || true"
+          }
+        ]
+      },
+      {
+        "matcher": "ExitPlanMode",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cat > /dev/null; { [ -n \"$BORK_STATUS_DIR\" ] && [ -n \"$BORK_SESSION\" ] && printf '{\"status\":\"WaitingApproval\",\"updated_at\":%s}' \"$(date +%s)000\" > \"$BORK_STATUS_DIR/$BORK_SESSION.json\"; } || true"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "TOOL=$(cat | grep -o '\"tool_name\":\"[^\"]*\"' | head -1 | cut -d'\"' -f4); { [ -n \"$BORK_STATUS_DIR\" ] && [ -n \"$BORK_SESSION\" ] && printf '{\"status\":\"Busy\",\"activity\":\"%s\",\"updated_at\":%s}' \"$TOOL\" \"$(date +%s)000\" > \"$BORK_STATUS_DIR/$BORK_SESSION.json\"; } || true"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cat > /dev/null; { [ -n \"$BORK_STATUS_DIR\" ] && [ -n \"$BORK_SESSION\" ] && printf '{\"status\":\"Idle\",\"updated_at\":%s}' \"$(date +%s)000\" > \"$BORK_STATUS_DIR/$BORK_SESSION.json\"; } || true"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cat > /dev/null; { [ -n \"$BORK_STATUS_DIR\" ] && [ -n \"$BORK_SESSION\" ] && printf '{\"status\":\"Busy\",\"updated_at\":%s}' \"$(date +%s)000\" > \"$BORK_STATUS_DIR/$BORK_SESSION.json\"; } || true"
+          }
+        ]
+      }
+    ]
   },
   "statusLine": {
     "type": "command",
@@ -95,10 +168,14 @@
     "padding": 0
   },
   "enabledPlugins": {
+    "rust-analyzer-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true
   },
   "alwaysThinkingEnabled": true,
   "companyAnnouncements": [
     "Welcome, Villads 👋"
-  ]
+  ],
+  "tui": "fullscreen",
+  "skipDangerousModePermissionPrompt": true,
+  "theme": "auto"
 }

@@ -45,7 +45,7 @@ claude/
 │   ├── pre-review/
 │   ├── cleanup/
 │   ├── code-simplifier/
-│   ├── checkpoint/
+│   ├── handoff/
 │   ├── worktree/              # Includes planning + decisions templates
 │   ├── stacking-pr/
 │   ├── post-review/
@@ -81,11 +81,11 @@ Claude Code merged custom commands into skills, so every skill here is both a `/
 | ---------------------------- | ---------------------------------------------------------- |
 | `commit`                     | Conventional commit from the current changes               |
 | `pr`                         | Open a PR and link it to the bork issue                    |
-| `review`                     | Review a diff, file or PR against my preferences           |
+| `review`                     | Review a diff, file or PR on two axes: standards and spec  |
 | `pre-review`                 | Run `review` + `/simplify` on a PR before others review it (manual only) |
 | `cleanup`                    | Remove noise: useless comments, debug code, dead code      |
 | `code-simplifier`            | Simplify recently changed code without changing behaviour  |
-| `checkpoint`                 | Save progress to `planning.md` before `/compact` (manual only) |
+| `handoff`                    | Save the session to `planning.md` for `/compact`, a new session or a bork sub-issue (manual only) |
 | `worktree`                   | Create a bork worktree with `planning.md` + decisions file |
 | `stacking-pr`                | Stacked PRs with the `gh stack` extension                  |
 | `post-review`                | Post a tuicr review to a GitHub PR                         |
@@ -140,6 +140,6 @@ This ensures Claude gets context automatically without having to remember to rea
 
 **`decisions-and-learnings.md`** - Gotchas, past decisions, things that tripped me up. Same maintenance approach, reviewed weekly and kept accurate.
 
-**`planning.md`** - One per worktree. Holds the current task status, what needs to be done, progress tracking. The `worktree` skill creates it from a template and `checkpoint` keeps it current.
+**`planning.md`** - One per worktree. Holds the current task status, what needs to be done, progress tracking. The `worktree` skill creates it from a template and `handoff` keeps it current.
 
 **`rules/`** - Project-specific guidelines. When I find myself adding the same rule to multiple projects, I promote it to the global rules instead.

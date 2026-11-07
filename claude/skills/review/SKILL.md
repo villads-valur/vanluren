@@ -2,7 +2,7 @@
 name: review
 description: Review code for quality, security, and best practices against my preferences. Invoke when reviewing PRs, checking code quality, analysing implementations, or when asked to "review this".
 argument-hint: "[file-or-pr]"
-allowed-tools: Read, Grep, Glob, Bash(git:*), Bash(gh pr view:*), Bash(gh pr diff:*)
+allowed-tools: Read, Grep, Glob, Bash(git:*), Bash(gh pr view:*), Bash(gh pr diff:*), Bash(gh issue view:*), Bash(bork issue show:*)
 model: sonnet
 ---
 
@@ -19,6 +19,24 @@ model: sonnet
 - `$ARGUMENTS` is a PR number/URL: review `gh pr diff <pr>`
 - `$ARGUMENTS` is a file/path: review that
 - Nothing: review uncommitted changes, else the last commit
+
+## Two Axes
+
+Review along two separate axes and report them separately, so passing one doesn't hide failing the other:
+
+- **Standards**: does the code follow the repo's documented standards (CLAUDE.md, AGENTS.md, CONTRIBUTING.md, `.claude/rules/`), my preferences in the checklist below, and the smell baseline?
+- **Spec**: does the code do what the originating issue asked for?
+
+### Finding the spec
+
+Check in order and use the first that exists:
+
+1. Issues linked in the PR body or commit messages (`#123`, `Closes #45`, Linear IDs like `ENG-123`)
+2. The bork issue (`bork issue show "$BORK_ISSUE_ID"`) and any Linear ticket attached to it
+3. The worktree's `.claude/planning.md`
+4. Ask me. If there's no spec, skip the Spec axis and say so.
+
+Read Linear tickets including comments.
 
 ## Priorities
 
@@ -165,9 +183,35 @@ async function handleUserRegistration(data) {
 - [ ] No breaking changes without a migration plan
 - [ ] Tests should be as high value as possible
 
+### Smell Baseline
+
+Fowler code smells (_Refactoring_, ch. 3) that apply even when a repo documents nothing. These are always judgement calls ("possible Feature Envy"), never hard violations, and a documented repo standard overrides them.
+
+- **Mysterious Name**: name doesn't reveal what it does or holds → rename; if no honest name comes, the design is murky
+- **Duplicated Code**: same logic shape in several hunks or files → extract the shared shape
+- **Feature Envy**: function reaches into another object's data more than its own → move it to that data
+- **Data Clumps**: the same fields/params keep travelling together → bundle them into one type
+- **Primitive Obsession**: a string/number standing in for a domain concept → give it its own small type
+- **Repeated Switches**: same `switch`/`if` cascade on the same type in several places → one shared map or polymorphism
+- **Shotgun Surgery**: one logical change forces scattered edits → gather what changes together
+- **Divergent Change**: one module edited for several unrelated reasons → split by reason to change
+- **Speculative Generality**: abstraction, params or hooks the spec doesn't need → inline until a real need shows
+- **Message Chains**: long `a.b().c().d()` navigation → hide the walk behind one function
+- **Middle Man**: function/class that mostly delegates → call the real target directly
+
+### Spec Checks
+
+- [ ] Requirements that are missing or only partly done
+- [ ] Behaviour nobody asked for (scope creep)
+- [ ] Requirements that look implemented but the implementation looks wrong
+
+Quote the spec line for each Spec finding.
+
 ## Output
 
-Provide feedback using conventional comments:
+Report under `## Standards` and `## Spec` headings. Don't merge or rerank findings across the two. End with one line: finding count per axis and the worst issue within each.
+
+Label findings with conventional comments:
 
 - `TODO:` - Required change
 - `SUGGESTION:` - Optional improvement

@@ -4,7 +4,9 @@
 
 - Conventional commits
 - Never add yourself as co-author or mention the code was AI-generated
-- Commit early and often, but check with me before committing
+- In a bork issue worktree, commit early and often on the issue branch without asking
+- Ask before pushing or opening a PR, unless the task already asks for it
+- Never commit on `main`/`master`
 
 ## Branches and PRs
 

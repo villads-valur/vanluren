@@ -33,7 +33,7 @@ Get a PR into shape before a human looks at it: review it for issues, then simpl
 6. **Report**:
    - Changes made (files plus a one-line reason each)
    - Remaining review findings, using conventional-comment labels
-   - Then ask whether to commit (`refactor:` or `fix:`) and push
+   - Commit the fixes (`refactor:` or `fix:`), then ask before pushing
 
 ## Rules
 

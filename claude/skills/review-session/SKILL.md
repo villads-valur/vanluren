@@ -80,7 +80,7 @@ Per PR, in `$TMPDIR/bork-review/` (`<id>` is the bork issue ID):
    - Fix agreed Low findings only if they're trivial and in code this PR already touches
    - Run the repo's lint/typecheck/tests for what you changed
    - Then report to me, grouped as: fixed (`file:line` + one line each), disagreed (with reason), needs my decision, Low findings left alone, and the reviewer's notes on the PR description
-   - Ask before committing and pushing. After pushing, offer to run another review round on the updated PR
+   - Commit the fixes on the PR's branch, then ask before pushing. After pushing, offer to run another review round on the updated PR
 
 8. **Clean up** once the findings are handled (fixed, dismissed, or handed to me), or when I run `/review-session done`:
    - List this session's review windows: `tmux list-windows -F '#I:#W' | grep ':review-'`

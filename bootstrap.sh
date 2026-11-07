@@ -115,6 +115,9 @@ for skill in "$DOTFILES"/claude/skills/*/; do
   link "${skill%/}" "$HOME/.claude/skills/$(basename "$skill")"
 done
 
+echo "==> Claude dream (daily)"
+"$DOTFILES/claude/skills/dream/install-launchd.sh"
+
 echo "==> bork"
 if [ ! -d "$BORK/main" ]; then
   # `bork init` needs a bork binary, so build a throwaway copy first and reuse its build cache

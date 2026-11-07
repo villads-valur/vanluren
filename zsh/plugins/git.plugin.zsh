@@ -2,6 +2,18 @@
 autoload -Uz is-at-least
 git_version="${${(As: :)$(git version 2>/dev/null)}[3]}"
 
+# Normally provided by oh-my-zsh's lib/git.zsh, which we don't load
+function git_current_branch() {
+  local ref
+  ref=$(GIT_OPTIONAL_LOCKS=0 command git symbolic-ref --quiet HEAD 2>/dev/null)
+  local ret=$?
+  if [[ $ret != 0 ]]; then
+    [[ $ret == 128 ]] && return
+    ref=$(GIT_OPTIONAL_LOCKS=0 command git rev-parse --short HEAD 2>/dev/null) || return
+  fi
+  echo ${ref#refs/heads/}
+}
+
 #
 # Functions Current
 # (sorted alphabetically by function name)

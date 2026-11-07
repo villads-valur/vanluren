@@ -1,16 +1,16 @@
 # General alias'
 alias slack="open -a /Applications/Slack.app"
-alias @="~"
-alias zshrc="source $HOME/.zshrc" 
+alias @="cd ~"
+alias zshrc="source $HOME/.zshrc"
 
 # My alias'
 alias v="nvim"
 alias vim="nvim"
 alias vi="nvim"
 alias i="nvim" # Stupid alias for stupid people
-alias oldvim="vim"
+alias oldvim="command vim"
 alias c="clear"
-alias clean-slate="sudo rm -rf node_modules && yarn cache clean"
+alias clean-slate="rm -rf node_modules && yarn cache clean"
 alias y="yarn"
 alias p="pnpm"
 
@@ -21,11 +21,11 @@ alias gcob="gco -b"
 alias gsc="git stash clear" # Clear all stashes
 
 # Docker
-alias dc="docker-compose"
-alias dcu="docker-compose up -d" # start all containers in detached mode
+alias dc="docker compose"
+alias dcu="docker compose up -d" # start all containers in detached mode
 dsa() { docker stop $(docker ps -q); } # stop all running containers
 alias dxc="docker container exec"
-alias dxci="docker container exec -it" # excute in interactive terminal
+alias dxci="docker container exec -it" # execute in interactive terminal
 alias docker-stop-all="dsa"
 alias docker-start-all="dcu"
 docker-restart-all() { docker container restart $(docker ps -q); }
@@ -42,10 +42,6 @@ alias lg="lazygit"
 alias lazy="lazygit"
 alias lga="lazygit add"
 
-# AI 
+# AI
 alias cursor="cursor-agent"
 alias oc="opencode"
-
-
-
-

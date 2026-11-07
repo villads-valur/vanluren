@@ -28,7 +28,7 @@ Get a PR into shape before a human looks at it: review it for issues, then simpl
 
 4. **Simplify**: run `/simplify` on the PR's changes (`git diff <base>...HEAD`) and let it apply its fixes.
 
-5. **Fix review findings**: apply the clear `TODO:` findings from step 3 that `/simplify` didn't already cover. Leave `SUGGESTION:` and `QUESTION:` items for me.
+5. **Fix review findings**: apply the High and Medium findings from step 3 that are clear-cut and that `/simplify` didn't already cover. Leave Low findings, `question`s and anything that would change behaviour for me.
 
 6. **Report**:
    - Changes made (files plus a one-line reason each)

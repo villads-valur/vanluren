@@ -1,6 +1,6 @@
 ---
 name: review-session
-description: Start a read-only Codex or Claude review of this bork issue's PRs in a new tmux window next to the current session
+description: Start a Codex or Claude review of this bork issue's PRs in a new tmux window next to the current session
 argument-hint: "[codex|claude] [pr-number...|all] | done"
 disable-model-invocation: true
 allowed-tools: Bash(bork issue list:*), Bash(gh pr view:*), Bash(git fetch:*), Bash(tmux:*), Bash(mkdir:*), Bash(chmod:*), Bash(rm -f:*), Write
@@ -8,7 +8,7 @@ allowed-tools: Bash(bork issue list:*), Bash(gh pr view:*), Bash(git fetch:*), B
 
 # Review Session
 
-Open one tmux window per PR in the current tmux session (one session per bork issue), each running a read-only reviewer agent. Findings stay in those windows; nothing is posted to GitHub.
+Open one tmux window per PR in the current tmux session (one session per bork issue), each running a reviewer agent in yolo mode so it never stops for approvals. The agents can technically write, so the reviewer prompt is what keeps them read-only. Findings stay in those windows; nothing is posted to GitHub.
 
 ## Context
 
@@ -38,8 +38,8 @@ Open one tmux window per PR in the current tmux session (one session per bork is
 
 4. **Launch** a window per PR, detached so focus stays here. If a window with the same name already exists, ask before replacing it.
    - Write a launcher `$TMPDIR/bork-review/<issue-id>-pr-<n>.sh` (avoids tmux quoting issues) and `chmod +x` it:
-     - codex: `codex -s read-only -a on-request "$(cat <prompt-file>)"`
-     - claude: `claude --permission-mode plan -n "review PR #<n>" "$(cat <prompt-file>)"`
+     - codex: `codex --dangerously-bypass-approvals-and-sandbox "$(cat <prompt-file>)"`
+     - claude: `claude --dangerously-skip-permissions -n "review PR #<n>" "$(cat <prompt-file>)"`
      - End the script with `exec "$SHELL"` so the window stays open after the agent exits
    - `tmux new-window -d -n review-<agent>-<n> -c "$PWD" <launcher>`
 

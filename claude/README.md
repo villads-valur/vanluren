@@ -86,7 +86,7 @@ Claude Code merged custom commands into skills, so every skill here is both a `/
 | `pr`                         | Open a PR and link it to the bork issue                    |
 | `review`                     | Review a diff, file or PR on two axes: standards and spec  |
 | `pre-review`                 | Run `review` + `/simplify` on a PR before others review it (manual only) |
-| `review-session`             | Open read-only Codex/Claude reviews of the bork issue's PRs in tmux windows; `done` closes them (manual only) |
+| `review-session`             | Open yolo-mode Codex/Claude reviews of the bork issue's PRs in tmux windows; `done` closes them (manual only) |
 | `cleanup`                    | Remove noise: useless comments, debug code, dead code      |
 | `code-simplifier`            | Simplify recently changed code without changing behaviour  |
 | `handoff`                    | Save the session to `planning.md` for `/compact`, a new session or a bork sub-issue (manual only) |

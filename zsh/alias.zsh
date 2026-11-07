@@ -49,7 +49,6 @@ alias lga="lazygit add"
 alias cursor="cursor-agent"
 alias oc="opencode"
 
-alias legora="cd $HOME/code/legora/"
 
 
 

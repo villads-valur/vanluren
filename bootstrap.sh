@@ -4,6 +4,7 @@ set -euo pipefail
 
 DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 BORK="$HOME/code/personal/bork"
+BORK_REPO="git@github.com:villads-valur/bork.git"
 BACKUP="$HOME/.dotfiles-backup/$(date +%Y%m%d-%H%M%S)"
 
 # Move a real (non-symlink) file out of the way; drop an old symlink
@@ -86,9 +87,17 @@ for skill in "$DOTFILES"/claude/skills/*/; do
 done
 
 echo "==> bork"
-[ -d "$BORK" ] || git clone git@github.com:villads-valur/bork.git "$BORK"
-cargo build --release --manifest-path "$BORK/Cargo.toml"
-ln -sf "$BORK/target/release/bork" /opt/homebrew/bin/bork
+if [ ! -d "$BORK/main" ]; then
+  # `bork init` needs a bork binary, so build a throwaway copy first and reuse its build cache
+  BORK_SEED="$(mktemp -d)"
+  git clone --depth 1 "$BORK_REPO" "$BORK_SEED"
+  cargo build --release --manifest-path "$BORK_SEED/Cargo.toml"
+  (cd "$(dirname "$BORK")" && "$BORK_SEED/target/release/bork" init --agent claude "$BORK_REPO" "$(basename "$BORK")")
+  mv "$BORK_SEED/target" "$BORK/main/target"
+  rm -rf "$BORK_SEED"
+fi
+cargo build --release --manifest-path "$BORK/main/Cargo.toml"
+ln -sf "$BORK/main/target/release/bork" /opt/homebrew/bin/bork
 
 echo "==> Neovim plugins"
 nvim --headless "+Lazy! sync" +qa

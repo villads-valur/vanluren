@@ -19,7 +19,7 @@ Create a checkpoint from the active OpenCode plan in `.opencode/plans/`, then su
    - Preserve structure and decisions
 
 3. **Capture current state**
-   - Run `rtk git status --short`
+   - Run `git status --short`
    - Identify completed, in-progress, and next work
 
 4. **Update active plan**

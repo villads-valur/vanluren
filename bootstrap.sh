@@ -45,6 +45,9 @@ if [ ! -f "$HOME/.ssh/id_ed25519" ]; then
   mkdir -p "$HOME/.ssh" && chmod 700 "$HOME/.ssh"
   ssh-keygen -t ed25519 -C "$(whoami)@$(scutil --get LocalHostName)" -f "$HOME/.ssh/id_ed25519" -N ""
 fi
+if [ ! -f "$HOME/.ssh/id_ed25519.pub" ]; then
+  ssh-keygen -y -f "$HOME/.ssh/id_ed25519" > "$HOME/.ssh/id_ed25519.pub"
+fi
 # Checked separately so a failed upload is retried on the next run
 GITHUB_KEYS="$(gh ssh-key list 2>/dev/null || true)"
 if ! grep -qF "$(awk '{print $2}' "$HOME/.ssh/id_ed25519.pub")" <<<"$GITHUB_KEYS"; then
@@ -88,7 +91,21 @@ done
 # Link skills one by one so Claude Code's own ~/.claude/skills/synced stays untouched.
 # Older setups linked the whole folder; linking into it would clobber the repo's skills.
 if [ -L "$HOME/.claude/skills" ]; then
+  OLD_SKILLS="$(cd -P "$HOME/.claude/skills" 2>/dev/null && pwd || true)"
+  REPO_SKILLS="$(cd -P "$DOTFILES/claude/skills" && pwd)"
   rm "$HOME/.claude/skills"
+  mkdir -p "$HOME/.claude/skills"
+  # Carry over anything that isn't a repo-tracked skill (e.g. Claude Code's synced/)
+  if [ -n "$OLD_SKILLS" ]; then
+    for entry in "$OLD_SKILLS"/* "$OLD_SKILLS"/.[!.]*; do
+      [ -e "$entry" ] || continue
+      name="$(basename "$entry")"
+      if [ "$OLD_SKILLS" = "$REPO_SKILLS" ] && git -C "$DOTFILES" ls-files --error-unmatch "claude/skills/$name" >/dev/null 2>&1; then
+        continue
+      fi
+      mv "$entry" "$HOME/.claude/skills/"
+    done
+  fi
 fi
 mkdir -p "$HOME/.claude/skills"
 for skill in "$DOTFILES"/claude/skills/*/; do

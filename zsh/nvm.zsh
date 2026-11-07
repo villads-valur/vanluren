@@ -5,8 +5,9 @@ export NVM_DIR="$HOME/.nvm"
 # Resolve the nvm default alias (e.g. default -> lts/* -> lts/lithium -> v26.13.0) by reading alias files
 () {
   local version=default
-  local hops=0
-  while [[ -f $NVM_DIR/alias/$version ]] && (( hops++ < 10 )); do
+  local -A seen
+  while [[ -f $NVM_DIR/alias/$version && -z $seen[$version] ]]; do
+    seen[$version]=1
     version=$(<$NVM_DIR/alias/$version)
   done
 

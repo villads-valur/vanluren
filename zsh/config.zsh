@@ -105,3 +105,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# Machine-local, untracked config (work aliases etc.)
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

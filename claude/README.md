@@ -42,6 +42,7 @@ claude/
 │   ├── cleanup/
 │   ├── code-simplifier/
 │   ├── handoff/
+│   ├── land/
 │   ├── worktree/              # Includes planning + decisions templates
 │   ├── ticket/
 │   ├── stacking-pr/
@@ -92,6 +93,7 @@ Claude Code merged custom commands into skills, so every skill here is both a `/
 | `cleanup`                    | Remove noise: useless comments, debug code, dead code      |
 | `code-simplifier`            | Simplify recently changed code without changing behaviour  |
 | `handoff`                    | Save the session to `planning.md` for `/compact`, a new session or a bork sub-issue (manual only) |
+| `land`                       | "Ready to merge?" check, and tidy-up after I merge (pull `main/`, move the bork issue to done) |
 | `ticket`                     | Write a ticket in my Goal / Context / Acceptance criteria format |
 | `worktree`                   | Create a bork worktree with `planning.md` + decisions file |
 | `stacking-pr`                | Stacked PRs with the `gh stack` extension                  |

@@ -11,6 +11,7 @@
 ## Branches and PRs
 
 - Update feature branches by merging main (`git merge main` or GitHub's "Update branch"); never rebase pushed branches or force push
+- If I say "rebase" on a pushed branch, merge main instead and say so in one line (I usually mean "update the branch")
 - I sometimes use "Update branch" on GitHub, so fetch before working on a pushed branch
 - I squash & merge PRs in the GitHub UI so the merge queue runs; never merge to main from the CLI
 
@@ -23,6 +24,6 @@ A project is a container dir with `main/` plus sibling `{issue-id}-{slug}/` work
    - Issue without a worktree: `bork worktree <issue-id> <slug>`
    - New sub-task: `bork issue start "Title" --project <name> --prompt "..."` (creates issue, worktree and agent)
    - Use bork rather than raw `git worktree add`, so bork tracks it
-2. **Work inside the worktree**: all file changes happen in `{issue-id}-{slug}/`, never in `main/` or the container
+2. **Work inside the worktree**: all issue changes happen in `{issue-id}-{slug}/`, never in the container. `main/` is only for hotfixes and small fix branches
 3. **Context**: read `.claude/planning.md` in the worktree if it exists, and the linked Linear/GitHub issue including comments
 4. **After opening a PR**: `bork integration attach-pr <pr-number>` (inside an agent session the issue ID comes from `BORK_ISSUE_ID`)

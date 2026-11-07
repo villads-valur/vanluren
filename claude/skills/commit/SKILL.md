@@ -1,12 +1,19 @@
 ---
 name: commit
 description: Create a git commit with conventional format. Invoke when user wants to commit changes, save work, or says "commit this".
-allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git commit:*), Bash(git diff:*)
+argument-hint: "[message]"
+allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git commit:*), Bash(git diff:*), Bash(git log:*)
 ---
 
 # Git Commit
 
-Create commits using conventional commits format.
+## Context
+
+- Status: !`git status --short`
+- Staged changes: !`git diff --cached --stat`
+- Unstaged changes: !`git diff --stat`
+- Branch: !`git branch --show-current`
+- Recent commits: !`git log --oneline -5`
 
 ## Commit Types
 
@@ -18,6 +25,8 @@ Create commits using conventional commits format.
 - `test:` adding tests
 - `chore:` maintenance
 
+Add a scope when the repo uses them (check recent commits), e.g. `fix(zsh): ...`.
+
 ## Rules
 
 - **NEVER** add yourself as co-author
@@ -25,9 +34,10 @@ Create commits using conventional commits format.
 - Subject line under 50 characters
 - Imperative mood ("add feature" not "added feature")
 - If multiple types, prioritise: feat > fix > refactor > chore
+- Use `$ARGUMENTS` as the message if provided
 
 ## Process
 
-1. Check git status and diff
-2. If nothing staged, ask what to stage
-3. Create commit with appropriate type and message
+1. Review the context above
+2. If nothing staged, ask what to stage (or stage all if clearly intended)
+3. Create the commit

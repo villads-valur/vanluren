@@ -1,14 +1,33 @@
 ---
-allowed-tools: Read, Grep, Glob, Bash(git:*)
-argument-hint: [file-or-pr]
-description: Review code for quality and best practices
+name: review
+description: Review code for quality, security, and best practices against my preferences. Invoke when reviewing PRs, checking code quality, analysing implementations, or when asked to "review this".
+argument-hint: "[file-or-pr]"
+allowed-tools: Read, Grep, Glob, Bash(git:*), Bash(gh pr view:*), Bash(gh pr diff:*)
 model: sonnet
 ---
 
+# Review
+
 ## Context
 
-- Recent changes: !`git diff HEAD~1 --stat`
 - Current branch: !`git branch --show-current`
+- Uncommitted changes: !`git diff HEAD --stat`
+- Recent commit: !`git diff HEAD~1 --stat`
+
+## Scope
+
+- `$ARGUMENTS` is a PR number/URL: review `gh pr diff <pr>`
+- `$ARGUMENTS` is a file/path: review that
+- Nothing: review uncommitted changes, else the last commit
+
+## Priorities
+
+1. **Readability** - clear enough for co-workers to understand
+2. **Security** - no vulnerabilities or exposed secrets
+3. **Maintainability** - easy to modify and extend
+4. **Performance** - efficient where it matters
+
+For React code, also apply the `no-use-effect` rules; use `audit-react` for a deeper pass.
 
 ## Review Checklist
 
@@ -20,6 +39,7 @@ model: sonnet
 - [ ] **Long functions**: Flag functions doing multiple things that should be split
 - [ ] **Complex ternaries**: Flag nested or multi-line ternaries (use if/else instead)
 - [ ] Follows project naming conventions
+- [ ] No over-engineering, tech-debt files, or workaround code
 
 #### Complex Ternary Example
 
@@ -122,6 +142,7 @@ async function handleUserRegistration(data) {
 - [ ] No hardcoded secrets or credentials
 - [ ] Input validation at system boundaries
 - [ ] No SQL injection, XSS, or command injection risks
+- [ ] Sensitive data not logged
 
 ### TypeScript
 
@@ -133,6 +154,7 @@ async function handleUserRegistration(data) {
 
 - [ ] Tests added for new functionality (if applicable)
 - [ ] Edge cases considered
+- [ ] No breaking changes without a migration plan
 
 ## Output
 
@@ -143,4 +165,4 @@ Provide feedback using conventional comments:
 - `QUESTION:` - Clarification needed
 - `PRAISE:` - Good practice worth noting
 
-Focus on what matters. Don't nitpick formatting if linting handles it.
+Focus on what matters: explain what and why, be constructive, and don't nitpick anything linting catches.

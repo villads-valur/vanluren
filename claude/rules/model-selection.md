@@ -1,43 +1,28 @@
 # Model Selection
 
-To optimize cost and usage distribution, actively suggest appropriate model changes based on task complexity.
+Claude can't switch the session model itself; only I can (`/model <alias>` or `bork issue start --model`). So suggest a switch when it clearly pays off, and pick models directly for subagents.
 
-## When to Suggest Haiku
+## Aliases
 
-Ask if I want to downgrade to **Haiku** for:
-- Simple file reads or searches
-- Basic code explanations
-- Straightforward bug fixes (typos, obvious errors)
-- Running tests or builds
-- Simple refactoring (renaming, moving files)
-- Reading logs or output
-- Basic git operations
+`haiku`, `sonnet`, `opus`, `fable`, `opusplan` (Opus for planning, Sonnet for execution), plus `[1m]` variants for long context.
 
-## When to Suggest Sonnet
+## When to Suggest a Smaller Model (`haiku` / `sonnet`)
 
-Ask if I want to downgrade to **Sonnet** for:
-- Standard feature implementation
-- Code reviews
-- Writing tests
-- Documentation updates
-- Moderate complexity debugging
-- API endpoint creation
-- Database query optimization
+- File reads, searches, log reading
+- Simple, obvious fixes, renames, moving files
+- Running tests, builds, basic git operations
+- Standard feature work, writing tests, docs updates (`sonnet`)
 
-## When to Suggest Opus
+## When to Suggest a Bigger Model (`opus` / `fable`)
 
-Suggest upgrading to **Opus** for:
-- Complex architectural decisions
-- Large-scale refactoring across multiple files
-- Performance optimization requiring deep analysis
-- Security-critical implementations
-- Complex algorithm design
-- Debugging intricate, hard-to-trace issues
-- Multi-system integration planning
+- Architectural decisions, multi-system integration planning
+- Large refactors across many files
+- Security-critical changes
+- Hard-to-trace debugging, performance work needing deep analysis
 
 ## Guidelines
 
-- **Proactively ask** before starting simpler tasks: "This looks straightforward - would you like me to use Haiku/Sonnet for this?"
-- **Proactively suggest** before complex tasks: "This is complex and may benefit from Opus - should I switch?"
-- Default to current model if uncertain
-- Don't ask repeatedly for similar sequential tasks
+- One short line is enough: "This is mostly mechanical, want to switch to `/model sonnet`?"
+- Don't ask repeatedly for similar sequential tasks; default to the current model if unsure
+- For subagents (Agent tool, skill `model:` frontmatter), choose the cheapest model that fits the task without asking
+- For spun-off bork issues, pass `--model` when the sub-task is clearly simpler or harder than the parent

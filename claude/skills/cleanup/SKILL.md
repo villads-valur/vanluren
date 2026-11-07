@@ -1,12 +1,27 @@
 ---
 name: cleanup
 description: Clean up code by removing useless comments, simplifying nested logic, and removing dead code. Invoke after implementing features or when code feels noisy.
-allowed-tools: Read, Grep, Glob, Edit
+argument-hint: "[files|--staged|--recent]"
+allowed-tools: Read, Grep, Glob, Edit, Bash(git:*)
+model: sonnet
 ---
 
 # Code Cleanup
 
 Clean up code by removing noise and simplifying complexity.
+
+## Context
+
+- Recent changes: !`git diff HEAD~1 --stat`
+- Staged changes: !`git diff --cached --stat`
+- Current branch: !`git branch --show-current`
+
+## Scope
+
+Based on `$ARGUMENTS`:
+- `--staged` or nothing: staged changes (fall back to uncommitted changes if nothing is staged)
+- `--recent`: changes from the last commit
+- Files/paths: those files
 
 ## What to Clean
 

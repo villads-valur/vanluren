@@ -1,5 +1,5 @@
 ---
-name: stacking PRs with gh-stack 
+name: stacking-pr
 description: >
   Manage stacked branches and pull requests with the gh-stack GitHub CLI extension.
   Use when the user wants to create, push, rebase, sync, navigate, or view stacks of

@@ -12,23 +12,27 @@
 - Avoid rebasing shared/pushed branches
 - I normally use GitHub's merge button in the UI to merge PRs
 
-## Git Worktree Workflow
+## Worktree Workflow (bork)
 
-**When Work is Assigned:**
+Worktrees are managed by `bork`. A project is a container dir with `main/` plus sibling `{issue-id}-{slug}/` worktrees on branch `{issue-id}/{slug}`. Agents start in the container dir.
 
-1. **Determine the worktree**:
-   - New work → Create new worktree: `git -C {project}-main worktree add ../{project}-{ticket-id}-{description} -b {ticket-id}/{description}`
-   - Continuing work → Find existing: `git -C {project}-main worktree list`
+**When work is assigned:**
 
-2. **Switch to worktree directory**: All file operations happen in `{worktree}/`, not parent container
+1. **Find or create the worktree**:
+   - Existing issue: `bork issue show <issue-id>` and `git -C main worktree list`
+   - Issue without a worktree: `bork worktree <issue-id> <slug>`
+   - New sub-task: `bork issue start "Title" --project <name> --prompt "..."` (creates issue, worktree and agent)
+   - Never create worktrees with raw `git worktree add`; bork won't track them
 
-3. **Create/read task context**:
-   - For new worktrees: Create `{worktree}/.claude/planning.md` with task plan and progress tracking
-   - For existing worktrees: Read `{worktree}/.claude/planning.md` to understand current state
+2. **Work inside the worktree**: all file operations happen in `{issue-id}-{slug}/`, never in `main/` or the container
 
-4. **Read the relevant issue or ticket** (including all comments) to understand requirements
+3. **Task context**: read `{worktree}/.claude/planning.md` if it exists; create one for non-trivial tasks
+
+4. **Read the linked issue/ticket** (Linear, GitHub, including comments) to understand requirements
 
 5. **Plan and proceed** with implementation
+
+6. **After opening a PR**: link it with `bork integration attach-pr <pr-number>` (issue ID comes from `BORK_ISSUE_ID` inside an agent session)
 
 ## Git Merge Strategy
 

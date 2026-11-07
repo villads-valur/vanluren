@@ -1,3 +1,9 @@
+---
+paths:
+  - "**/*.{tsx,jsx}"
+  - "**/use-*.{ts,js}"
+---
+
 # React Rules
 
 Use `useEffect` only to synchronize with external systems (network, browser APIs, subscriptions, timers, third-party widgets).

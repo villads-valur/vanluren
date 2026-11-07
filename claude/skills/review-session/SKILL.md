@@ -3,7 +3,7 @@ name: review-session
 description: Have a Codex or Claude reviewer review this bork issue's PRs in tmux windows next to this session, then wait for the result, fix the findings and clean up
 argument-hint: "[codex|claude] [pr-number...|all] | done"
 disable-model-invocation: true
-allowed-tools: Read, Edit, Write, Bash(bork issue list:*), Bash(gh pr view:*), Bash(git fetch:*), Bash(tmux:*), Bash(mkdir:*), Bash(chmod:*), Bash(rm -f:*), Bash(${CLAUDE_SKILL_DIR}/wait-for-report.sh:*)
+allowed-tools: Read, Edit, Write, Bash(bork issue list:*), Bash(gh pr view:*), Bash(git fetch:*), Bash(git -C:*), Bash(tmux:*), Bash(mkdir:*), Bash(chmod:*), Bash(rm -f:*), Bash(${CLAUDE_SKILL_DIR}/wait-for-report.sh:*)
 ---
 
 # Review Session
@@ -20,8 +20,10 @@ The reviewer runs in a separate tmux window of this session (one session per bor
 - Linked PRs: !`[ -n "$BORK_ISSUE_ID" ] && bork issue list --json | jq -r --arg id "$BORK_ISSUE_ID" '.[] | select(.id==$id) | .github_pr_links[].number' | tr '\n' ' ' || echo none`
 - tmux session: !`tmux display-message -p '#S' 2>/dev/null || echo "not in tmux"`
 - Windows: !`tmux list-windows -F '#I:#W' 2>/dev/null | tr '\n' ' ' || echo none`
-- Worktree: !`pwd`
-- Branch: !`git branch --show-current`
+- Worktree: !`git rev-parse --show-toplevel 2>/dev/null || { wt=$(bork issue list --json 2>/dev/null | jq -r --arg id "$BORK_ISSUE_ID" '.[] | select(.id==$id) | .worktree // empty'); [ -n "$wt" ] && [ -d "$wt" ] && (cd "$wt" && pwd); } || echo "none (in $(pwd), not a git repo)"`
+- Branch: !`git branch --show-current 2>/dev/null || echo "unknown, use the worktree"`
+
+`<worktree>` below is the Worktree path above. This skill is often run from the bork container dir, which isn't a git repo, so run git commands with `git -C <worktree>` and launch reviewers in `<worktree>`, never in the current directory. If Worktree is `none`, stop and say the issue has no worktree (`bork worktree <id> <slug>`).
 
 ## Files
 
@@ -45,10 +47,10 @@ Per PR, in `$TMPDIR/bork-review/` (`<id>` is the bork issue ID):
    - One open PR and none requested: use it
    - Several open PRs and none requested: list them (number, title, branch → base) and ask which to review, offering "all"
    - Skip merged/closed PRs unless I named them
-   - Everything must be pushed first: if this branch has unpushed commits or uncommitted changes, say so and ask, since the reviewer only sees what's on the PR
+   - Everything must be pushed first: if `<worktree>` has unpushed commits or uncommitted changes (`git -C <worktree> status -sb`), say so and ask, since the reviewer only sees what's on the PR
 
 3. **Prepare** each PR:
-   - `git fetch origin <headRefName> <baseRefName>`
+   - `git -C <worktree> fetch origin <headRefName> <baseRefName>`
    - `mkdir -p "$TMPDIR/bork-review"` and delete any old report for this PR
    - Write the reviewer prompt (below) to the prompt file, filling in every `<placeholder>`
 
@@ -58,7 +60,7 @@ Per PR, in `$TMPDIR/bork-review/` (`<id>` is the bork issue ID):
      - claude: `claude --dangerously-skip-permissions -n "review PR #<n>" "$(cat <prompt-file>)"`
      - After the agent command, write its exit code to `<report-file>.exit` (`echo "$?" > ...`), so the wait step can tell a crash from a slow review
      - End it with `exec "$SHELL"` so the window stays open for me to read after the agent exits
-   - `tmux new-window -d -n review-<agent>-<n> -c "$PWD" <launcher>`
+   - `tmux new-window -d -n review-<agent>-<n> -c <worktree> <launcher>`
    - Check the pane once (`tmux capture-pane -p -t <session>:review-<agent>-<n>`). If Codex is waiting on a folder-trust prompt, tell me: it needs my answer before the review can start
 
 5. **Wait for the report.** For each window, run with Bash `run_in_background: true`:
@@ -76,7 +78,7 @@ Per PR, in `$TMPDIR/bork-review/` (`<id>` is the bork issue ID):
    - **Unsure / my call**: it needs a product decision, changes behaviour, or the fix has trade-offs
 
 7. **Fix and report**
-   - Fix the **agreed High and Medium** findings on the PR's branch. If the PR's branch isn't checked out in this worktree, ask before switching
+   - Fix the **agreed High and Medium** findings on the PR's branch, in `<worktree>`. If the PR's branch isn't checked out there, ask before switching
    - Fix agreed Low findings only if they're trivial and in code this PR already touches
    - Run the repo's lint/typecheck/tests for what you changed
    - Then report to me, grouped as: fixed (`file:line` + one line each), disagreed (with reason), needs my decision, Low findings left alone, and the reviewer's notes on the PR description

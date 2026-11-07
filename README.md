@@ -28,5 +28,4 @@ The first `git` call prompts to install the Xcode Command Line Tools. `bootstrap
 ## Notes
 
 - This is intentionally personal and opinionated; expect machine-specific paths and preferences.
-- `zsh/config.zsh` currently assumes the repo lives at `~/Developer/personal/vanluren/`.
 - Each folder is usable on its own.

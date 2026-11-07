@@ -1,3 +1,6 @@
+# Directory of this file, so the config works from any checkout
+ZSH_CONFIG_DIR="${0:A:h}"
+
 autoload -Uz compinit
 compinit -u
 PATH=$PATH:/opt/homebrew/bin
@@ -12,10 +15,10 @@ plugins=(
   zsh-autosuggestions
 )
 
-source $HOME/code/personal/vanluren/zsh/plugins.zsh
-source $HOME/code/personal/vanluren/zsh/variables.zsh
-source $HOME/code/personal/vanluren/zsh/alias.zsh
-source $HOME/code/personal/vanluren/zsh/functions.zsh
+source $ZSH_CONFIG_DIR/plugins.zsh
+source $ZSH_CONFIG_DIR/variables.zsh
+source $ZSH_CONFIG_DIR/alias.zsh
+source $ZSH_CONFIG_DIR/functions.zsh
 
 
 
@@ -34,8 +37,8 @@ load-nvmrc
 # powerlevel10k needs to be installed via Brew !!!
 source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
 
-# To customize prompt, run `p10k configure` or edit ~/code/personal/vanluren/zsh/.p10k.zsh.
-[[ ! -f ~/code/personal/vanluren/zsh/.p10k.zsh ]] || source ~/code/personal/vanluren/zsh/.p10k.zsh
+# To customize prompt, run `p10k configure` or edit zsh/.p10k.zsh in this repo.
+[[ ! -f $ZSH_CONFIG_DIR/.p10k.zsh ]] || source $ZSH_CONFIG_DIR/.p10k.zsh
 
 if [[ -n $GHOSTTY_RESOURCES_DIR ]]; then
   source "$GHOSTTY_RESOURCES_DIR"/shell-integration/zsh/ghostty-integration

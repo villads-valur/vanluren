@@ -42,6 +42,7 @@ claude/
 │   ├── commit/
 │   ├── pr/
 │   ├── review/
+│   ├── pre-review/
 │   ├── cleanup/
 │   ├── code-simplifier/
 │   ├── checkpoint/
@@ -81,6 +82,7 @@ Claude Code merged custom commands into skills, so every skill here is both a `/
 | `commit`                     | Conventional commit from the current changes               |
 | `pr`                         | Open a PR and link it to the bork issue                    |
 | `review`                     | Review a diff, file or PR against my preferences           |
+| `pre-review`                 | Run `review` + `/simplify` on a PR before others review it (manual only) |
 | `cleanup`                    | Remove noise: useless comments, debug code, dead code      |
 | `code-simplifier`            | Simplify recently changed code without changing behaviour  |
 | `checkpoint`                 | Save progress to `planning.md` before `/compact` (manual only) |

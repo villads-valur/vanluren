@@ -17,10 +17,7 @@ alias p="pnpm"
 # Git
 alias g="git"
 alias gs="git status"
-alias gc="oco"
 alias gcob="gco -b"
-alias gai="oco"
-alias gcai='oco'
 alias gsc="git stash clear" # Clear all stashes
 
 # Docker

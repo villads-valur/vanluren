@@ -15,9 +15,3 @@
 - Make sure linting passes after changes
 - I edit in Neovim (`vi`), so leave room for my manual edits
 - Never `sleep` to wait (it blanks my screen); use the tool's own wait/notify mechanism
-
-## Testing
-
-- Ask before adding tests for new features
-- TDD: write the tests first and check them with me before implementing
-- Prefer unit tests; ask when integration tests might make sense

@@ -27,8 +27,9 @@ for skill in <this-repo>/claude/skills/*/; do ln -sfn "${skill%/}" ~/.claude/ski
 claude/
 ├── CLAUDE.md                  # Global instructions (auto-loaded)
 ├── rules/                     # Always-loaded preferences (keep these short)
-│   ├── workflow.md            # Planning, asking, dependencies, testing
+│   ├── workflow.md            # Planning, asking, dependencies
 │   ├── code.md                # Stack, quality, readability, architecture, naming
+│   ├── testing.md             # What to test, with good/bad examples
 │   ├── git-workflow.md        # Commits, branches/PRs, bork worktrees
 │   ├── react.md               # React rules (scoped to React files via `paths:`)
 │   └── writing-style.md       # How I write
@@ -66,8 +67,9 @@ Feel free to take inspiration, but don't treat this as a template to follow blin
 
 Loaded automatically by Claude Code from `~/.claude/rules/`. Split into separate files to keep things organised. Rules can be scoped to file globs with `paths:` frontmatter (see `react.md`). Some examples:
 
-- **workflow.md** - How I want Claude to work with me (plan first, ask instead of assuming, tests first)
+- **workflow.md** - How I want Claude to work with me (plan first, ask instead of assuming)
 - **code.md** - Code quality, readability, architecture and naming preferences
+- **testing.md** - What to test (and not), with good and bad examples
 - **git-workflow.md** - Commit conventions, branch/PR strategy, bork worktree workflow
 
 What belongs where:

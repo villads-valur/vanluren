@@ -35,7 +35,8 @@ fi
 
 # ./ prefix because project dirs start with "-"
 cd "$PROJECTS"
-SESSIONS=$(find ./* -maxdepth 1 -name '*.jsonl' "${FIND_AGE[@]}" -print 2>/dev/null | sort)
+# Skips the dream's own sessions (run from ~/.claude/dreams)
+SESSIONS=$(find ./* -maxdepth 1 -name '*.jsonl' -not -path './*-claude-dreams/*' "${FIND_AGE[@]}" -print 2>/dev/null | sort)
 
 # One jq pass per session: prompts, slash commands, interrupts, rejections,
 # permission prompts, tool errors and tool counts. Skips subagent (sidechain) records.

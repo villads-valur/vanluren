@@ -1,6 +1,12 @@
-# Ticket Format
+---
+name: ticket
+description: Write an issue or ticket (Linear, GitHub) in my Goal / Context / Acceptance criteria format. Use when creating or rewriting a ticket.
+argument-hint: "[what the ticket is about]"
+---
 
-When creating issues or tickets in a project management system like Linear, use this format:
+# Ticket
+
+Write tickets in this format.
 
 ## Structure
 
@@ -30,3 +36,9 @@ Original reference: [link]
   - Focus on what the user can do/see
   - Include UI details (labels, placeholders, actions)
   - Be concrete and testable
+
+## Process
+
+1. Check for an existing matching ticket first to avoid duplicates
+2. Draft the ticket and show it to me before creating or updating it
+3. Create it in the tracker I name (ask which team/project if unclear) and share the link

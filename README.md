@@ -10,6 +10,7 @@ Personal dotfiles focused on a fast terminal + Neovim workflow.
 - `lazygit/` - Lazygit config
 - `claude/` - Claude Code rules, skills and settings. See `claude/README.md`
 - `opencode/` - OpenCode config/plugins. See `opencode/README.md`
+- `codex/` - Generates Codex's global `AGENTS.md` from the Claude rules. See `codex/README.md`
 
 ## How I use it
 

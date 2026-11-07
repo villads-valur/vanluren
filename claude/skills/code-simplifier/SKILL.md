@@ -11,7 +11,7 @@ You will analyze recently modified code and apply refinements that:
 
 1. **Preserve Functionality**: Never change what the code does - only how it does it. All original features, outputs, and behaviors must remain intact.
 
-2. **Apply Project Standards**: Follow the project's CLAUDE.md/AGENTS.md first, then my global rules (`code-quality.md`, `naming-conventions.md`, `architecture.md`, `react.md`):
+2. **Apply Project Standards**: Follow the project's CLAUDE.md/AGENTS.md first, then my global rules (`code.md`, `react.md`):
    - Explicit `if/else` over complex or nested ternaries
    - Descriptive names in non-trivial lambdas
    - Early returns over deep nesting

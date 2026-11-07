@@ -26,16 +26,10 @@ for skill in <this-repo>/claude/skills/*/; do ln -sfn "${skill%/}" ~/.claude/ski
 ```
 claude/
 ├── CLAUDE.md                  # Global instructions (auto-loaded)
-├── rules/                     # Modular rule files (auto-loaded)
-│   ├── core-principles.md     # Communication, workflow
-│   ├── git-workflow.md        # Branching, commits, bork worktrees
-│   ├── code-quality.md        # Readability preferences
-│   ├── architecture.md        # Code organisation preferences
-│   ├── dependencies.md        # Package management
-│   ├── testing.md             # Test philosophy
-│   ├── tech-stack.md          # Languages and frameworks I use
-│   ├── naming-conventions.md
-│   ├── project-management.md  # Ticket formatting
+├── rules/                     # Always-loaded preferences (keep these short)
+│   ├── workflow.md            # Planning, asking, dependencies, testing
+│   ├── code.md                # Stack, quality, readability, architecture, naming
+│   ├── git-workflow.md        # Commits, branches/PRs, bork worktrees
 │   ├── react.md               # React rules (scoped to React files via `paths:`)
 │   └── writing-style.md       # How I write
 ├── skills/                    # Skills, each also available as /<name>
@@ -47,6 +41,7 @@ claude/
 │   ├── code-simplifier/
 │   ├── handoff/
 │   ├── worktree/              # Includes planning + decisions templates
+│   ├── ticket/
 │   ├── stacking-pr/
 │   ├── post-review/
 │   ├── audit-react/
@@ -70,8 +65,15 @@ Feel free to take inspiration, but don't treat this as a template to follow blin
 
 Loaded automatically by Claude Code from `~/.claude/rules/`. Split into separate files to keep things organised. Rules can be scoped to file globs with `paths:` frontmatter (see `react.md`). Some examples:
 
-- **core-principles.md** - How I want Claude to communicate (ask questions, provide updates, correct my terminology)
-- **git-workflow.md** - Branching strategy, commit conventions, bork worktree workflow
+- **workflow.md** - How I want Claude to work with me (plan first, ask instead of assuming, tests first)
+- **code.md** - Code quality, readability, architecture and naming preferences
+- **git-workflow.md** - Commit conventions, branch/PR strategy, bork worktree workflow
+
+What belongs where:
+
+- **Rules**: short preferences that apply in every session
+- **Skills**: procedures or reference only needed for some tasks (e.g. `ticket`), loaded on demand
+- **Settings/hooks/linters**: anything that can be enforced mechanically (e.g. force push is in the deny list)
 
 ### Skills (`skills/`)
 
@@ -86,6 +88,7 @@ Claude Code merged custom commands into skills, so every skill here is both a `/
 | `cleanup`                    | Remove noise: useless comments, debug code, dead code      |
 | `code-simplifier`            | Simplify recently changed code without changing behaviour  |
 | `handoff`                    | Save the session to `planning.md` for `/compact`, a new session or a bork sub-issue (manual only) |
+| `ticket`                     | Write a ticket in my Goal / Context / Acceptance criteria format |
 | `worktree`                   | Create a bork worktree with `planning.md` + decisions file |
 | `stacking-pr`                | Stacked PRs with the `gh stack` extension                  |
 | `post-review`                | Post a tuicr review to a GitHub PR                         |

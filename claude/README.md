@@ -66,7 +66,7 @@ Feel free to take inspiration, but don't treat this as a template to follow blin
 
 Loaded automatically by Claude Code from `~/.claude/rules/`. Split into separate files to keep things organised. Rules can be scoped to file globs with `paths:` frontmatter (see `react.md`). Some examples:
 
-- **workflow.md** - How I want Claude to work with me (plan first, ask instead of assuming, tests first)
+- **workflow.md** - How I want Claude to work with me (plan first, ask instead of assuming, add tests)
 - **code.md** - Code quality, readability, architecture and naming preferences
 - **git-workflow.md** - Commit conventions, branch/PR strategy, bork worktree workflow
 

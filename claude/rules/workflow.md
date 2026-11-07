@@ -18,6 +18,8 @@
 
 ## Testing
 
-- Ask before adding tests for new features
-- TDD: write the tests first and check them with me before implementing
-- Prefer unit tests; ask when integration tests might make sense
+- Add tests for new features and bug fixes without asking, where they make sense
+- Test behaviour through the public interface, not implementation details; skip low-value tests
+- Write the tests first when it helps pin down the behaviour (TDD), then implement
+- Prefer unit tests; add integration tests when the behaviour spans boundaries (DB, API, other services)
+- Follow the project's existing test setup and conventions

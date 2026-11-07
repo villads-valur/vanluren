@@ -4,6 +4,7 @@ Usual stack: TypeScript, NestJS/Express, React/React Native, TypeORM/Prisma/Driz
 
 ## Quality
 
+- Edit files with the Edit/Write tools, not `python3`/`sed -i`/heredoc scripts (they may be missing and they trigger permission prompts)
 - Fix issues directly; no tech-debt or workaround files
 - Clean up after implementing: remove unneeded changes, files and artifacts
 - Handle the main errors and validations without over-optimising early

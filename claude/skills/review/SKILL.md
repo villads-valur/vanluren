@@ -44,6 +44,7 @@ For React code, also apply the `no-use-effect` rules; use `audit-react` for a de
 #### Complex Ternary Example
 
 Flag this:
+
 ```ts
 const status = user.isActive
   ? user.hasSubscription
@@ -53,6 +54,7 @@ const status = user.isActive
 ```
 
 Prefer:
+
 ```ts
 function getStatus(user) {
   if (!user.isActive) {
@@ -68,6 +70,7 @@ function getStatus(user) {
 #### Useless Comments Example
 
 Flag these:
+
 ```ts
 // increment counter
 counter++;
@@ -89,6 +92,7 @@ function add(a: number, b: number) {
 #### Early Return Example
 
 Flag this:
+
 ```ts
 function process(data) {
   if (data) {
@@ -100,6 +104,7 @@ function process(data) {
 ```
 
 Prefer:
+
 ```ts
 function process(data) {
   if (!data) return;
@@ -111,6 +116,7 @@ function process(data) {
 #### Long Function Example
 
 Flag functions that do multiple unrelated things:
+
 ```ts
 async function handleUserRegistration(data) {
   // validate input (10 lines)
@@ -122,6 +128,7 @@ async function handleUserRegistration(data) {
 ```
 
 Prefer splitting into focused functions:
+
 ```ts
 async function handleUserRegistration(data) {
   const validated = validateRegistrationData(data);
@@ -146,15 +153,17 @@ async function handleUserRegistration(data) {
 
 ### TypeScript
 
-- [ ] Proper typing (no unnecessary `any`)
+- [ ] Proper typing (no `any` or typecasting)
 - [ ] Consistent use of interfaces/types
 - [ ] Null/undefined handled appropriately
+- [ ]
 
 ### Testing
 
 - [ ] Tests added for new functionality (if applicable)
 - [ ] Edge cases considered
 - [ ] No breaking changes without a migration plan
+- [ ] Tests should be as high value as possible
 
 ## Output
 
@@ -164,5 +173,6 @@ Provide feedback using conventional comments:
 - `SUGGESTION:` - Optional improvement
 - `QUESTION:` - Clarification needed
 - `PRAISE:` - Good practice worth noting
+- `NIT` - Nitpick
 
 Focus on what matters: explain what and why, be constructive, and don't nitpick anything linting catches.

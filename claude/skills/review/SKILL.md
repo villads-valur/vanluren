@@ -53,9 +53,15 @@ Read and apply each of these files (next to this SKILL.md) before judging the co
 
 ## 4. Verify each finding
 
-Before reporting a finding:
+Aim for the few findings that matter, not an exhaustive list. A short review I act on beats a long one I skim, and every finding costs a fix-and-re-review round. Before reporting a finding:
 
 - **State the failure**: for bugs, a concrete scenario (this input or state → this wrong result). If you can't state one, drop it or downgrade it to a `question`
+- **Check it's realistic**: the scenario has to be reachable with how the code is actually called and used. Drop it if:
+  - the types, validation, a caller or the framework already rules out that input or state
+  - it needs a misbehaving internal caller, a hand-edited database, clock skew, a full disk or similar "what if everything breaks" conditions
+  - it only matters at a scale or load this code won't see
+  - it's a hypothetical future change ("if someone later passes X...")
+- **When unsure** whether it can happen: keep it only if the impact would be High, and phrase it as a `question`
 - **Check the line number**: re-read the file at the reviewed version and confirm the line points at the code in question (new-file line numbers, not diff positions)
 - **Drop anything tooling already enforces** (lint, formatter, typecheck)
 

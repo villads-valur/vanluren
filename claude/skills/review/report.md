@@ -6,6 +6,12 @@ Group findings by severity. Within each group, order by importance and tag each 
 - **Medium**: likely future bugs, missing tests for risky paths, clear standards violations, maintainability problems
 - **Low**: readability, naming, small simplifications, nitpicks
 
+Severity is about impact on real users and data, so an unlikely scenario is never High. Keep the report short:
+
+- Report at most 5 Low findings, the ones most worth my time; drop the rest
+- One finding per root cause; don't repeat the same issue for every place it shows up, list the extra `file:line`s in the one finding
+- If there's nothing High or Medium, say so plainly; don't promote Lows to fill the report
+
 Each finding uses this shape:
 
 ````markdown

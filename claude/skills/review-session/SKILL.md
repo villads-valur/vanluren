@@ -12,6 +12,8 @@ allowed-tools: Read, Edit, Write, Bash(bork issue list:*), Bash(gh pr view:*), B
 
 launch reviewers → wait for their reports → triage → fix → report to me → clean up
 
+The goal is to catch the problems that matter before merge, not to make the PR bulletproof against every edge case. Keep it to two rounds at most (the first review plus one follow-up that only checks the fixes); after that, anything left goes to me instead of into another round.
+
 The reviewer runs in a separate tmux window of this session (one session per bork issue) in yolo mode, so it never stops for approvals. It can technically write, so its prompt is what keeps it read-only. It writes its findings to a report file, and that file is how you get the result back. Nothing is posted to GitHub.
 
 ## Context
@@ -74,7 +76,7 @@ Per PR, in `$TMPDIR/bork-review/` (`<id>` is the bork issue ID):
 
 6. **Triage** each report as soon as it's ready. The reviewer can be wrong, so check every finding against the code yourself before acting:
    - **Agree**: the problem is real and the fix is clear
-   - **Disagree**: it's wrong or doesn't apply here (say why in one line)
+   - **Disagree**: it's wrong, doesn't apply here, or the scenario can't realistically happen with the real callers and inputs (say why in one line)
    - **Unsure / my call**: it needs a product decision, changes behaviour, or the fix has trade-offs
 
 7. **Fix and report**
@@ -82,7 +84,8 @@ Per PR, in `$TMPDIR/bork-review/` (`<id>` is the bork issue ID):
    - Fix agreed Low findings only if they're trivial and in code this PR already touches
    - Run the repo's lint/typecheck/tests for what you changed
    - Then report to me, grouped as: fixed (`file:line` + one line each), disagreed (with reason), needs my decision, Low findings left alone, and the reviewer's notes on the PR description
-   - Commit the fixes on the PR's branch, then ask before pushing. After pushing, offer to run another review round on the updated PR
+   - Commit the fixes on the PR's branch, then ask before pushing
+   - **Follow-up round**: only offer one if this was the first round and you fixed High findings or made non-trivial changes. It reviews only the fix commits (`<previous-sha>..<new-sha>`, see the follow-up prompt below), not the whole PR again. After the follow-up round, don't offer another: fix what's agreed, hand the rest to me and clean up
 
 8. **Clean up** once the findings are handled (fixed, dismissed, or handed to me), or when I run `/review-session done`:
    - List this session's review windows: `tmux list-windows -F '#I:#W' | grep ':review-'`
@@ -102,7 +105,17 @@ Follow ~/.claude/skills/review/SKILL.md and the files it links (checks.md, smell
 - PR description and linked issues: `gh pr view <n>`; bork issue: `bork issue show <id>`
 - File context: read files at the PR head with `git show <sha>:<path>`; the working tree may be on a different branch
 
+Focus on what matters: bugs that can realistically happen, security, data loss, and missing required behaviour. Every finding needs a concrete failure scenario that's reachable with the real callers and inputs; drop unrealistic edge cases and theoretical what-ifs rather than listing them. A short report is fine, and "nothing High or Medium" is a valid result.
+
 Read-only: don't edit files in the repo, check out branches, commit, push or post to GitHub.
 
 When the review is complete, write the full report to <report-file>.tmp and then rename it to <report-file> (`mv`), so it appears in one go. Another agent is waiting for that file to fix the findings. Also print a short summary here.
+```
+
+### Follow-up prompt
+
+For the follow-up round, add this right after the first line of the prompt above:
+
+```
+This is a follow-up review. The previous round's findings were fixed in <previous-sha>..<sha>. Review only that range (`git diff <previous-sha> <sha>`): check the fixes are correct and didn't break anything. Don't re-review the rest of the PR or raise new Low findings on code outside that range.
 ```

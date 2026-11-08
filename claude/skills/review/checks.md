@@ -2,12 +2,14 @@
 
 What to look for on the Standards axis. Correctness comes first.
 
+This is a list of places to look, not a list of things to report. Only report what can realistically happen with this code and its real callers (see Verify in SKILL.md).
+
 ## Correctness (check first, most important)
 
-- Logic does what it claims, including edge cases: empty, null/undefined, zero, duplicates, very large input
+- Logic does what it claims, including the edge cases real inputs can hit (empty, null/undefined, zero, duplicates). Skip cases the types, validation or callers already rule out
 - Error paths are handled; failures aren't silently swallowed; async errors are awaited or caught
 - Callers of changed code still work (step 2)
-- Races and ordering: concurrent requests, double submits, stale state, missing `await`
+- Races and ordering that can happen in normal use: concurrent requests, double submits, stale state, missing `await`
 - State and data stay consistent on partial failure
 - Behaviour changes nobody asked for
 
@@ -35,5 +37,5 @@ What to look for on the Standards axis. Correctness comes first.
 ## Tests
 
 - New behaviour has tests, and they're high value: they test behaviour through the public interface, not implementation details
-- Edge cases from the Correctness checks are covered
+- The risky paths are covered; don't ask for tests of edge cases that can't happen
 - Assertions can actually fail (not just recomputing the code's own answer)

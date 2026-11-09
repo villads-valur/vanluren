@@ -14,7 +14,8 @@ Write for a reviewer who has not seen this session, the plan, the ticket thread 
 - Branch: !`git branch --show-current`
 - Commits: !`git log origin/HEAD..HEAD --oneline 2>/dev/null || git log --oneline -10`
 - Changed files: !`git diff origin/HEAD..HEAD --stat 2>/dev/null || git diff --stat HEAD~5`
-- Current PR: !`gh pr view $ARGUMENTS --json number,title,body,url 2>/dev/null || echo "no PR yet"`
+- Current branch PR: !`gh pr view --json number,title,body,url 2>/dev/null || echo "no PR yet"`
+- Arguments: $ARGUMENTS (if this contains a PR number or URL, work on that PR instead, via `gh pr view <number>`)
 - Repo PR template: !`ls .github/pull_request_template.md .github/PULL_REQUEST_TEMPLATE.md .github/PULL_REQUEST_TEMPLATE/ docs/pull_request_template.md pull_request_template.md 2>/dev/null || echo "none"`
 
 ## Voice

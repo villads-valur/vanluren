@@ -15,9 +15,8 @@
 - Make sure linting passes after changes
 - I edit in Neovim (`vi`), so leave room for my manual edits
 - Never `sleep` to wait (it blanks my screen); use the tool's own wait/notify mechanism
+- Scratch/smoke-test dirs: create a fresh one per run (`S=$(mktemp -d)` or a new subdir of the session scratchpad) instead of `rm -rf`-ing and reusing one. Never `rm -rf "$VAR"`
 
-## Testing
+## Shell
 
-- Ask before adding tests for new features
-- TDD: write the tests first and check them with me before implementing
-- Prefer unit tests; ask when integration tests might make sense
+- Bash commands run in zsh on macOS: quote globs (`--include='*.ts'`), don't start a word with `=` (use `echo '---'`), don't define one-letter functions (aliases clash), and use BSD `sed`/`grep` syntax

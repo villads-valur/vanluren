@@ -14,7 +14,9 @@ Projects are managed with `bork` across git worktrees and tmux. Each project is 
 └── {issue-id}-{slug}/     # Issue worktree, branch `{issue-id}/{slug}`
 ```
 
-- Agents start in the container directory; do file work inside the issue's worktree, not `main/`
+- Agents start in the container directory. For issue work, `cd` into the issue's worktree first and work only there
+- `main/` is only for hotfixes and small fix branches (branch first). Don't leave uncommitted changes in it; if it's dirty, tell me instead of working around it
 - Use `bork issue start` / `bork worktree` to create worktrees (see `rules/git-workflow.md`)
 - Each worktree can keep its own `.claude/planning.md` for that task
+- Finished issues go to `done` (`bork issue move <id> done`); never `bork issue archive`
 

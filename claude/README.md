@@ -27,8 +27,9 @@ for skill in <this-repo>/claude/skills/*/; do ln -sfn "${skill%/}" ~/.claude/ski
 claude/
 ├── CLAUDE.md                  # Global instructions (auto-loaded)
 ├── rules/                     # Always-loaded preferences (keep these short)
-│   ├── workflow.md            # Planning, asking, dependencies, testing
+│   ├── workflow.md            # Planning, asking, dependencies
 │   ├── code.md                # Stack, quality, readability, architecture, naming
+│   ├── testing.md             # What to test, with good/bad examples
 │   ├── git-workflow.md        # Commits, branches/PRs, bork worktrees
 │   ├── react.md               # React rules (scoped to React files via `paths:`)
 │   └── writing-style.md       # How I write
@@ -42,6 +43,8 @@ claude/
 │   ├── cleanup/
 │   ├── code-simplifier/
 │   ├── handoff/
+│   ├── land/
+│   ├── dream/                 # Daily transcript review (launchd)
 │   ├── worktree/              # Includes planning + decisions templates
 │   ├── ticket/
 │   ├── stacking-pr/
@@ -67,8 +70,9 @@ Feel free to take inspiration, but don't treat this as a template to follow blin
 
 Loaded automatically by Claude Code from `~/.claude/rules/`. Split into separate files to keep things organised. Rules can be scoped to file globs with `paths:` frontmatter (see `react.md`). Some examples:
 
-- **workflow.md** - How I want Claude to work with me (plan first, ask instead of assuming, tests first)
+- **workflow.md** - How I want Claude to work with me (plan first, ask instead of assuming)
 - **code.md** - Code quality, readability, architecture and naming preferences
+- **testing.md** - What to test (and not), with good and bad examples
 - **git-workflow.md** - Commit conventions, branch/PR strategy, bork worktree workflow
 
 What belongs where:
@@ -91,6 +95,8 @@ Claude Code merged custom commands into skills, so every skill here is both a `/
 | `cleanup`                    | Remove noise: useless comments, debug code, dead code      |
 | `code-simplifier`            | Simplify recently changed code without changing behaviour  |
 | `handoff`                    | Save the session to `planning.md` for `/compact`, a new session or a bork sub-issue (manual only) |
+| `land`                       | "Ready to merge?" check, and tidy-up after I merge (pull `main/`, move the bork issue to done) |
+| `dream`                      | Daily review of my transcripts into a report of proposed rule/skill/settings/memory changes; `/dream apply` walks me through it (manual only, runs via launchd) |
 | `ticket`                     | Write a ticket in my Goal / Context / Acceptance criteria format |
 | `worktree`                   | Create a bork worktree with `planning.md` + decisions file |
 | `stacking-pr`                | Stacked PRs with the `gh stack` extension                  |

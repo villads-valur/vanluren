@@ -32,3 +32,6 @@ claude/debug
 claude/file-history
 claude/history.jsonl
 claude/plans/*
+
+# Per-worktree agent notes
+.claude/planning.md

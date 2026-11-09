@@ -2,6 +2,7 @@ local opt = vim.opt
 
 opt.conceallevel = 0 -- dont' conceal "" and ''
 opt.swapfile = false -- don't use swapfile
+opt.ttimeoutlen = 10 -- Short so <Esc> then j/k is not read as <A-j>/<A-k>
 vim.g.lazyvim_eslint_auto_format = false
 vim.g.lazyvim_prettier_needs_config = true
 

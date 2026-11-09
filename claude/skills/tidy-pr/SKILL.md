@@ -1,6 +1,6 @@
 ---
 name: tidy-pr
-description: Write or rewrite a PR title and description so a reviewer with no context can follow it, without session knowledge, jargon or padding. Use when opening a PR, or on "tidy the PR", "trim the PR", "rewrite the PR description", "fix the PR title", "the description is too long".
+description: Write or rewrite a PR title and description for a reviewer with no context, in my style. Use before any `gh pr create` or `gh pr edit`, and on "tidy/trim/clean up the PR", "rewrite/update the PR description", "fix the PR title", "the description is too long/verbose", "remove the jargon from the PR", "make the PR readable".
 argument-hint: "[pr-number]"
 allowed-tools: Bash(git:*), Bash(gh pr view:*), Bash(gh pr diff:*), Bash(gh pr edit:*), Bash(gh issue view:*)
 ---

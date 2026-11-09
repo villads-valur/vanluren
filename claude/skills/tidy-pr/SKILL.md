@@ -14,7 +14,8 @@ Write for a reviewer who has not seen this session, the plan, the ticket thread 
 - Branch: !`git branch --show-current`
 - Commits: !`git log origin/HEAD..HEAD --oneline 2>/dev/null || git log --oneline -10`
 - Changed files: !`git diff origin/HEAD..HEAD --stat 2>/dev/null || git diff --stat HEAD~5`
-- Current PR: !`gh pr view $ARGUMENTS --json number,title,body,url 2>/dev/null || echo "no PR yet"`
+- Current branch PR: !`gh pr view --json number,title,body,url 2>/dev/null || echo "no PR yet"`
+- Arguments: $ARGUMENTS (if this contains a PR number or URL, work on that PR instead, via `gh pr view <number>`)
 - Repo PR template: !`ls .github/pull_request_template.md .github/PULL_REQUEST_TEMPLATE.md .github/PULL_REQUEST_TEMPLATE/ docs/pull_request_template.md pull_request_template.md 2>/dev/null || echo "none"`
 
 ## Voice
@@ -25,7 +26,7 @@ Write it as me, following my writing style (`~/.claude/rules/writing-style.md`):
 
 - Conventional commit style, under 72 characters: `fix(auth): keep users signed in after a token refresh`
 - Describe the effect, not the implementation. `fix(search): show results for queries with accents`, not `fix: normalize input in useSearchQuery`
-- No ticket IDs, phase numbers or branch names unless the repo's convention asks for them, in that case use Linear or Github issue ids.
+- No ticket IDs, phase numbers or branch names unless the repo's convention asks for them, in that case use Linear or GitHub issue IDs
 
 ## Description
 
@@ -37,11 +38,13 @@ If the repo has a PR template (see Context, and check `CONTRIBUTING.md` or the r
 <1-3 sentences: what changes for the user or the system>
 
 ## Why
+
 <1-3 sentences: why are we making these changes>
 
 ## How
 
 <Optional: bullets for anything the diff doesn't make obvious>
+
 ## Testing
 
 <How a reviewer can check it, or what you checked. Skip if trivial>
@@ -100,7 +103,15 @@ Tests pass.
 After:
 
 ```markdown
-Users were signed out when two requests refreshed the access token at the same time, because the second refresh invalidated the first. Concurrent requests now wait for a single shared refresh.
+## What
+
+Users stay signed in when two requests refresh the access token at the same time.
+
+## Why
+
+The second refresh invalidated the first, so users were signed out at random.
+
+## How
 
 - `token-manager.ts` keeps the in-flight refresh promise and reuses it until it settles
 

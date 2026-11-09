@@ -87,7 +87,7 @@ nvim/
 
 | Key | Action |
 |-----|--------|
-| `<A-j>` / `<A-k>` | Move line(s) up/down |
+| `<A-j>` / `<A-k>` | Move selection up/down (visual) |
 | `<` / `>` (visual) | Indent and stay in visual |
 | `x` / `X` | Delete without yanking |
 

@@ -15,6 +15,7 @@ opt.clipboard = "unnamedplus" -- copy/paste to system clipboard
 -- swapfile disabled in options.lua
 opt.updatetime = 100 -- Length of time to wait before triggering the plugin
 opt.timeoutlen = 200 -- Length of time to wait for a mapped sequence
+opt.ttimeoutlen = 10 -- Short so <Esc> followed by j/k is not read as <A-j>/<A-k>
 opt.preserveindent = true
 opt.showmatch = true -- highlight matching parenthesis
 opt.foldmethod = "marker" -- enable folding (default 'foldmarker')

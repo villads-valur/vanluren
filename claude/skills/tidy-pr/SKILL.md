@@ -1,6 +1,6 @@
 ---
-name: trim-pr
-description: Write or rewrite a PR title and description so a reviewer with no context can follow it, without session knowledge, jargon or padding. Use when opening a PR, or on "trim the PR", "rewrite the PR description", "fix the PR title", "the description is too long".
+name: tidy-pr
+description: Write or rewrite a PR title and description so a reviewer with no context can follow it, without session knowledge, jargon or padding. Use when opening a PR, or on "tidy the PR", "trim the PR", "rewrite the PR description", "fix the PR title", "the description is too long".
 argument-hint: "[pr-number]"
 allowed-tools: Bash(git:*), Bash(gh pr view:*), Bash(gh pr diff:*), Bash(gh pr edit:*), Bash(gh issue view:*)
 ---
@@ -15,6 +15,11 @@ Write for a reviewer who has not seen this session, the plan, the ticket thread 
 - Commits: !`git log origin/HEAD..HEAD --oneline 2>/dev/null || git log --oneline -10`
 - Changed files: !`git diff origin/HEAD..HEAD --stat 2>/dev/null || git diff --stat HEAD~5`
 - Current PR: !`gh pr view $ARGUMENTS --json number,title,body,url 2>/dev/null || echo "no PR yet"`
+- Repo PR template: !`ls .github/pull_request_template.md .github/PULL_REQUEST_TEMPLATE.md .github/PULL_REQUEST_TEMPLATE/ docs/pull_request_template.md pull_request_template.md 2>/dev/null || echo "none"`
+
+## Voice
+
+Write it as me, following my writing style (`~/.claude/rules/writing-style.md`): lead with the point, short and focused, plain words, "so" to connect thoughts, no em-dashes, no AI slop. It should read like I wrote it by hand.
 
 ## Title
 
@@ -23,6 +28,8 @@ Write for a reviewer who has not seen this session, the plan, the ticket thread 
 - No ticket IDs, phase numbers or branch names unless the repo's convention asks for them
 
 ## Description
+
+If the repo has a PR template (see Context, and check `CONTRIBUTING.md` or the repo's agent instructions for one), use it: keep its headings and checkboxes, fill each section following the rules below, and write "N/A" in required sections that don't apply instead of deleting them. If there are several templates, pick the one that fits the change. When there's no template, use this:
 
 ```markdown
 <1-3 sentences: what changes for the user or the system, and why>
@@ -38,7 +45,7 @@ Write for a reviewer who has not seen this session, the plan, the ticket thread 
 - Only list a change when a reviewer would miss it or wonder why. Don't walk through the diff file by file
 - Call out what needs attention: risky parts, migrations, breaking changes, follow-ups left out on purpose
 - Link the issue at the end (`Closes #12`, or the Linear URL)
-- Drop empty sections. A one-line fix gets a one-line description
+- Keep it as short as the change allows. A one-line fix gets a one-line description, and outside a repo template, empty sections get dropped
 
 ## Remove implicit knowledge
 

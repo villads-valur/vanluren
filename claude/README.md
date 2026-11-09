@@ -35,7 +35,7 @@ claude/
 ├── skills/                    # Skills, each also available as /<name>
 │   ├── commit/
 │   ├── pr/
-│   ├── trim-pr/               # PR title + description rules, also rewrites existing PRs
+│   ├── tidy-pr/               # PR title + description rules, also rewrites existing PRs
 │   ├── review/
 │   ├── pre-review/
 │   ├── review-session/

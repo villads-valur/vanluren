@@ -16,7 +16,7 @@ allowed-tools: Bash(git:*), Bash(gh:*), Bash(bork integration attach-pr:*)
 
 ## Title and Description
 
-Write the title and body with the `trim-pr` skill (`~/.claude/skills/trim-pr/SKILL.md`): written for a reviewer with no context from this session, no jargon, no padding.
+Write the title and body with the `tidy-pr` skill (`~/.claude/skills/tidy-pr/SKILL.md`): written for a reviewer with no context from this session, no jargon, no padding.
 
 ## Rules
 
@@ -29,5 +29,5 @@ Write the title and body with the `trim-pr` skill (`~/.claude/skills/trim-pr/SKI
 
 1. Ensure all changes are committed
 2. Push with tracking if needed (`git push -u origin <branch>`)
-3. Draft the title and body with `trim-pr`, then create the PR with `gh pr create`
+3. Draft the title and body with `tidy-pr`, then create the PR with `gh pr create`
 4. In a bork session (`BORK_ISSUE_ID` set), link it: `bork integration attach-pr <pr-number>`

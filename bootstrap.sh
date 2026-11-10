@@ -37,6 +37,9 @@ if ! command -v brew >/dev/null; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 eval "$(/opt/homebrew/bin/brew shellenv)"
+# Homebrew skips third-party taps until they're trusted; trust only the formula we use
+brew tap schpet/tap
+brew trust --formula schpet/tap/linear
 brew bundle --file="$DOTFILES/Brewfile"
 
 echo "==> GitHub + SSH"
@@ -130,6 +133,13 @@ if [ ! -d "$BORK/main" ]; then
 fi
 cargo build --release --manifest-path "$BORK/main/Cargo.toml"
 ln -sf "$BORK/main/target/release/bork" /opt/homebrew/bin/bork
+
+echo "==> Linear"
+# bork uses `linear api` when it's on PATH; the key lives in the Keychain, not in env or dotfiles
+if ! linear auth whoami >/dev/null 2>&1; then
+  echo "  Create a personal API key at https://linear.app/settings/account/security"
+  linear auth login
+fi
 
 echo "==> Dock"
 dockutil --find Ghostty >/dev/null || dockutil --add /Applications/Ghostty.app --no-restart

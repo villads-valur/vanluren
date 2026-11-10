@@ -1,3 +1,5 @@
+tap "schpet/tap"
+
 # Shell + editor
 brew "neovim"
 brew "ripgrep"
@@ -18,6 +20,7 @@ brew "yarn"
 
 # Infra
 brew "gh"
+brew "schpet/tap/linear"
 brew "kubernetes-cli"
 brew "pulumi"
 brew "azure-cli"

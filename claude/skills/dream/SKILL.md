@@ -26,6 +26,8 @@ My rules, skills, `CLAUDE.md` and `settings.json` are symlinks into a **public**
 
 A finding seen **only** in `work` sessions is `local` or `memory`, never `dotfiles`, unless the same pattern also shows up in a `personal` session. Work sessions can contain customer data: never copy their content into the report beyond what a finding needs, and never more than a short paraphrase.
 
+The one exception is `writing` findings (below): how I want text written is about me, not the work, so a pattern seen only in work sessions can still be `dotfiles`. The finding and the rule may name the kind of correction ("too verbose"), never the text it was about.
+
 ## run
 
 1. **Digest**: use the file given in `$ARGUMENTS`, else run `${CLAUDE_SKILL_DIR}/extract.sh` and use the path it prints. Each `##` section is one session: `personal`/`work`, cwd, title, then my prompts (`you:`), slash commands (`cmd:`), `INTERRUPT`, `REJECTED` tool calls, `PERMISSION PROMPT`s, tool `ERROR`s and tool counts
@@ -37,6 +39,11 @@ A finding seen **only** in `work` sessions is `local` or `memory`, never `dotfil
    - **Skill candidates**: prompts I typed more than once that a skill or argument would replace
    - **Friction**: repeated tool errors with the same cause (missing tool, wrong path, a skill that breaks in the bork container dir), permission prompts worth allowlisting, approvals that were always "yes"
    - **Memory**: duplicates, contradictions, stale facts, relative dates, memories that belong in rules instead
+   - **Writing**: I corrected text an agent wrote for me (a reply, PR, ticket, commit, Slack draft, doc) the same way two or more times, e.g. "too verbose", "full of jargon", "assumes I know X", "sounds like AI". Propose a rule for `~/.claude/rules/writing-style.md` (target `dotfiles`, kind `writing`):
+     - One bullet that names the pattern and the fix: "Don't X; do Y", e.g. "Don't assume the reader knows the codebase; say what a term means the first time you use it"
+     - Check the existing bullets first. If one already covers it, propose sharper wording for that bullet (kind `broken-rule`) instead of a new one
+     - Any example in the rule is invented and generic. Nothing from the corrected text: no names, products, projects, tickets or phrases from a work session
+     - Evidence is the count and the kind of correction ("3 × asked to cut length, in 2 sessions"), plus a short quote only from `personal` sessions
 4. **Output the report** in the format below. At most 10 findings, ranked by how much friction they'd remove. Write `nothing worth changing` rather than padding. Don't change any file in `run`
    - Headless (the daily `run.sh`, which has no write access): your final message is the report and nothing else. `run.sh` saves it to `<date>/report.md` next to the digest
    - Interactive: write it to `<date>/report.md` next to the digest and print the path and finding count
@@ -51,7 +58,7 @@ A finding seen **only** in `work` sessions is `local` or `memory`, never `dotfil
 ## 1. <short title>
 
 - Target: dotfiles | local (<project>) | memory (<project>)
-- Kind: correction | broken-rule | dead-weight | skill | friction | memory
+- Kind: correction | broken-rule | dead-weight | skill | friction | memory | writing
 - Evidence: <count> × in <sessions or projects>; <short paraphrase or, for personal sessions only, a short quote>
 - Change: <file> — <what and why, one or two lines>
 
@@ -68,5 +75,5 @@ A finding seen **only** in `work` sessions is `local` or `memory`, never `dotfil
 2. Go through them one at a time: show title, evidence and diff, then ask accept / edit / reject / skip (AskUserQuestion, batch up to 4 small ones). Write the answer back to `Status:` (`accepted`, `rejected: <reason>`, `skipped`)
 3. Apply accepted ones:
    - `memory` and `local`: edit the files directly
-   - `dotfiles`: re-check the diff against the public-repo rule first; if anything work-related slipped in, rewrite it generically or drop it and tell me. Then, in the dotfiles bork project (`~/code/personal/vanluren`), create an issue (`bork issue create "Dream <date>"`) and its worktree (`bork worktree <id> dream-<date>`), make all accepted `dotfiles` changes there (never in `main/`), commit, and ask before pushing or opening the PR
+   - `dotfiles`: re-check the diff against the public-repo rule first; if anything work-related slipped in, rewrite it generically or drop it and tell me. For `writing` rules, also check that every example is invented. Then, in the dotfiles bork project (`~/code/personal/vanluren`), create an issue (`bork issue create "Dream <date>"`) and its worktree (`bork worktree <id> dream-<date>`), make all accepted `dotfiles` changes there (never in `main/`), commit, and ask before pushing or opening the PR
 4. Summarise: applied, rejected, left open

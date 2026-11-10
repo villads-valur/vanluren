@@ -23,7 +23,7 @@ git clone https://github.com/villads-valur/vanluren.git ~/code/personal/vanluren
 ~/code/personal/vanluren/main/bootstrap.sh
 ```
 
-The first `git` call prompts to install the Xcode Command Line Tools. `bootstrap.sh` installs Homebrew and the `Brewfile`, sets up GitHub auth + an SSH key, installs Node (nvm) and Rust, links the configs into place, builds `bork` and syncs Neovim plugins. It is safe to re-run; any real files it replaces are moved to `~/.dotfiles-backup/<timestamp>/`.
+The first `git` call prompts to install the Xcode Command Line Tools. `bootstrap.sh` installs Homebrew and the `Brewfile`, sets up GitHub auth + an SSH key, installs Node (nvm) and Rust, links the configs into place, builds `bork`, logs in to the `linear` CLI (it asks for a [personal API key](https://linear.app/settings/account/security), stored in the Keychain) and syncs Neovim plugins. It is safe to re-run; any real files it replaces are moved to `~/.dotfiles-backup/<timestamp>/`.
 
 ## Notes
 

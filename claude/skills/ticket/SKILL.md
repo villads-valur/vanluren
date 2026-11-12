@@ -36,6 +36,7 @@ Original reference: [link]
   - Focus on what the user can do/see
   - Include UI details (labels, placeholders, actions)
   - Be concrete and testable
+- Never mention bork issue IDs (`{project}-{n}`), worktree names or local paths; they're internal. Link real tickets and PRs instead
 
 ## Process
 

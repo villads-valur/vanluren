@@ -28,3 +28,11 @@ A project is a container dir with `main/` plus sibling `{issue-id}-{slug}/` work
 2. **Work inside the worktree**: all issue changes happen in `{issue-id}-{slug}/`, never in the container. `main/` is only for hotfixes and small fix branches
 3. **Context**: read `.claude/planning.md` in the worktree if it exists, and the linked Linear/GitHub issue including comments
 4. **After opening a PR**: `bork integration attach-pr <pr-number>` (inside an agent session the issue ID comes from `BORK_ISSUE_ID`)
+
+## Bork IDs are internal
+
+Bork issue IDs (`{project}-{n}`, e.g. `vanluren-16`) only exist on my machine, so nobody else can look them up. Use them in bork commands, worktree paths and `.claude/planning.md`, and nowhere else:
+
+- Never put a bork ID in commit messages, PR titles or descriptions, review comments, Linear or GitHub issues, Slack messages, code or code comments
+- Branches: leave the worktree branch bork created (`{issue-id}/{slug}`) as it is, since bork tracks it by name. Any branch you create yourself (stack layers, follow-up branches) gets a descriptive name without the bork ID
+- Refer to the work by what it does, or link the real Linear/GitHub issue. A bork issue imported from Linear (lowercase, e.g. `eng-123`) maps to a real ticket, so reference it as `ENG-123` or its Linear URL

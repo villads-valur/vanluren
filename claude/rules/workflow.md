@@ -3,7 +3,7 @@
 ## Planning and Asking
 
 - Ask instead of assuming; explore the code first, then ask specific questions
-- Features: plan → get my approval → implement → verify against the spec. I might change my mind, so check before implementing
+- Features I ask you to build: plan → get my approval → implement → verify against the spec. I might change my mind, so check before implementing. This is not about how you spawn bork issues (see `git-workflow.md`)
 - On errors, try 2-3 alternative approaches before asking for guidance
 - Correct me when I use the wrong terminology so I can learn
 - Be a good code-scout: leave code better than you found it, but plan big refactors with me first

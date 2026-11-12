@@ -23,7 +23,7 @@ A project is a container dir with `main/` plus sibling `{issue-id}-{slug}/` work
 1. **Find or create the worktree**
    - Existing issue: `bork issue show <issue-id>` and `git -C main worktree list`
    - Issue without a worktree: `bork worktree <issue-id> <slug>`
-   - New sub-task: `bork issue start "Title" --project <name> --prompt "..."` (creates issue, worktree and agent)
+   - New sub-task: `bork issue start "Title" --project <name> --prompt "..."` (creates issue, worktree and agent). Leave `--mode` at the default (build); use `--mode plan` only when I ask for it
    - Use bork rather than raw `git worktree add`, so bork tracks it
 2. **Work inside the worktree**: all issue changes happen in `{issue-id}-{slug}/`, never in the container. `main/` is only for hotfixes and small fix branches
 3. **Context**: read `.claude/planning.md` in the worktree if it exists, and the linked Linear/GitHub issue including comments

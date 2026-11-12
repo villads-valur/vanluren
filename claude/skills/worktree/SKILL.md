@@ -42,7 +42,7 @@ Bundled with this skill:
 2. **Create the worktree**
 
    - Issue already exists on the board: `bork worktree <issue-id> <slug>`
-   - New workstream with its own agent: `bork issue start "Title" --project <name> --prompt "..."` (add `--linear ENG-123` to link a ticket, `--model` to pick a model)
+   - New workstream with its own agent: `bork issue start "Title" --project <name> --prompt "..."` (add `--linear ENG-123` to link a ticket, `--model` to pick a model). Leave `--mode` at the default (build) unless I ask for plan mode
    - Don't use raw `git worktree add`; bork won't track it
 
 3. **Switch to the worktree directory**: all subsequent file operations happen in `{issue-id}-{slug}/`

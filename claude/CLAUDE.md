@@ -19,4 +19,5 @@ Projects are managed with `bork` across git worktrees and tmux. Each project is 
 - Use `bork issue start` / `bork worktree` to create worktrees (see `rules/git-workflow.md`)
 - Each worktree can keep its own `.claude/planning.md` for that task
 - Finished issues go to `done` (`bork issue move <id> done`); never `bork issue archive`
+- Bork issue IDs are internal: never put them in commits, PRs, Linear, Slack or code (see `rules/git-workflow.md`)
 

@@ -27,6 +27,7 @@ Bundled with this skill:
 
 - Slug is kebab-case and concise (2-4 words), e.g. `fix-recent-files-dnd`
 - Issue IDs come from bork (`{project}-{n}`) or a Linear import (lowercase identifier, e.g. `eng-123`)
+- Bork IDs are internal: keep them in bork, worktree paths and `.claude/` files only, never in commits, PRs or tickets (see `rules/git-workflow.md`)
 
 ## Process
 

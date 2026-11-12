@@ -147,4 +147,5 @@ Report the review URL back to the user. Clean up the temp file.
 - When enriching, keep the user's voice and tone - just add substance
 - If a comment references code, read the actual code from the branch before enriching
 - Never fabricate issues the user didn't raise
+- Never mention bork issue IDs (`{project}-{n}`) or local worktree paths in comments
 - Clean up temp files after submission

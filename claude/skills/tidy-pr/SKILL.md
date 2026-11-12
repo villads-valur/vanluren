@@ -27,6 +27,7 @@ Write it as me, following my writing style (`~/.claude/rules/writing-style.md`):
 - Conventional commit style, under 72 characters: `fix(auth): keep users signed in after a token refresh`
 - Describe the effect, not the implementation. `fix(search): show results for queries with accents`, not `fix: normalize input in useSearchQuery`
 - No ticket IDs, phase numbers or branch names unless the repo's convention asks for them, in that case use Linear or GitHub issue IDs
+- Never a bork issue ID (`{project}-{n}`, e.g. `vanluren-16`), even if it's in the branch name. Bork IDs are internal and mean nothing to a reviewer
 
 ## Description
 
@@ -53,7 +54,7 @@ If the repo has a PR template (see Context, and check `CONTRIBUTING.md` or the r
 - Lead with the outcome. The first sentence should be enough to approve the idea
 - Only list a change when a reviewer would miss it or wonder why. Don't walk through the diff file by file
 - Call out what needs attention: risky parts, migrations, breaking changes, follow-ups left out on purpose
-- Link the issue at the end (`Closes #12`, or the Linear URL)
+- Link the issue at the end (`Closes #12`, or the Linear URL). Never link or name the bork issue
 - Keep it as short as the change allows. A one-line fix gets a one-line description, and outside a repo template, empty sections get dropped
 
 ## Remove implicit knowledge
@@ -61,7 +62,7 @@ If the repo has a PR template (see Context, and check `CONTRIBUTING.md` or the r
 Everything in the description must make sense to someone who only has the PR. Cut or explain:
 
 - References to the session: "as discussed", "per the plan", "option B", "step 3", "the approach we agreed on", "now", "the new way"
-- Names that only exist in your head or scratch files: helper nicknames, planning.md headings, worktree names
+- Names that only exist in your head or scratch files: helper nicknames, planning.md headings, worktree names, bork issue IDs
 - Earlier attempts and dead ends, unless they explain why the obvious approach wasn't taken (then one sentence)
 - "Fixes the issue" without saying what the issue was
 

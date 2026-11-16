@@ -12,9 +12,9 @@ Clean up code by removing noise and simplifying complexity.
 
 ## Context
 
-- Recent changes: !`git diff HEAD~1 --stat`
-- Staged changes: !`git diff --cached --stat`
-- Current branch: !`git branch --show-current`
+- Recent changes: !`git diff HEAD~1 --stat 2>/dev/null || echo "n/a"`
+- Staged changes: !`git diff --cached --stat 2>/dev/null || echo "n/a"`
+- Current branch: !`git branch --show-current 2>/dev/null || echo "not a git repo: cd into the issue worktree first"`
 
 ## Scope
 

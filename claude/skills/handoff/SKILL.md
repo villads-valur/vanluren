@@ -12,9 +12,9 @@ Capture this session in the worktree's `.claude/planning.md` so the next context
 
 ## Context
 
-- Status: !`git status --short`
-- Branch: !`git branch --show-current`
-- Recent commits: !`git log --oneline -5`
+- Status: !`git status --short 2>/dev/null || echo "n/a"`
+- Branch: !`git branch --show-current 2>/dev/null || echo "not a git repo: cd into the issue worktree first"`
+- Recent commits: !`git log --oneline -5 2>/dev/null || echo "n/a"`
 
 ## Steps
 

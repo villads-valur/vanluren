@@ -11,9 +11,9 @@ Write for a reviewer who has not seen this session, the plan, the ticket thread 
 
 ## Context
 
-- Branch: !`git branch --show-current`
-- Commits: !`git log origin/HEAD..HEAD --oneline 2>/dev/null || git log --oneline -10`
-- Changed files: !`git diff origin/HEAD..HEAD --stat 2>/dev/null || git diff --stat HEAD~5`
+- Branch: !`git branch --show-current 2>/dev/null || echo "not a git repo: cd into the issue worktree first"`
+- Commits: !`git log origin/HEAD..HEAD --oneline 2>/dev/null || git log --oneline -10 2>/dev/null || echo "n/a"`
+- Changed files: !`git diff origin/HEAD..HEAD --stat 2>/dev/null || git diff --stat HEAD~5 2>/dev/null || echo "n/a"`
 - Current branch PR: !`gh pr view --json number,title,body,url 2>/dev/null || echo "no PR yet"`
 - Arguments: $ARGUMENTS (if this contains a PR number or URL, work on that PR instead, via `gh pr view <number>`)
 - Repo PR template: !`ls .github/pull_request_template.md .github/PULL_REQUEST_TEMPLATE.md .github/PULL_REQUEST_TEMPLATE/ docs/pull_request_template.md pull_request_template.md 2>/dev/null || echo "none"`

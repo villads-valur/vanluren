@@ -1,8 +1,7 @@
 ---
 name: review-session
-description: Have a Codex or Claude reviewer review this bork issue's PRs in tmux windows next to this session, then wait for the result, fix the findings and clean up
+description: Have a Codex or Claude reviewer review this bork issue's PRs in tmux windows next to this session, then wait for the result, fix the findings and clean up. Use on "review-session", "run a codex review", "have codex check this", "go back and forth with codex"
 argument-hint: "[codex|claude] [pr-number...|all] | done"
-disable-model-invocation: true
 allowed-tools: Read, Edit, Write, Bash(bork issue list:*), Bash(gh pr view:*), Bash(git fetch:*), Bash(git -C:*), Bash(tmux:*), Bash(mkdir:*), Bash(chmod:*), Bash(rm -f:*), Bash(${CLAUDE_SKILL_DIR}/wait-for-report.sh:*)
 ---
 

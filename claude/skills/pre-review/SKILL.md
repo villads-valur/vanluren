@@ -1,8 +1,7 @@
 ---
 name: pre-review
-description: Self-review a PR before I or anyone else reviews it, by running the review skill and /simplify on the PR's changes
+description: Self-review a PR before I or anyone else reviews it, by running the review skill and /simplify on the PR's changes. Use on "pre-review", "run /pre-review", "get this ready for review", "/pre-review and /review-session"
 argument-hint: "[pr-number]"
-disable-model-invocation: true
 allowed-tools: Read, Grep, Glob, Edit, Bash(git:*), Bash(gh pr view:*), Bash(gh pr diff:*), Bash(gh pr checkout:*)
 ---
 
@@ -12,9 +11,9 @@ Get a PR into shape before a human looks at it: review it for issues, then simpl
 
 ## Context
 
-- Current branch: !`git branch --show-current`
+- Current branch: !`git branch --show-current 2>/dev/null || echo "not a git repo: cd into the issue worktree first"`
 - PR for this branch: !`gh pr view --json number,title,baseRefName,headRefName -q '"#\(.number) \(.title) (\(.headRefName) -> \(.baseRefName))"' 2>/dev/null || echo "none"`
-- Working tree: !`git status --short`
+- Working tree: !`git status --short 2>/dev/null || echo "n/a"`
 
 ## Steps
 
@@ -34,6 +33,8 @@ Get a PR into shape before a human looks at it: review it for issues, then simpl
    - Changes made (files plus a one-line reason each)
    - Remaining review findings, using conventional-comment labels
    - Commit the fixes (`refactor:` or `fix:`), then ask before pushing
+
+7. **Chain**: if I also asked for `review-session` ("/pre-review and /review-session", "and a short review-session"), run the `review-session` skill once the fixes are committed and pushed. "Short" means one round, no follow-up
 
 ## Rules
 

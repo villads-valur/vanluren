@@ -20,4 +20,5 @@ Projects are managed with `bork` across git worktrees and tmux. Each project is 
 - Each worktree can keep its own `.claude/planning.md` for that task
 - Finished issues go to `done` (`bork issue move <id> done`); never `bork issue archive`
 - Bork issue IDs are internal: never put them in commits, PRs, Linear, Slack or code (see `rules/git-workflow.md`)
+- "The window next to this (one)" means the adjacent window in my tmux session: read it with `tmux capture-pane -p -J -t :+1 -S -80` (previous window: `:-1`). Don't ask which window, and don't pipe pane output through `cut` (escape codes break it)
 

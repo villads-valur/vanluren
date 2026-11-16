@@ -9,10 +9,10 @@ allowed-tools: Read, Grep, Glob, Bash(git:*), Bash(gh pr view:*), Bash(gh pr dif
 
 ## Context
 
-- Current branch: !`git branch --show-current`
+- Current branch: !`git branch --show-current 2>/dev/null || echo "not a git repo: cd into the issue worktree first"`
 - Default branch: !`git symbolic-ref refs/remotes/origin/HEAD --short 2>/dev/null || echo "origin/main"`
-- Uncommitted changes: !`git diff HEAD --stat`
-- Branch changes: !`git diff "$(git merge-base HEAD "$(git symbolic-ref refs/remotes/origin/HEAD --short 2>/dev/null || echo origin/main)")" --stat 2>/dev/null | tail -1`
+- Uncommitted changes: !`git diff HEAD --stat 2>/dev/null || echo "n/a"`
+- Branch changes: !`git diff --stat origin/HEAD...HEAD 2>/dev/null | tail -1 || echo "n/a"`
 
 ## 1. Scope
 

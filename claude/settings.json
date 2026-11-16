@@ -89,6 +89,11 @@
     ],
     "defaultMode": "bypassPermissions"
   },
+  "model": "fable",
+  "skillOverrides": {
+    "code-simplifier": "off",
+    "cleanup": "off"
+  },
   "hooks": {
     "Notification": [
       {
@@ -180,11 +185,15 @@
     "rust-analyzer-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true
   },
+  "feedbackDrafts": "off",
+  "spinnerTipsEnabled": false,
   "alwaysThinkingEnabled": true,
   "companyAnnouncements": [
     "Welcome, Villads 👋"
   ],
   "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
-  "theme": "auto"
+  "theme": "auto",
+  "editorMode": "vim",
+  "idleCompaction": false
 }

@@ -89,7 +89,7 @@ link "$DOTFILES/opencode" "$HOME/.config/opencode"
 link "$DOTFILES/lazygit/config.yml" "$HOME/Library/Application Support/lazygit/config.yml"
 
 echo "==> Claude"
-for f in CLAUDE.md rules commands settings.json statusline-command.sh; do
+for f in CLAUDE.md rules commands hooks settings.json statusline-command.sh; do
   if [ -e "$DOTFILES/claude/$f" ]; then
     link "$DOTFILES/claude/$f" "$HOME/.claude/$f"
   fi

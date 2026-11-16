@@ -9,11 +9,11 @@ allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git commit:*), Bash(git
 
 ## Context
 
-- Status: !`git status --short`
-- Staged changes: !`git diff --cached --stat`
-- Unstaged changes: !`git diff --stat`
-- Branch: !`git branch --show-current`
-- Recent commits: !`git log --oneline -5`
+- Status: !`git status --short 2>/dev/null || echo "n/a"`
+- Staged changes: !`git diff --cached --stat 2>/dev/null || echo "n/a"`
+- Unstaged changes: !`git diff --stat 2>/dev/null || echo "n/a"`
+- Branch: !`git branch --show-current 2>/dev/null || echo "not a git repo: cd into the issue worktree first"`
+- Recent commits: !`git log --oneline -5 2>/dev/null || echo "n/a"`
 
 ## Commit Types
 

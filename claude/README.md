@@ -53,6 +53,7 @@ claude/
 │   ├── no-use-effect/
 │   ├── react-performance/
 │   └── react-composition-patterns/
+├── hooks/zsh-guard.sh         # Blocks zsh mistakes in Bash commands (PreToolUse)
 ├── plugins/config.json
 ├── settings.json              # Permissions, hooks, statusline, plugins
 └── statusline-command.sh      # Custom status bar script

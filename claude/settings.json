@@ -132,6 +132,15 @@
     ],
     "PreToolUse": [
       {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/zsh-guard.sh"
+          }
+        ]
+      },
+      {
         "matcher": "*",
         "hooks": [
           {

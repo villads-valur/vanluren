@@ -9,10 +9,10 @@ allowed-tools: Bash(git:*), Bash(gh:*), Bash(bork integration attach-pr:*)
 
 ## Context
 
-- Current branch: !`git branch --show-current`
+- Current branch: !`git branch --show-current 2>/dev/null || echo "not a git repo: cd into the issue worktree first"`
 - Default base: !`git symbolic-ref refs/remotes/origin/HEAD --short 2>/dev/null || echo "origin/main"`
-- Commits on branch: !`git log origin/HEAD..HEAD --oneline 2>/dev/null || git log --oneline -10`
-- Changed files: !`git diff origin/HEAD..HEAD --stat 2>/dev/null || git diff --stat HEAD~5`
+- Commits on branch: !`git log origin/HEAD..HEAD --oneline 2>/dev/null || git log --oneline -10 2>/dev/null || echo "n/a"`
+- Changed files: !`git diff origin/HEAD..HEAD --stat 2>/dev/null || git diff --stat HEAD~5 2>/dev/null || echo "n/a"`
 
 ## Title and Description
 

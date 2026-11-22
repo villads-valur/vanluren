@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Tests for the PreToolUse Bash guards. Run: claude/hooks/test-guards.sh
+# Tests for the PreToolUse Bash guard. Run: claude/hooks/test-guards.sh
 set -u
 here=$(cd "$(dirname "$0")" && pwd)
 fails=0
@@ -41,27 +41,27 @@ expect allowed "short single sleep" bash-guard.sh 'kill -TERM $p; sleep 1; echo 
 expect allowed "gh pr checks --watch" bash-guard.sh 'gh pr checks 12 --watch' true
 expect allowed "bork issue start | tail" bash-guard.sh 'bork issue start "Fix x" --prompt "y" 2>&1 | tail -4'
 
-echo "# push-guard"
+echo "# bash-guard: pushes"
 repo=$(mktemp -d)
 git -C "$repo" init -q -b main
 git -C "$repo" -c user.email=t@t -c user.name=t commit -q --allow-empty -m "init"
 git -C "$repo" switch -q -c arcane-life-12/live-join
-expect blocked "git push on a bork branch" push-guard.sh "git push -u origin HEAD" false "$repo"
-expect blocked "git -C push on a bork branch" push-guard.sh "git -C $repo push" false /
-expect blocked "cd && push on a bork branch" push-guard.sh "cd $repo && git push" false /
-expect blocked "gh pr create on a bork branch" push-guard.sh "gh pr create --fill" false "$repo"
-expect blocked "refspec to a bork branch" push-guard.sh "git push origin HEAD:orb-tui-45/pin-images" false "$repo"
-expect allowed "refspec renaming to a ticket branch" push-guard.sh "git push origin HEAD:ENG-12/live-join" false "$repo"
-expect allowed "deleting a leaked bork branch" push-guard.sh "git push origin --delete arcane-life-12/live-join" false "$repo"
-expect allowed "other git commands" push-guard.sh "git status" false "$repo"
+expect blocked "git push on a bork branch" bash-guard.sh "git push -u origin HEAD" false "$repo"
+expect blocked "git -C push on a bork branch" bash-guard.sh "git -C $repo push" false /
+expect blocked "cd && push on a bork branch" bash-guard.sh "cd $repo && git push" false /
+expect blocked "gh pr create on a bork branch" bash-guard.sh "gh pr create --fill" false "$repo"
+expect blocked "refspec to a bork branch" bash-guard.sh "git push origin HEAD:orb-tui-45/pin-images" false "$repo"
+expect allowed "refspec renaming to a ticket branch" bash-guard.sh "git push origin HEAD:ENG-12/live-join" false "$repo"
+expect allowed "deleting a leaked bork branch" bash-guard.sh "git push origin --delete arcane-life-12/live-join" false "$repo"
+expect allowed "other git commands" bash-guard.sh "git status" false "$repo"
 git -C "$repo" branch -q -m ENG-12/live-join
-expect allowed "git push on a renamed branch" push-guard.sh "git push -u origin HEAD" false "$repo"
-expect blocked "gh pr create --head bork branch" push-guard.sh "gh pr create --head bork-3/x --fill" false "$repo"
+expect allowed "git push on a renamed branch" bash-guard.sh "git push -u origin HEAD" false "$repo"
+expect blocked "gh pr create --head bork branch" bash-guard.sh "gh pr create --head bork-3/x --fill" false "$repo"
 git -C "$repo" update-ref refs/remotes/origin/HEAD HEAD
 git -C "$repo" -c user.email=t@t -c user.name=t commit -q --allow-empty -m "fix: thing (arcane-life-12)"
-BORK_ISSUE_ID=arcane-life-12 expect blocked "commit message with the bork ID" push-guard.sh "git push" false "$repo"
-BORK_ISSUE_ID=arcane-life-1 expect allowed "a longer ID is not this ID" push-guard.sh "git push" false "$repo"
-expect allowed "commit message check needs BORK_ISSUE_ID" push-guard.sh "git push" false "$repo"
+BORK_ISSUE_ID=arcane-life-12 expect blocked "commit message with the bork ID" bash-guard.sh "git push" false "$repo"
+BORK_ISSUE_ID=arcane-life-1 expect allowed "a longer ID is not this ID" bash-guard.sh "git push" false "$repo"
+expect allowed "commit message check needs BORK_ISSUE_ID" bash-guard.sh "git push" false "$repo"
 
 echo
 [ "$fails" -eq 0 ] && echo "all passed" || { echo "$fails failed"; exit 1; }

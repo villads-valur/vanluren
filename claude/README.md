@@ -54,10 +54,10 @@ claude/
 │   ├── no-use-effect/
 │   ├── react-performance/
 │   └── react-composition-patterns/
-├── hooks/                     # PreToolUse guards for Bash commands
-│   ├── bash-guard.sh          # zsh mistakes, in-place edits, foreground sleep loops, piped bork issue start
-│   ├── push-guard.sh          # Blocks pushing bork branches or bork IDs in commit messages
-│   └── test-guards.sh         # Run after changing a guard
+├── hooks/
+│   ├── bash-guard.sh          # PreToolUse: blocks zsh mistakes, in-place edits, foreground sleep loops,
+│   │                          # piped bork issue start, and bork IDs reaching GitHub
+│   └── test-guards.sh         # Run after changing the guard
 ├── plugins/config.json
 ├── settings.json              # Permissions, hooks, statusline, plugins
 └── statusline-command.sh      # Custom status bar script

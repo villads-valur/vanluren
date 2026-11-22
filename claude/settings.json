@@ -142,10 +142,6 @@
           {
             "type": "command",
             "command": "~/.claude/hooks/bash-guard.sh"
-          },
-          {
-            "type": "command",
-            "command": "~/.claude/hooks/push-guard.sh"
           }
         ]
       },

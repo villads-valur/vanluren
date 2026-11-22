@@ -23,7 +23,7 @@ A project is a container dir with `main/` plus sibling `{issue-id}-{slug}/` work
 1. **Find or create the worktree**
    - Existing issue: `bork issue show <issue-id>` and `git -C main worktree list`
    - Issue without a worktree: `bork worktree <issue-id> <slug>`
-   - New sub-task: `bork issue start "Title" --project <name> --prompt "..."` (creates issue, worktree and agent). Leave `--mode` at the default (build); use `--mode plan` only when I ask for it
+   - New sub-task: `bork issue start "Title" --project <name> --prompt "..."` (creates issue, worktree and agent). Leave `--mode` at the default (build); use `--mode plan` only when I ask for it. Never pipe it into `head`: closing the pipe kills it halfway and leaves a half-created issue. Run it plain, or redirect to a file and read that
    - Use bork rather than raw `git worktree add`, so bork tracks it
 2. **Work inside the worktree**: all issue changes happen in `{issue-id}-{slug}/`, never in the container. `main/` is only for hotfixes and small fix branches
 3. **Context**: read `.claude/planning.md` in the worktree if it exists, and the linked Linear/GitHub issue including comments
@@ -34,7 +34,7 @@ A project is a container dir with `main/` plus sibling `{issue-id}-{slug}/` work
 Bork issue IDs (`{project}-{n}`, e.g. `vanluren-16`) only exist on my machine, so nobody else can look them up. Use them in bork commands, worktree paths and `.claude/planning.md`, and nowhere else:
 
 - Never put a bork ID in commit messages, PR titles or descriptions, review comments, Linear or GitHub issues, Slack messages, code or code comments
-- Branches: bork creates `{issue-id}/{slug}`, and that name must never reach the remote. Before the first push, rename it with `git branch -m <TICKET-ID>/<slug>` (the linked ticket, e.g. Linear), or a descriptive slug if there's no ticket. Check the name before every first push and before `gh pr create`
+- Branches: bork creates `{issue-id}/{slug}`, and that name must never reach the remote. Before the first push, rename it with `git branch -m <TICKET-ID>/<slug>` (the linked ticket, e.g. Linear), or a descriptive slug if there's no ticket. Check the name before every first push and before `gh pr create`. `hooks/push-guard.sh` blocks pushes from bork branches and of commits that mention the session's bork ID
 - If a PR is already open on a bork-ID branch, don't rename it (that closes the PR); ask me first
 - Branches you create yourself (stack layers, follow-ups) follow the same naming
 - Refer to the work by what it does, or link the real Linear/GitHub issue. A bork issue imported from Linear (lowercase, e.g. `eng-123`) maps to a real ticket, so reference it as `ENG-123` or its Linear URL

@@ -53,7 +53,7 @@ Read and apply each of these files (next to this SKILL.md) before judging the co
 
 ## 4. Verify each finding
 
-Aim for the few findings that matter, not an exhaustive list. A short review I act on beats a long one I skim, and every finding costs a fix-and-re-review round. Before reporting a finding:
+Aim for the few findings that matter, not an exhaustive list. A short review I act on beats a long one I skim, and every finding costs a fix-and-re-review round (capped at two, see "Review Loops" in `~/.claude/rules/workflow.md`). Before reporting a finding:
 
 - **State the failure**: for bugs, a concrete scenario (this input or state → this wrong result). If you can't state one, drop it or downgrade it to a `question`
 - **Check it's realistic**: the scenario has to be reachable with how the code is actually called and used. Drop it if:

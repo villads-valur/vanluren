@@ -44,6 +44,7 @@ claude/
 │   ├── code-simplifier/
 │   ├── handoff/
 │   ├── land/
+│   ├── drive-agents/          # Driving other agents' tmux windows, waiting, /loop prompts
 │   ├── dream/                 # Daily transcript review (launchd)
 │   ├── worktree/              # Includes planning + decisions templates
 │   ├── ticket/
@@ -53,7 +54,10 @@ claude/
 │   ├── no-use-effect/
 │   ├── react-performance/
 │   └── react-composition-patterns/
-├── hooks/zsh-guard.sh         # Blocks zsh mistakes in Bash commands (PreToolUse)
+├── hooks/                     # PreToolUse guards for Bash commands
+│   ├── bash-guard.sh          # zsh mistakes, in-place edits, foreground sleep loops, piped bork issue start
+│   ├── push-guard.sh          # Blocks pushing bork branches or bork IDs in commit messages
+│   └── test-guards.sh         # Run after changing a guard
 ├── plugins/config.json
 ├── settings.json              # Permissions, hooks, statusline, plugins
 └── statusline-command.sh      # Custom status bar script

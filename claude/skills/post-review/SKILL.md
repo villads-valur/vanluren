@@ -1,97 +1,44 @@
 ---
 name: post-review
-description: Post a tuicr code review to GitHub as a PR review. Use when asked to "post my review", "submit my tuicr review", "post review comments to GitHub", or "submit review to PR".
+description: Post a tuicr code review to GitHub as a PR review, optionally enriching my comments with code context first. Use when asked to "post my review", "submit my tuicr review", "post review comments to GitHub", or "submit review to PR".
 ---
 
 # Post Review
 
-Post a tuicr code review to a GitHub PR as a single review with inline comments.
+Post a tuicr review to a GitHub PR as a single review with inline comments. If I don't want any comments enriched, `:submit` in tuicr does the same thing, so say so.
+
+See the `tuicr` skill for the CLI (finding sessions, reading comments).
 
 ## Step 1: Find the review
 
-Try these sources in order:
-
-### 1a. Auto-detect tuicr session
-
-Look for the latest session JSON in the tuicr data directory:
-- **macOS:** `~/Library/Application Support/tuicr/reviews/`
-- **Linux:** `~/.local/share/tuicr/reviews/`
-
-List files sorted by modification time (newest first). Read the latest session
-and show the user: branch name, number of files, number of comments.
-Ask to confirm this is the right session.
-
-### 1b. If no session found or wrong session
-
-Ask the user:
-> I couldn't find a matching tuicr session. You can either:
-> 1. Paste your tuicr review export (the markdown from `:clip` or `y`)
-> 2. Provide a path to a tuicr session JSON file
-
-### Tuicr session JSON format
-
-```json
-{
-  "branch_name": "feature-branch",
-  "base_commit": "abc123",
-  "review_comments": [
-    { "content": "...", "comment_type": "issue", "side": null, "line_range": null }
-  ],
-  "files": {
-    "path/to/file.tsx": {
-      "file_comments": [
-        { "content": "...", "comment_type": "suggestion", "side": null, "line_range": null }
-      ],
-      "line_comments": {
-        "42": [
-          { "content": "...", "comment_type": "nit", "side": "new", "line_range": { "start": 40, "end": 42 } }
-        ]
-      }
-    }
-  }
-}
+```bash
+tuicr review list --all
 ```
 
-### Tuicr markdown export format
-
-```
-Comment types: QUESTION (...), NITPICK (...), SUGGESTION (...), ISSUE (...)
-
-1. **[ISSUE]** `Review Comment (scope: ...)` - Review-level comment text
-2. **[NITPICK]** `src/file.tsx:99-130` - Line comment text
-3. **[SUGGESTION]** `src/file.tsx` - File-level comment text
-4. **[QUESTION]** `src/file.tsx:42` - Single line comment text
-```
-
-When parsing the markdown export:
-- `Review Comment (scope: ...)` -> review-level comment (goes in review body)
-- `path` (no line) -> file-level comment
-- `path:line` -> single-line comment
-- `path:start-end` -> multi-line range comment
-- `path:~line` or `path:~start-~end` -> old-side (deleted line) comment
-- Comment type tag maps to prefix: `[ISSUE]` -> `issue:`, `[NITPICK]` -> `nit:`, etc.
+- Pick the PR session (`kind: "pr"`, slug `gh:<owner>/<repo>/pr/<n>`) I mean. One active PR session: show its slug and comment count and ask me to confirm. Several: ask which
+- Read the comments: `tuicr review comments --session <slug>`. Each has `path`, `start_line`, `end_line`, `side`, `comment_type`, `author` and `content`. No `path` means a review-level comment; a `path` with no line is a file comment
+- No PR session (a local review): ask for the PR number, and use `--repo <repo-root>` to read it
+- If the CLI can't find it, ask me to paste the export from `y` / `:clip` instead
 
 ## Step 2: Detect the PR
 
-Use the branch name from the session (or ask the user) to find the PR:
-```bash
-gh pr list --head <branch-name> --json number,headRefName,url --limit 1
-gh api repos/{owner}/{repo}/pulls/{number} --jq '.head.sha'
-```
+The PR slug has the owner, repo and number. Get the head commit:
 
-If no PR found, ask the user for the PR number or URL.
+```bash
+gh pr view <n> --repo <owner>/<repo> --json headRefOid,url
+```
 
 ## Step 3: Present comments for enrichment
 
 Show a numbered summary of all comments:
 
 ```
-Found 11 comments in review for branch ent-279-members-page:
+Found 11 comments in the review of PR #123:
 
  1. [issue]      (review-level)                              We're duplicating a lot of...
- 2. [nit]        permission-matrix.tsx:99-130                I hate this thing here...
- 3. [issue]      active-member-detail-drawer.tsx (file)      This file is doing a lot...
- 4. [suggestion] active-member-detail-drawer.tsx:52-65       Maybe we should give feedback...
+ 2. [nit]        settings-table.tsx:99-130                   I hate this thing here...
+ 3. [issue]      user-drawer.tsx (file)                      This file is doing a lot...
+ 4. [suggestion] user-drawer.tsx:52-65                       Maybe we should give feedback...
  ...
 ```
 
@@ -105,21 +52,13 @@ For comments to enrich:
 - Show the enriched version to the user for approval
 
 For comments posted verbatim:
-- Prefix with the comment type: `issue:`, `nit:`, `suggestion:`, `question:`, `note:`, `praise:`
+- Prefix with the comment type (see below)
 
 ## Step 4: Build and submit the review
 
-### Comment type prefix mapping
+### Comment type prefix
 
-| tuicr type | Prefix |
-|-----------|--------|
-| `issue` | `issue:` |
-| `nit` / `nitpick` | `nit:` |
-| `suggestion` | `suggestion:` |
-| `question` | `question:` |
-| `note` | `note:` |
-| `praise` | `praise:` |
-| Custom type | `{type}:` |
+My tuicr types are `question`, `nit`, `issue` and `suggestion`; prefix each comment with `<type>:` (e.g. `nit: ...`). Older sessions may have other types such as `nitpick` or `note`: use `nit:` for `nitpick` and `<type>:` for the rest. Untyped comments (`none`) get no prefix, unless the text already starts with a label.
 
 ### GitHub API mapping
 
@@ -131,10 +70,10 @@ For comments posted verbatim:
 
 ### Submit
 
-Write the payload to a temp JSON file and submit:
+Write the payload to a fresh temp file (`PAYLOAD=$(mktemp)`) and submit:
 ```bash
 gh api repos/{owner}/{repo}/pulls/{number}/reviews \
-  --method POST --input /tmp/pr-review-payload.json \
+  --method POST --input "$PAYLOAD" \
   --jq '{id: .id, state: .state, html_url: .html_url}'
 ```
 

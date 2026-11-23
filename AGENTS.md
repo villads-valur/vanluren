@@ -15,7 +15,7 @@ If a change might include any of this, stop and ask.
 
 ## Layout
 
-Each top-level folder (`zsh/`, `nvim/`, `ghostty/`, `lazygit/`, `claude/`, `opencode/`) is symlinked into `~/.config` or `~/.claude`. See `README.md`.
+Each top-level folder (`zsh/`, `nvim/`, `ghostty/`, `lazygit/`, `tuicr/`, `claude/`, `opencode/`) is symlinked into `~/.config` or `~/.claude`. See `README.md`.
 
 ## Build & test
 

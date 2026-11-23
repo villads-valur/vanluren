@@ -86,6 +86,7 @@ echo "==> Config links"
 link "$DOTFILES/nvim" "$HOME/.config/nvim"
 link "$DOTFILES/ghostty" "$HOME/.config/ghostty"
 link "$DOTFILES/opencode" "$HOME/.config/opencode"
+link "$DOTFILES/tuicr" "$HOME/.config/tuicr"
 link "$DOTFILES/lazygit/config.yml" "$HOME/Library/Application Support/lazygit/config.yml"
 
 echo "==> Claude"

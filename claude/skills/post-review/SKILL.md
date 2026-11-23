@@ -46,12 +46,14 @@ Ask:
 > Which comments should I enrich with more context? (e.g. "2, 4, 7" or "all" or "none")
 
 For comments to enrich:
+
 - Read the relevant source code from the PR branch
 - Flesh out the comment with concrete context and suggestions
 - Preserve the user's intent and tone, just add substance
 - Show the enriched version to the user for approval
 
 For comments posted verbatim:
+
 - Prefix with the comment type (see below)
 
 ## Step 4: Build and submit the review
@@ -71,6 +73,7 @@ My tuicr types are `question`, `nit`, `issue` and `suggestion`; prefix each comm
 ### Submit
 
 Write the payload to a fresh temp file (`PAYLOAD=$(mktemp)`) and submit:
+
 ```bash
 gh api repos/{owner}/{repo}/pulls/{number}/reviews \
   --method POST --input "$PAYLOAD" \

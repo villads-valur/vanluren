@@ -8,6 +8,8 @@ editor = "nvim"
 comment_vim = true
 relative_line_numbers = true
 scroll_offset = 4
+wrap = true
+wrap_style = "gutter"
 ignore_whitespace = "auto"
 compact_folders = true
 

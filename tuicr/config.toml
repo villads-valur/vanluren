@@ -1,0 +1,31 @@
+# tuicr: https://github.com/agavra/tuicr/blob/main/docs/CONFIG.md
+
+# Match Ghostty (atom / Ayu Light)
+theme_dark = "onedark"
+theme_light = "ayu-light"
+
+comment_vim = true
+relative_line_numbers = true
+scroll_offset = 4
+wrap = true
+wrap_style = "gutter"
+ignore_whitespace = "auto"
+compact_folders = true
+
+# My conventional-comment labels. The first is the default; Tab cycles through them.
+# Keep the ids stable: saved sessions and the post-review skill match on them.
+comment_types = [
+  { id = "question", color = "yellow", definition = "ask for clarification or check an assumption" },
+  { id = "nit", color = "gray", definition = "small optional tweak" },
+  { id = "issue", color = "red", definition = "a problem to fix" },
+  { id = "suggestion", color = "blue", definition = "possible improvement, fix it or explain why not" },
+]
+
+[forge]
+# "nit: ..." instead of "[NIT] ..." when submitting to GitHub
+comment_type_format = "{label}: "
+pr_search = "review-requested:@me draft:false"
+
+[export]
+# Give agents the commented lines, not just file:line
+code_context = true

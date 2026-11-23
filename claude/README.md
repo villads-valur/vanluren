@@ -48,6 +48,7 @@ claude/
 │   ├── worktree/              # Includes planning + decisions templates
 │   ├── ticket/
 │   ├── stacking-pr/
+│   ├── tuicr/
 │   ├── post-review/
 │   ├── audit-react/
 │   ├── no-use-effect/
@@ -101,6 +102,7 @@ Claude Code merged custom commands into skills, so every skill here is both a `/
 | `ticket`                     | Write a ticket in my Goal / Context / Acceptance criteria format |
 | `worktree`                   | Create a bork worktree with `planning.md` + decisions file |
 | `stacking-pr`                | Stacked PRs with the `gh stack` extension                  |
+| `tuicr`                      | Review changes in tuicr with an agent, both ways           |
 | `post-review`                | Post a tuicr review to a GitHub PR                         |
 | `audit-react`                | Structured React / React Native audit                      |
 | `no-use-effect`              | Replacement patterns for `useEffect`                       |

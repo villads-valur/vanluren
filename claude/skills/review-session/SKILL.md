@@ -2,8 +2,7 @@
 name: review-session
 description: Have a Codex or Claude reviewer review this bork issue's PRs in tmux windows next to this session, then wait for the result, fix the findings and clean up. Use on "review-session", "run a codex review", "have codex check this", "go back and forth with codex"
 argument-hint: "[codex|claude] [pr-number...|all] | done"
-allowed-tools: Read, Edit, Write, Bash(bork issue list:*), Bash(gh pr view:*), Bash(git fetch:*), Bash(git -C:*), Bash(tmux:*), Bash(mkdir:*), Bash(chmod:*), Bash(rm -f:*), Bash(${CLAUDE_SKILL_DIR}/wait-for-report.sh:*), Bash(${CLAUDE_SKILL_DIR}/trust-codex.sh:*)
----
+allowed-tools: Read, Edit, Write, Bash(bork issue list:*), Bash(gh pr view:*), Bash(git fetch:*), Bash(git -C:*), Bash(tmux:*), Bash(mkdir:*), Bash(chmod:*), Bash(rm -f:*), Bash(${CLAUDE_SKILL_DIR}/wait-for-report.sh:*)---
 
 # Review Session
 
@@ -56,14 +55,14 @@ Per PR, in `$TMPDIR/bork-review/` (`<id>` is the bork issue ID):
    - Write the reviewer prompt (below) to the prompt file, filling in every `<placeholder>`
 
 4. **Launch** a detached window per PR. If a window with the same name already exists, ask before replacing it.
-   - codex only: run `${CLAUDE_SKILL_DIR}/trust-codex.sh <worktree>` first. It marks the bork container as trusted in `~/.codex/config.toml` (once per project), so Codex doesn't stop on "Trust this folder?" in each new worktree. Don't pass any `-c` overrides to `codex`: any override brings the trust prompt back
+   - codex only: each bork project folder (the container, not the worktree) is trusted in `~/.codex/config.toml`, which covers every worktree in it. Don't pass any `-c` overrides to `codex`: any override brings the "Trust this folder?" prompt back
    - Write the launcher and `chmod +x` it:
      - codex: `codex --dangerously-bypass-approvals-and-sandbox "$(cat <prompt-file>)"`
      - claude: `claude --dangerously-skip-permissions -n "review PR #<n>" "$(cat <prompt-file>)"`
      - After the agent command, write its exit code to `<report-file>.exit` (`echo "$?" > ...`), so the wait step can tell a crash from a slow review
      - End it with `exec "$SHELL"` so the window stays open for me to read after the agent exits
    - `tmux new-window -d -n review-<agent>-<n> -c <worktree> <launcher>`
-   - Check the pane once (`tmux capture-pane -p -t <session>:review-<agent>-<n>`). If Codex shows an "Update available" prompt, skip it with `tmux send-keys -t <session>:review-<agent>-<n> Escape`. If it still shows a folder-trust prompt, tell me
+   - Check the pane once (`tmux capture-pane -p -t <session>:review-<agent>-<n>`). If Codex shows an "Update available" prompt, skip it with `tmux send-keys -t <session>:review-<agent>-<n> Escape`. If it shows a folder-trust prompt, the project is new: tell me, so I can add its container to `~/.codex/config.toml` (`[projects."<container>"]` with `trust_level = "trusted"`)
 
 5. **Wait for the report.** For each window, run with Bash `run_in_background: true`:
 

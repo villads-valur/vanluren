@@ -2,8 +2,7 @@
 name: drive-agents
 description: Drive other bork agents from an orchestrator session - find their tmux window, read what they're doing, send them a prompt, wait until they're done, and write lean /loop prompts. Use when orchestrating sub-issues, "tell 23 to ...", "check on the agents", "pass this to the running agents", or before setting up a /loop that checks on agents
 argument-hint: "[issue-id...]"
-allowed-tools: Read, Bash(bork issue list:*), Bash(bork issue show:*), Bash(tmux:*), Bash(${CLAUDE_SKILL_DIR}/send.sh:*), Bash(${CLAUDE_SKILL_DIR}/wait-status.sh:*)
----
+allowed-tools: Read, Bash(bork issue list:*), Bash(bork issue show:*), Bash(tmux:*), Bash(${CLAUDE_SKILL_DIR}/send.sh:*)---
 
 # Drive agents
 
@@ -30,7 +29,11 @@ Each bork issue runs its agent in its own tmux session, named `<project>-<issue-
 
 ## Wait
 
-- `${CLAUDE_SKILL_DIR}/wait-status.sh <container-dir> <issue-id>` with Bash `run_in_background: true`. It exits once the agent stops being `Busy` and prints its status; you're notified then. Start one per agent you're waiting on
+- Run one Bash command per agent with `run_in_background: true`, and you're notified when it exits. The first `sleep` gives a prompt you just sent time to flip the status to `Busy`:
+
+  ```bash
+  f="$BORK_STATUS_DIR/<project>-<issue-id>.json"; sleep 10; until [ "$(jq -r .status "$f")" != Busy ]; do sleep 15; done; jq -r .status "$f"
+  ```
 - Never poll with `sleep` in the foreground (the bash guard blocks it), and don't use Monitor for waits over 30 minutes
 
 ## /loop prompts

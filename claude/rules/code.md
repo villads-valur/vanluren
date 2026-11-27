@@ -4,7 +4,7 @@ Usual stack: TypeScript, NestJS/Express, React/React Native, TypeORM/Prisma/Driz
 
 ## Quality
 
-- Edit files with the Edit/Write tools, not `python3`/`sed -i`/heredoc scripts (they may be missing and they trigger permission prompts)
+- Edit files with the Edit/Write tools (`replace_all` for repeated replacements), not `sed -i`, `perl -pi` or `python3` heredoc scripts: they shift line numbers and break the Edit tool's read state. `hooks/bash-guard.sh` blocks them
 - Fix issues directly; no tech-debt or workaround files
 - Clean up after implementing: remove unneeded changes, files and artifacts
 - Handle the main errors and validations without over-optimising early

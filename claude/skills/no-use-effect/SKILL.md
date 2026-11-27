@@ -44,11 +44,7 @@ Use the five rules below to pick the right replacement.
 
 ### 3. Verify
 
-```
-npm run lint -- --filter=<package>
-npm run typecheck -- --filter=<package>
-npm run test -- --filter=<package>
-```
+Run the project's own lint, type-check and test scripts (see `package.json`; in a monorepo, the changed package's scripts), with the package manager its lockfile implies (`yarn.lock`, `pnpm-lock.yaml`, `bun.lock`, `package-lock.json`).
 
 ## The Escape Hatch: useMountEffect
 

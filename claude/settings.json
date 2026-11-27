@@ -141,7 +141,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.claude/hooks/zsh-guard.sh"
+            "command": "~/.claude/hooks/bash-guard.sh"
           }
         ]
       },

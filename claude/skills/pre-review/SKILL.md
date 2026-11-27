@@ -1,13 +1,13 @@
 ---
 name: pre-review
-description: Self-review a PR before I or anyone else reviews it, by running the review skill and /simplify on the PR's changes. Use on "pre-review", "run /pre-review", "get this ready for review", "/pre-review and /review-session"
+description: Self-review a PR before I or anyone else reviews it, by running the review skill and /simplify on the PR's changes and removing unneeded comments. Use on "pre-review", "run /pre-review", "get this ready for review", "/pre-review and /review-session"
 argument-hint: "[pr-number]"
 allowed-tools: Read, Grep, Glob, Edit, Bash(git:*), Bash(gh pr view:*), Bash(gh pr diff:*), Bash(gh pr checkout:*), Bash(bork issue list:*), Bash(cd:*)
 ---
 
 # Pre-review
 
-Get a PR into shape before a human looks at it: review it for issues, then simplify the changed code.
+Get a PR into shape before a human looks at it: review it for issues, simplify the changed code and strip unneeded comments.
 
 ## Context
 
@@ -32,14 +32,20 @@ Get a PR into shape before a human looks at it: review it for issues, then simpl
    - Under 50 changed lines (added plus removed): don't run `/simplify`, since it starts several review agents. Read the diff yourself for reuse, duplication and needless complexity, and fix what you find
    - Otherwise run `/simplify` on the PR's changes (`git diff origin/<base>...HEAD`) and let it apply its fixes
 
-5. **Fix review findings**: apply the High and Medium findings from step 3 that are clear-cut, realistic (see "Review Loops" in `~/.claude/rules/workflow.md`) and not already covered by step 4. Dismiss theoretical edge cases in one line each. Leave Low findings, `question`s and anything that would change behaviour for me.
+5. **Remove comments**: go through every comment the PR adds or changes (`git diff origin/<base>...HEAD`) and delete it unless it's strictly necessary, which it rarely is. A comment that seems needed usually means the code isn't clear enough, so fix that instead: rename the variable or function, extract a well-named helper or constant, or simplify the logic, then drop the comment.
+   - Delete: comments that restate the code, narrate steps ("// loop over users"), label sections, describe the change or the task ("// added for X", "// now handles Y"), commented-out code, and doc comments that repeat the name and signature
+   - Keep only: a non-obvious why that no name can carry (a workaround for a linked bug, a surprising external constraint), tool directives (`eslint-disable`, `@ts-expect-error`, `// biome-ignore`, `#!`, `# shellcheck`), license headers, and doc comments the project requires or publishes
+   - Cut a kept comment to the shortest line that still says the why
 
-6. **Report**:
+6. **Fix review findings**: apply the High and Medium findings from step 3 that are clear-cut, realistic (see "Review Loops" in `~/.claude/rules/workflow.md`) and not already covered by steps 4-5. Dismiss theoretical edge cases in one line each. Leave Low findings, `question`s and anything that would change behaviour for me.
+
+7. **Report**:
    - Changes made (files plus a one-line reason each)
+   - Comments kept, with the reason each one is needed
    - Remaining review findings, using conventional-comment labels
    - Commit the fixes (`refactor:` or `fix:`), then ask before pushing
 
-7. **Chain**: if I also asked for `review-session` ("/pre-review and /review-session", "and a short review-session"), run the `review-session` skill once the fixes are committed and pushed. "Short" means one round, no follow-up
+8. **Chain**: if I also asked for `review-session` ("/pre-review and /review-session", "and a short review-session"), run the `review-session` skill once the fixes are committed and pushed. "Short" means one round, no follow-up
 
 ## Rules
 
